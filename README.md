@@ -19,7 +19,7 @@ Sample Composer file
 	}
 	],
 	"require" : {
-	"OCLC/Auth" : ">=1.0"
+	"WorldCatDiscovery" : ">=1.0"
 	}
 }
 ```
