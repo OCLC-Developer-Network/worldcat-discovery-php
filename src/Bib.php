@@ -189,7 +189,7 @@ class Bib extends EasyRdf_Resource
      */
     function getAwards()
     {
-        $awards =  $this->metadata->all('schema:award');
+        $awards =  $this->metadata->all('schema:awards');
         return $awards;
     }
     
@@ -220,7 +220,7 @@ class Bib extends EasyRdf_Resource
         
         if (isset($options['mockFilePath'])){
             $guzzleOptions['plugins'] = array(
-                new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFile']))
+                new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
             );
         }
         
@@ -268,7 +268,7 @@ class Bib extends EasyRdf_Resource
         
         if (isset($options['mockFilePath'])){
             $guzzleOptions['plugins'] = array(
-            	new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFile']))
+            	new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
             );
         }
         
