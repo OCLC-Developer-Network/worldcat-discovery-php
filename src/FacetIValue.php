@@ -16,7 +16,7 @@ class FacetValue extends EasyRdf_Resource
      */
 
     function getName(){
-        return $this->get('schema:Name');
+        return $this->get('schema:Name')->getValue();
     }
 
     /**
@@ -25,6 +25,6 @@ class FacetValue extends EasyRdf_Resource
      * @return string
      */
     function getCount(){
-        return $this->get('searcho:count');
+        return $this->get('searcho:count')->getValue();
     }
 }

@@ -53,11 +53,13 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
      * @depends testSearchFacets
      */
     function testFacetList($facetList){
+        $previousCount = 0;
         foreach ($facetList as $facet){
             $this->assertInstanceOf('WorldCat\Discovery\Facet', $facet);
             $this->assertNotEmpty($facet->getName());
             $this->assertNotEmpty($facet->getCount());
-            
+            $this->assertGreaterThanOrEqual($previousCount, $facet->getCount());
+            $previousCount = $facet->getCount();
         }
     }
 }
