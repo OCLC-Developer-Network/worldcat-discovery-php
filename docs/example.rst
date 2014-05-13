@@ -2,10 +2,9 @@ Introduction
 ============
 
 All of these examples assume the library has been installed via Composer and have the require statement based on that. 
-The require statements for the alternative installation methods are all present but commented out
 
 Example: Find a Bibliographic Resource in WorldCat
-============================================
+==================================================
 
 This example reads a single bibliographic record from the WorldCat Discovery using the WSKey class to obtain an Access Token and the Bib Class to request the record
 
@@ -42,7 +41,7 @@ This example reads a single bibliographic record from the WorldCat Discovery usi
    
 
 Example: Search for Bibliographic Resource in WorldCat
-=================================================================
+======================================================
 This example shows how to search for bibs via WorldCat Discovery API using the WSKey class to obtain an Access Token and the Bib Class to perform the search
    
 .. code:: php
