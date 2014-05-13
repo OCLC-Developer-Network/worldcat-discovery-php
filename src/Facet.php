@@ -15,7 +15,7 @@ class Facet extends EasyRdf_Resource
     * return string
     */
 
-    function getfacetIndex(){
+    function getFacetIndex(){
         return $this->get('searcho:facetIndex');
     }
     
@@ -25,7 +25,7 @@ class Facet extends EasyRdf_Resource
      * @return array
      */
     function getFacetValues(){
-        $facetValueList = $this->graph->allResources('searcho:facetValue');
+        $facetValueList = $this->allResources('searcho:facetValue');
         $sortedFacetValueList  = array();
         foreach ($facetValueList as $facetValue){
             $sortedFacetValueList[(int)$facetValue->getCount()] = $facetValue;
@@ -33,6 +33,5 @@ class Facet extends EasyRdf_Resource
         krsort($sortedFacetValueList);
         return $sortedFacetValueList;
         
-        return $facetValueList;
     }
 }

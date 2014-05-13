@@ -31,7 +31,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $mock = __DIR__ . '/mocks/bibSearchByOclcNumberSuccess.txt';
         $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock));
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
-        $i = 0;
+        $i = $search->getStartIndex()->getValue();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
@@ -52,7 +52,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('integer', $search->getTotalResults());
         $this->assertEquals('10', count($search->getSearchResults()));
         $results = $search->getSearchResults();
-        $i = 0;
+        $i = $search->getStartIndex()->getValue();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;

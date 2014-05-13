@@ -34,9 +34,9 @@ class Database
             )
         );
         
-        if (isset($options['mockFile'])){
+        if (isset($options['mockFilePath'])){
             $guzzleOptions['plugins'] = array(
-                new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFile']))
+                new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
             );
         }
         
@@ -65,9 +65,9 @@ class Database
             )
         );
         
-        if (isset($options['mockFile'])){
+        if (isset($options['mockFilePath'])){
             $guzzleOptions['plugins'] = array(
-            	new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFile']))
+            	new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
             );
         }
         

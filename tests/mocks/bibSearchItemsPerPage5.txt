@@ -17,79 +17,79 @@ Transfer-Encoding: chunked
     xmlns:j.5="http://rdfs.org/ns/void#"
     xmlns:schema="http://schema.org/" > 
   <rdf:Description rdf:nodeID="A0">
-    <schema:name>Cat breeds</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85020766"/>
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <schema:name>Really Useful Group</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/45949230">
     <schema:inLanguage>en</schema:inLanguage>
     <schema:contributor rdf:resource="http://viaf.org/viaf/16776808"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/146905438"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/45949230"/>
-    <schema:contributor rdf:nodeID="A2"/>
+    <j.0:placeOfPublication rdf:nodeID="A1"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/17408236"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/232584262"/>
-    <schema:publisher rdf:nodeID="A1"/>
+    <schema:contributor rdf:nodeID="A2"/>
+    <schema:contributor rdf:nodeID="A3"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/85079307"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
     <schema:bookEdition>Commemorative ed.</schema:bookEdition>
-    <schema:about rdf:nodeID="A3"/>
     <schema:contributor rdf:nodeID="A4"/>
+    <schema:about rdf:nodeID="A5"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/74045252"/>
-    <schema:contributor rdf:nodeID="A5"/>
-    <schema:contributor rdf:nodeID="A6"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/25711956"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/14429450"/>
     <j.0:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/cau"/>
-    <schema:contributor rdf:nodeID="A7"/>
-    <j.0:placeOfPublication rdf:nodeID="A8"/>
+    <schema:contributor rdf:nodeID="A6"/>
     <rdf:type rdf:resource="http://www.productontology.org/id/DVD"/>
     <schema:about rdf:resource="http://id.loc.gov/authorities/classification/M1500"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/88581530"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/79463078"/>
     <schema:description>Opening credits/Overture -- Prologue: Jellicle songs for jellicle cats -- Naming of cats -- Old Gumbie cat -- Rum Tum Tugger -- Grizabella, the glamour cat -- Bustopher Jones: The cat about town -- Mungojerrie &amp; Rumpleteazer -- Old Deuteronomy -- Awful battle of the Pekes and the Pollicles -- Jellicle ball -- Memory -- Moments of happiness -- Gus: The theatre cat -- Skimbleshanks: The railway cat -- Macavity: The mystery cat -- Mr. Mistoffelees -- Memory -- Journey to the heaviside layer -- Ad-dressing of cats -- Closing credits.</schema:description>
     <schema:about rdf:resource="http://id.worldcat.org/fast/1432102"/>
-    <schema:contributor rdf:nodeID="A9"/>
+    <j.0:placeOfPublication rdf:nodeID="A7"/>
+    <schema:contributor rdf:nodeID="A8"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/75976213"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/141083992"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/73158532"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/9504103"/>
+    <schema:contributor rdf:nodeID="A9"/>
+    <schema:contributor rdf:nodeID="A10"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0783249667"/>
+    <schema:contributor rdf:nodeID="A11"/>
+    <schema:publisher rdf:nodeID="A12"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/59279678"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/145744786"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/125821736"/>
-    <schema:contributor rdf:nodeID="A10"/>
     <schema:copyrightYear>2000</schema:copyrightYear>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780783249667"/>
-    <j.0:placeOfPublication rdf:nodeID="A11"/>
-    <schema:contributor rdf:nodeID="A12"/>
     <schema:genre>Drama</schema:genre>
     <owl:sameAs rdf:resource="info:oclcnum/45949230"/>
-    <schema:publisher rdf:nodeID="A13"/>
     <schema:name>Cats</schema:name>
     <schema:contributor rdf:resource="http://viaf.org/viaf/56609282"/>
     <j.0:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45949230</j.0:oclcnum>
+    <schema:contributor rdf:nodeID="A13"/>
     <schema:about rdf:resource="http://dewey.info/class/782.14/e22/"/>
-    <schema:contributor rdf:nodeID="A14"/>
+    <schema:about rdf:nodeID="A14"/>
     <schema:description>The Jellicle Cats gather in their junkyard, preparing for the Jellicle Ball, for this is the night when patriarch Old Deuteronomy will choose a cat to be reborn into a new life on the Heavyside Layer. There are stories, songs, and dances from Victoria the White Cat, Munkustrap, Rum Tum Tugger, Grizabella, Jemima, Gus the Theatre Cat, Jellylorum, Skimbleshanks, Macavity, Demeter and Bombalurina, Demeter, Alonzo, Mr. Mistoffelees, and others. The songs explain how Cats are named, whom they fight, how they work and play, entertain, and how they love and why.</schema:description>
-    <schema:about rdf:nodeID="A15"/>
+    <schema:contributor rdf:nodeID="A15"/>
     <schema:about rdf:nodeID="A16"/>
-    <schema:about rdf:resource="http://viaf.org/viaf/56609282"/>
     <schema:contributor rdf:nodeID="A17"/>
+    <schema:publisher rdf:nodeID="A18"/>
+    <schema:about rdf:resource="http://viaf.org/viaf/56609282"/>
     <rdf:type rdf:resource="http://www.productontology.org/id/Video"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/760203615"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/39035081"/>
-    <schema:contributor rdf:nodeID="A18"/>
     <j.2:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</j.2:displayPosition>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/136274862">
     <schema:name>Rouben Mamoulian Collection (Library of Congress)</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n2009054023"/>
     <rdf:type rdf:resource="http://schema.org/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <schema:name>McKenna, Susie.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9781564580733">
     <schema:isbn>9781564580733</schema:isbn>
@@ -115,34 +115,39 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0151686564"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/7977212"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
-    <schema:name>Universal City, Calif.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:nodeID="A19">
+    <schema:name>Harcourt Brace Jovanovich</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <schema:name>Stage adaptations.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85127240"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/21743037">
     <schema:inLanguage>en</schema:inLanguage>
-    <schema:publisher rdf:nodeID="A19"/>
-    <j.0:placeOfPublication rdf:nodeID="A20"/>
     <j.0:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/cau"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/413971"/>
     <schema:datePublished>1983</schema:datePublished>
+    <j.0:placeOfPublication rdf:nodeID="A20"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/36486386"/>
     <j.0:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21743037</j.0:oclcnum>
-    <schema:contributor rdf:nodeID="A21"/>
     <schema:about rdf:resource="http://viaf.org/viaf/56609282"/>
-    <schema:about rdf:nodeID="A22"/>
     <j.2:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</j.2:displayPosition>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/21743037"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/165738730"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/1030814"/>
     <rdf:type rdf:resource="http://www.productontology.org/id/Cassette_tape"/>
-    <schema:about rdf:nodeID="A23"/>
+    <schema:contributor rdf:nodeID="A21"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/56609282"/>
     <schema:author rdf:resource="http://viaf.org/viaf/59279678"/>
+    <schema:about rdf:nodeID="A22"/>
     <schema:copyrightYear>1983</schema:copyrightYear>
     <owl:sameAs rdf:resource="info:oclcnum/21743037"/>
     <schema:name>Cats</schema:name>
     <schema:contributor rdf:resource="http://viaf.org/viaf/59280010"/>
+    <schema:about rdf:nodeID="A23"/>
+    <schema:publisher rdf:nodeID="A24"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/79463078"/>
     <schema:description>Overture -- Prologue: Jellicle songs for jellicle cats -- The naming of cats -- The invitation to the jellicle ball -- The old gumbie cat -- The rum tum tugger -- Grizabella, the glamour cat -- Bustopher Jones -- Mungojerrie and Rumpleteazer -- Old Deuteronomy -- The jellicle ball -- Grizabella -- The moments of hapiness -- Gus: the theatre cat -- "Growltiger's last stand" --Skimbleshanks the railway cat -- Macavity -- Mr. Mistoffolees -- Memory -- The journey to the heavyside layer -- The ad-dressing of cats.</schema:description>
     <rdf:type rdf:resource="http://schema.org/MusicAlbum"/>
@@ -150,10 +155,6 @@ Transfer-Encoding: chunked
     <schema:about rdf:resource="http://id.loc.gov/authorities/classification/M1500"/>
     <schema:genre>Musical settings</schema:genre>
     <schema:contributor rdf:resource="http://viaf.org/viaf/145744786"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A14">
-    <schema:name>Walters, Bryn.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/59279678">
     <schema:name>Lloyd Webber, Andrew, 1948-</schema:name>
@@ -166,11 +167,6 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#InformationResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A24">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100226"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/79319206">
     <schema:name>Simon, Seymour.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n79056518"/>
@@ -181,9 +177,9 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n83187906"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A25">
-    <schema:name>New York</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:nodeID="A11">
+    <schema:name>Garratt, Geoffrey.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/14429450">
     <schema:name>Ferrand, Rebecca.</schema:name>
@@ -199,30 +195,31 @@ Transfer-Encoding: chunked
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0060289406"/>
     <schema:bookEdition>1st ed.</schema:bookEdition>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0060289414"/>
+    <schema:about rdf:nodeID="A0"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0439768829"/>
-    <schema:about rdf:nodeID="A26"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/648275"/>
+    <j.0:placeOfPublication rdf:nodeID="A25"/>
     <schema:datePublished>2004</schema:datePublished>
     <schema:copyrightYear>2004</schema:copyrightYear>
     <j.2:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</j.2:displayPosition>
     <schema:genre>Juvenile works.</schema:genre>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780060289416"/>
     <schema:genre>Juvenile works</schema:genre>
+    <schema:publisher rdf:nodeID="A26"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/52240646"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780439768825"/>
-    <schema:publisher rdf:nodeID="A27"/>
     <schema:inLanguage>en</schema:inLanguage>
-    <j.0:placeOfPublication rdf:nodeID="A28"/>
     <schema:name>Cats</schema:name>
-    <schema:about rdf:nodeID="A29"/>
+    <schema:about rdf:nodeID="A27"/>
     <schema:description>Discusses the history, physical characteristics, behavior, and various breeds of cats, and provides basic information on caring for one as a pet.</schema:description>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780060289409"/>
     <j.0:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/nyu"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A30">
-    <schema:name>Boston</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:nodeID="A27">
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/0060289414">
     <schema:isbn>0060289414</schema:isbn>
@@ -231,29 +228,36 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0060289414"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/52240646"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A15">
-    <schema:name>Stage adaptations.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85127240"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A2">
+    <schema:name>Walters, Bryn.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/79463078">
     <schema:name>Mackintosh, Cameron.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n87807113"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <schema:name>Poes√≠a inglesa.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/141083992">
     <schema:name>Universal Studios Home Entertainment (Firm)</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/no2006015955"/>
     <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A11">
-    <schema:name>London</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:nodeID="A12">
+    <schema:name>Really Useful Group</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/25711956">
     <schema:name>Lucchesi, Gary.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/no2001091032"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <schema:name>Distributed by Houghton Mifflin</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/145744786">
     <schema:name>Really Useful Theatre Company.</schema:name>
@@ -265,22 +269,18 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n78062604"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A31">
-    <schema:name>Harcourt Brace Jovanovich</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A17">
+    <schema:name>Brent, Jacob.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A13">
-    <schema:name>Distributed by Universal Studios</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A25">
+    <schema:name>New York</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A16">
-    <schema:name>Cats</schema:name>
+  <rdf:Description rdf:nodeID="A30">
+    <schema:name>Cats.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85021262"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A20">
-    <schema:name>Los Angeles, Calif.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/75976213">
     <schema:name>Ford, Rosemarie.</schema:name>
@@ -293,10 +293,13 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0783249667"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/45949230"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A32">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85021262"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A13">
+    <schema:name>Smith, Phyllida Crowley.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <schema:name>Los Angeles, Calif.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dewey.info/class/636.8/e20/">
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
@@ -316,8 +319,17 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780783249667"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/45949230"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A33">
-    <schema:name>POESIAS INFANTILES INGLESAS.</schema:name>
+  <rdf:Description rdf:nodeID="A6">
+    <schema:name>Tanner, Susan Jane.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <schema:name>Casteleyn, Veerle.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A31">
+    <schema:name>Cat breeds.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85020766"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780060289416">
@@ -337,18 +349,19 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/no2001101855"/>
     <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <schema:name>Casteleyn, Veerle.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
+  <rdf:Description rdf:nodeID="A32">
+    <schema:reviewBody>The visual guide to more than 250 types of cats from around the world.</schema:reviewBody>
+    <schema:itemReviewed rdf:resource="http://www.worldcat.org/oclc/25411433"/>
+    <rdf:type rdf:resource="http://schema.org/Review"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.worldcat.org/fast/849374">
     <schema:name>Cats</schema:name>
     <schema:name>Cats.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A23">
-    <schema:name>Eliot, T. S. (Thomas Stearns), 1888-1965</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
+  <rdf:Description rdf:nodeID="A18">
+    <schema:name>Distributed by Universal Studios</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/0060289406">
     <schema:isbn>0060289406</schema:isbn>
@@ -361,28 +374,31 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n88600096"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A34">
-    <schema:reviewBody>The visual guide to more than 250 types of cats from around the world.</schema:reviewBody>
-    <schema:itemReviewed rdf:resource="http://www.worldcat.org/oclc/25411433"/>
-    <rdf:type rdf:resource="http://schema.org/Review"/>
+  <rdf:Description rdf:nodeID="A15">
+    <schema:name>Barron, James.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <schema:name>Varley, Drew.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <schema:name>Eliot, T. S. (Thomas Stearns), 1888-1965</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/88581530">
     <schema:name>Paige, Elaine.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n83187909"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A35">
-    <schema:name>New York</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A28">
-    <schema:name>New York</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:nodeID="A14">
+    <schema:name>Eliot, T. S. (Thomas Stearns), 1888-1965</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://discapirvws01dxdu.dev.oclc.org:8080/discovery/bib/search?itemsPerPage=5&amp;q=kw:cats&amp;startNum=0">
     <x-searcho:startIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</x-searcho:startIndex>
     <rdf:type rdf:resource="http://schema.org/SearchResultsPage"/>
-    <x-searcho:totalResults rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">151676</x-searcho:totalResults>
+    <x-searcho:totalResults rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">152176</x-searcho:totalResults>
     <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/45949230"/>
     <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/21743037"/>
     <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/25411433"/>
@@ -391,26 +407,35 @@ Transfer-Encoding: chunked
     <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/7977212"/>
     <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/52240646"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://viaf.org/viaf/39035081">
-    <schema:name>Partridge, John, 1971-</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/no2001101058"/>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/1564580733">
     <schema:isbn>1564580733</schema:isbn>
     <rdf:type rdf:resource="http://schema.org/ProductModel"/>
     <schema:sameAs rdf:resource="urn:isbn:1564580733"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/25411433"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://viaf.org/viaf/39035081">
+    <schema:name>Partridge, John, 1971-</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/no2001101058"/>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/105372100">
     <schema:name>Gorey, Edward, 1925-2000.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n79071184"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A33">
+    <schema:name>New York</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/16776808">
     <schema:name>Gruber, Michael, 1964 November 1-</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/no00088329"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <schema:name>Musicals.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85089018"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/45949230">
     <j.5:inDataset rdf:resource="http://purl.oclc.org/dataset/WorldCat"/>
@@ -421,27 +446,19 @@ Transfer-Encoding: chunked
   <rdf:Description rdf:about="http://dewey.info/class/782.14/e22/">
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A26">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+  <rdf:Description rdf:nodeID="A34">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100226"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A19">
-    <schema:name>Geffen Records</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A10">
-    <schema:name>Smith, Phyllida Crowley.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
+  <rdf:Description rdf:nodeID="A1">
+    <schema:name>London</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.worldcat.org/fast/848496">
     <schema:name>Cat breeds</schema:name>
     <schema:name>Cat breeds.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <schema:name>Garratt, Geoffrey.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/36486386">
     <schema:name>Geffen, David.</schema:name>
@@ -474,77 +491,75 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780151686568"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/7977212"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A36">
-    <schema:name>GATOS--POESIA.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A35">
+    <schema:name>Dorling Kindersley</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A29">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A24">
+    <schema:name>Geffen Records</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.loc.gov/authorities/classification/M1500">
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <schema:name>New York</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/165738730">
     <schema:name>Levan, Martin.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A22">
-    <schema:name>Musicals.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85089018"/>
+  <rdf:Description rdf:nodeID="A7">
+    <schema:name>Universal City, Calif.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85021262"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A18">
-    <schema:name>Brent, Jacob.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A17">
-    <schema:name>Varley, Drew.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/7977212">
     <schema:inLanguage>en</schema:inLanguage>
     <schema:bookEdition>1st ed.</schema:bookEdition>
-    <schema:about rdf:nodeID="A33"/>
     <owl:sameAs rdf:resource="info:oclcnum/7977212"/>
     <j.0:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/nyu"/>
+    <j.0:placeOfPublication rdf:nodeID="A36"/>
     <schema:numberOfPages>56</schema:numberOfPages>
-    <schema:about rdf:nodeID="A24"/>
     <schema:description>Naming of cats -- Old Gumbie cat -- Growltiger's last stand -- Rum Tum Tugger -- Song of the Jellicles -- Mungojerrie and Rumpelteazer -- Old Deuteronomy -- Pekes and the pollicles -- Mr. Mistoffelees -- Macavity: Mystery cat -- Gus: Theatre cat -- Bustopher Jones: Cat about town -- Skimbleshanks: Railway cat -- Ad-dressing of cats -- Cat Morgan introduces himself.</schema:description>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780156685689"/>
-    <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0151686564"/>
     <schema:name>Old Possum's book of practical cats</schema:name>
+    <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0151686564"/>
     <schema:description>These playful verses by a celebrated poet have delighted readers and cat lovers around the world ever since they were gathered for publication in 1939. As Valerie Eliot has pointed out, there are a number of references to cats in T.S. Eliot's work, but it was to his godchildren, particularly Tom Faber and Alison Tandy, in the 1930s, that he first revealed himself as "Old Possum" and for whom he composed his poems.</schema:description>
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <schema:genre>Poetry.</schema:genre>
     <schema:genre>Poetry</schema:genre>
+    <schema:about rdf:nodeID="A34"/>
     <schema:about rdf:resource="http://dewey.info/class/821.912/e19/"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780151686568"/>
-    <schema:about rdf:nodeID="A36"/>
-    <schema:publisher rdf:nodeID="A31"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/015668568X"/>
     <j.2:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</j.2:displayPosition>
-    <j.0:placeOfPublication rdf:nodeID="A35"/>
+    <schema:about rdf:nodeID="A37"/>
+    <schema:about rdf:nodeID="A38"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/136274862"/>
     <schema:author rdf:resource="http://viaf.org/viaf/56609282"/>
     <j.0:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7977212</j.0:oclcnum>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/413352"/>
-    <schema:about rdf:nodeID="A37"/>
+    <schema:publisher rdf:nodeID="A19"/>
     <schema:datePublished>1982</schema:datePublished>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/7977212"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/105372100"/>
     <schema:copyrightYear>1939</schema:copyrightYear>
+    <schema:about rdf:nodeID="A28"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <schema:name>May, Aeva.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
+  <rdf:Description rdf:nodeID="A39">
+    <schema:name>Boston</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A38">
-    <schema:name>Cat breeds.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85020766"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A21">
+    <schema:name>Scubert Organization.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/146905438">
     <schema:name>Really Useful Films.</schema:name>
@@ -565,11 +580,11 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A37">
-    <schema:name>Poesía inglesa.</schema:name>
+    <schema:name>POESIAS INFANTILES INGLESAS.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
-    <schema:name>Barron, James.</schema:name>
+  <rdf:Description rdf:nodeID="A3">
+    <schema:name>Gibb, Jo.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/73158532">
@@ -580,23 +595,16 @@ Transfer-Encoding: chunked
     <j.4:identifier>nyu</j.4:identifier>
     <rdf:type rdf:resource="http://schema.org/Country"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A27">
-    <schema:name>HarperCollins Publishers</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/21743037">
     <j.5:inDataset rdf:resource="http://purl.oclc.org/dataset/WorldCat"/>
     <schema:about rdf:resource="http://www.worldcat.org/oclc/21743037"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#InformationResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <schema:name>Tanner, Susan Jane.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A39">
-    <schema:name>Distributed by Houghton Mifflin</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A40">
+    <schema:name>Cat breeds</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85020766"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780156685689">
     <schema:isbn>9780156685689</schema:isbn>
@@ -607,17 +615,17 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780156685689"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/7977212"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A4">
-    <schema:name>Gibb, Jo.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
+  <rdf:Description rdf:nodeID="A26">
+    <schema:name>HarperCollins Publishers</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.worldcat.org/fast/1030814">
     <schema:name>Musicals</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A40">
-    <schema:name>Dorling Kindersley</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A38">
+    <schema:name>GATOS--POESIA.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/1564580709">
     <schema:isbn>1564580709</schema:isbn>
@@ -634,13 +642,13 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0439768829"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/52240646"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A12">
-    <schema:name>McKenna, Susie.</schema:name>
+  <rdf:Description rdf:nodeID="A10">
+    <schema:name>May, Aeva.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/25411433">
-    <schema:about rdf:nodeID="A0"/>
-    <schema:publisher rdf:nodeID="A40"/>
+    <schema:publisher rdf:nodeID="A29"/>
+    <j.0:placeOfPublication rdf:nodeID="A33"/>
     <schema:author rdf:resource="http://viaf.org/viaf/59150816"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/25411433"/>
     <schema:description>Color Pointed British Shorthair -- Exotic -- Manx -- Japanese Bobtail -- Scottish Fold -- Snowshoe -- American Shorthair -- American Wirehair -- American Curl -- European Shorthair -- Color Pointed European Shorthair -- Chartreux -- Cornish Rex -- Devon Rex -- Sphynx -- Selkirk Rex -- Russian Shorthair -- Korat -- Siamese/Colorpoint Shorthair -- Burmese/Malayan -- Tonkinese -- Burmilla -- Asian -- Bombay -- Singapura -- Oriental Shorthair -- Egyptian Mau -- Abyssinian -- Wild Abyssinian -- Ocicat -- California Spangled -- Bengal -- Nonpedigree -- Cat Credits.</schema:description>
@@ -648,34 +656,30 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <schema:numberOfPages>256</schema:numberOfPages>
     <schema:contributor rdf:resource="http://viaf.org/viaf/66596241"/>
+    <schema:about rdf:nodeID="A30"/>
     <schema:genre>Pictorial works</schema:genre>
     <j.2:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</j.2:displayPosition>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
-    <schema:publisher rdf:nodeID="A39"/>
     <schema:inLanguage>en</schema:inLanguage>
     <j.0:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25411433</j.0:oclcnum>
     <schema:bookEdition>1st American ed.</schema:bookEdition>
+    <j.0:placeOfPublication rdf:nodeID="A39"/>
+    <schema:publisher rdf:nodeID="A35"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/848496"/>
     <schema:genre>Pictorial works.</schema:genre>
-    <schema:about rdf:nodeID="A32"/>
     <schema:name>Cats</schema:name>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/1564580733"/>
-    <schema:about rdf:nodeID="A38"/>
-    <j.0:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/nyu"/>
+    <schema:about rdf:nodeID="A40"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9781564580702"/>
-    <j.0:placeOfPublication rdf:nodeID="A30"/>
-    <schema:reviews rdf:nodeID="A34"/>
+    <j.0:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/nyu"/>
+    <schema:reviews rdf:nodeID="A32"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/953905"/>
     <owl:sameAs rdf:resource="info:oclcnum/25411433"/>
     <schema:datePublished>1992</schema:datePublished>
+    <schema:about rdf:nodeID="A31"/>
     <schema:description>Cat family -- What is a cat -- Senses and instincts -- Cats and kittens -- Breed/color -- Development -- Choosing a cat -- Grooming for showing -- Showing -- Fur types -- Fur colors -- Coat patterns -- Identification key -- Long-haired cats -- Persian -- Himalayan -- Birman -- Turkish Angora -- Turkish Van -- Angora -- Javanese (UK) -- Maine Coon -- Norwegian Forest -- Siberian Cat -- Ragdoll -- Somali -- Balinese/Javanese -- Tiffany -- Cymric -- Scottish Fold -- American Curl -- Nonpedigree -- Short-haired cats -- British Shorthair.</schema:description>
     <schema:about rdf:resource="http://dewey.info/class/636.8/e20/"/>
-    <j.0:placeOfPublication rdf:nodeID="A25"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9781564580733"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <schema:name>Eliot, T. S. (Thomas Stearns), 1888-1965</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dewey.info/class/821.912/e19/">
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
@@ -695,10 +699,6 @@ Transfer-Encoding: chunked
     <schema:name>Henrie, Marc.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n80127718"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A21">
-    <schema:name>Scubert Organization.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/015668568X">
     <schema:isbn>015668568X</schema:isbn>

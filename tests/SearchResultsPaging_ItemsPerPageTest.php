@@ -7,7 +7,7 @@ use OCLC\Auth\AccessToken;
 use OCLC\User;
 use WorldCat\Discovery\Bib;
 
-class SearchResultsTest extends \PHPUnit_Framework_TestCase
+class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -36,7 +36,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('integer', $search->getTotalResults());
         $this->assertEquals('10', count($search->getSearchResults()));
         $results = $search->getSearchResults();
-        $i = 0;
+        $i = $search->getStartIndex()->getValue();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
@@ -57,7 +57,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('integer', $search->getTotalResults());
         $this->assertEquals('5', count($search->getSearchResults()));
         $results = $search->getSearchResults();
-        $i = 0;
+        $i = $search->getStartIndex()->getValue();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;

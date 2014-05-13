@@ -30,8 +30,8 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
      */
     function testGetDatabase(){
         $mock = __DIR__ . '/mocks/databaseSuccess.txt';
-        $this->database = Database::find(638, $this->mockAccessToken, array('mockFilePath' => $mock));
-        $this->assertTrue($this->database->isSuccessful());
+        $database = Database::find(638, $this->mockAccessToken, array('mockFilePath' => $mock));
+        $this->assertTrue($database->isSuccessful());
     }
     
     /**
@@ -49,7 +49,7 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
      */
     function testIDNotInteger()
     {
-        $this->database = Database::find('string', $this->mockAccessToken);
+        $database = Database::find('string', $this->mockAccessToken);
     }
     
     /**
@@ -58,7 +58,7 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
      */
     function tesccessTokenNotAccessTokenObject()
     {
-        $this->database = Database::find(638, 'NotAnAccessToken');
+        $database = Database::find(638, 'NotAnAccessToken');
     }
     
     /**

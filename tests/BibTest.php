@@ -100,7 +100,7 @@ class BibTest extends \PHPUnit_Framework_TestCase
 
     function testParseBibWithAward()
     {
-        $bib = Bib::find(41266045, $this->mockAccessToken, array('mockFilePath' => '/mocks/bibWithAwards.txt'));
+        $bib = Bib::find(41266045, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibWithAwards.txt'));
         $this->assertNotEmpty($bib->getAwards());
     }
     

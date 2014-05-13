@@ -64,7 +64,7 @@ class SearchResults extends EasyRdf_Resource
      * @return array
      */
      function getFacets(){
-         $facetList = $this->graph->allResources('searcho:facet');
+         $facetList = $this->graph->allOfType('searcho:FacetItem');
          return $facetList;
      } 
 }
