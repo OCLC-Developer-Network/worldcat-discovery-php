@@ -1,9 +1,11 @@
 <?php
+namespace WorldCat\Discovery;
+
 use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use OCLC\User;
-use OCLC\WorldCatDiscovery\Bib;
+use WorldCat\Discovery\Bib;
 
 class SearchResultsTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,10 +30,10 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $query = 'no:7977212';
         $mock = __DIR__ . '/mocks/bibSearchByOclcNumberSuccess.txt';
         $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock));
-        $this->assertInstanceOf('OCLC\WorldCatDiscovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $i = 0;
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertInstanceOf('OCLC\WorldCatDiscovery\Bib', $searchResult);
+            $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
@@ -44,7 +46,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $mock = __DIR__ . '/mocks/bibSearchSuccess.txt';
         $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock));
         
-        $this->assertInstanceOf('OCLC\WorldCatDiscovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());
@@ -52,7 +54,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $results = $search->getSearchResults();
         $i = 0;
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertInstanceOf('OCLC\WorldCatDiscovery\Bib', $searchResult);
+            $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
