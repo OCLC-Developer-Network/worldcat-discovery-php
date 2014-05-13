@@ -1,5 +1,5 @@
 <?php
-namespace OCLC\WorldCatDiscovery;
+namespace WorldCat\Discovery;
 
 use \EasyRdf_Resource;
 use \EasyRdf_Format;

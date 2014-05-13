@@ -1,10 +1,10 @@
 <?php
-namespace OCLC\WorldCatDiscovery;
+namespace WorldCat\Discovery;
 
 use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
-use OCLC\WorldCatDiscovery\Bib;
+use WorldCat\Discovery\Bib;
 
 class DatabaseTest extends \PHPUnit_Framework_TestCase
 {
