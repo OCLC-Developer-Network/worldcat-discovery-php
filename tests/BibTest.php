@@ -1,10 +1,10 @@
 <?php
-namespace OCLC\WorldCatDiscovery;
+namespace WorldCat\Discovery;
 
 use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
-use OCLC\WorldCatDiscovery\Bib;
+use WorldCat\Discovery\Bib;
 
 class BibTest extends \PHPUnit_Framework_TestCase
 {
@@ -33,7 +33,7 @@ class BibTest extends \PHPUnit_Framework_TestCase
      *
      */
     function testGetBib(){
-        $this->assertInstanceOf('OCLC\WorldCatDiscovery\Bib', $this->bib);
+        $this->assertInstanceOf('WorldCat\Discovery\Bib', $this->bib);
     }
 
     /**
@@ -60,38 +60,38 @@ class BibTest extends \PHPUnit_Framework_TestCase
      */
     function testParseResources(){
         $this->assertThat($this->bib->getAuthor(), $this->logicalOr(
-            $this->isInstanceOf('OCLC\WorldCatDiscovery\Person'),
-            $this->isInstanceOf('OCLC\WorldCatDiscovery\Organization')
+            $this->isInstanceOf('WorldCat\Discovery\Person'),
+            $this->isInstanceOf('WorldCat\Discovery\Organization')
         ));
 
         foreach ($this->bib->getContributors() as $contributor){
             $this->assertThat($contributor, $this->logicalOr(
-                $this->isInstanceOf('OCLC\WorldCatDiscovery\Person'),
-                $this->isInstanceOf('OCLC\WorldCatDiscovery\Organization')
+                $this->isInstanceOf('WorldCat\Discovery\Person'),
+                $this->isInstanceOf('WorldCat\Discovery\Organization')
             ));
         }
 
-        $this->assertInstanceOf('OCLC\WorldCatDiscovery\Organization', $this->bib->getPublisher());
+        $this->assertInstanceOf('WorldCat\Discovery\Organization', $this->bib->getPublisher());
 
         $this->assertInstanceOf('EasyRdf_Resource', $this->bib->getWork());
 
         foreach ($this->bib->getManifestations() as $manifestation){
-            $this->assertInstanceOf('OCLC\WorldCatDiscovery\ProductModel', $manifestation);
+            $this->assertInstanceOf('WorldCat\Discovery\ProductModel', $manifestation);
         }
 
         foreach ($this->bib->getAbout() as $about){
-            $this->assertInstanceOf('OCLC\WorldCatDiscovery\Intangible', $about);
+            $this->assertInstanceOf('WorldCat\Discovery\Intangible', $about);
         }
 
         foreach ($this->bib->getPlacesOfPublication() as $place){
             $this->assertThat($place, $this->logicalOr(
-                $this->isInstanceOf('OCLC\WorldCatDiscovery\Place'),
-                $this->isInstanceOf('OCLC\WorldCatDiscovery\Country')
+                $this->isInstanceOf('WorldCat\Discovery\Place'),
+                $this->isInstanceOf('WorldCat\Discovery\Country')
             ));
         }
         
         foreach ($this->bib->getReviews() as $review){
-            $this->assertInstanceOf('OCLC\WorldCatDiscovery\Review', $review);
+            $this->assertInstanceOf('WorldCat\Discovery\Review', $review);
         }
         
     }
