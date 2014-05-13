@@ -58,7 +58,7 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
             $this->assertNotEmpty($facet->getFacetIndex());
             $this->assertNotEmpty($facet->getFacetValues());
         }
-        return $facetList[0];
+        return current($facetList);
     }
     
     /**
@@ -66,11 +66,11 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
      * @depends testFacetList
      */
     function testFacetValue($facet){
-        $previousCount = 0;
+        $previousCount = current($facet->getFacetValues())->getCount();
         foreach ($facet->getFacetValues() as $facetValue){
             $this->assertNotEmpty($facetValue->getName());
             $this->assertNotEmpty($facetValue->getCount());
-            $this->assertGreaterThanOrEqual($previousCount, $facetValue->getCount());
+            $this->assertGreaterThanOrEqual($facetValue->getCount(), $previousCount);
             $previousCount = $facetValue->getCount();
         }
     }
