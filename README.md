@@ -51,9 +51,36 @@ To start using this library you need to include the OCLC Auth library in your co
 require_once('vendor/autoload.php');
 ```
 
+Basic Example Reading a Bibliographic Record looks like this
+```php
+   require_once('vendor/autoload.php');
+
+   use OCLC\Auth\WSKey;
+   use OCLC\Auth\AccessToken;
+   use WorldCat\Discovery\Bib;
+   
+   $key = 'api-key';
+   $secret = 'api-key-secret';
+   $options = array('services' => array('WorldCatDiscoveryAPI', 'refresh_token'));
+   $wskey = new WSKey($key, $secret, $options);
+   $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
+   
+   $bib = Bib::Find(, $accessToken);
+   
+   if (is_a($bib, '\Guzzle\Http\Exception\BadResponseException')) {
+   		print_r($bib);
+   } else {
+   		echo $bib->getName();
+   		print_r($bib->getID());
+   		echo $bib->getID()
+   		print_r($bib->type();
+   		echo $bib->type();
+   		print_r($bib->getAuthor());
+   		echo $bib->getAuthor->getName();
+   		$contributors = array_map($bib->getContributors(), function($contributor){return $contributor->getName();});
+   		print_r($contributors);
+   }
+```
+
 ## Usage
-
-### Find a Bibliographic Resource in WorldCat
-
-
-### Search for Bibliographic Resources in WorldCat
+[Other Examples](https://github.com/OCLC-Developer-Network/worldcat-discovery-php/blob/master/docs/example.rst)
