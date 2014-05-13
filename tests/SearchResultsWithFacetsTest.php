@@ -27,9 +27,9 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     
     function testSearchFacets(){
         $query = 'cats';
-        $facets = '';
+        $facets = array('author' => 10, 'inLanguage' => 10);
         $mock = __DIR__ . '/mocks/bibSearchFacets.txt';
-        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock));
+        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock, 'facets' => $facets));
         
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
