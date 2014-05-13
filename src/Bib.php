@@ -1,5 +1,5 @@
 <?php
-namespace OCLC\WorldCatDiscovery;
+namespace WorldCat\Discovery;
 
 use \EasyRdf_Graph;
 use \EasyRdf_Resource;
@@ -52,7 +52,7 @@ class Bib extends EasyRdf_Resource
     
     /**
      * 
-     * @return OCLC\WorldCatDiscovery\Person or OCLC\WorldCatDiscovery\Organization
+     * @return WorldCat\Discovery\Person or WorldCat\Discovery\Organization
      */
     function getAuthor(){
         $author = $this->metadata->getResource('schema:author');
@@ -107,7 +107,7 @@ class Bib extends EasyRdf_Resource
     }
     
     /**
-     * @return \OCLC\WorldCatDiscovery\Organization
+     * @return \WorldCat\Discovery\Organization
      */
     function getPublisher()
     {
@@ -198,7 +198,7 @@ class Bib extends EasyRdf_Resource
      * @param $accessToken OCLC/Auth/AccessToken
      * @package $options array
      * - mockFilePath
-     * @return OCLC\WorldCatDiscovery\Bib or \Guzzle\Http\Exception\BadResponseException
+     * @return WorldCat\Discovery\Bib or \Guzzle\Http\Exception\BadResponseException
      */
     public static function find($id, $accessToken, $options = null)
     {
@@ -246,7 +246,7 @@ class Bib extends EasyRdf_Resource
      * - startNum integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
      * - mockFilePath
-     * @return OCLC\WorldCatDiscovery\SearchResults or \Guzzle\Http\Exception\BadResponseException
+     * @return WorldCat\Discovery\SearchResults or \Guzzle\Http\Exception\BadResponseException
      */
     
     public static function search($query, $accessToken, $options = null)
@@ -292,15 +292,17 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('searcho', 'http://worldcat.org/searcho/');
         EasyRdf_Namespace::set('library', 'http://purl.org/library/');
         EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
-        EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'OCLC\WorldCatDiscovery\Bib');
-        EasyRdf_TypeMapper::set('schema:Country', 'OCLC\WorldCatDiscovery\Country');
-        EasyRdf_TypeMapper::set('schema:Event', 'OCLC\WorldCatDiscovery\Event');
-        EasyRdf_TypeMapper::set('schema:Intangible', 'OCLC\WorldCatDiscovery\Intangible');
-        EasyRdf_TypeMapper::set('schema:Organization', 'OCLC\WorldCatDiscovery\Organization');
-        EasyRdf_TypeMapper::set('schema:Person', 'OCLC\WorldCatDiscovery\Person');
-        EasyRdf_TypeMapper::set('schema:Place', 'OCLC\WorldCatDiscovery\Place');
-        EasyRdf_TypeMapper::set('schema:ProductModel', 'OCLC\WorldCatDiscovery\ProductModel');
-        EasyRdf_TypeMapper::set('schema:SearchResultsPage', 'OCLC\WorldCatDiscovery\SearchResults');
+        EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
+        EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
+        EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');
+        EasyRdf_TypeMapper::set('schema:Intangible', 'WorldCat\Discovery\Intangible');
+        EasyRdf_TypeMapper::set('schema:Organization', 'WorldCat\Discovery\Organization');
+        EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
+        EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
+        EasyRdf_TypeMapper::set('schema:ProductModel', 'WorldCat\Discovery\ProductModel');
+        EasyRdf_TypeMapper::set('schema:SearchResultsPage', 'WorldCat\Discovery\SearchResults');
+        EasyRdf_TypeMapper::set('searcho:FacetItem', 'WorldCat\Discovery\Facet');
+        EasyRdf_TypeMapper::set('searcho:FacetItemValue', 'WorldCat\Discovery\FacetValue');
         
         if (!class_exists('Guzzle')) {
             \Guzzle\Http\StaticClient::mount();
@@ -320,8 +322,12 @@ class Bib extends EasyRdf_Resource
         }
         
         if (isset($options['facets'])){
+            $facetsString = '';
             foreach ($options['facets'] as $facetName => $numberOfFacets){
-                $facetsString =  '+' . $facetName . ':' . $numberOfFacets . '+';
+                $facetsString .=  $facetName . ':' . $numberOfFacets;
+                if (count($options['facets']) > 1){
+                    $facetsString .= ',';
+                }
             }
             $parameters['facets'] = $facetsString;
         }

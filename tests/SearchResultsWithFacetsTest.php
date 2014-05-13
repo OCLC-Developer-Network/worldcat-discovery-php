@@ -1,9 +1,11 @@
 <?php
+namespace WorldCat\Discovery;
+
 use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use OCLC\User;
-use OCLC\WorldCatDiscovery\Bib;
+use WorldCat\Discovery\Bib;
 
 class SearchResultsTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,13 +25,13 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     
     /** can parse set of Bibs from a Search Result with Facets*/
     
-    function testSearchByKeyword(){
+    function testSearchFacets(){
         $query = 'cats';
         $facets = '';
-        $mock = __DIR__ . '/mocks/bibSearchSuccess.txt';
+        $mock = __DIR__ . '/mocks/bibSearchFacets.txt';
         $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock));
         
-        $this->assertInstanceOf('OCLC\WorldCatDiscovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());
@@ -37,9 +39,25 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $results = $search->getSearchResults();
         $i = 0;
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertInstanceOf('OCLC\WorldCatDiscovery\Bib', $searchResult);
+            $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
+        }
+        $facetList = $search->getFacetList();
+        $this->assertNotEmpty($facetList);
+        return $facetList;
+    }
+    
+    /**
+     * 
+     * @depends testSearchFacets
+     */
+    function testFacetList($facetList){
+        foreach ($facetList as $facet){
+            $this->assertInstanceOf('WorldCat\Discovery\Facet', $facet);
+            $this->assertNotEmpty($facet->getName());
+            $this->assertNotEmpty($facet->getCount());
+            
         }
     }
 }

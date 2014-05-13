@@ -1,5 +1,5 @@
 <?php
-namespace OCLC\WorldCatDiscovery;
+namespace WorldCat\Discovery;
 
 use \EasyRdf_Resource;
 use \EasyRdf_Format;
@@ -57,4 +57,14 @@ class SearchResults extends EasyRdf_Resource
         ksort($sortedSearchResults);
         return $sortedSearchResults;
     }
+    
+    /**
+     * Get an array of Facets (WorldCat/Discovery/Facet)
+     * 
+     * @return array
+     */
+     function getFacets(){
+         $facetList = $this->graph->allResources('searcho:facet');
+         return $facetList;
+     } 
 }
