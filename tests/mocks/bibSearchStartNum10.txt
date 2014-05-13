@@ -1,5 +1,5 @@
 HTTP/1.1 200 OK
-X-OCLC-RequestId: 11c2788a-1785-4d66-b077-263559e966e4
+X-OCLC-RequestId: 2d9299b1-6d4b-49c8-be38-df6ced05b127
 Content-Type: application/rdf+xml; charset=UTF-8
 Content-Encoding: gzip
 Vary: Accept-Encoding, User-Agent
@@ -27,10 +27,6 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n90721688"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A0">
-    <schema:name>New York</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/0794513948">
     <schema:isbn>0794513948</schema:isbn>
     <schema:description>trade bdg.</schema:description>
@@ -44,9 +40,9 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0866251839"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/18625639"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85021262"/>
+  <rdf:Description rdf:nodeID="A0">
+    <schema:name>Feral cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85047812"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/18625639">
@@ -55,64 +51,49 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#InformationResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="A2">
-    <schema:name>Childrens Press</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+    <schema:name>Wilderness survival</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008113511"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/197342358">
     <schema:name>Fogle, Bruce.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n80114898"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <schema:name>Kidnapping</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008106302"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/12328822">
     <schema:name>Forsey, Christopher,</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n83068810"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <schema:name>Lerner Publications Co.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="A4">
-    <schema:name>Vero Beach, FL</schema:name>
+    <schema:sameAs rdf:resource="http://id.worldcat.org/fast/1204543"/>
+    <schema:name>Australia.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A5">
-    <schema:name>Heinemann Library</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A6">
-    <schema:name>Usborne</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/106004345">
     <schema:name>Yoshino, Shin, 1943-</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n83139525"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <schema:name>Felidae</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008103661"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://discapirvws01dxdu.dev.oclc.org:8080/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=10">
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/9854062"/>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/30350421"/>
-    <rdf:type rdf:resource="http://schema.org/SearchResultsPage"/>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/50941702"/>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/70293233"/>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/2398811"/>
-    <x-searcho:startIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</x-searcho:startIndex>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/9081581"/>
-    <x-searcho:totalResults rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">151186</x-searcho:totalResults>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/75297274"/>
-    <x-searcho:itemsPerPage rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</x-searcho:itemsPerPage>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/18625639"/>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/9365651"/>
-    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/37651646"/>
-    <schema:relatedLink rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://discapirvws01dxdu.dev.oclc.org:8080/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=0</schema:relatedLink>
-    <schema:relatedLink rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://discapirvws01dxdu.dev.oclc.org:8080/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=20</schema:relatedLink>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/75297274">
     <rdf:type rdf:resource="http://schema.org/Book"/>
@@ -125,27 +106,18 @@ Transfer-Encoding: chunked
     <schema:name>Cats</schema:name>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/nyu"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
-    <j.1:placeOfPublication rdf:nodeID="A0"/>
+    <j.1:placeOfPublication rdf:nodeID="A7"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0756619483"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75297274</j.1:oclcnum>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780756619480"/>
+    <schema:publisher rdf:nodeID="A8"/>
     <schema:numberOfPages>320</schema:numberOfPages>
-    <schema:about rdf:nodeID="A1"/>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</j.3:displayPosition>
     <schema:contributor rdf:resource="http://viaf.org/viaf/24917760"/>
     <schema:datePublished>2006</schema:datePublished>
     <schema:description>Presents illustrated profiles of over seventy breeds of cats, including longhairs and shorthairs, providing information about their color, date and place of origin, ancestry, weight range, and temperament; and includes a brief history of selective breeding, as well as discussion of feline genetics and design.</schema:description>
+    <schema:about rdf:nodeID="A9"/>
     <schema:author rdf:resource="http://viaf.org/viaf/197342358"/>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</j.3:displayPosition>
-    <schema:publisher rdf:nodeID="A8"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
-    <schema:name>Dorling Kindersley</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <schema:sameAs rdf:resource="http://id.worldcat.org/fast/1204543"/>
-    <schema:name>Australia.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dewey.info/class/636.8/e19/">
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
@@ -161,15 +133,6 @@ Transfer-Encoding: chunked
     <schema:about rdf:resource="http://www.worldcat.org/oclc/9365651"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#InformationResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A10">
-    <schema:name>Australia</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A11">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/9081581">
     <j.5:inDataset rdf:resource="http://purl.oclc.org/dataset/WorldCat"/>
@@ -193,11 +156,6 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/nb2007004247"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A12">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9781403439932">
     <schema:isbn>9781403439932</schema:isbn>
     <schema:description>Hardback</schema:description>
@@ -212,48 +170,66 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0756619483"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/75297274"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A13">
+  <rdf:Description rdf:nodeID="A10">
     <schema:name>Cats.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <schema:name>Chicago, Ill.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <schema:name>Australia</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <schema:name>Minneapolis</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="A14">
-    <schema:name>EDC]</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+    <schema:name>Kidnapping</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008106302"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <schema:name>Felidae</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008103661"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/70293233">
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/789745"/>
-    <schema:about rdf:nodeID="A15"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0794513948"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780746080474"/>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</j.3:displayPosition>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780794513948"/>
     <schema:genre>Juvenile works.</schema:genre>
-    <schema:about rdf:nodeID="A16"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/enk"/>
     <schema:contentRating>005-007.</schema:contentRating>
+    <schema:about rdf:nodeID="A16"/>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</j.3:displayPosition>
+    <schema:publisher rdf:nodeID="A17"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/15617492"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/1580869424"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/5593762"/>
+    <schema:publisher rdf:nodeID="A18"/>
     <schema:about rdf:resource="http://dewey.info/class/636.8/e22/"/>
     <schema:name>Cats</schema:name>
-    <schema:publisher rdf:nodeID="A6"/>
     <schema:description>An illustrated introduction to cats for children.</schema:description>
+    <j.1:placeOfPublication rdf:nodeID="A19"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70293233</j.1:oclcnum>
     <j.0:isLike rdf:resource="http://bnb.data.bl.uk/id/resource/GBA6A2362"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0746080476"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <owl:sameAs rdf:resource="info:oclcnum/70293233"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9781580869423"/>
-    <schema:publisher rdf:nodeID="A14"/>
     <schema:numberOfPages>32</schema:numberOfPages>
     <schema:author rdf:resource="http://viaf.org/viaf/69145591"/>
     <schema:datePublished>2007</schema:datePublished>
-    <j.1:placeOfPublication rdf:nodeID="A17"/>
     <schema:inLanguage>en</schema:inLanguage>
     <schema:copyrightYear>2007</schema:copyrightYear>
+    <j.1:placeOfPublication rdf:nodeID="A20"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
-    <j.1:placeOfPublication rdf:nodeID="A18"/>
+    <schema:about rdf:nodeID="A21"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/70293233"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/50941702">
@@ -262,10 +238,6 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#InformationResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A19">
-    <schema:name>Chicago, Ill.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780756619480">
     <schema:isbn>9780756619480</schema:isbn>
     <schema:description>pbk</schema:description>
@@ -273,15 +245,9 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780756619480"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/75297274"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A20">
-    <schema:name>Cat family (Mammals)</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj2001005201"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A21">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A22">
+    <schema:name>New York</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/69145591">
     <schema:name>Milbourne, Anna.</schema:name>
@@ -291,34 +257,41 @@ Transfer-Encoding: chunked
   <rdf:Description rdf:about="http://dewey.info/class/636.8/e22/">
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <schema:name>Chicago, IL</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <schema:name>Kingfisher</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/33272898">
     <schema:name>Kushino, Kay,</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n79048716"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A22">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/40914028">
     <schema:name>Jameson, Pam, 1942-</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n88003279"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A23">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A24">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="A25">
-    <schema:name>Australia</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <schema:name>Usborne</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <schema:name>Heinemann Library</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/2398811">
     <j.5:inDataset rdf:resource="http://purl.oclc.org/dataset/WorldCat"/>
@@ -333,46 +306,48 @@ Transfer-Encoding: chunked
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/30350421">
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <schema:inLanguage>en</schema:inLanguage>
-    <j.1:placeOfPublication rdf:nodeID="A26"/>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</j.3:displayPosition>
+    <schema:publisher rdf:nodeID="A28"/>
+    <j.1:placeOfPublication rdf:nodeID="A23"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/31926796"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9781561562251"/>
     <schema:name>Cats</schema:name>
-    <schema:about rdf:nodeID="A22"/>
+    <schema:about rdf:nodeID="A29"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30350421</j.1:oclcnum>
     <schema:numberOfPages>29</schema:numberOfPages>
     <owl:sameAs rdf:resource="info:oclcnum/30350421"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/ilu"/>
+    <schema:about rdf:nodeID="A30"/>
     <schema:description>Describes members of the cat family, including lions, leopards, tigers, cougars, cheetahs, jaguars, ocelots, and others.</schema:description>
     <schema:about rdf:resource="http://id.worldcat.org/fast/922551"/>
     <schema:about rdf:resource="http://dewey.info/class/599.74428/e20/"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/30350421"/>
-    <schema:about rdf:nodeID="A7"/>
-    <schema:publisher rdf:nodeID="A27"/>
-    <schema:about rdf:nodeID="A20"/>
     <schema:author rdf:resource="http://viaf.org/viaf/16397931"/>
+    <schema:about rdf:nodeID="A5"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/1561562254"/>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</j.3:displayPosition>
     <schema:copyrightYear>1994</schema:copyrightYear>
     <schema:genre>Juvenile works.</schema:genre>
     <schema:genre>Juvenile works</schema:genre>
     <schema:datePublished>1994</schema:datePublished>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A28">
-    <schema:name>Kingfisher</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A31">
+    <schema:name>Feral cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85047812"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/48004703">
     <schema:name>Posell, Elsa Z.</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/n50019801"/>
     <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A29">
-    <schema:name>London</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A30">
+  <rdf:Description rdf:nodeID="A32">
     <schema:name>New York</schema:name>
     <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <schema:name>Cat family (Mammals)</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj2001005201"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/113557081">
     <schema:name>Ganeri, Anita, 1961-</schema:name>
@@ -384,11 +359,6 @@ Transfer-Encoding: chunked
     <schema:name>Cats.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A31">
-    <schema:name>Felidae</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008103661"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780794513948">
     <schema:isbn>9780794513948</schema:isbn>
     <schema:description>trade bdg.</schema:description>
@@ -396,31 +366,31 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780794513948"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/70293233"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A32">
-    <schema:name>Chicago</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:nodeID="A33">
+    <schema:name>Cat family (Mammals)</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj2001005201"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.worldcat.org/fast/922940">
     <schema:name>Feral cats</schema:name>
     <schema:name>Feral cats.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A33">
-    <schema:name>New York</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:about="http://beta.worldcat.org/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=10#facets">
+    <rdf:type rdf:resource="http://worldcat.org/searcho/FacetList"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <schema:name>EDC]</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A34">
-    <schema:name>Feral cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85047812"/>
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.loc.gov/vocabulary/countries/ilu">
     <j.4:identifier>ilu</j.4:identifier>
     <rdf:type rdf:resource="http://schema.org/Country"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A35">
-    <schema:name>F. Watts</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780689500619">
     <schema:isbn>9780689500619</schema:isbn>
@@ -434,21 +404,25 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0689500610"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/2398811"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A36">
-    <schema:name>Feral cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85047812"/>
+  <rdf:Description rdf:nodeID="A30">
+    <schema:name>Felidae</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008103661"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A35">
+    <schema:name>Kidnapping</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008106302"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <schema:name>Australia</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9781580869423">
     <schema:isbn>9781580869423</schema:isbn>
     <rdf:type rdf:resource="http://schema.org/ProductModel"/>
     <schema:sameAs rdf:resource="urn:isbn:9781580869423"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/70293233"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A37">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/0531045102">
     <schema:isbn>0531045102</schema:isbn>
@@ -457,45 +431,45 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0531045102"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/9365651"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A38">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+  <rdf:Description rdf:nodeID="A37">
+    <schema:name>Cats--Behavior</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2010000198"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/37651646">
     <schema:genre>Juvenile works</schema:genre>
-    <schema:publisher rdf:nodeID="A28"/>
     <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</j.3:displayPosition>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
-    <schema:about rdf:nodeID="A12"/>
-    <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0753451131"/>
     <schema:genre>Juvenile works.</schema:genre>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780753451137"/>
     <schema:description>Surveys the breeding, care, evolution, behavior, mythology, and domestication of cats.</schema:description>
-    <j.1:placeOfPublication rdf:nodeID="A33"/>
+    <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0753451131"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/37651646"/>
     <schema:inLanguage>en</schema:inLanguage>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/586896"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">37651646</j.1:oclcnum>
     <schema:datePublished>1998</schema:datePublished>
     <owl:sameAs rdf:resource="info:oclcnum/37651646"/>
+    <schema:about rdf:nodeID="A10"/>
     <schema:about rdf:resource="http://dewey.info/class/636.8/e21/"/>
     <schema:name>Cats</schema:name>
-    <schema:about rdf:nodeID="A39"/>
     <schema:author rdf:resource="http://viaf.org/viaf/92786241"/>
     <schema:numberOfPages>63</schema:numberOfPages>
+    <j.1:placeOfPublication rdf:nodeID="A32"/>
     <schema:bookEdition>1st ed.</schema:bookEdition>
+    <schema:publisher rdf:nodeID="A24"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/nyu"/>
+    <schema:about rdf:nodeID="A1"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A40">
-    <schema:name>Lerner Publications Co.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A39">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+  <rdf:Description rdf:nodeID="A38">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
+    <schema:name>Tulsa, Okla.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9781403442697">
     <schema:isbn>9781403442697</schema:isbn>
@@ -524,23 +498,25 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#InformationResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A17">
-    <schema:name>Tulsa, Okla.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9781561562251">
     <schema:isbn>9781561562251</schema:isbn>
     <rdf:type rdf:resource="http://schema.org/ProductModel"/>
     <schema:sameAs rdf:resource="urn:isbn:9781561562251"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/30350421"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A41">
-    <schema:name>Rourke</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A39">
+    <schema:name>Chicago</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A42">
-    <schema:name>Atheneum</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A9">
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh85021262"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A40">
+    <schema:name>Pets.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96006020"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/5593762">
     <schema:name>Donaera, Patrizia,</schema:name>
@@ -562,51 +538,69 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/2398811">
-    <schema:about rdf:nodeID="A9"/>
     <schema:genre>Fiction</schema:genre>
-    <j.1:placeOfPublication rdf:nodeID="A43"/>
-    <schema:publisher rdf:nodeID="A42"/>
+    <schema:about rdf:nodeID="A14"/>
     <schema:author rdf:resource="http://viaf.org/viaf/57136650"/>
     <schema:genre>Juvenile works</schema:genre>
     <schema:description>Two kidnapped brothers in Australia save their abductors from destruction by a tribe of feral cats that they have cruelly abused.</schema:description>
-    <schema:about rdf:nodeID="A44"/>
-    <schema:about rdf:nodeID="A36"/>
+    <schema:about rdf:nodeID="A12"/>
+    <schema:about rdf:nodeID="A41"/>
     <owl:sameAs rdf:resource="info:oclcnum/2398811"/>
-    <schema:genre>Juvenile works.</schema:genre>
-    <schema:about rdf:nodeID="A25"/>
     <schema:name>The cats</schema:name>
-    <schema:about rdf:nodeID="A45"/>
+    <schema:genre>Juvenile works.</schema:genre>
+    <schema:about rdf:nodeID="A36"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2398811</j.1:oclcnum>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780689500619"/>
     <schema:datePublished>1976</schema:datePublished>
+    <schema:about rdf:nodeID="A35"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/2398811"/>
-    <schema:about rdf:nodeID="A46"/>
-    <schema:bookEdition>1st American ed.</schema:bookEdition>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0689500610"/>
+    <schema:bookEdition>1st American ed.</schema:bookEdition>
     <schema:about rdf:resource="http://id.worldcat.org/fast/1175202"/>
+    <schema:about rdf:nodeID="A2"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/922940"/>
-    <schema:about rdf:nodeID="A47"/>
+    <schema:about rdf:nodeID="A42"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/987322"/>
-    <schema:about rdf:nodeID="A3"/>
-    <schema:about rdf:nodeID="A48"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/nyu"/>
+    <schema:publisher rdf:nodeID="A43"/>
     <schema:genre>Fiction.</schema:genre>
+    <schema:about rdf:nodeID="A4"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
+    <schema:about rdf:nodeID="A31"/>
     <schema:numberOfPages>168</schema:numberOfPages>
-    <schema:about rdf:nodeID="A34"/>
+    <schema:about rdf:nodeID="A44"/>
+    <schema:about rdf:nodeID="A0"/>
+    <j.1:placeOfPublication rdf:nodeID="A45"/>
     <schema:inLanguage>en</schema:inLanguage>
-    <schema:about rdf:nodeID="A10"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/438583"/>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</j.3:displayPosition>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</j.3:displayPosition>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A49">
-    <schema:name>Hamer, Martyn.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Person"/>
+  <rdf:Description rdf:about="http://beta.worldcat.org/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=10">
+    <x-searcho:facetList rdf:resource="http://beta.worldcat.org/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=10#facets"/>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/37651646"/>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/50941702"/>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/2398811"/>
+    <x-searcho:itemsPerPage rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</x-searcho:itemsPerPage>
+    <schema:relatedLink rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://beta.worldcat.org/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=0</schema:relatedLink>
+    <x-searcho:startIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</x-searcho:startIndex>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/9365651"/>
+    <schema:relatedLink rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://beta.worldcat.org/discovery/bib/search?itemsPerPage=10&amp;q=kw:cats&amp;startNum=20</schema:relatedLink>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/75297274"/>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/18625639"/>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/9854062"/>
+    <x-searcho:totalResults rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">316296</x-searcho:totalResults>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/30350421"/>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/70293233"/>
+    <rdf:type rdf:resource="http://schema.org/SearchResultsPage"/>
+    <schema:significantLink rdf:resource="http://www.worldcat.org/title/-/oclc/9081581"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A47">
-    <schema:name>Wilderness survival</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008113511"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A45">
+    <schema:name>New York</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A44">
+    <schema:name>Australia</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/92786241">
     <schema:name>O'Neill, Amanda.</schema:name>
@@ -619,15 +613,13 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:0753451131"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/37651646"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A50">
-    <schema:name>Cats--Behavior</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2010000198"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A28">
+    <schema:name>Kidsbooks</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A51">
-    <schema:name>Cat family (Mammals)</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj2001005201"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A46">
+    <schema:name>Rourke</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780866251839">
     <schema:isbn>9780866251839</schema:isbn>
@@ -642,11 +634,7 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780531045107"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/9365651"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A18">
-    <schema:name>London</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A52">
+  <rdf:Description rdf:nodeID="A47">
     <schema:name>Cats</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
@@ -655,15 +643,20 @@ Transfer-Encoding: chunked
     <j.4:identifier>flu</j.4:identifier>
     <rdf:type rdf:resource="http://schema.org/Country"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A48">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/75297274">
     <j.5:inDataset rdf:resource="http://purl.oclc.org/dataset/WorldCat"/>
     <schema:about rdf:resource="http://www.worldcat.org/oclc/75297274"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#InformationResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2006/gen/ont#ContentTypeGenericResource"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A43">
-    <schema:name>New York</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
+  <rdf:Description rdf:nodeID="A8">
+    <schema:name>Dorling Kindersley</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/title/-/oclc/9854062">
     <j.5:inDataset rdf:resource="http://purl.oclc.org/dataset/WorldCat"/>
@@ -677,6 +670,10 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780753451137"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/37651646"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A49">
+    <schema:name>F. Watts</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://viaf.org/viaf/15617492">
     <schema:name>Fox, Christyan,</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/names/no98116537"/>
@@ -685,7 +682,7 @@ Transfer-Encoding: chunked
   <rdf:Description rdf:about="http://dewey.info/class/599.74428/e20/">
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A45">
+  <rdf:Description rdf:nodeID="A42">
     <schema:name>Kidnapping</schema:name>
     <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008122885"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
@@ -696,62 +693,62 @@ Transfer-Encoding: chunked
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/50941702">
     <schema:author rdf:resource="http://viaf.org/viaf/113557081"/>
     <schema:copyrightYear>2003</schema:copyrightYear>
-    <schema:about rdf:nodeID="A53"/>
     <schema:description>This book takes a look at the growth and development of a cat and discusses the care of a cat.</schema:description>
     <schema:datePublished>2003</schema:datePublished>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</j.3:displayPosition>
     <schema:genre>Juvenile works</schema:genre>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9781403442697"/>
     <owl:sameAs rdf:resource="info:oclcnum/50941702"/>
-    <j.1:placeOfPublication rdf:nodeID="A19"/>
-    <schema:about rdf:nodeID="A54"/>
-    <schema:about rdf:nodeID="A52"/>
+    <schema:publisher rdf:nodeID="A27"/>
+    <schema:about rdf:nodeID="A48"/>
     <schema:numberOfPages>32</schema:numberOfPages>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/ilu"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/50941702"/>
     <schema:genre>Juvenile works.</schema:genre>
+    <j.1:placeOfPublication rdf:nodeID="A11"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <schema:about rdf:resource="http://dewey.info/class/636.8/e21/"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/140344269X"/>
     <schema:inLanguage>en</schema:inLanguage>
-    <schema:publisher rdf:nodeID="A5"/>
+    <schema:about rdf:nodeID="A40"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/1403439931"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
+    <schema:about rdf:nodeID="A34"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50941702</j.1:oclcnum>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/321410"/>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</j.3:displayPosition>
     <schema:description>What is a cat? -- Cat babies -- Your pet cat -- Choosing your cat -- Things to get ready -- Welcome home -- Feeding time -- Training your cat -- Playing with your cat -- Growing up -- A healthy cat -- Old age.</schema:description>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9781403439932"/>
     <schema:name>Cats</schema:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A55">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
+  <rdf:Description rdf:nodeID="A21">
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/18625639">
     <schema:inLanguage>en</schema:inLanguage>
-    <schema:publisher rdf:nodeID="A41"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/flu"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/18625639"/>
-    <schema:about rdf:nodeID="A24"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <schema:genre>Juvenile works</schema:genre>
     <schema:about rdf:resource="http://dewey.info/class/636.8/e19/"/>
-    <j.1:placeOfPublication rdf:nodeID="A4"/>
     <schema:description>Describes the different varieties of cats and discusses how to care for them as pets.</schema:description>
     <schema:genre>Juvenile works.</schema:genre>
     <schema:datePublished>1989</schema:datePublished>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</j.3:displayPosition>
-    <schema:about rdf:nodeID="A13"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780866251839"/>
     <schema:author rdf:resource="http://viaf.org/viaf/40914028"/>
     <owl:sameAs rdf:resource="info:oclcnum/18625639"/>
+    <schema:about rdf:nodeID="A38"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/17734352"/>
     <schema:numberOfPages>32</schema:numberOfPages>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</j.3:displayPosition>
+    <schema:publisher rdf:nodeID="A46"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0866251839"/>
     <schema:name>Cats</schema:name>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18625639</j.1:oclcnum>
+    <j.1:placeOfPublication rdf:nodeID="A50"/>
+    <schema:about rdf:nodeID="A51"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780516016719">
     <schema:isbn>9780516016719</schema:isbn>
@@ -760,51 +757,56 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780516016719"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/9081581"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/9854062">
     <schema:genre>Juvenile works.</schema:genre>
+    <j.1:placeOfPublication rdf:nodeID="A13"/>
+    <schema:about rdf:nodeID="A26"/>
     <schema:inLanguage>en</schema:inLanguage>
     <schema:genre>Juvenile works</schema:genre>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780822514800"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9854062</j.1:oclcnum>
-    <schema:about rdf:nodeID="A11"/>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</j.3:displayPosition>
+    <schema:about rdf:nodeID="A37"/>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</j.3:displayPosition>
     <schema:name>Cats</schema:name>
     <schema:author rdf:resource="http://viaf.org/viaf/43082900"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849378"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/33272898"/>
     <owl:sameAs rdf:resource="info:oclcnum/9854062"/>
-    <schema:about rdf:nodeID="A55"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/mnu"/>
     <schema:description>Discusses the physical characteristics, birth, habits, and behavior of cats.</schema:description>
-    <j.1:placeOfPublication rdf:nodeID="A56"/>
+    <schema:about rdf:nodeID="A52"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/9854062"/>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/1819646855"/>
     <schema:about rdf:resource="http://dewey.info/class/636.8/e19/"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/082251480X"/>
-    <schema:publisher rdf:nodeID="A40"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/106004345"/>
     <schema:datePublished>1983</schema:datePublished>
     <schema:numberOfPages>48</schema:numberOfPages>
-    <schema:about rdf:nodeID="A50"/>
+    <schema:publisher rdf:nodeID="A3"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A54">
-    <schema:name>Pets.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96006020"/>
+  <rdf:Description rdf:nodeID="A52">
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/9081581">
-    <schema:author rdf:resource="http://viaf.org/viaf/48004703"/>
     <schema:name>Cats</schema:name>
+    <schema:author rdf:resource="http://viaf.org/viaf/48004703"/>
+    <j.1:placeOfPublication rdf:nodeID="A39"/>
     <owl:sameAs rdf:resource="info:oclcnum/9081581"/>
-    <j.1:placeOfPublication rdf:nodeID="A32"/>
+    <schema:about rdf:nodeID="A25"/>
     <schema:copyrightYear>1983</schema:copyrightYear>
+    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</j.3:displayPosition>
     <rdf:type rdf:resource="http://schema.org/Book"/>
-    <schema:about rdf:nodeID="A38"/>
     <schema:genre>Juvenile works.</schema:genre>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9081581</j.1:oclcnum>
-    <schema:about rdf:nodeID="A51"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/ilu"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0516016717"/>
     <schema:genre>Juvenile works</schema:genre>
@@ -812,36 +814,35 @@ Transfer-Encoding: chunked
     <schema:about rdf:resource="http://dewey.info/class/636.8/e19/"/>
     <schema:inLanguage>en</schema:inLanguage>
     <schema:description>A guide to caring for cats as pets, which includes descriptions of other members of the cat family.</schema:description>
-    <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</j.3:displayPosition>
     <schema:datePublished>1983</schema:datePublished>
     <schema:numberOfPages>45</schema:numberOfPages>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780516016719"/>
-    <schema:about rdf:nodeID="A23"/>
+    <schema:about rdf:nodeID="A15"/>
+    <schema:about rdf:nodeID="A47"/>
+    <schema:about rdf:nodeID="A33"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/9081581"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/922551"/>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
-    <schema:about rdf:nodeID="A31"/>
-    <schema:publisher rdf:nodeID="A2"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A16">
-    <schema:name>Cats</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+    <schema:publisher rdf:nodeID="A53"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.worldcat.org/fast/922551">
     <schema:name>Felidae</schema:name>
     <schema:name>Felidae.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A46">
-    <schema:name>Kidnapping</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008106302"/>
+  <rdf:Description rdf:nodeID="A51">
+    <schema:name>Cats.</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.worldcat.org/fast/1175202">
     <schema:name>Wilderness survival</schema:name>
     <schema:name>Wilderness survival.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A43">
+    <schema:name>Atheneum</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://id.loc.gov/vocabulary/countries/enk">
     <j.4:identifier>enk</j.4:identifier>
@@ -858,14 +859,17 @@ Transfer-Encoding: chunked
     <j.4:identifier>nyu</j.4:identifier>
     <rdf:type rdf:resource="http://schema.org/Country"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A26">
-    <schema:name>Chicago, IL</schema:name>
+  <rdf:Description rdf:nodeID="A7">
+    <schema:name>New York</schema:name>
     <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A48">
-    <schema:sameAs rdf:resource="http://id.worldcat.org/fast/1204543"/>
-    <schema:name>Australia</schema:name>
+  <rdf:Description rdf:nodeID="A54">
+    <schema:name>London</schema:name>
     <rdf:type rdf:resource="http://schema.org/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A55">
+    <schema:name>Hamer, Martyn.</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/082251480X">
     <schema:isbn>082251480X</schema:isbn>
@@ -873,6 +877,11 @@ Transfer-Encoding: chunked
     <rdf:type rdf:resource="http://schema.org/ProductModel"/>
     <schema:sameAs rdf:resource="urn:isbn:082251480X"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/9854062"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A41">
+    <schema:sameAs rdf:resource="http://id.worldcat.org/fast/1204543"/>
+    <schema:name>Australia</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/0746080476">
     <schema:isbn>0746080476</schema:isbn>
@@ -886,8 +895,8 @@ Transfer-Encoding: chunked
     <schema:name>Cats--Behavior.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A56">
-    <schema:name>Minneapolis</schema:name>
+  <rdf:Description rdf:nodeID="A20">
+    <schema:name>London</schema:name>
     <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/1403439931">
@@ -898,14 +907,12 @@ Transfer-Encoding: chunked
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/50941702"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A53">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+    <schema:name>Childrens Press</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Organization"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://id.worldcat.org/fast/987322">
-    <schema:name>Kidnapping</schema:name>
-    <schema:name>Kidnapping.</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Intangible"/>
+  <rdf:Description rdf:nodeID="A50">
+    <schema:name>Vero Beach, FL</schema:name>
+    <rdf:type rdf:resource="http://schema.org/Place"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/isbn/9780746080474">
     <schema:isbn>9780746080474</schema:isbn>
@@ -914,43 +921,40 @@ Transfer-Encoding: chunked
     <schema:sameAs rdf:resource="urn:isbn:9780746080474"/>
     <schema:exampleOfWork rdf:resource="http://www.worldcat.org/oclc/70293233"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A15">
-    <schema:name>Cats.</schema:name>
-    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sj96004989"/>
+  <rdf:Description rdf:about="http://id.worldcat.org/fast/987322">
+    <schema:name>Kidnapping</schema:name>
+    <schema:name>Kidnapping.</schema:name>
     <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A44">
-    <schema:name>Australia</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A27">
-    <schema:name>Kidsbooks</schema:name>
-    <rdf:type rdf:resource="http://schema.org/Organization"/>
+  <rdf:Description rdf:nodeID="A56">
+    <schema:name>Cats</schema:name>
+    <schema:sameAs rdf:resource="http://id.loc.gov/authorities/subjects/sh2008100225"/>
+    <rdf:type rdf:resource="http://schema.org/Intangible"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.worldcat.org/oclc/9365651">
+    <schema:about rdf:nodeID="A56"/>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/0531045102"/>
-    <schema:about rdf:nodeID="A21"/>
     <j.1:oclcnum rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9365651</j.1:oclcnum>
     <schema:about rdf:resource="http://dewey.info/class/636.8/e19/"/>
     <schema:numberOfPages>32</schema:numberOfPages>
     <schema:exampleOfWork rdf:resource="http://worldcat.org/entity/work/id/308680143"/>
-    <schema:about rdf:nodeID="A37"/>
     <schema:genre>Juvenile works</schema:genre>
     <schema:genre>Juvenile works.</schema:genre>
     <schema:about rdf:resource="http://id.worldcat.org/fast/849374"/>
-    <schema:publisher rdf:nodeID="A35"/>
+    <schema:publisher rdf:nodeID="A49"/>
     <j.1:placeOfPublication rdf:resource="http://id.loc.gov/vocabulary/countries/enk"/>
+    <j.1:placeOfPublication rdf:nodeID="A22"/>
+    <j.1:placeOfPublication rdf:nodeID="A54"/>
     <schema:contributor rdf:resource="http://viaf.org/viaf/12328822"/>
     <schema:datePublished>1983</schema:datePublished>
-    <j.1:placeOfPublication rdf:nodeID="A29"/>
     <schema:inLanguage>en</schema:inLanguage>
     <schema:workExample rdf:resource="http://www.worldcat.org/isbn/9780531045107"/>
     <rdf:type rdf:resource="http://schema.org/Book"/>
     <schema:description>An introduction to different kinds of cats and their characteristics.</schema:description>
-    <j.1:placeOfPublication rdf:nodeID="A30"/>
     <schema:url rdf:resource="http://www.worldcat.org/title/-/oclc/9365651"/>
+    <schema:about rdf:nodeID="A6"/>
+    <schema:author rdf:nodeID="A55"/>
     <j.3:displayPosition rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</j.3:displayPosition>
-    <schema:author rdf:nodeID="A49"/>
     <schema:name>Cats</schema:name>
     <owl:sameAs rdf:resource="info:oclcnum/9365651"/>
   </rdf:Description>
