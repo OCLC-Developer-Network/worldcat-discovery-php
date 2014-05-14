@@ -1,0 +1,18 @@
+HTTP/1.1 401 Unauthorized
+Cache-Control: must-revalidate,no-cache,no-store
+Content-Type: text/html; charset=ISO-8859-1
+Content-Length: 309
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+<title>Error 401 </title>
+</head>
+<body>
+<h2>HTTP ERROR: 401</h2>
+<p>Problem accessing /discovery/bib/data/41266045. Reason:
+<pre>    Unauthorized
+</pre></p>
+<hr /><i><small>Powered by Jetty://</small></i>
+</body>
+</html>

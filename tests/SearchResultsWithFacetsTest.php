@@ -74,4 +74,22 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
             $previousCount = $facetValue->getCount();
         }
     }
+    
+    /** Invalid facet passed **/
+    function testFailureBadFacet()
+    {
+        $query = 'cats';
+        $facets = array('boo' => 5);
+        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibFailureSearchBadFacets.txt', 'facets' => $facets));
+        $this->assertInstanceOf('WorldCat\Guzzle\Http\Exception\BadResponseException', $search);
+    }
+    
+    /** Invalid facet count passed **/
+    function testFailureBadFacetCount()
+    {
+        $query = 'cats';
+        $facets = array('author' => 5, 'inLanguage' => 5);
+        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibFailureSearchBadFacetCount.txt', 'facets' => $facets));
+        $this->assertInstanceOf('WorldCat\Guzzle\Http\Exception\BadResponseException', $search);
+    }
 }

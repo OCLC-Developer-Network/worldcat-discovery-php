@@ -1,0 +1,6 @@
+HTTP/1.1 400 Bad Request
+X-OCLC-RequestId: faf0db0d-a9eb-48da-99e4-18399b49d3bf
+Content-Type: application/xhtml+xml; charset=UTF-8
+Transfer-Encoding: chunked
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><error xmlns="http://worldcat.org/xmlschemas/response"><code type="http">400</code><message>Invalid or missing parameter on request</message><detail>Invalid facet pair, Invalid facet pair</detail></error>

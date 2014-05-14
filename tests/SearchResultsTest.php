@@ -77,4 +77,20 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     {
         $this->bib = Bib::search('kw:cats', 'NotAnAccessToken');
     }
+    
+    /** No query passed **/
+    function testFailureNoQuery()
+    {
+        $query = ' ';
+        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibFailureSearchNoQuery.txt'));
+        $this->assertInstanceOf('WorldCat\Guzzle\Http\Exception\BadResponseException', $search);
+    }
+    
+    /** Invalid query field passed **/
+    function testFailureNoQuery()
+    {
+        $query = 'poo:junk';
+        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibFailureSearchInvalidQueryField.txt'));
+        $this->assertInstanceOf('WorldCat\Guzzle\Http\Exception\BadResponseException', $search);
+    }
 }
