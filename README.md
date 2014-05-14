@@ -1,4 +1,4 @@
-# Worldcat::Discovery
+# Worldcat Discovery PHP Library
 
 A PHP library for WorldCat Discovery API. 
 
@@ -65,7 +65,7 @@ Basic Example Reading a Bibliographic Record looks like this
    $wskey = new WSKey($key, $secret, $options);
    $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
    
-   $bib = Bib::Find(, $accessToken);
+   $bib = Bib::Find(7977212, $accessToken);
    
    if (is_a($bib, '\Guzzle\Http\Exception\BadResponseException')) {
    		print_r($bib);
@@ -82,5 +82,5 @@ Basic Example Reading a Bibliographic Record looks like this
    }
 ```
 
-## Usage
-[Other Examples](https://github.com/OCLC-Developer-Network/worldcat-discovery-php/blob/master/docs/example.rst)
+## [Other Examples](https://github.com/OCLC-Developer-Network/worldcat-discovery-php/blob/master/docs/example.rst)
+##  [Testing](https://github.com/OCLC-Developer-Network/worldcat-discovery-php/blob/master/docs/RunningTests.rst)

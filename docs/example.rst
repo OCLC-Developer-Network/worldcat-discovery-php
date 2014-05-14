@@ -22,7 +22,7 @@ This example reads a single bibliographic record from the WorldCat Discovery usi
    $wskey = new WSKey($key, $secret, $options);
    $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
    
-   $bib = Bib::Find(, $accessToken);
+   $bib = Bib::Find(7977212, $accessToken);
    
    if (is_a($bib, '\Guzzle\Http\Exception\BadResponseException')) {
    		print_r($bib);
@@ -58,6 +58,7 @@ This example shows how to search for bibs via WorldCat Discovery API using the W
    $wskey = new WSKey($key, $secret, $options);
    $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
    
+   $query = 'cats';
    $results = Bib::Search($query, $accessToken);
    if (is_a($results, '\Guzzle\Http\Exception\BadResponseException')) {
    		print_r($results);
