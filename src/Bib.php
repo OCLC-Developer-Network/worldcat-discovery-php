@@ -349,7 +349,7 @@ class Bib extends EasyRdf_Resource
         if (isset($options['heldBy'])){
             $parameters['heldBy'] = $options['heldBy'];
         }
-        $queryString =  http_build_query($parameters);        
+        return $queryString =  http_build_query($parameters);        
     }
     
 }
