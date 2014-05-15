@@ -140,7 +140,7 @@ class BibTest extends \PHPUnit_Framework_TestCase
     function testFailureInvalidAccessToken()
     {
         $bib = Bib::find(41266045, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibFailureInvalidAccessToken.txt'));
-        $this->assertInstanceOf('WorldCat\Guzzle\Http\Exception\BadResponseException', $bib);
+        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $bib);
     }
     
     /** Expired Access Token **/
