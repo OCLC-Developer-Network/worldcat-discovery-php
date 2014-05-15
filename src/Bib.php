@@ -335,21 +335,21 @@ class Bib extends EasyRdf_Resource
             $parameters['itemsPerPage'] = $options['itemsPerPage'];
         }
         
-        if (isset($options['facets'])){
-            $facetsString = '';
-            foreach ($options['facets'] as $facetName => $numberOfFacets){
-                $facetsString .=  $facetName . ':' . $numberOfFacets;
-                if (count($options['facets']) > 1){
-                    $facetsString .= ',';
-                }
-            }
-            $parameters['facets'] = $facetsString;
-        }
-        
         if (isset($options['heldBy'])){
             $parameters['heldBy'] = $options['heldBy'];
         }
-        return $queryString =  http_build_query($parameters);        
+        
+        $queryString =  http_build_query($parameters);
+        
+        if (isset($options['facets'])){
+            
+            foreach ($options['facets'] as $facetName => $numberOfFacets){
+                $queryString .= '&facets=' . $facetName . ':' . $numberOfFacets;
+            }
+            
+        }      
+        
+        return $queryString;         
     }
     
 }
