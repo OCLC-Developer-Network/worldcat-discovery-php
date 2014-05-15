@@ -286,7 +286,7 @@ class Bib extends EasyRdf_Resource
             );
         }
         
-        $bibSearchURI = Bib::$serviceUrl . '/bib/search' . static::buildParameters($query, $options);;
+        $bibSearchURI = Bib::$serviceUrl . '/bib/search?' . static::buildParameters($query, $options);;
         
         try {
             $searchResponse = \Guzzle::get($bibSearchURI, $guzzleOptions);
