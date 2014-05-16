@@ -16,7 +16,11 @@ Sample Composer file
 	{
 	"type": "git",
 	"url": "https://github.com/OCLC-Developer-Network/worldcat-discovery-php.git"
-	}
+	},
+    {
+    "type": "git",
+    "url": "https://github.com/OCLC-Developer-Network/oclc-auth-php.git"
+    }
 	],
 	"require" : {
 	"worldcat/discovery" : ">=1.0"
