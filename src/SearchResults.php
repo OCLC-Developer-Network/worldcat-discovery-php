@@ -27,12 +27,12 @@ class SearchResults extends EasyRdf_Resource
     /**
      * Get Start Index
      *
-     * @return string
+     * @return integer
      */
     function getStartIndex()
     {
         $startIndex = $this->get('searcho:startIndex');
-        return $startIndex;
+        return $startIndex->getValue();
     }
     
     /**
