@@ -26,19 +26,19 @@ class FacetValue extends EasyRdf_Resource
 {
     /**
      * Get name of facet value
-     * return string
+     * return EasyRDF_Literal
      */
 
     function getName(){
-        return $this->get('schema:name')->getValue();
+        return $this->get('schema:name');
     }
 
     /**
      * Get count of facet value
      *
-     * @return string
+     * @return EasyRDF_Literal
      */
     function getCount(){
-        return (int) $this->get('searcho:count')->getValue();
+        return $this->get('searcho:count');
     }
 }

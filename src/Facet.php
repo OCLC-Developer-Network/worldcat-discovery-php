@@ -42,7 +42,7 @@ class Facet extends EasyRdf_Resource
         $facetValueList = $this->allResources('searcho:facetValue');
         $sortedFacetValueList  = array();
         foreach ($facetValueList as $facetValue){
-            $sortedFacetValueList[$facetValue->getCount()] = $facetValue;
+            $sortedFacetValueList[$facetValue->getCount()->getValue()] = $facetValue;
         }
         krsort($sortedFacetValueList);
         return $sortedFacetValueList;
