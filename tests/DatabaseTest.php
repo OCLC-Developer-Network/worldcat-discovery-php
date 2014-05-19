@@ -40,21 +40,23 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *Get a single database resource
+     * Get a single database resource
      */
     function testGetDatabase(){
-        $mock = __DIR__ . '/mocks/databaseSuccess.txt';
-        $database = Database::find(638, $this->mockAccessToken, array('mockFilePath' => $mock));
-        $this->assertTrue($database->isSuccessful());
+        \VCR\VCR::insertCassette('databaseSuccess');
+        $database = Database::find(638, $this->mockAccessToken);
+        \VCR\VCR::eject();
+        $this->assertInstanceOf('\Guzzle\Http\Message\Response', $database);
     }
     
     /**
      * List database resources
      */
     function testlistDatabases(){
-        $mock = __DIR__ . '/mocks/databaseListSuccess.txt';
-        $databaseList = Database::getList($this->mockAccessToken, array('mockFilePath' => $mock));
-        $this->assertTrue($databaseList->isSuccessful());
+        \VCR\VCR::insertCassette('databaseListSuccess');
+        $databaseList = Database::getList($this->mockAccessToken);
+        \VCR\VCR::eject();
+        $this->assertInstanceOf('\Guzzle\Http\Message\Response', $databaseList);
     }
     
     /**

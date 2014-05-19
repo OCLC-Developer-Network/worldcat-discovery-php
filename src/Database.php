@@ -48,12 +48,6 @@ class Database
             )
         );
         
-        if (isset($options['mockFilePath'])){
-            $guzzleOptions['plugins'] = array(
-                new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
-            );
-        }
-        
         $databaseURI = static::$serviceUrl . '/database/data/' . $id;
         
         try {
@@ -64,7 +58,7 @@ class Database
         }
     }
     
-    public static function getList($accessToken, $options = null)
+    public static function getList($accessToken)
     {
         if (!is_a($accessToken, '\OCLC\Auth\AccessToken')) {
             Throw new \BadMethodCallException('You must pass a valid OCLC/Auth/AccessToken object');
@@ -78,12 +72,6 @@ class Database
                 //'Accept' => 'application/rdf+xml'
             )
         );
-        
-        if (isset($options['mockFilePath'])){
-            $guzzleOptions['plugins'] = array(
-            	new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
-            );
-        }
         
         $databaseListURI = static::$serviceUrl . '/database/list';
         
