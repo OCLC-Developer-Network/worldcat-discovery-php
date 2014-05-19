@@ -211,7 +211,6 @@ class Bib extends EasyRdf_Resource
      * @param $id string
      * @param $accessToken OCLC/Auth/AccessToken
      * @package $options array
-     * - mockFilePath
      * @return WorldCat\Discovery\Bib or \Guzzle\Http\Exception\BadResponseException
      */
     public static function find($id, $accessToken, $options = null)
@@ -231,12 +230,6 @@ class Bib extends EasyRdf_Resource
                 'Accept' => 'application/rdf+xml'
             )
         );
-        
-        if (isset($options['mockFilePath'])){
-            $guzzleOptions['plugins'] = array(
-                new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
-            );
-        }
         
         $bibURI = Bib::$serviceUrl . '/bib/data/' . $id;
         
@@ -259,7 +252,6 @@ class Bib extends EasyRdf_Resource
      * - facets an array of facets to be returned.
      * - startNum integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
-     * - mockFilePath
      * @return WorldCat\Discovery\SearchResults or \Guzzle\Http\Exception\BadResponseException
      */
     
@@ -279,12 +271,6 @@ class Bib extends EasyRdf_Resource
                 'Accept' => 'application/rdf+xml'
             )
         );
-        
-        if (isset($options['mockFilePath'])){
-            $guzzleOptions['plugins'] = array(
-            	new \Guzzle\Plugin\Mock\MockPlugin(array($options['mockFilePath']))
-            );
-        }
         
         $bibSearchURI = Bib::$serviceUrl . '/bib/search?' . static::buildParameters($query, $options);
         

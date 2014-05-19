@@ -42,8 +42,9 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
      */
     function testSearchByOCLCNumber(){
         $query = 'no:7977212';
-        $mock = __DIR__ . '/mocks/bibSearchByOclcNumberSuccess.txt';
-        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock));
+        \VCR\VCR::insertCassette('bibSearchByOclcNumberSuccess');
+        $search = Bib::Search($query, $this->mockAccessToken);
+        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $i = $search->getStartIndex()->getValue();
         foreach ($search->getSearchResults() as $searchResult){
@@ -57,8 +58,9 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     
     function testSearchByKeyword(){
         $query = 'kw:cats';
-        $mock = __DIR__ . '/mocks/bibSearchSuccess.txt';
-        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock));
+        \VCR\VCR::insertCassette('bibSearchSuccess');
+        $search = Bib::Search($query, $this->mockAccessToken);
+        \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
@@ -96,15 +98,19 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     function testFailureNoQuery()
     {
         $query = ' ';
-        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibFailureSearchNoQuery.txt'));
+        \VCR\VCR::insertCassette('bibFailureSearchNoQuery');
+        $search = Bib::Search($query, $this->mockAccessToken);
+        \VCR\VCR::eject();
         $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
     }
     
     /** Invalid query field passed **/
     function testFailureInvalidField()
     {
-        $query = 'poo:junk';
-        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => __DIR__ . '/mocks/bibFailureSearchInvalidQueryField.txt'));
+        $query = 'invalid:junk';
+        \VCR\VCR::insertCassette('bibFailureSearchInvalidQueryField');
+        $search = Bib::Search($query, $this->mockAccessToken);
+        \VCR\VCR::eject();
         $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
     }
 }

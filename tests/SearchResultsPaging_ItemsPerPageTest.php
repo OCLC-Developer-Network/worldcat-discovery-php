@@ -41,8 +41,9 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     function testSearchStartIndex10(){
         $query = 'cats';
-        $mock = __DIR__ . '/mocks/bibSearchStartNum10.txt';
-        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock, 'startNum' => 10));
+        \VCR\VCR::insertCassette('bibSearchStartNum10');
+        $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10));
+        \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('10', $search->getStartIndex());
@@ -62,9 +63,10 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     function testSearchItemsPerPage5(){
         $query = 'cats';
-        $mock = __DIR__ . '/mocks/bibSearchItemsPerPage5.txt';
-        $search = Bib::Search($query, $this->mockAccessToken, array('mockFilePath' => $mock, 'itemsPerPage' => 5));
-    
+        \VCR\VCR::insertCassette('bibSearchItemsPerPage5');
+        $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5));
+        \VCR\VCR::eject();
+        
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('5', $search->getItemsPerPage());
