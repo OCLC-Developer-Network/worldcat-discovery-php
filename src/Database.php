@@ -43,8 +43,8 @@ class Database
         
         $guzzleOptions = array(
             'headers' => array(
-                'Authorization' => 'Bearer ' . $accessToken->getValue()
-                //'Accept' => 'application/rdf+xml'
+                'Authorization' => 'Bearer ' . $accessToken->getValue(),
+                'Accept' => 'application/xml'
             )
         );
         
@@ -68,8 +68,8 @@ class Database
                 
         $guzzleOptions = array(
             'headers' => array(
-                'Authorization' => 'Bearer ' . $accessToken->getValue()
-                //'Accept' => 'application/rdf+xml'
+                'Authorization' => 'Bearer ' . $accessToken->getValue(),
+                'Accept' => 'application/xml'
             )
         );
         
