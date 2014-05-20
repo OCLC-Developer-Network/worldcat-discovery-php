@@ -41,7 +41,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     function testSearchStartIndex10(){
         $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchStartNum10');
+        \VCR\VCR::insertCassette('bibSearchStartNumber10');
         $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10));
         \VCR\VCR::eject();
         
@@ -51,7 +51,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('integer', $search->getTotalResults());
         $this->assertEquals('10', count($search->getSearchResults()));
         $results = $search->getSearchResults();
-        $i = $search->getStartIndex()->getValue();
+        $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
@@ -63,7 +63,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     function testSearchItemsPerPage5(){
         $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchItemsPerPage5');
+        \VCR\VCR::insertCassette('bibSearchItemsPerPage');
         $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5));
         \VCR\VCR::eject();
         
@@ -73,7 +73,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('integer', $search->getTotalResults());
         $this->assertEquals('5', count($search->getSearchResults()));
         $results = $search->getSearchResults();
-        $i = $search->getStartIndex()->getValue();
+        $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;

@@ -42,11 +42,11 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
      */
     function testSearchByOCLCNumber(){
         $query = 'no:7977212';
-        \VCR\VCR::insertCassette('bibSearchByOclcNumberSuccess');
+        \VCR\VCR::insertCassette('bibSearchByOclcNumber');
         $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
-        $i = $search->getStartIndex()->getValue();
+        $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
@@ -57,8 +57,8 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     /** can parse set of Bibs from a Search Result */
     
     function testSearchByKeyword(){
-        $query = 'kw:cats';
-        \VCR\VCR::insertCassette('bibSearchSuccess');
+        $query = 'cats';
+        \VCR\VCR::insertCassette('bibSearchSuccessKeyword');
         $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
         
@@ -68,7 +68,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('integer', $search->getTotalResults());
         $this->assertEquals('10', count($search->getSearchResults()));
         $results = $search->getSearchResults();
-        $i = $search->getStartIndex()->getValue();
+        $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
             $i++;
@@ -91,7 +91,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
      */
     function testAccessTokenNotAccessTokenObject()
     {
-        $this->bib = Bib::search('kw:cats', 'NotAnAccessToken');
+        $this->bib = Bib::search('cats', 'NotAnAccessToken');
     }
     
     /** No query passed **/
@@ -108,9 +108,9 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     function testFailureInvalidField()
     {
         $query = 'invalid:junk';
-        \VCR\VCR::insertCassette('bibFailureSearchInvalidQueryField');
+        \VCR\VCR::insertCassette('bibFailureSearchInvalidQuery');
         $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
+        $this->assertEquals('0', count($search->getSearchResults()));
     }
 }
