@@ -1,6 +1,0 @@
-HTTP/1.1 500 Server Error
-X-OCLC-RequestId: 37f84eae-4323-4d48-a5d9-06d9fb753c6a
-Content-Type: application/xhtml+xml; charset=UTF-8
-Transfer-Encoding: chunked
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><error xmlns="http://worldcat.org/xmlschemas/response"><code type="application">500</code><message>Internal server error</message><detail>Failed to convert from type groovy.util.slurpersupport.NodeChild to type com.hp.hpl.jena.rdf.model.Model for value 'http://www.w3.org/1999/02/22-rdf-syntax-ns#xml7'; nested exception is groovy.lang.GroovyRuntimeException: org.xml.sax.SAXParseException; Premature end of file.</detail></error>
