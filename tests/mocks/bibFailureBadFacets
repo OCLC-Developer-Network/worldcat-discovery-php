@@ -12,25 +12,8 @@
     response:
         status: 200
         headers:
-            X-OCLC-RequestId: bb4a7903-d126-45e7-a1eb-43ec2090fc09
+            X-OCLC-RequestId: 3cea7c4c-4b3a-4e59-8b3d-e34aa413f862
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Vary: 'Accept-Encoding, User-Agent'
             Transfer-Encoding: chunked
-        body: "<rdf:RDF\n    xmlns:x-searcho=\"http://worldcat.org/searcho/\"\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:j.0=\"http://schema.org/\" > \n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?facets=junk:10&amp;itemsPerPage=10&amp;q=cats&amp;startNum=0#facets\">\n    <rdf:type rdf:resource=\"http://worldcat.org/searcho/FacetList\"/>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?facets=junk:10&amp;itemsPerPage=10&amp;q=cats&amp;startNum=0\">\n    <x-searcho:facetList rdf:resource=\"http://beta.worldcat.org/discovery/bib/search?facets=junk:10&amp;itemsPerPage=10&amp;q=cats&amp;startNum=0#facets\"/>\n    <x-searcho:itemsPerPage rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">10</x-searcho:itemsPerPage>\n    <x-searcho:startIndex rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">0</x-searcho:startIndex>\n    <x-searcho:totalResults rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">0</x-searcho:totalResults>\n    <rdf:type rdf:resource=\"http://schema.org/SearchResultsPage\"/>\n  </rdf:Description>\n</rdf:RDF>\n"
--
-    request:
-        method: GET
-        url: 'https://beta.worldcat.org/discovery/bib/search?q=cats&facets=boo%3A5'
-        headers:
-            Host: beta.worldcat.org
-            User-Agent: 'Guzzle/3.8.1 curl/7.21.4 PHP/5.3.28'
-            Authorization: 'Bearer tk_12345'
-            Accept: application/rdf+xml
-            Content-Length: '0'
-    response:
-        status: 401
-        headers:
-            Cache-Control: 'must-revalidate,no-cache,no-store'
-            Content-Type: 'text/html; charset=ISO-8859-1'
-            Content-Length: '309'
-        body: "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 401 </title>\n</head>\n<body>\n<h2>HTTP ERROR: 401</h2>\n<p>Problem accessing /discovery/bib/search. Reason:\n<pre>    Invalid Access Token</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n</body>\n</html>\n"
+        body: "<rdf:RDF\n    xmlns:j.0=\"http://worldcat.org/searcho/\"\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:j.1=\"http://schema.org/\" > \n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?facets=junk:10&amp;itemsPerPage=10&amp;q=cats&amp;startNum=0\">\n    <j.0:itemsPerPage rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">10</j.0:itemsPerPage>\n    <j.0:startIndex rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">0</j.0:startIndex>\n    <rdf:type rdf:resource=\"http://schema.org/SearchResultsPage\"/>\n    <j.0:totalResults rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">0</j.0:totalResults>\n  </rdf:Description>\n</rdf:RDF>\n"

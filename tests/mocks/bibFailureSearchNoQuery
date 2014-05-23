@@ -12,7 +12,7 @@
     response:
         status: 400
         headers:
-            X-OCLC-RequestId: 2276fb6a-f47b-420d-b804-65ebb5052c02
+            X-OCLC-RequestId: 87d27902-1e1e-4214-9e22-b54ec20686dd
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Transfer-Encoding: chunked
-        body: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><error xmlns="http://worldcat.org/xmlschemas/response"><code type="http">400</code><message>Invalid or missing parameter on request</message><detail>Query failed to pass validation.Query syntax error involving OTHER_LETTER character @ position 1</detail></error>'
+        body: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><error xmlns="http://worldcat.org/xmlschemas/response"><code type="http">400</code><message>Invalid or missing parameter on request</message><detail>Bad query.</detail></error>'

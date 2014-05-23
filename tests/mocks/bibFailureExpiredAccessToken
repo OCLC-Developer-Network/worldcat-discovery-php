@@ -12,6 +12,7 @@
     response:
         status: 401
         headers:
+            X-OCLC-RequestId: 0bd8b1d6-f988-4760-8455-35375e92d6e6
             Cache-Control: 'must-revalidate,no-cache,no-store'
             Content-Type: 'text/html; charset=ISO-8859-1'
             Content-Length: '316'

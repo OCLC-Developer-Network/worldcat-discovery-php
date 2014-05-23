@@ -12,7 +12,7 @@
     response:
         status: 200
         headers:
-            X-OCLC-RequestId: d3769e96-0d8a-4a46-98e0-b1a65b16fc92
+            X-OCLC-RequestId: 7eb00075-2822-4d0e-9a08-a2149159be48
             Content-Language: en-US
             Content-Type: 'application/xml; charset=UTF-8'
             Vary: 'Accept-Encoding, User-Agent'
