@@ -17,12 +17,57 @@ namespace WorldCat\Discovery;
 
 use \EasyRdf_Resource;
 use \EasyRdf_Format;
+use \EasyRdf_Graph;
 
 /**
  * A class that represents a Person in Schema.org
  *
  */
 class Person extends Thing
-{
-
+{   
+    function __construct($uri, $graph = null){
+        parent::__construct($uri, $graph);
+        if (strpos($this->getURI(), 'viaf')){
+            // build a new graph from VIAF
+            $formats = EasyRdf_Format::getNames();
+            foreach ($formats as $format){
+                if ($format != 'rdfxml'){
+                    EasyRdf_Format::unregister($format);
+                }
+            }
+            $viafGraph = new EasyRdf_Graph();
+            $viafGraph->load($this->getURI(), 'rdfxml');
+            $viafResource = $viafGraph->resource($this->getUri());
+            
+            // loop through and add VIAF properties to this resource
+            foreach ($viafResource->properties() as $property){
+                foreach ($viafResource->all($property) as $value){
+                    $this->add($property, $value);
+                }
+            }
+        }
+    }
+    
+    function getBirthDate(){
+        return $this->getLiteral('rdaGr2:dateOfBirth');
+    }
+    
+    function getDeathDate(){
+        return $this->getLiteral('rdaGr2:dateOfDeath');
+    }
+    
+    function getSameAsProperties(){
+        return $this->all('owl:sameAs');
+    }
+    
+    function getDbpediaUri(){
+        $sameAsProperties = self::getSameAsProperties();
+        $dbpediaPerson = array_filter($sameAsProperties, function($sameAs)
+        {
+            return(strpos($sameAs->getURI(), 'dbpedia'));
+        }); 
+        $dbpediaPerson = array_shift($dbpediaPerson);
+        return $dbpediaPerson->getURI();
+    }
+    
 }

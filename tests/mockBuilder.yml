@@ -9,6 +9,8 @@ bibFind:
     bibFailureExpiredAccessToken:
         oclcNumber: 41266045
         accessToken: tk_o8NbDRTz855q3fUmQGNqf7jHFTCaPtJj2g1A
+    personSuccess:
+        oclcNumber: 24503247
 bibSearch:
     bibSearchByOclcNumber:
         query: no:7977212

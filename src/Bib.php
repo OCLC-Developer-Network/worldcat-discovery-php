@@ -247,8 +247,20 @@ class Bib extends EasyRdf_Resource
     /**
      * @param $query string
      * @param $accessToken OCLC/Auth/AccessToken
-     * @package $options array
+     * @package $options array All the optional parameters are valid
      * - heldBy comma seperated list which is a limiter to restrict search results to items held by a given institution(s)
+     * - notHeldBy comma seperated list which is imiter to restrict search results to items that are not held by a given institution(s).
+     * - heldByGroup
+     * - heldInCountry
+     * - inLanguage
+     * - materialType
+     * - datePublished
+     * - inCatalogLanguage
+     * - catalogSource
+     * - itemType
+     * - subItemType
+     * - peerReview
+     * - useFRBRGrouping
      * - facets an array of facets to be returned.
      * - startNum integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
@@ -292,6 +304,9 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('searcho', 'http://worldcat.org/searcho/');
         EasyRdf_Namespace::set('library', 'http://purl.org/library/');
         EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
+        EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
+        EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
+        EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
         EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');
