@@ -67,7 +67,9 @@ class Person extends Thing
             return(strpos($sameAs->getURI(), 'dbpedia'));
         }); 
         $dbpediaPerson = array_shift($dbpediaPerson);
-        return $dbpediaPerson->getURI();
+        if (isset($dbpediaPerson)){
+            return $dbpediaPerson->getURI();
+        }
     }
     
 }
