@@ -24,5 +24,26 @@ use \EasyRdf_Format;
  */
 class Organization extends Thing
 {
-
+    function __construct($uri, $graph = null){
+        parent::__construct($uri, $graph);
+        if (strpos($this->getURI(), 'viaf')){
+            // build a new graph from VIAF
+            $formats = EasyRdf_Format::getNames();
+            foreach ($formats as $format){
+                if ($format != 'rdfxml'){
+                    EasyRdf_Format::unregister($format);
+                }
+            }
+            $viafGraph = new EasyRdf_Graph();
+            $viafGraph->load($this->getURI(), 'rdfxml');
+            $viafResource = $viafGraph->resource($this->getUri());
+    
+            // loop through and add VIAF properties to this resource
+            foreach ($viafResource->properties() as $property){
+                foreach ($viafResource->all($property) as $value){
+                    $this->add($property, $value);
+                }
+            }
+        }
+    }
 }
