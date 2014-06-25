@@ -10,14 +10,15 @@ use WorldCat\Discovery\Bib;
 require __DIR__ . '/../vendor/autoload.php';
 
 \VCR\VCR::turnOn();
-\VCR\VCR::configure()->setCassettePath('mocks');
+if (isset($argv[2])){
+    $cassettePath = 'mocks/' . $argv[2];
+} else {
+    $cassettePath = 'mocks';
+}
+\VCR\VCR::configure()->setCassettePath($cassettePath);
 \VCR\VCR::insertCassette('accessToken');
 
 $mockFolder = __DIR__ . "/mocks/";
-
-if (isset($argv[2])){
-    $mockFolder .= $argv[2] . '/';
-}
 
 // load the YAML for mocks
 $mockBuilder = Yaml::parse(__DIR__ . '/mockBuilder.yml');
@@ -25,6 +26,7 @@ $mockBuilder = Yaml::parse(__DIR__ . '/mockBuilder.yml');
     // load the YAML for config
     $config = Yaml::parse(__DIR__ . '/config.yml');
     if (isset($argv[2])){
+        $mockFolder .= $argv[2] . '/';
         $environment = $argv[2];
         AccessToken::$authorizationServer = $config[$environment]['authorizationServiceUrl'];
         Bib::$serviceUrl = $config[$environment]['discoveryUrl'];
@@ -71,8 +73,8 @@ if ($argv[1] == 'all'  || $argv[1] == 'bibSearch'){
         \VCR\VCR::insertCassette($mock);
         printf("Mock created for '%s'.\n", $mock);
         $options = array();
-        if (isset($mockValues['facets'])){
-            $options['facets'] = $mockValues['facets'];
+        if (isset($mockValues['facetFields'])){
+            $options['facetFields'] = $mockValues['facetFields'];
         }
         if (isset($mockValues['startNum'])) {
             $options['startNum'] = $mockValues['startNum'];

@@ -43,7 +43,7 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
         $query = 'cats';
         $facets = array('author' => 10, 'inLanguage' => 10);
         \VCR\VCR::insertCassette('bibSearchFacets');
-        $search = Bib::Search($query, $this->mockAccessToken, array('facets' => $facets));
+        $search = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets));
         \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
@@ -89,24 +89,13 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
         }
     }
     
-    /** Invalid facet passed **/
-    function testFailureBadFacet()
-    {
-        $query = 'cats';
-        $facets = array('boo' => 5);
-        \VCR\VCR::insertCassette('bibFailureBadFacets');
-        $search = Bib::Search($query, $this->mockAccessToken, array('facets' => $facets));
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
-    }
-    
-    /** Invalid facet count passed **/
+    /** Invalid facet count **/
     function testFailureBadFacetCount()
     {
         $query = 'cats';
         $facets = array('author' => 5, 'inLanguage' => 5);
         \VCR\VCR::insertCassette('bibFailureBadFacetCount');
-        $search = Bib::Search($query, $this->mockAccessToken, array('facets' => $facets));
+        $search = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets));
         \VCR\VCR::eject();
         $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
     }

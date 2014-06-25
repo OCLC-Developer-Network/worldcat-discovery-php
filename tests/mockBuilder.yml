@@ -16,7 +16,7 @@ bibSearch:
         query: no:7977212
     bibSearchFacets:
         query: cats
-        facets:
+        facetFields:
             author: 10
             inLanguage: 10
     bibSearchItemsPerPage:
@@ -29,13 +29,9 @@ bibSearch:
         query: cats
     bibFailureSearchNoQuery:
         query: ' '
-    bibFailureBadFacets:
-        query: cats
-        facets:
-            junk: 10
     bibFailureBadFacetCount:
-        query: foo:cats
-        facets:
+        query: cats
+        facetFields:
             author: 5
 databaseFind:
     databaseSuccess:
