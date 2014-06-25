@@ -247,7 +247,7 @@ class Bib extends EasyRdf_Resource
     /**
      * @param $query string
      * @param $accessToken OCLC/Auth/AccessToken
-     * @package $options array All the optional parameters are valid
+     * @param $options array All the optional parameters are valid
      * - heldBy comma seperated list which is a limiter to restrict search results to items held by a given institution(s)
      * - notHeldBy comma seperated list which is imiter to restrict search results to items that are not held by a given institution(s).
      * - heldByGroup
@@ -258,10 +258,10 @@ class Bib extends EasyRdf_Resource
      * - inCatalogLanguage
      * - catalogSource
      * - itemType
-     * - subItemType
+     * - itemSubType
      * - peerReview
      * - useFRBRGrouping
-     * - facets an array of facets to be returned.
+     * - facetFields an array of facets to be returned.
      * - startNum integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
      * @return WorldCat\Discovery\SearchResults or \Guzzle\Http\Exception\BadResponseException
@@ -290,7 +290,7 @@ class Bib extends EasyRdf_Resource
             $searchResponse = \Guzzle::get($bibSearchURI, $guzzleOptions);
             $graph = new EasyRdf_Graph();
             $graph->parse($searchResponse->getBody(true));
-            $search = $graph->allOfType('schema:SearchResultsPage');
+            $search = $graph->allOfType('discovery:SearchResults');
             $search = $search[0];
             return $search;
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
@@ -301,7 +301,7 @@ class Bib extends EasyRdf_Resource
     private static function requestSetup()
     {
         EasyRdf_Namespace::set('schema', 'http://schema.org/');
-        EasyRdf_Namespace::set('searcho', 'http://worldcat.org/searcho/');
+        EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
         EasyRdf_Namespace::set('library', 'http://purl.org/library/');
         EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
         EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
@@ -315,40 +315,46 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
         EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
         EasyRdf_TypeMapper::set('schema:ProductModel', 'WorldCat\Discovery\ProductModel');
-        EasyRdf_TypeMapper::set('schema:SearchResultsPage', 'WorldCat\Discovery\SearchResults');
-        EasyRdf_TypeMapper::set('searcho:FacetItem', 'WorldCat\Discovery\Facet');
-        EasyRdf_TypeMapper::set('searcho:FacetItemValue', 'WorldCat\Discovery\FacetValue');
+        
+        EasyRdf_TypeMapper::set('foaf:Agent', 'WorldCat\Discovery\Organization');
+        EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\SearchResults');
+        EasyRdf_TypeMapper::set('discovery:FacetItem', 'WorldCat\Discovery\Facet');
+        EasyRdf_TypeMapper::set('discovery:FacetItemValue', 'WorldCat\Discovery\FacetValue');
         
         if (!class_exists('Guzzle')) {
             \Guzzle\Http\StaticClient::mount();
         }
     }
     
-    private static function buildParameters($query, $options)
+    private static function buildParameters($query, $options = null)
     {
         $parameters = array('q' => $query);
         
-        if (isset($options['startNum'])){
-            $parameters['startNum'] = $options['startNum'];
-        }
+        if (isset($options['facetFields'])){
         
-        if (isset($options['itemsPerPage'])){
-            $parameters['itemsPerPage'] = $options['itemsPerPage'];
-        }
-        
-        if (isset($options['heldBy'])){
-            $parameters['heldBy'] = $options['heldBy'];
-        }
-        
-        $queryString =  http_build_query($parameters);
-        
-        if (isset($options['facets'])){
-            
-            foreach ($options['facets'] as $facetName => $numberOfFacets){
-                $queryString .= '&facets=' . $facetName . ':' . $numberOfFacets;
+            foreach ($options['facetFields'] as $facetName => $numberOfFacets){
+                $queryString .= '&facetFields=' . $facetName . ':' . $numberOfFacets;
             }
-            
-        }      
+        
+        }
+        unset($options['facetFields']);
+        
+        if (isset($options['facetQueries'])){
+        
+            foreach ($options['facetQueries'] as $facetName => $numberOfFacets){
+                $queryString .= '&facetQueries=' . $facetName . ':' . $numberOfFacets;
+            }
+        
+        }
+        unset($options['facetQueries']);
+
+        if (!empty($options)){
+            foreach ($options as $option => $optionValue){
+                $parameters[$option] = $optionValue;
+            }
+        }
+        
+        $queryString =  http_build_query($parameters);     
         
         return $queryString;         
     }
