@@ -39,6 +39,6 @@ class FacetValue extends EasyRdf_Resource
      * @return EasyRDF_Literal
      */
     function getCount(){
-        return $this->get('searcho:count');
+        return $this->get('discovery:count');
     }
 }
