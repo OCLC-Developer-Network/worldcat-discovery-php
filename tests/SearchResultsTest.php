@@ -103,14 +103,4 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         \VCR\VCR::eject();
         $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
     }
-    
-    /** Invalid query field passed **/
-    function testFailureInvalidField()
-    {
-        $query = 'invalid:junk';
-        \VCR\VCR::insertCassette('bibFailureSearchInvalidQuery');
-        $search = Bib::Search($query, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertEquals('0', count($search->getSearchResults()));
-    }
 }
