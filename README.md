@@ -23,7 +23,7 @@ Sample Composer file
     }
 	],
 	"require" : {
-	"worldcat/discovery" : ">=1.0"
+	"worldcat/discovery" : ">=0.7"
 	}
 }
 ```
