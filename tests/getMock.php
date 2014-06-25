@@ -15,17 +15,30 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $mockFolder = __DIR__ . "/mocks/";
 
+if (isset($argv[2])){
+    $mockFolder .= $argv[2] . '/';
+}
+
 // load the YAML for mocks
 $mockBuilder = Yaml::parse(__DIR__ . '/mockBuilder.yml');
 
-// load the YAML for config
-$config = Yaml::parse(__DIR__ . '/config.yml');
+    // load the YAML for config
+    $config = Yaml::parse(__DIR__ . '/config.yml');
+    if (isset($argv[2])){
+        $environment = $argv[2];
+        AccessToken::$authorizationServer = $config[$environment]['authorizationServiceUrl'];
+        Bib::$serviceUrl = $config[$environment]['discoveryUrl'];
+        Database::$serviceUrl = $config[$environment]['discoveryUrl'];
+    } else {
+        $environment = 'prod';
+    }
+
 
 // Go get an accessToken
 $options =  array(
     'services' => array('WorldCatDiscoveryAPI')
 );
-$wskey = new WSKey($config['wskey'], $config['secret'], $options);
+$wskey = new WSKey($config[$environment]['wskey'], $config[$environment]['secret'], $options);
 
 $retrievedToken = $wskey->getAccessTokenWithClientCredentials($config['institution'], $config['institution']);
 \VCR\VCR::eject();

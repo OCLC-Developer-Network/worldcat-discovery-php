@@ -29,8 +29,6 @@ bibSearch:
         query: cats
     bibFailureSearchNoQuery:
         query: ' '
-    bibFailureSearchInvalidQuery:
-        query: invalid:junk
     bibFailureBadFacets:
         query: cats
         facets:
