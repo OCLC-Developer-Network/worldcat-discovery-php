@@ -31,7 +31,7 @@ class SearchResults extends EasyRdf_Resource
      */
     function getStartIndex()
     {
-        $startIndex = $this->get('searcho:startIndex');
+        $startIndex = $this->get('discovery:startIndex');
         return $startIndex->getValue();
     }
     
@@ -42,7 +42,7 @@ class SearchResults extends EasyRdf_Resource
      */
     function getItemsPerPage()
     {
-        $itemsPerPage = $this->get('searcho:itemsPerPage');
+        $itemsPerPage = $this->get('discovery:itemsPerPage');
         return $itemsPerPage->getValue();
     }
     
@@ -53,7 +53,7 @@ class SearchResults extends EasyRdf_Resource
      */
     function getTotalResults()
     {
-        $totalResults = $this->get('searcho:totalResults');
+        $totalResults = $this->get('discovery:totalResults');
         return $totalResults->getValue();
     }
     
@@ -78,7 +78,7 @@ class SearchResults extends EasyRdf_Resource
      * @return array
      */
      function getFacets(){
-         $facetList = $this->graph->allOfType('searcho:FacetItem');
+         $facetList = $this->graph->allOfType('discovery:FacetItem');
          return $facetList;
      } 
 }
