@@ -15,6 +15,22 @@
 
 error_reporting(E_ALL | E_STRICT);
 require __DIR__ . '/../vendor/autoload.php';
+
+global $environment, $authorizationServer, $serviceURL;
+
+use OCLC\Auth\AccessToken;
+use WorldCat\Discovery\Bib;
+use WorldCat\Discovery\Database;
+
+if (isset($environment)){
+    AccessToken::$authorizationServer = $authorizationServer;
+    Bib::$serviceUrl = $serviceURL;
+    Database::$serviceUrl = $serviceURL;
+    $cassettePath = 'mocks/' . $environment;
+} else {
+    $cassettePath = 'mocks';
+}
+
 \VCR\VCR::turnOn();
-\VCR\VCR::configure()->setCassettePath('mocks');
+\VCR\VCR::configure()->setCassettePath($cassettePath);
 ?>

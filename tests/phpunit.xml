@@ -13,7 +13,7 @@
       <file>BibTest.php</file>
       <file>SearchResultsPaging_ItemsPerPageTest.php</file>
       <file>SearchResultsTest.php</file>
-      <file>SearchResultsWithFacets.php</file>
+      <file>SearchResultsWithFacetsTest.php</file>
     </testsuite>
     <testsuite name="Database">
         <file>DatabaseTest.php</file>
