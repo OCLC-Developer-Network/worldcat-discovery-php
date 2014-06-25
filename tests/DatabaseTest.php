@@ -18,7 +18,7 @@ namespace WorldCat\Discovery;
 use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
-use WorldCat\Discovery\Bib;
+use WorldCat\Discovery\Database;
 
 class DatabaseTest extends \PHPUnit_Framework_TestCase
 {
