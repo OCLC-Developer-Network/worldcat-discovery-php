@@ -17,6 +17,7 @@ namespace WorldCat\Discovery;
 
 use \EasyRdf_Resource;
 use \EasyRdf_Format;
+use \EasyRdf_Graph;
 
 /**
  * A class that represents a Place in Schema.org
