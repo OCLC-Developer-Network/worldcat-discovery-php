@@ -326,23 +326,25 @@ class Bib extends EasyRdf_Resource
         }
     }
     
-    private static function buildParameters($query, $options = null)
+private static function buildParameters($query, $options = null)
     {
         $parameters = array('q' => $query);
         
+        $facetFieldsString = '';
         if (isset($options['facetFields'])){
         
             foreach ($options['facetFields'] as $facetName => $numberOfFacets){
-                $queryString .= '&facetFields=' . $facetName . ':' . $numberOfFacets;
+                $facetFieldsString .= '&facetFields=' . $facetName . ':' . $numberOfFacets;
             }
         
         }
         unset($options['facetFields']);
         
+        $facetQueriesString = '';
         if (isset($options['facetQueries'])){
         
             foreach ($options['facetQueries'] as $facetName => $numberOfFacets){
-                $queryString .= '&facetQueries=' . $facetName . ':' . $numberOfFacets;
+                $facetQueriesString .= '&facetQueries=' . $facetName . ':' . $numberOfFacets;
             }
         
         }
@@ -354,7 +356,7 @@ class Bib extends EasyRdf_Resource
             }
         }
         
-        $queryString =  http_build_query($parameters);     
+        $queryString =  http_build_query($parameters) . $facetFieldsString . $facetQueriesString;     
         
         return $queryString;         
     }
