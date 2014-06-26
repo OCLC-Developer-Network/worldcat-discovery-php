@@ -12,7 +12,9 @@
     response:
         status: 200
         headers:
-            X-OCLC-RequestId: 7eb00075-2822-4d0e-9a08-a2149159be48
+            X-OCLC-RequestId: 156b88bb-5191-4f68-9bba-b0baf5765224
+            X-OCLC-SelfId: 4b5e06e3-d3ec-412b-a12f-a16027beb7c5
+            Content-Location: 'http://beta.worldcat.org/discovery/database/data/638'
             Content-Language: en-US
             Content-Type: 'application/xml; charset=UTF-8'
             Vary: 'Accept-Encoding, User-Agent'

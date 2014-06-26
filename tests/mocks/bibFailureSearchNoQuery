@@ -12,7 +12,8 @@
     response:
         status: 400
         headers:
-            X-OCLC-RequestId: 87d27902-1e1e-4214-9e22-b54ec20686dd
+            X-OCLC-RequestId: 0bcb68ae-bd16-4bf6-bf6d-507769e38113
+            X-OCLC-SelfId: e823750b-7cf3-4e5f-be78-38ff149e55eb
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Transfer-Encoding: chunked
         body: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><error xmlns="http://worldcat.org/xmlschemas/response"><code type="http">400</code><message>Invalid or missing parameter on request</message><detail>Bad query.</detail></error>'
