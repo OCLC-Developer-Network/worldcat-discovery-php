@@ -41,12 +41,18 @@ bibSearch:
         startNum: 10
     bibSearchSuccessKeyword:
         query: cats
+    bibSearchDatabaseSuccessKeyword:
+        query: gdp policy
+        dbIds: 2662
     bibFailureSearchNoQuery:
         query: ' '
     bibFailureBadFacetCount:
         query: cats
         facetFields:
             author: 5
+    bibFailureDatabaseNotEnabled:
+        query: gdp policy
+        dbIds: 2663
 databaseFind:
     databaseSuccess:
         id: 638

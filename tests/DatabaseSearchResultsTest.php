@@ -21,7 +21,7 @@ use OCLC\Auth\AccessToken;
 use OCLC\User;
 use WorldCat\Discovery\Bib;
 
-class SearchResultsTest extends \PHPUnit_Framework_TestCase
+class DatabaseSearchResultsTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -36,30 +36,14 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
                     ->method('getValue')
                     ->will($this->returnValue('tk_12345'));
     }
-
-    /**
-     * 
-     */
-    function testSearchByOCLCNumber(){
-        $query = 'no:7977212';
-        \VCR\VCR::insertCassette('bibSearchByOclcNumber');
-        $search = Bib::Search($query, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
-        $i = $search->getStartIndex();
-        foreach ($search->getSearchResults() as $searchResult){
-            $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $searchResult);
-            $i++;
-            $this->assertEquals($i, $searchResult->getDisplayPosition());
-        }
-    }
     
     /** can parse set of Bibs from a Search Result */
     
     function testSearchByKeyword(){
-        $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchSuccessKeyword');
-        $search = Bib::Search($query, $this->mockAccessToken);
+        $query = 'gdp policy';
+        $options = array('dbIds' => '2662');
+        \VCR\VCR::insertCassette('bibSearchDatabaseSuccessKeyword');
+        $search = Bib::Search($query, $this->mockAccessToken, $options);
         \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
@@ -70,35 +54,19 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $results = $search->getSearchResults();
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $searchResult);
+            $this->assertInstanceOf('WorldCat\Discovery\Article', $searchResult);
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid query
-     */
-    function testQueryNotString()
-    {
-        $bib = Bib::search(1, $this->mockAccessToken);
-    }
     
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid OCLC/Auth/AccessToken object
-     */
-    function testAccessTokenNotAccessTokenObject()
+    /** No institution hasn't enabled database passed **/
+    function testFailureDatabaseNotEnabled()
     {
-        $this->bib = Bib::search('cats', 'NotAnAccessToken');
-    }
-    
-    /** No query passed **/
-    function testFailureNoQuery()
-    {
-        $query = ' ';
-        \VCR\VCR::insertCassette('bibFailureSearchNoQuery');
+        $query = 'gdp policy';
+        $options = array('dbIds' => '2663');
+        \VCR\VCR::insertCassette('bibFailureDatabaseNotEnabled');
         $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
         $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);

@@ -84,6 +84,10 @@ if ($argv[1] == 'all'  || $argv[1] == 'bibSearch'){
             $options['itemsPerPage'] = $mockValues['itemsPerPage'];
         }
         
+        if (isset($mockValues['dbIds'])) {
+            $options['dbIds'] = $mockValues['dbIds'];
+        }
+        
         $bib = Bib::search($mockValues['query'], $retrievedToken, $options);
         \VCR\VCR::eject();
     }
