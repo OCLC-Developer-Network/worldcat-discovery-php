@@ -41,7 +41,7 @@ class Bib extends EasyRdf_Resource
             $this->graph->addType($this->creativeWork->getUri(), 'schema:CreativeWork');
         }
         
-        if (is_a($this->creativeWork, 'EasyRdf_Resource')){
+        if (get_class($this->creativeWork) == 'EasyRdf_Resource'){
             if ($this->creativeWork->type()){
                 $type = $this->creativeWork->type();
             } else {
@@ -50,11 +50,10 @@ class Bib extends EasyRdf_Resource
             EasyRdf_TypeMapper::set($type, 'WorldCat\Discovery\CreativeWork');
             $creativeWorkGraph = new EasyRdf_Graph();
             $creativeWorkGraph->parse($this->graph->serialise('rdfxml'));
-            return $creativeWorkGraph->resource($this->creativeWork->getUri());
-        } else {
-            return $creativeWork;
+            $this->creativeWork = $creativeWorkGraph->resource($this->creativeWork->getUri());
         }
-    
+        
+        return $this->creativeWork;
     }
     
     
@@ -158,6 +157,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
         EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
+        EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
         EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
         

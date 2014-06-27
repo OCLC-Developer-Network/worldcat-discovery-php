@@ -56,7 +56,6 @@ class PeriodicalTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getId());
         $this->assertNotEmpty($bib->getName());
         $this->assertNotEmpty($bib->getOCLCNumber());
-        $this->assertNotEmpty($bib->getDescriptions());
         $this->assertNotEmpty($bib->getLanguage());
         $this->assertNotEmpty($bib->getDatePublished());
         $this->assertNotEmpty($bib->getIssn());
@@ -67,17 +66,6 @@ class PeriodicalTest extends \PHPUnit_Framework_TestCase
      * @depends testGetBib
      */
     function testParseResources($bib){
-        $this->assertThat($bib->getAuthor(), $this->logicalOr(
-            $this->isInstanceOf('WorldCat\Discovery\Person'),
-            $this->isInstanceOf('WorldCat\Discovery\Organization')
-        ));
-
-        foreach ($bib->getContributors() as $contributor){
-            $this->assertThat($contributor, $this->logicalOr(
-                $this->isInstanceOf('WorldCat\Discovery\Person'),
-                $this->isInstanceOf('WorldCat\Discovery\Organization')
-            ));
-        }
         
         $this->assertInstanceOf('WorldCat\Discovery\Organization', $bib->getPublisher());
 

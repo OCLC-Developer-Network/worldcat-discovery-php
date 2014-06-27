@@ -34,12 +34,13 @@ class Periodical extends CreativeWork
      */
     function getIsLike()
     {
-        $isLike = $this->get('umbel:isLike');
+        $isLike = $this->getResource('umbel:isLike');
         return $isLike;
     }
     
     function getIssn()
     {
-        $issn = $this->get('umbel:isLike')->get('library:issn');
+        $issn = $this->getResource('umbel:isLike')->get('library:issn');
+        return $issn;
     }
 }
