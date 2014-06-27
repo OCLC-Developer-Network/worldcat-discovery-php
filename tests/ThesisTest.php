@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class ImageTest extends \PHPUnit_Framework_TestCase
+class ThesisTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -40,10 +40,10 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      *
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('imageSuccess');
-        $bib = Bib::find(744025845, $this->mockAccessToken);
+        \VCR\VCR::insertCassette('thesisSuccess');
+        $bib = Bib::find(56394544, $this->mockAccessToken);
         \VCR\VCR::eject();
-        $this->assertInstanceOf('WorldCat\Discovery\Image', $bib);
+        $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
         return $bib;
     }
 
@@ -56,5 +56,35 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getId());
         $this->assertNotEmpty($bib->getName());
         $this->assertNotEmpty($bib->getOCLCNumber());
+        $this->assertNotEmpty($bib->getDescriptions());
+        $this->assertNotEmpty($bib->getLanguage());
+        $this->assertNotEmpty($bib->getDatePublished());
+    }
+
+    /**
+     * can parse Single Bibs Resources
+     * @depends testGetBib
+     */
+    function testParseResources($bib){
+        $this->assertThat($bib->getAuthor(), $this->logicalOr(
+            $this->isInstanceOf('WorldCat\Discovery\Person'),
+            $this->isInstanceOf('WorldCat\Discovery\Organization')
+        ));
+
+        foreach ($bib->getContributors() as $contributor){
+            $this->assertThat($contributor, $this->logicalOr(
+                $this->isInstanceOf('WorldCat\Discovery\Person'),
+                $this->isInstanceOf('WorldCat\Discovery\Organization')
+            ));
+        }
+        
+        $this->assertInstanceOf('WorldCat\Discovery\Organization', $bib->getPublisher());
+
+        $this->assertInstanceOf('EasyRdf_Resource', $bib->getWork());
+
+        foreach ($bib->getAbout() as $about){
+            $this->assertInstanceOf('WorldCat\Discovery\Intangible', $about);
+        }
+        
     }
 }

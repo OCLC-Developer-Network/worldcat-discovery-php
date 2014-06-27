@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class ImageTest extends \PHPUnit_Framework_TestCase
+class CDTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -39,22 +39,23 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     /**
      *
      */
-    function testGetBib(){
-        \VCR\VCR::insertCassette('imageSuccess');
-        $bib = Bib::find(744025845, $this->mockAccessToken);
+    function testGetBibCD(){
+        \VCR\VCR::insertCassette('cdSuccess');
+        $bib = Bib::find(38027615, $this->mockAccessToken);
         \VCR\VCR::eject();
-        $this->assertInstanceOf('WorldCat\Discovery\Image', $bib);
-        return $bib;
+        $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
+        $this->assertNotEmpty($bib->getFormat());
     }
 
     /**
-     * can parse Single Bibs Literal values
-     * @depends testGetBib
+     *
      */
-    function testParseLiterals($bib)
-    {
-        $this->assertNotEmpty($bib->getId());
-        $this->assertNotEmpty($bib->getName());
-        $this->assertNotEmpty($bib->getOCLCNumber());
+    function testGetBibLP(){
+        \VCR\VCR::insertCassette('lpSuccess');
+        $bib = Bib::find(5791214, $this->mockAccessToken);
+        \VCR\VCR::eject();
+        $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
+        $this->assertNotEmpty($bib->getFormat());
     }
 }
+

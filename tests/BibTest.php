@@ -109,12 +109,23 @@ class BibTest extends \PHPUnit_Framework_TestCase
     
     /** Test for awards in the Bib - 41266045 **/
 
-    function testParseBibWithAward()
+    function testGetBibWithAward()
     {
         \VCR\VCR::insertCassette('bibWithAwards');
         $bib = Bib::find(41266045, $this->mockAccessToken);
         \VCR\VCR::eject();
         $this->assertNotEmpty($bib->getAwards());
+    }
+    
+    /**
+     *
+     */
+    function testGetBibEbook(){
+        \VCR\VCR::insertCassette('eBookSuccess');
+        $bib = Bib::find(427686093, $this->mockAccessToken);
+        \VCR\VCR::eject();
+        $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
+        $this->assertNotEmpty($bib->getUrl());
     }
     
     /**
