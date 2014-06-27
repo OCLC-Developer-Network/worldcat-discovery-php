@@ -32,180 +32,31 @@ class Bib extends EasyRdf_Resource
    
     public function __construct($uri, $graph = null){
         parent::__construct($uri, $graph);
-        $this->metadata = $this->getResource('schema:about');
+        $this->creativeWork = $this->getResource('schema:about');
     }
     
-    function getId()
+    public function getCreativeWork()
     {
-        return $this->metadata->getUri();
+        if (!$this->creativeWork->type()){
+            $this->graph->addType($this->creativeWork->getUri(), 'schema:CreativeWork');
+        }
+        
+        if (is_a($this->creativeWork, 'EasyRdf_Resource')){
+            if ($this->creativeWork->type()){
+                $type = $this->creativeWork->type();
+            } else {
+                $type = 'schema:CreativeWork';
+            }
+            EasyRdf_TypeMapper::set($type, 'WorldCat\Discovery\CreativeWork');
+            $creativeWorkGraph = new EasyRdf_Graph();
+            $creativeWorkGraph->parse($this->graph->serialise('rdfxml'));
+            return $creativeWorkGraph->resource($this->creativeWork->getUri());
+        } else {
+            return $creativeWork;
+        }
+    
     }
     
-    function getDisplayPosition()
-    {
-        return $this->metadata->get('gr:displayPosition')->getValue();
-    }
-    /**
-     * Get Name
-     *
-     * @return EasyRDF_Literal
-     */
-    function getName()
-    {
-        $name = $this->metadata->get('schema:name');
-        return $name;
-    }
-    
-    /**
-     * @return EasyRDF_Literal
-     */
-    function getOCLCNumber()
-    {
-        $oclcNumber = $this->metadata->get('library:oclcnum');
-        return $oclcNumber;
-    }
-    
-    /**
-     * 
-     * @return WorldCat\Discovery\Person or WorldCat\Discovery\Organization
-     */
-    function getAuthor(){
-        $author = $this->metadata->getResource('schema:author');
-        return $author;
-    }
-    
-    /**
-     * 
-     * @return array
-     */
-    
-    function getContributors(){
-        $contributors = $this->metadata->allResources('schema:contributor');
-        return $contributors;
-    }
-    
-    /**
-     * 
-     * @return array
-     */
-    function getDescriptions()
-    {
-        $description = $this->metadata->all('schema:description');
-        return $description;
-    }
-    
-    /**
-     * @return EasyRDF_Literal
-     */
-    function getLanguage()
-    {
-        $language = $this->metadata->get('schema:inLanguage');
-        return $language;
-    }
-    
-    /**
-     * @return EasyRDF_Literal
-     */
-    function getDatePublished()
-    {
-        $datePublished = $this->metadata->get('schema:datePublished');
-        return $datePublished;
-    }
-    
-    /**
-     * @return EasyRDF_Literal
-     */
-    function getCopyrightYear()
-    {
-        $copyrightYear = $this->metadata->get('schema:copyrightYear');
-        return $copyrightYear;
-    }
-    
-    /**
-     * @return \WorldCat\Discovery\Organization
-     */
-    function getPublisher()
-    {
-        $publisher = $this->metadata->getResource('schema:publisher');
-        return $publisher;   
-    }
-    
-    /**
-     * @return EasyRDF_Literal
-     */
-    function getBookEdition(){
-        $bookEdition = $this->metadata->get('schema:bookEdition');
-        return $bookEdition;
-    }
-    
-    /**
-     * @return EasyRDF_Literal
-     */
-    function getNumberOfPages(){
-        $numberOfPages = $this->metadata->get('schema:numberOfPages');
-        return $numberOfPages;
-    }
-    
-    /**
-     * @return array
-     */
-    function getGenres(){
-        $genres = $this->metadata->all('schema:genre');
-        return $genres;
-    }
-    
-    /**
-     * @return string
-     */
-    function getType(){
-        return $this->metadata->type();
-    }
-    
-    /**
-     * @return EasyRDF_Resource
-     */
-    function getWork(){
-        return $this->metadata->getResource('schema:exampleOfWork');
-    }
-    
-    /**
-     * @return array
-     */
-    function getManifestations(){
-        return $this->metadata->allResources('schema:workExample');
-    }
-    
-    /**
-     * @return array
-     */
-    function getAbout() {
-        $about = $this->metadata->allResources('schema:about');
-        return $about; 
-    }
-    
-    /**
-     * @return array
-     */
-    function getPlacesOfPublication(){
-        $placesOfPublication = $this->metadata->all('library:placeOfPublication');
-        return $placesOfPublication;
-    }
-    
-    /**
-     * @return array
-     */
-    function getReviews(){
-        $reviews = $this->metadata->all('schema:review');
-        return $reviews;
-    }
-    
-    /**
-     * return array
-     */
-    function getAwards()
-    {
-        $awards =  $this->metadata->all('schema:awards');
-        return $awards;
-    }
     
     /**
      * @param $id string
@@ -238,7 +89,7 @@ class Bib extends EasyRdf_Resource
             $graph = new EasyRdf_Graph();
             $graph->parse($response->getBody(true));
             $bib = $graph->resource('http://www.worldcat.org/title/-/oclc/' . $id);
-            return $bib;
+            return $bib->getCreativeWork();
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
             return $error;
         }
@@ -264,6 +115,7 @@ class Bib extends EasyRdf_Resource
      * - facetFields an array of facets to be returned.
      * - startNum integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
+     * - dbIds comma seperated list of integers representing the database to search
      * @return WorldCat\Discovery\SearchResults or \Guzzle\Http\Exception\BadResponseException
      */
     
@@ -308,6 +160,11 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
         EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
+        EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
+        EasyRdf_TypeMapper::set('schema:Article', 'WorldCat\Discovery\Article');
+        EasyRdf_TypeMapper::set('schema:Periodical', 'WorldCat\Discovery\Periodical');
+        EasyRdf_TypeMapper::set('http://www.productontology.org/id/Image', 'WorldCat\Discovery\Image');
+        
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
         EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');
         EasyRdf_TypeMapper::set('schema:Intangible', 'WorldCat\Discovery\Intangible');
@@ -315,6 +172,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
         EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
         EasyRdf_TypeMapper::set('schema:ProductModel', 'WorldCat\Discovery\ProductModel');
+        EasyRdf_TypeMapper::set('schema:PublicationIssue', 'WorldCat\Discovery\PublicationIssue');
         
         EasyRdf_TypeMapper::set('foaf:Agent', 'WorldCat\Discovery\Organization');
         EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\SearchResults');

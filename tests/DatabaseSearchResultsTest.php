@@ -21,7 +21,7 @@ use OCLC\Auth\AccessToken;
 use OCLC\User;
 use WorldCat\Discovery\Bib;
 
-class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
+class SearchResultsTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -36,48 +36,71 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
                     ->method('getValue')
                     ->will($this->returnValue('tk_12345'));
     }
+
+    /**
+     * 
+     */
+    function testSearchByOCLCNumber(){
+        $query = 'no:7977212';
+        \VCR\VCR::insertCassette('bibSearchByOclcNumber');
+        $search = Bib::Search($query, $this->mockAccessToken);
+        \VCR\VCR::eject();
+        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
+        $i = $search->getStartIndex();
+        foreach ($search->getSearchResults() as $searchResult){
+            $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $searchResult);
+            $i++;
+            $this->assertEquals($i, $searchResult->getDisplayPosition());
+        }
+    }
     
-    /** can parse set of Bibs from a Search Result where the start index is not 0*/
+    /** can parse set of Bibs from a Search Result */
     
-    function testSearchStartIndex10(){
+    function testSearchByKeyword(){
         $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchStartNumber10');
-        $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10));
+        \VCR\VCR::insertCassette('bibSearchSuccessKeyword');
+        $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
-        $this->assertEquals('10', $search->getStartIndex());
+        $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());
         $this->assertEquals('10', count($search->getSearchResults()));
         $results = $search->getSearchResults();
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertNotInstanceOf('EasyRdf_Resource', $searchResult);
+            $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $searchResult);
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
     }
+
+    /**
+     * @expectedException BadMethodCallException
+     * @expectedExceptionMessage You must pass a valid query
+     */
+    function testQueryNotString()
+    {
+        $bib = Bib::search(1, $this->mockAccessToken);
+    }
     
-    /** can parse set of Bibs from a Search Result where itemsPerPage is 5*/
+    /**
+     * @expectedException BadMethodCallException
+     * @expectedExceptionMessage You must pass a valid OCLC/Auth/AccessToken object
+     */
+    function testAccessTokenNotAccessTokenObject()
+    {
+        $this->bib = Bib::search('cats', 'NotAnAccessToken');
+    }
     
-    function testSearchItemsPerPage5(){
-        $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchItemsPerPage');
-        $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5));
+    /** No query passed **/
+    function testFailureNoQuery()
+    {
+        $query = ' ';
+        \VCR\VCR::insertCassette('bibFailureSearchNoQuery');
+        $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
-        
-        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
-        $this->assertEquals('0', $search->getStartIndex());
-        $this->assertEquals('5', $search->getItemsPerPage());
-        $this->assertInternalType('integer', $search->getTotalResults());
-        $this->assertEquals('5', count($search->getSearchResults()));
-        $results = $search->getSearchResults();
-        $i = $search->getStartIndex();
-        foreach ($search->getSearchResults() as $searchResult){
-            $this->assertNotInstanceOf('EasyRdf_Resource', $searchResult);
-            $i++;
-            $this->assertEquals($i, $searchResult->getDisplayPosition());
-        }
+        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
     }
 }

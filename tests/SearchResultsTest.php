@@ -48,7 +48,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
+            $this->assertNotInstanceOf('EasyRdf_Resource', $searchResult);
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
@@ -70,7 +70,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $results = $search->getSearchResults();
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertInstanceOf('WorldCat\Discovery\Bib', $searchResult);
+            $this->assertNotInstanceOf('EasyRdf_Resource', $searchResult);
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
