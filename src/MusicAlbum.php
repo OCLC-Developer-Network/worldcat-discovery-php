@@ -31,9 +31,14 @@ class MusicAlbum extends CreativeWork
      * @return string
      */
     function getFormat(){
-        $format = array_filter($this->types, function($type)
+        $format = array_filter($this->types(), function($type)
         {
-            return(strpos($type, 'www.productontology.org'));
+            if (strpos($type, 'productontology:') !== false) {
+                $present = true;
+            } else {
+                $present = false;
+            }
+            return($present);
         });
         return $format;
     }

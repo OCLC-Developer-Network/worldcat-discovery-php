@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class CDTest extends \PHPUnit_Framework_TestCase
+class MusicAlbumTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
