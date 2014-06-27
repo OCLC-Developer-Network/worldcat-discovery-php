@@ -11,6 +11,20 @@ bibFind:
         accessToken: tk_o8NbDRTz855q3fUmQGNqf7jHFTCaPtJj2g1A
     personSuccess:
         oclcNumber: 24503247
+    articleSuccess:
+        oclcNumber: 2243594
+    periodicalSuccess:
+        oclcNumber: 2243594
+    imageSuccess:
+        oclcNumber: 744025845
+    eBookSuccess:
+        oclcNumber: 427686093
+    cdSuccess:
+        oclcNumber: 38027615
+    lpSuccess:
+        oclcNumber: 5791214
+    thesisSuccess:
+        oclcNumber: 56394544
 bibSearch:
     bibSearchByOclcNumber:
         query: no:7977212

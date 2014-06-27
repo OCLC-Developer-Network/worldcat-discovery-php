@@ -1,0 +1,21 @@
+
+-
+    request:
+        method: GET
+        url: 'https://beta.worldcat.org/discovery/bib/data/427686093'
+        headers:
+            Host: beta.worldcat.org
+            User-Agent: 'Guzzle/3.8.1 curl/7.21.4 PHP/5.3.28'
+            Authorization: 'Bearer tk_12345'
+            Accept: application/rdf+xml
+            Content-Length: '0'
+    response:
+        status: 200
+        headers:
+            X-OCLC-RequestId: b80eb9f8-9297-4877-a098-fa29e0af8506
+            X-OCLC-SelfId: 98ea7f0f-fcab-40f2-936f-12bc0108b2dd
+            Content-Type: 'application/rdf+xml; charset=UTF-8'
+            Content-Location: 'http://beta.worldcat.org/discovery/bib/data/427686093.rdf'
+            Vary: 'Accept-Encoding, User-Agent'
+            Transfer-Encoding: chunked
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:j.0=\"http://purl.org/dc/terms/\"\n    xmlns:j.1=\"http://purl.org/library/\"\n    xmlns:j.2=\"http://purl.org/goodrelations/v1#\"\n    xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n    xmlns:j.3=\"http://schema.org/\"\n    xmlns:j.4=\"http://www.w3.org/2006/gen/ont#\"\n    xmlns:j.5=\"http://rdfs.org/ns/void#\" > \n  <rdf:Description rdf:about=\"http://id.loc.gov/vocabulary/countries/xx\">\n    <rdf:type rdf:resource=\"http://schema.org/Country\"/>\n    <j.0:identifier>xx</j.0:identifier>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://viaf.org/viaf/61540536\">\n    <rdf:type rdf:resource=\"http://schema.org/Person\"/>\n    <j.3:sameAs rdf:resource=\"http://id.loc.gov/authorities/names/n79142936\"/>\n    <j.3:name>Tennyson, Alfred Tennyson, Baron, 1809-1892.</j.3:name>\n  </rdf:Description>\n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://schema.org/Organization\"/>\n    <j.3:name>Hathi Trust.</j.3:name>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://www.worldcat.org/oclc/427686093\">\n    <j.3:contributor rdf:nodeID=\"A0\"/>\n    <j.3:author rdf:resource=\"http://viaf.org/viaf/61540536\"/>\n    <j.3:name>Poems by Alfred Tennyson</j.3:name>\n    <j.1:oclcnum rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">427686093</j.1:oclcnum>\n    <j.3:datePublished>1863</j.3:datePublished>\n    <j.3:exampleOfWork rdf:resource=\"http://worldcat.org/entity/work/id/1809773138\"/>\n    <j.3:bookFormat rdf:resource=\"http://schema.org/EBook\"/>\n    <j.1:placeOfPublication rdf:resource=\"http://id.loc.gov/vocabulary/countries/xx\"/>\n    <rdf:type rdf:resource=\"http://schema.org/Book\"/>\n    <j.2:displayPosition rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">1</j.2:displayPosition>\n    <j.3:url rdf:resource=\"http://www.worldcat.org/title/-/oclc/427686093\"/>\n    <owl:sameAs rdf:resource=\"info:oclcnum/427686093\"/>\n    <j.3:inLanguage>en</j.3:inLanguage>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://www.worldcat.org/title/-/oclc/427686093\">\n    <rdf:type rdf:resource=\"http://www.w3.org/2006/gen/ont#ContentTypeGenericResource\"/>\n    <rdf:type rdf:resource=\"http://www.w3.org/2006/gen/ont#InformationResource\"/>\n    <j.3:about rdf:resource=\"http://www.worldcat.org/oclc/427686093\"/>\n    <j.5:inDataset rdf:resource=\"http://purl.oclc.org/dataset/WorldCat\"/>\n  </rdf:Description>\n</rdf:RDF>\n"

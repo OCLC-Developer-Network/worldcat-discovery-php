@@ -11,15 +11,23 @@
 	<testsuites>
     <testsuite name="Bib">
       <file>BibTest.php</file>
+      <file>ArticleTest.php</file>
+      <file>CDTest.php</file>
+      <file>EBookTest.php</file>
+      <file>ImageTest.php</file>
+      <file>PeriodicalTest.php</file>
+      <file>ThesisTest.php</file>
       <file>SearchResultsPaging_ItemsPerPageTest.php</file>
       <file>SearchResultsTest.php</file>
       <file>SearchResultsWithFacetsTest.php</file>
+      <file>DatabaseSearchResultsTest.php</file>
     </testsuite>
     <testsuite name="Database">
         <file>DatabaseTest.php</file>
     </testsuite>
-    <testsuite name="Person">
+    <testsuite name="Entities">
     <file>PersonTest.php</file>
+    <file>OrganizationTest.php</file>
     </testsuite>
   </testsuites>
   </phpunit>

@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class BibTest extends \PHPUnit_Framework_TestCase
+class ArticleTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -40,10 +40,10 @@ class BibTest extends \PHPUnit_Framework_TestCase
      *
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('bibSuccess');
-        $bib = Bib::find(7977212, $this->mockAccessToken);
+        \VCR\VCR::insertCassette('ArticleSuccess');
+        $bib = Bib::find(5131938809, $this->mockAccessToken);
         \VCR\VCR::eject();
-        $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
+        $this->assertInstanceOf('WorldCat\Discovery\Article', $bib);
         return $bib;
     }
 
@@ -59,10 +59,8 @@ class BibTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getDescriptions());
         $this->assertNotEmpty($bib->getLanguage());
         $this->assertNotEmpty($bib->getDatePublished());
-        $this->assertNotEmpty($bib->getCopyrightYear());
-        $this->assertNotEmpty($bib->getBookEdition());
-        $this->assertNotEmpty($bib->getNumberOfPages());
-        $this->assertNotEmpty($bib->getGenres());
+        $this->assertNotEmpty($bib->getPageStart());
+        $this->assertNotEmpty($bib->getPageEnd());
     }
 
     /**
@@ -86,10 +84,6 @@ class BibTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('EasyRdf_Resource', $bib->getWork());
 
-        foreach ($bib->getManifestations() as $manifestation){
-            $this->assertInstanceOf('WorldCat\Discovery\ProductModel', $manifestation);
-        }
-
         foreach ($bib->getAbout() as $about){
             $this->assertInstanceOf('WorldCat\Discovery\Intangible', $about);
         }
@@ -101,55 +95,21 @@ class BibTest extends \PHPUnit_Framework_TestCase
             ));
         }
         
-        foreach ($bib->getReviews() as $review){
-            $this->assertInstanceOf('WorldCat\Discovery\Review', $review);
-        }
+        $this->assertInstanceOf('WorldCat\Discovery\PublicationIssue', $bib->getIsPartOf());
+        
+        return $bib->getIsPartOf();
         
     }
     
-    /** Test for awards in the Bib - 41266045 **/
-
-    function testParseBibWithAward()
-    {
-        \VCR\VCR::insertCassette('bibWithAwards');
-        $bib = Bib::find(41266045, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertNotEmpty($bib->getAwards());
-    }
-    
     /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid ID
+     * can parse Publication Issue
+     * @depends testParseResources
      */
-    function testIDNotInteger()
-    {
-        $bib = Bib::find('string', $this->mockAccessToken);
-    }
     
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid OCLC/Auth/AccessToken object
-     */
-    function testAccessTokenNotAccessTokenObject()
+    function testParsePublicationIssue($publicationIssue)
     {
-        $bib = Bib::find(1, 'NotAnAccessToken');
-    }
-    
-    /** Invalid Access Token **/
-    function testFailureInvalidAccessToken()
-    {
-        \VCR\VCR::insertCassette('bibFailureInvalidAccessToken');
-        $bib = Bib::find(41266045, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $bib);
-    }
-    
-    /** Expired Access Token **/
-    function testFailureExpiredAccessToken()
-    {
-        \VCR\VCR::insertCassette('bibFailureExpiredAccessToken');
-        $bib = Bib::find(41266045, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $bib);
+        $this->assertNotEmpty($publicationIssue->getIssueNumber());
+        $this->assertNotEmpty($publicationIssue->getDatePublished());
+        $this->assertInstanceOf('WorldCat\Discovery\Periodical', $bib->getIsPartOf());
     }
 }
