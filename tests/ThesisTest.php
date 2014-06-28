@@ -56,7 +56,6 @@ class ThesisTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getId());
         $this->assertNotEmpty($bib->getName());
         $this->assertNotEmpty($bib->getOCLCNumber());
-        $this->assertNotEmpty($bib->getDescriptions());
         $this->assertNotEmpty($bib->getLanguage());
         $this->assertNotEmpty($bib->getDatePublished());
     }
@@ -77,8 +76,6 @@ class ThesisTest extends \PHPUnit_Framework_TestCase
                 $this->isInstanceOf('WorldCat\Discovery\Organization')
             ));
         }
-        
-        $this->assertInstanceOf('WorldCat\Discovery\Organization', $bib->getPublisher());
 
         $this->assertInstanceOf('EasyRdf_Resource', $bib->getWork());
 

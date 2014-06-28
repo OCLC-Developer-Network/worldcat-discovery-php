@@ -166,7 +166,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('http://www.productontology.org/id/Image', 'WorldCat\Discovery\Image');
         EasyRdf_TypeMapper::set('schema:MusicAlbum', 'WorldCat\Discovery\MusicAlbum');
         EasyRdf_TypeMapper::set('schema:Periodical', 'WorldCat\Discovery\Periodical');
-        EasyRdf_TypeMapper::set('http://www.productontology.org/id/Thesis', 'WorldCat\Discovery\Thesis');
+        EasyRdf_TypeMapper::set('productontology:Thesis', 'WorldCat\Discovery\Thesis');
         EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
         
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
