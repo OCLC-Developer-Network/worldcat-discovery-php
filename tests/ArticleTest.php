@@ -79,20 +79,11 @@ class ArticleTest extends \PHPUnit_Framework_TestCase
                 $this->isInstanceOf('WorldCat\Discovery\Organization')
             ));
         }
-        
-        $this->assertInstanceOf('WorldCat\Discovery\Organization', $bib->getPublisher());
 
         $this->assertInstanceOf('EasyRdf_Resource', $bib->getWork());
 
         foreach ($bib->getAbout() as $about){
             $this->assertInstanceOf('WorldCat\Discovery\Intangible', $about);
-        }
-
-        foreach ($bib->getPlacesOfPublication() as $place){
-            $this->assertThat($place, $this->logicalOr(
-                $this->isInstanceOf('WorldCat\Discovery\Place'),
-                $this->isInstanceOf('WorldCat\Discovery\Country')
-            ));
         }
         
         $this->assertInstanceOf('WorldCat\Discovery\PublicationIssue', $bib->getIsPartOf());
@@ -110,6 +101,11 @@ class ArticleTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertNotEmpty($publicationIssue->getIssueNumber());
         $this->assertNotEmpty($publicationIssue->getDatePublished());
-        $this->assertInstanceOf('WorldCat\Discovery\Periodical', $bib->getIsPartOf());
+        $this->assertInstanceOf('WorldCat\Discovery\PublicationVolume', $publicationIssue->getVolume());
+        $this->assertNotEmpty($publicationIssue->getVolume()->getVolumeNumber());
+        $this->assertInstanceOf('WorldCat\Discovery\Periodical', $publicationIssue->getVolume()->getPeriodical());
+        $this->assertNotEmpty($publicationIssue->getVolume()->getPeriodical()->getName());
+        $this->assertInstanceOf('WorldCat\Discovery\Organization',$publicationIssue->getVolume()->getPeriodical()->getPublisher());
+        $this->assertNotEmpty($publicationIssue->getVolume()->getPeriodical()->getPublisher()->getName());
     }
 }

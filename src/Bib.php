@@ -158,6 +158,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
         EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
+        EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
         EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
         
@@ -175,6 +176,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
         EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
         EasyRdf_TypeMapper::set('schema:ProductModel', 'WorldCat\Discovery\ProductModel');
+        EasyRdf_TypeMapper::set('schema:PublicationVolume', 'WorldCat\Discovery\PublicationVolume');
         EasyRdf_TypeMapper::set('schema:PublicationIssue', 'WorldCat\Discovery\PublicationIssue');
         
         EasyRdf_TypeMapper::set('foaf:Agent', 'WorldCat\Discovery\Organization');

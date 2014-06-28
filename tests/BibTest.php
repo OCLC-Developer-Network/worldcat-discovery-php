@@ -125,7 +125,7 @@ class BibTest extends \PHPUnit_Framework_TestCase
         $bib = Bib::find(427686093, $this->mockAccessToken);
         \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
-        $this->assertNotEmpty($bib->getUrl());
+        $this->assertNotEmpty($bib->getUrls());
     }
     
     /**

@@ -25,33 +25,24 @@ use \EasyRdf_TypeMapper;
  * A class that represents an issue of a Publication in WorldCat
  *
  */
-class PublicationIssue extends EasyRdf_Resource
+class PublicationVolume extends EasyRdf_Resource
 {
     /**
      *
      * @return EasyRDF_Resource
      */
-    function getVolume()
+    function getPeriodical()
     {
-        $volume = $this->getResource('schema:isPartOf');
-        return $volume;
+        $periodical = $this->getResource('schema:isPartOf');
+        return $periodical;
     }
     
     /**
      * @return EasyRDF_Literal
      */
-    function getIssueNumber()
+    function getVolumeNumber()
     {
-        $issueNumber = $this->get('schema:issueNumber');
-        return $issueNumber;
-    }
-    
-    /**
-     * @return EasyRDF_Literal
-     */
-    function getDatePublished()
-    {
-        $datePublished = $this->get('schema:datePublished');
-        return $datePublished;
+        $volumeNumber = $this->get('schema:volumeNumber');
+        return $volumeNumber;
     }
 }
