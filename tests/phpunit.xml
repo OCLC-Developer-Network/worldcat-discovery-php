@@ -12,7 +12,6 @@
     <testsuite name="Bib">
       <file>BibTest.php</file>
       <file>ArticleTest.php</file>
-      <file>EBookTest.php</file>
       <file>ImageTest.php</file>
       <file>MusicAlbumTest.php</file>
       <file>PeriodicalTest.php</file>
