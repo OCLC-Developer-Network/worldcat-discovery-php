@@ -1,0 +1,170 @@
+<?php
+// Copyright 2014 OCLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+namespace WorldCat\Discovery;
+
+use \EasyRdf_Graph;
+use \EasyRdf_Resource;
+use \EasyRdf_Format;
+use \EasyRdf_Namespace;
+use \EasyRdf_TypeMapper;
+
+/**
+ * A class that represents a Bibliographic Resource in WorldCat
+ *
+ */
+class Offer extends EasyRdf_Resource
+{
+    public static $serviceUrl = 'https://beta.worldcat.org/discovery';
+    public static $testServer = FALSE;
+    
+    /**
+     * @param $id string
+     * @param $accessToken OCLC/Auth/AccessToken
+     * @param $options array All the optional parameters are valid
+     * - heldBy comma seperated list which is a limiter to restrict search results to items held by a given institution(s)
+     * - notHeldBy comma seperated list which is imiter to restrict search results to items that are not held by a given institution(s).
+     * - heldByGroup
+     * - heldInCountry
+     * - useFRBRGrouping
+     * - startNum integer offset from the beginning of the search result set. defaults to 0
+     * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
+     * - lat, lon, unit, distance
+     * @return WorldCat\Discovery\Bib or \Guzzle\Http\Exception\BadResponseException
+     */
+    
+    public static function findByOclcNumber($id, $accessToken, $options = null)
+    {
+        
+        if (!is_int($id)){
+            Throw new \BadMethodCallException('You must pass a valid ID');
+        } elseif (!is_a($accessToken, '\OCLC\Auth\AccessToken')) {
+            Throw new \BadMethodCallException('You must pass a valid OCLC/Auth/AccessToken object');
+        }
+        
+        static::requestSetup();
+        
+        $guzzleOptions = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $accessToken->getValue(),
+                'Accept' => 'application/rdf+xml'
+            )
+        );
+        
+        if (static::$testServer){
+            $guzzleOptions['verify'] = false;
+        }
+        
+        $bibURI = Bib::$serviceUrl . '/offer/oclc/' . $id . '?' . http_build_query($options);
+        
+        try {
+            $response = \Guzzle::get($bibURI, $guzzleOptions);
+            $graph = new EasyRdf_Graph();
+            $graph->parse($response->getBody(true));
+            $results = $graph->allOfType('discovery:SearchResults');
+            return $results[0];
+        } catch (\Guzzle\Http\Exception\BadResponseException $error) {
+            return $error;
+        }
+    }
+    
+    function getId()
+    {
+        return $this->getUri();
+    }
+    
+    function getDisplayPosition()
+    {
+        return $this->get('gr:displayPosition')->getValue();
+    }
+    
+    /**
+     *
+     * @return WorldCat\Discovery\SomeProducts
+     */
+    public function getItemOffered()
+    {
+        $itemOffered = $this->get('schema:itemOffered');
+        return $itemOffered;
+    }
+    
+    /**
+     * Get Price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        $price = $this->get('schema:price');
+        return $price->getValue();
+    }
+    
+    /**
+     * Get Seller
+     *
+     * @return WorldCat\Discovery\Library
+     */
+    
+    function getSeller()
+    {
+        $seller = $this->get('schema:seller');
+        return $seller;
+    }
+    
+    private static function requestSetup()
+    {
+        EasyRdf_Namespace::set('schema', 'http://schema.org/');
+        EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
+        EasyRdf_Namespace::set('library', 'http://purl.org/library/');
+        EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
+        EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
+        EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
+        EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
+        EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
+        EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
+        EasyRdf_Namespace::set('dcterms', 'http://purl.org/dc/terms/');
+        EasyRdf_Namespace::set('wcir', 'http://purl.org/oclc/ontology/wcir/');
+        
+        EasyRdf_TypeMapper::set('schema:Article', 'WorldCat\Discovery\Article');
+        EasyRdf_TypeMapper::set('http://www.productontology.org/id/Image', 'WorldCat\Discovery\Image');
+        EasyRdf_TypeMapper::set('schema:MusicAlbum', 'WorldCat\Discovery\MusicAlbum');
+        EasyRdf_TypeMapper::set('schema:Periodical', 'WorldCat\Discovery\Periodical');
+        EasyRdf_TypeMapper::set('productontology:Thesis', 'WorldCat\Discovery\Thesis');
+        EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
+        
+        EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
+        EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');
+        EasyRdf_TypeMapper::set('schema:Intangible', 'WorldCat\Discovery\Intangible');
+        EasyRdf_TypeMapper::set('schema:Organization', 'WorldCat\Discovery\Organization');
+        EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
+        EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
+        EasyRdf_TypeMapper::set('schema:ProductModel', 'WorldCat\Discovery\ProductModel');
+        EasyRdf_TypeMapper::set('schema:PublicationVolume', 'WorldCat\Discovery\PublicationVolume');
+        EasyRdf_TypeMapper::set('schema:PublicationIssue', 'WorldCat\Discovery\PublicationIssue');
+        
+        EasyRdf_TypeMapper::set('foaf:Agent', 'WorldCat\Discovery\Organization');
+        EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\OfferSet');
+        
+        EasyRdf_TypeMapper::set('schema:Offer', 'WorldCat\Discovery\Offer');
+        EasyRdf_TypeMapper::set('schema:SomeProducts', 'WorldCat\Discovery\SomeProducts');
+        EasyRdf_TypeMapper::set('dcterms:Collection', 'WorldCat\Discovery\Collection');
+        EasyRdf_TypeMapper::set('schema:Library', 'WorldCat\Discovery\Library');
+        
+        if (!class_exists('Guzzle')) {
+            \Guzzle\Http\StaticClient::mount();
+        }
+    }
+    
+}

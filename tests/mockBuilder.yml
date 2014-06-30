@@ -53,6 +53,51 @@ bibSearch:
     bibFailureDatabaseNotEnabled:
         query: gdp policy
         dbIds: 2663
+offers:
+    offerSuccess:
+        id: 30780581
+        options:
+            heldBy: GZM,GZN,GZO
+    offerHeldByGroupSuccess:
+        id: 30780581
+        options:
+            heldByGroup: OHLL
+    offerHeldInCountrySuccess:
+        id: 30780581
+        options:
+            heldInCountry: CA
+    offerUseFRBRGroupingSuccess:
+        id: 30780581
+        options:
+            FRBRGrouping: 'false'
+    offerStartPageSuccess:
+        id: 30780581
+        options:
+            heldInCountry: CA
+            startNum: 2
+    offerItemsPerPageSuccess:
+        id: 30780581
+        options:
+            heldInCountry: CA
+            itemsPerPage: 2
+    offerGeoCoordinatesSuccess:
+        id: 30780581
+        options:
+            heldBy: GZM,GZN,GZO
+            lat: 45.032916
+            lon: -84.668979
+            unit: M
+            distance: 60
+    offerFailureInvalidAccessToken:
+        id: 30780581
+        options:
+            heldBy: GZM,GZN,GZO
+        accessToken: tk_09876
+    offerFailureExpiredAccessToken:
+        id: 30780581
+        options:
+            heldBy: GZM,GZN,GZO
+        accessToken: tk_o8NbDRTz855q3fUmQGNqf7jHFTCaPtJj2g1A         
 databaseFind:
     databaseSuccess:
         id: 638

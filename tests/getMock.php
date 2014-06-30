@@ -6,6 +6,7 @@ use Symfony\Component\Yaml\Yaml;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
+use WorldCat\Discovery\Offer;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -117,6 +118,33 @@ if ($argv[1] == 'all'  || $argv[1] == 'database'){
     \VCR\VCR::insertCassette($mockBuilder['databaseSearch']);
     $database = Database::getList($retrievedToken);
     \VCR\VCR::eject();
+}
+
+if ($argv[1] == 'all'  || $argv[1] == 'offers'){
+    //offer mocks
+    foreach ($mockBuilder['offers'] as $mock => $mockValues) {
+        // delete files
+        if (file_exists($mockFolder . $mock)){
+            unlink($mockFolder . $mock);
+        }
+        \VCR\VCR::insertCassette($mock);
+        printf("Mock created for '%s'.\n", $mock);
+        
+        if (isset($mockValues['options'])){
+            $options = $mockValues['options'];
+        } else {
+            $options = array();
+        }
+        
+        if (isset($mockValues['accessToken'])){
+            $accessToken = new AccessToken('client_credentials', array('accessTokenString' => $mockValues['accessToken'], 'expiresAt' => '2018-08-30 18:25:29Z'));
+        } else {
+            $accessToken = $retrievedToken;
+        }
+        
+        $bib = Offer::findByOclcNumber($mockValues['id'], $accessToken, $options);
+        \VCR\VCR::eject();
+    }
 }
 
 // delete the accessToken file

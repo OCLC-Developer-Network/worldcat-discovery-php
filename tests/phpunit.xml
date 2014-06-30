@@ -23,12 +23,16 @@
       <file>SearchResultsWithFacetsTest.php</file>
       <file>DatabaseSearchResultsTest.php</file>
     </testsuite>
+    <testsuite name="Offers">
+      <file>OfferTest.php</file>
+    </testsuite>
     <testsuite name="Database">
         <file>DatabaseTest.php</file>
     </testsuite>
     <testsuite name="Entities">
     <file>PersonTest.php</file>
     <file>OrganizationTest.php</file>
+    <file>AuthorityTest.php</file>
     </testsuite>
   </testsuites>
   </phpunit>

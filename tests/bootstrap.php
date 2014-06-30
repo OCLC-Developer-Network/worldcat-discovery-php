@@ -21,11 +21,16 @@ global $environment, $authorizationServer, $serviceURL;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 use WorldCat\Discovery\Database;
+use WorldCat\Discovery\Offer;
 
 if (isset($environment)){
     AccessToken::$authorizationServer = $authorizationServer;
     Bib::$serviceUrl = $serviceURL;
+    Bib::$testServer = TRUE;
     Database::$serviceUrl = $serviceURL;
+    Database::$testServer = TRUE;
+    Offer::$serviceUrl = $serviceURL;
+    Offer::$testServer = TRUE;
     $cassettePath = 'mocks/' . $environment;
 } else {
     $cassettePath = 'mocks';
