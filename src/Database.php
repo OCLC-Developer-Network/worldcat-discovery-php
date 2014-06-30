@@ -28,6 +28,7 @@ use \EasyRdf_TypeMapper;
 class Database
 {
     public static $serviceUrl = 'https://beta.worldcat.org/discovery';
+    public static $testServer = FALSE;
     private $database;
     
     public static function find($id, $accessToken, $options = null)

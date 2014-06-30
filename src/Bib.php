@@ -189,7 +189,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:PublicationIssue', 'WorldCat\Discovery\PublicationIssue');
         
         EasyRdf_TypeMapper::set('foaf:Agent', 'WorldCat\Discovery\Organization');
-        EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\SearchResults');
+        EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\BibSearchResults');
         EasyRdf_TypeMapper::set('discovery:FacetItem', 'WorldCat\Discovery\Facet');
         EasyRdf_TypeMapper::set('discovery:FacetItemValue', 'WorldCat\Discovery\FacetValue');
         
