@@ -16,6 +16,8 @@
       <file>MusicAlbumTest.php</file>
       <file>PeriodicalTest.php</file>
       <file>ThesisTest.php</file>
+    </testsuite>
+    <testsuite name="BibSearch">
       <file>SearchResultsPaging_ItemsPerPageTest.php</file>
       <file>SearchResultsTest.php</file>
       <file>SearchResultsWithFacetsTest.php</file>

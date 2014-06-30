@@ -50,10 +50,10 @@ class Bib extends EasyRdf_Resource
             EasyRdf_TypeMapper::set($type, 'WorldCat\Discovery\CreativeWork');
             $creativeWorkGraph = new EasyRdf_Graph();
             $creativeWorkGraph->parse($this->graph->serialise('rdfxml'));
-            $this->creativeWork = $creativeWorkGraph->resource($this->creativeWork->getUri());
+            return $creativeWorkGraph->resource($this->creativeWork->getUri());
+        } else {
+            return $this->creativeWork;
         }
-        
-        return $this->creativeWork;
     }
     
     

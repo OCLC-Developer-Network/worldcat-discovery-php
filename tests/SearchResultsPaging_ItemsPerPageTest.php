@@ -53,7 +53,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
         $results = $search->getSearchResults();
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertNotInstanceOf('EasyRdf_Resource', $searchResult);
+            $this->assertFalse(get_class($searchResult) == 'EasyRdf_Resource');
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
@@ -75,7 +75,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
         $results = $search->getSearchResults();
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
-            $this->assertNotInstanceOf('EasyRdf_Resource', $searchResult);
+            $this->assertFalse(get_class($searchResult) == 'EasyRdf_Resource');
             $i++;
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
