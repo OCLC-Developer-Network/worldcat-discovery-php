@@ -45,7 +45,7 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
         \VCR\VCR::insertCassette('bibSearchFacets');
         $search = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets));
         \VCR\VCR::eject();
-        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());

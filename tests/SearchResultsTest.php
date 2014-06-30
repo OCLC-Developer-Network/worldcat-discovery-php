@@ -45,7 +45,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         \VCR\VCR::insertCassette('bibSearchByOclcNumber');
         $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
-        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
             $this->assertFalse(get_class($searchResult) == 'EasyRdf_Resource');
@@ -62,7 +62,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $search = Bib::Search($query, $this->mockAccessToken);
         \VCR\VCR::eject();
         
-        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());

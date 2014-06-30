@@ -45,7 +45,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
         $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10));
         \VCR\VCR::eject();
         
-        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('10', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());
@@ -67,7 +67,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
         $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5));
         \VCR\VCR::eject();
         
-        $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
+        $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('5', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());

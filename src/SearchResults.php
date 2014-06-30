@@ -72,6 +72,17 @@ class SearchResults extends EasyRdf_Resource
         return $sortedSearchResults;
     }
     
+    function getOffers(){
+        
+        $offers = $this->graph->allOfType('schema:Offer');
+        $sortedOffers = array();
+        foreach ($offers as $offer){
+            $sortedOffers[(int)$offer->getDisplayPosition()] = $offer;
+        }
+        ksort($sortedOffers);
+        return $sortedOffers;
+    }
+    
     /**
      * Get an array of Facets (WorldCat/Discovery/Facet)
      * 
