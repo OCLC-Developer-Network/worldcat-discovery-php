@@ -28,6 +28,7 @@ use \EasyRdf_TypeMapper;
 class Bib extends EasyRdf_Resource
 {
     public static $serviceUrl = 'https://beta.worldcat.org/discovery';
+    public static $testServer = FALSE;
     private $bib; 
    
     public function __construct($uri, $graph = null){
@@ -80,6 +81,10 @@ class Bib extends EasyRdf_Resource
                 'Accept' => 'application/rdf+xml'
             )
         );
+        
+        if (static::$testServer){
+            $guzzleOptions['verify'] = false;
+        }
         
         $bibURI = Bib::$serviceUrl . '/bib/data/' . $id;
         
@@ -134,6 +139,10 @@ class Bib extends EasyRdf_Resource
                 'Accept' => 'application/rdf+xml'
             )
         );
+        
+        if (static::$testServer){
+            $guzzleOptions['verify'] = false;
+        }
         
         $bibSearchURI = Bib::$serviceUrl . '/bib/search?' . static::buildParameters($query, $options);
         
