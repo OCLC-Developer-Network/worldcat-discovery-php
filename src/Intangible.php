@@ -24,10 +24,18 @@ use \EasyRdf_Format;
  */
 class Intangible extends Thing
 {
+    function __construct($uri, $graph = null){
+        parent::__construct($uri, $graph);
+        if (strpos($this->getResource('rdfs:seeAlso'), 'id.loc.gov')){
+            EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
+            $this->getResource('schema:sameAs')->load();
+        }
+    }
+    
     /**
      * Get Name
      *
-     * @return string
+     * @return EasyRdf_Literal
      */
     function getName()
     {
@@ -42,8 +50,25 @@ class Intangible extends Thing
         return $name;
     }
     
+    /**
+     * Get SameAs
+     *
+     * @return EasyRdf_Resource
+     */
+    
     function getSameAs(){
         $sameAs = $this->getResource('schema:sameAs');
         return $sameAs;
+    }
+    
+    /**
+     * Get See Also
+     *
+     * @return EasyRdf_Resource
+     */
+    
+    function getSeeAlso(){
+        $seeAlso = $this->getResource('rdfs:seeAlso');
+        return $seeAlso;
     }
 }
