@@ -127,11 +127,11 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      */
     function testFindOfferByOclcNumberItemStartPage(){
         \VCR\VCR::insertCassette('offerStartPageSuccess');
-        $options = array('heldInCountry' => 'CA', 'startNum' => '11');
+        $options = array('heldInCountry' => 'CA', 'startNum' => '10');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
-        //$this->assertEquals('11', $offerSet->getStartIndex()); //need new mock
+        //$this->assertEquals('10', $offerSet->getStartIndex()); //need new mock
         $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
         $this->assertEquals('10', count($offerSet->getOffers()));

@@ -31,7 +31,11 @@ $mockBuilder = Yaml::parse(__DIR__ . '/mockBuilder.yml');
         $environment = $argv[2];
         AccessToken::$authorizationServer = $config[$environment]['authorizationServiceUrl'];
         Bib::$serviceUrl = $config[$environment]['discoveryUrl'];
+        Bib::$testServer = TRUE;
         Database::$serviceUrl = $config[$environment]['discoveryUrl'];
+        Database::$testServer = TRUE;
+        Offer::$serviceUrl = $config[$environment]['discoveryUrl'];
+        Offer::$testServer = TRUE;
     } else {
         $environment = 'prod';
     }

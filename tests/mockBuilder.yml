@@ -69,12 +69,12 @@ offers:
     offerUseFRBRGroupingSuccess:
         id: 30780581
         options:
-            FRBRGrouping: 'false'
+            useFRBRGrouping: 'false'
     offerStartPageSuccess:
         id: 30780581
         options:
             heldInCountry: CA
-            startNum: 2
+            startNum: 10
     offerItemsPerPageSuccess:
         id: 30780581
         options:
