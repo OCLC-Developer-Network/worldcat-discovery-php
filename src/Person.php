@@ -48,12 +48,29 @@ class Person extends Thing
         }
     }
     
+    function getGivenName(){
+        return $this->getLiteral('schema:givenName');
+    }
+    
+    function getFamilyName(){
+        return $this->getLiteral('schema:familyName');
+    }
+    
     function getBirthDate(){
-        return $this->getLiteral('rdaGr2:dateOfBirth');
+        if ($this->getLiteral('schema:birthDate')){
+            return $this->getLiteral('schema:birthDate');
+        } else {
+            return $this->getLiteral('rdaGr2:dateOfBirth');
+        }
     }
     
     function getDeathDate(){
-        return $this->getLiteral('rdaGr2:dateOfDeath');
+        
+        if ($this->getLiteral('schema:deathDate')){
+            return $this->getLiteral('schema:deathDate');
+        } else {
+            return $this->getLiteral('rdaGr2:dateOfDeath');
+        }
     }
     
     function getSameAsProperties(){
