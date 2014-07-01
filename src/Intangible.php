@@ -23,15 +23,7 @@ use \EasyRdf_Format;
  *
  */
 class Intangible extends Thing
-{
-    function __construct($uri, $graph = null){
-        parent::__construct($uri, $graph);
-        if (strpos($this->getResource('rdfs:seeAlso'), 'id.loc.gov')){
-            EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
-            $this->getResource('schema:sameAs')->load();
-        }
-    }
-    
+{   
     /**
      * Get Name
      *
@@ -56,7 +48,11 @@ class Intangible extends Thing
      * @return EasyRdf_Resource
      */
     
-    function getSameAs(){
+    function getSameAs($loadResource = FALSE){
+        if (strpos($this->getResource('schema:sameAs'), 'id.loc.gov')  && $loadResource){
+            EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
+            $this->getResource('schema:sameAs')->load();
+        }
         $sameAs = $this->getResource('schema:sameAs');
         return $sameAs;
     }
@@ -67,7 +63,11 @@ class Intangible extends Thing
      * @return EasyRdf_Resource
      */
     
-    function getSeeAlso(){
+    function getSeeAlso($loadResource = FALSE){
+        if (strpos($this->getResource('rdfs:seeAlso'), 'id.loc.gov') && $loadResource){
+            EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
+            $this->getResource('rdfs:seeAlso')->load();
+        }
         $seeAlso = $this->getResource('rdfs:seeAlso');
         return $seeAlso;
     }
