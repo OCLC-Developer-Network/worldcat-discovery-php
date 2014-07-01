@@ -10,6 +10,10 @@ use WorldCat\Discovery\Offer;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+if (!class_exists('Guzzle')) {
+    \Guzzle\Http\StaticClient::mount();
+}
+
 \VCR\VCR::turnOn();
 if (isset($argv[2])){
     $cassettePath = 'mocks/' . $argv[2];
@@ -149,6 +153,22 @@ if ($argv[1] == 'all'  || $argv[1] == 'offers'){
         $bib = Offer::findByOclcNumber($mockValues['id'], $accessToken, $options);
         \VCR\VCR::eject();
     }
+}
+
+if ($argv[1] == 'all'  || $argv[1] == 'authority'){
+    //authority mocks
+    $mock = 'authoritySuccess';
+    // delete files
+    if (file_exists($mockFolder . $mock)){
+        unlink($mockFolder . $mock);
+    }
+    \VCR\VCR::insertCassette($mock);
+   foreach ($mockBuilder['authority']['authoritySuccess'] as $mock => $mockValue) {
+        printf("Mock created for '%s'.\n", $mock);
+        $authority = Authority::findAuthority($mockValue);
+    }
+    \VCR\VCR::eject();
+    
 }
 
 // delete the accessToken file

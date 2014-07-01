@@ -103,4 +103,10 @@ databaseFind:
         id: 638
 databaseSearch:
     databaseListSuccess
+authority:
+    authoritySuccess:
+        compound: http://id.loc.gov/authorities/subjects/sh2008124372.rdf
+        topic: http://id.loc.gov/authorities/subjects/sh85149296.rdf
+        geographic: http://id.loc.gov/authorities/names/n82068148.rdf
+            
     
