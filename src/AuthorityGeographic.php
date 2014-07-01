@@ -36,15 +36,4 @@ class AuthorityGeographic extends Authority
         }
         return $variants;
     }
-    
-    public function load($format = null)
-    {
-        $formats = EasyRdf_Format::getNames();
-        foreach ($formats as $format){
-            if ($format != 'rdfxml'){
-                EasyRdf_Format::unregister($format);
-            }
-        }
-        parent::load($format = null);
-    }
 }
