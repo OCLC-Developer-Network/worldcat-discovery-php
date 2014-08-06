@@ -10,29 +10,29 @@
          testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">     
 	<testsuites>
     <testsuite name="Bib">
-      <file>BibTest.php</file>
-      <file>ArticleTest.php</file>
-      <file>ImageTest.php</file>
-      <file>MusicAlbumTest.php</file>
-      <file>PeriodicalTest.php</file>
-      <file>ThesisTest.php</file>
+      <file>tests/BibTest.php</file>
+      <file>tests/ArticleTest.php</file>
+      <file>tests/ImageTest.php</file>
+      <file>tests/MusicAlbumTest.php</file>
+      <file>tests/PeriodicalTest.php</file>
+      <file>tests/ThesisTest.php</file>
     </testsuite>
     <testsuite name="BibSearch">
-      <file>SearchResultsPaging_ItemsPerPageTest.php</file>
-      <file>SearchResultsTest.php</file>
-      <file>SearchResultsWithFacetsTest.php</file>
-      <file>DatabaseSearchResultsTest.php</file>
+      <file>tests/SearchResultsPaging_ItemsPerPageTest.php</file>
+      <file>tests/SearchResultsTest.php</file>
+      <file>tests/SearchResultsWithFacetsTest.php</file>
+      <file>tests/DatabaseSearchResultsTest.php</file>
     </testsuite>
     <testsuite name="Offers">
-      <file>OfferTest.php</file>
+      <file>tests/OfferTest.php</file>
     </testsuite>
     <testsuite name="Database">
-        <file>DatabaseTest.php</file>
+        <file>tests/DatabaseTest.php</file>
     </testsuite>
     <testsuite name="Entities">
-    <file>PersonTest.php</file>
-    <file>OrganizationTest.php</file>
-    <file>AuthorityTest.php</file>
+    <file>tests/PersonTest.php</file>
+    <file>tests/OrganizationTest.php</file>
+    <file>tests/AuthorityTest.php</file>
     </testsuite>
   </testsuites>
   </phpunit>
