@@ -24,10 +24,59 @@ use \EasyRdf_Graph;
  *
  */
 class Person extends Thing
-{   
-    function __construct($uri, $graph = null){
-        parent::__construct($uri, $graph);
+{       
+    function getGivenName(){
+        return $this->getLiteral('schema:givenName');
+    }
+    
+    function getFamilyName(){
+        return $this->getLiteral('schema:familyName');
+    }
+    
+    function getBirthDate(){
+        if ($this->getLiteral('schema:birthDate')){
+            return $this->getLiteral('schema:birthDate');
+        } else {
+            if (strpos($this->getURI(), 'viaf')){
+                self::loadVIAF();
+            }
+            return $this->getLiteral('rdaGr2:dateOfBirth');
+        }
+    }
+    
+    function getDeathDate(){
+        
+        if ($this->getLiteral('schema:deathDate')){
+            return $this->getLiteral('schema:deathDate');
+        } else {
+            if (strpos($this->getURI(), 'viaf')){
+                self::loadVIAF();
+            }
+            return $this->getLiteral('rdaGr2:dateOfDeath');
+        }
+    }
+    
+    function getSameAsProperties(){
+        return $this->all('owl:sameAs');
+    }
+    
+    function getDbpediaUri(){
         if (strpos($this->getURI(), 'viaf')){
+            self::loadVIAF();
+        }
+        $sameAsProperties = self::getSameAsProperties();
+        $dbpediaPerson = array_filter($sameAsProperties, function($sameAs)
+        {
+            return(strpos($sameAs->getURI(), 'dbpedia'));
+        }); 
+        $dbpediaPerson = array_shift($dbpediaPerson);
+        if (isset($dbpediaPerson)){
+            return $dbpediaPerson->getURI();
+        }
+    }
+    
+    private function loadVIAF() {
+        if (!in_array('http://rdvocab.info/uri/schema/FRBRentitiesRDA/Person', $this->types())){
             // build a new graph from VIAF
             $formats = EasyRdf_Format::getNames();
             foreach ($formats as $format){
@@ -45,47 +94,6 @@ class Person extends Thing
                     $this->add($property, $value);
                 }
             }
-        }
-    }
-    
-    function getGivenName(){
-        return $this->getLiteral('schema:givenName');
-    }
-    
-    function getFamilyName(){
-        return $this->getLiteral('schema:familyName');
-    }
-    
-    function getBirthDate(){
-        if ($this->getLiteral('schema:birthDate')){
-            return $this->getLiteral('schema:birthDate');
-        } else {
-            return $this->getLiteral('rdaGr2:dateOfBirth');
-        }
-    }
-    
-    function getDeathDate(){
-        
-        if ($this->getLiteral('schema:deathDate')){
-            return $this->getLiteral('schema:deathDate');
-        } else {
-            return $this->getLiteral('rdaGr2:dateOfDeath');
-        }
-    }
-    
-    function getSameAsProperties(){
-        return $this->all('owl:sameAs');
-    }
-    
-    function getDbpediaUri(){
-        $sameAsProperties = self::getSameAsProperties();
-        $dbpediaPerson = array_filter($sameAsProperties, function($sameAs)
-        {
-            return(strpos($sameAs->getURI(), 'dbpedia'));
-        }); 
-        $dbpediaPerson = array_shift($dbpediaPerson);
-        if (isset($dbpediaPerson)){
-            return $dbpediaPerson->getURI();
         }
     }
     
