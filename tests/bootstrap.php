@@ -31,9 +31,9 @@ if (isset($environment)){
     Database::$testServer = TRUE;
     Offer::$serviceUrl = $serviceURL;
     Offer::$testServer = TRUE;
-    $cassettePath = 'mocks/' . $environment;
+    $cassettePath = 'tests/mocks/' . $environment;
 } else {
-    $cassettePath = 'mocks';
+    $cassettePath = 'tests/mocks';
 }
 
 \VCR\VCR::turnOn();
