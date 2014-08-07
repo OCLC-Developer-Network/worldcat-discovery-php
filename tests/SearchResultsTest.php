@@ -43,7 +43,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     function testSearchByOCLCNumber(){
         $query = 'no:7977212';
         \VCR\VCR::insertCassette('bibSearchByOclcNumber');
-        $search = Bib::Search($query, $this->mockAccessToken);
+        $search = Bib::Search($query, $this->mockAccessToken, array('dbIds' => 638));
         \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $i = $search->getStartIndex();
@@ -59,7 +59,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     function testSearchByKeyword(){
         $query = 'cats';
         \VCR\VCR::insertCassette('bibSearchSuccessKeyword');
-        $search = Bib::Search($query, $this->mockAccessToken);
+        $search = Bib::Search($query, $this->mockAccessToken, array('dbIds' => 638));
         \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);

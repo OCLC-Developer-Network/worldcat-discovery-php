@@ -28,28 +28,35 @@ bibFind:
 bibSearch:
     bibSearchByOclcNumber:
         query: no:7977212
+        dbIds: 638
     bibSearchFacets:
         query: cats
         facetFields:
             author: 10
             inLanguage: 10
+        dbIds: 638
     bibSearchItemsPerPage:
         query: cats
         itemsPerPage: 5
+        dbIds: 638
     bibSearchStartNumber10:
         query: cats
         startNum: 10
+        dbIds: 638
     bibSearchSuccessKeyword:
         query: cats
+        dbIds: 638
     bibSearchDatabaseSuccessKeyword:
         query: gdp policy
         dbIds: 2662
     bibFailureSearchNoQuery:
         query: ' '
+        dbIds: 638
     bibFailureBadFacetCount:
         query: cats
         facetFields:
             author: 5
+        dbIds: 638            
     bibFailureDatabaseNotEnabled:
         query: gdp policy
         dbIds: 2663
