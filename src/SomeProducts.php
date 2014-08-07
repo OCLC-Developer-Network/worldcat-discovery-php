@@ -33,7 +33,7 @@ class SomeProducts extends EasyRdf_Resource
      */
     function getCollection()
     {   
-        $collection = $this->get('dcterms:isPartOf');
+        $collection = $this->get('schema:isPartOf');
         return $collection;
     }
     
