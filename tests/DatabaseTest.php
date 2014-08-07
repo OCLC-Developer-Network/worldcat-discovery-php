@@ -46,7 +46,10 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
         \VCR\VCR::insertCassette('databaseSuccess');
         $database = Database::find(638, $this->mockAccessToken);
         \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Message\Response', $database);
+        $this->assertInstanceOf('WorldCat\Discovery\Database', $database);
+        $this->assertNotEmpty($database->getId());
+        $this->assertNotEmpty($database->getName());
+        $this->assertNotEmpty($database->getOpenAccess());
     }
     
     /**
@@ -56,7 +59,10 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
         \VCR\VCR::insertCassette('databaseListSuccess');
         $databaseList = Database::getList($this->mockAccessToken);
         \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Message\Response', $databaseList);
+        $this->assertNotEmpty($databaseList);
+        foreach ($databaseList as $database){
+            $this->assertInstanceOf('WorldCat\Discovery\Database', $database);
+        }
     }
     
     /**

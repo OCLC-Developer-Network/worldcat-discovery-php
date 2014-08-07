@@ -25,11 +25,38 @@ use \EasyRdf_TypeMapper;
  * A class that represents a Bibliographic Resource in WorldCat
  *
  */
-class Database
+class Database extends EasyRdf_Resource
 {
     public static $serviceUrl = 'https://beta.worldcat.org/discovery';
     public static $testServer = FALSE;
     private $database;
+    
+    function getId()
+    {
+        return $this->getUri();
+    }
+    
+    /**
+     * Get Name
+     *
+     * @return EasyRDF_Literal
+     */
+    function getName()
+    {
+        $name = $this->get('schema:name');
+        return $name;
+    }
+    
+    /**
+     * Get Open Access
+     *
+     * @return EasyRDF_Literal
+     */
+    function getOpenAccess()
+    {
+        $openAccess = $this->get('discovery:openAccess');
+        return $openAccess;
+    }
     
     public static function find($id, $accessToken, $options = null)
     {
@@ -45,7 +72,7 @@ class Database
         $guzzleOptions = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $accessToken->getValue(),
-                'Accept' => 'application/xml'
+                'Accept' => 'application/rdf+xml'
             )
         );
         
@@ -57,7 +84,11 @@ class Database
         
         try {
             $response = \Guzzle::get($databaseURI, $guzzleOptions);
-            return $response;
+            $graph = new EasyRdf_Graph();
+            $graph->parse($response->getBody(true));
+            //$database = $graph->resource($databaseURI);
+            $database = $graph->allOfType('dcmi:Dataset');
+            return $database[0];
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
             return $error;
         }
@@ -74,7 +105,7 @@ class Database
         $guzzleOptions = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $accessToken->getValue(),
-                'Accept' => 'application/xml'
+                'Accept' => 'application/rdf+xml'
             )
         );
         
@@ -86,14 +117,25 @@ class Database
         
         try {
             $listResponse = \Guzzle::get($databaseListURI, $guzzleOptions);
-            return $listResponse;
+            $graph = new EasyRdf_Graph();
+            $graph->parse($listResponse->getBody(true));
+            $list = $graph->allOfType('dcmi:Dataset');
+            return $list;
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
             return $error;
         }
     }
     
     private static function requestSetup()
-    {       
+    {   
+        EasyRdf_Namespace::set('schema', 'http://schema.org/');
+        EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
+        EasyRdf_Namespace::set('response', 'http://worldcat.org/xmlschemas/response/');
+        EasyRdf_Namespace::set('dcmi', 'http://purl.org/dc/dcmitype/');
+        
+        EasyRdf_TypeMapper::set('dcmi:Dataset', 'WorldCat\Discovery\Database');
+        EasyRdf_TypeMapper::set('response:ClientRequestError', 'WorldCat\Discovery\Error');
+        
         if (!class_exists('Guzzle')) {
             \Guzzle\Http\StaticClient::mount();
         }
