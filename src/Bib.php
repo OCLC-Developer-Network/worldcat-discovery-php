@@ -95,7 +95,7 @@ class Bib extends EasyRdf_Resource
             $bib = $graph->resource('http://www.worldcat.org/title/-/oclc/' . $id);
             return $bib->getCreativeWork();
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            return $error;
+            return Error::parseError($error);
         }
     }
     
@@ -154,7 +154,7 @@ class Bib extends EasyRdf_Resource
             $search = $search[0];
             return $search;
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            return $error;
+            return Error::parseError($error);
         }
     }
     
@@ -162,6 +162,7 @@ class Bib extends EasyRdf_Resource
     {
         EasyRdf_Namespace::set('schema', 'http://schema.org/');
         EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
+        EasyRdf_Namespace::set('response', 'http://worldcat.org/xmlschemas/response/');
         EasyRdf_Namespace::set('library', 'http://purl.org/library/');
         EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
         EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
@@ -192,6 +193,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\BibSearchResults');
         EasyRdf_TypeMapper::set('discovery:FacetItem', 'WorldCat\Discovery\Facet');
         EasyRdf_TypeMapper::set('discovery:FacetItemValue', 'WorldCat\Discovery\FacetValue');
+        EasyRdf_TypeMapper::set('response:ClientRequestError', 'WorldCat\Discovery\Error');
         
         if (!class_exists('Guzzle')) {
             \Guzzle\Http\StaticClient::mount();

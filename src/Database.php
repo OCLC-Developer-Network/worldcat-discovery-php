@@ -90,7 +90,7 @@ class Database extends EasyRdf_Resource
             $database = $graph->allOfType('dcmi:Dataset');
             return $database[0];
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            return $error;
+            return Error::parseError($error);
         }
     }
     
@@ -122,7 +122,7 @@ class Database extends EasyRdf_Resource
             $list = $graph->allOfType('dcmi:Dataset');
             return $list;
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            return $error;
+            return Error::parseError($error);
         }
     }
     
