@@ -49,6 +49,10 @@ class Database
             )
         );
         
+        if (static::$testServer){
+            $guzzleOptions['verify'] = false;
+        }
+        
         $databaseURI = static::$serviceUrl . '/database/data/' . $id;
         
         try {
@@ -73,6 +77,10 @@ class Database
                 'Accept' => 'application/xml'
             )
         );
+        
+        if (static::$testServer){
+            $guzzleOptions['verify'] = false;
+        }
         
         $databaseListURI = static::$serviceUrl . '/database/list';
         
