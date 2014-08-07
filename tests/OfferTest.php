@@ -64,17 +64,29 @@ class OfferTest extends \PHPUnit_Framework_TestCase
             $this->assertInstanceOf('WorldCat\Discovery\SomeProducts', $offer->getItemOffered());
             $this->assertNotNull($offer->getPrice());
             $this->assertInstanceOf('WorldCat\Discovery\Library', $offer->getSeller());
-            
-            $this->assertInstanceOf('WorldCat\Discovery\Collection', $offer->getItemOffered()->getCollection());
             $this->assertFalse(get_class($offer->getItemOffered()->getCreativeWork()) == 'EasyRdf_Resource');
-            
-            $this->assertNotEmpty($offer->getItemOffered()->getCollection()->getOclcSymbol());
-            $this->assertInstanceOf('WorldCat\Discovery\Library', $offer->getItemOffered()->getCollection()->getManagedBy());
-            
-            $this->assertNotEmpty($offer->getItemOffered()->getCollection()->getManagedBy()->getName());
+            $this->assertInstanceOf('WorldCat\Discovery\Collection', $offer->getItemOffered()->getCollection());
+        
         }
+        return $offers[1]->getItemOffered()->getCollection();
     }
     
+    /**
+     * @depends testParseOffers
+     */
+    function testParseCollection($collection){
+        $this->assertNotEmpty($collection->getOclcSymbol());
+        $this->assertInstanceOf('WorldCat\Discovery\Library', $collection->getManagedBy());
+        
+        return $collection->getManagedBy();
+    }
+    
+    /**
+     * @depends testParseCollection
+     */
+    function testParseLibrary($library){
+        $this->assertNotEmpty($library->getName());
+    }
     
     /**
      * Find Offers by OCLC Number heldByGroup
