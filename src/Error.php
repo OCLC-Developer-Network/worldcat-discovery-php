@@ -63,16 +63,23 @@ class Error extends EasyRdf_Resource
     static function parseError($error){
         EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
         EasyRdf_Namespace::set('response', 'http://worldcat.org/xmlschemas/response/');
+        $formats = EasyRdf_Format::getNames();
+        foreach ($formats as $format){
+            if ($format != 'rdfxml'){
+                EasyRdf_Format::unregister($format);
+            }
+        }
+        
         $graph = new EasyRdf_Graph();
-        if ($error->getResponse()->getHeader('Content-Type') == 'application/rdf+xml; charset=UTF-8'){
+        try {
             $graph->parse($error->getResponse()->getBody(true));
             $errors = $graph->allOfType('response:ClientRequestError');
             return $errors[0];
-        } else {
+        } catch (\EasyRdf_Exception $e) {
             $clientError = $graph->newBNode('response:ClientRequestError');
             $clientError->set('discovery:errorType', 'http');
             $clientError->set('discovery:errorCode', $error->getResponse()->getStatusCode());
-            $clientError->set('discovery:errorMessage', $error->getResponse()->getMessage());
+            $clientError->set('discovery:errorMessage', $error->getResponse()->getReasonPhrase());
             $errors = $graph->allOfType('response:ClientRequestError');
             return $errors[0];
         }

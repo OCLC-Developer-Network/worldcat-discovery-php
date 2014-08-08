@@ -145,22 +145,4 @@ class BibTest extends \PHPUnit_Framework_TestCase
     {
         $bib = Bib::find(1, 'NotAnAccessToken');
     }
-    
-    /** Invalid Access Token **/
-    function testFailureInvalidAccessToken()
-    {
-        \VCR\VCR::insertCassette('bibFailureInvalidAccessToken');
-        $bib = Bib::find(41266045, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $bib);
-    }
-    
-    /** Expired Access Token **/
-    function testFailureExpiredAccessToken()
-    {
-        \VCR\VCR::insertCassette('bibFailureExpiredAccessToken');
-        $bib = Bib::find(41266045, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $bib);
-    }
 }

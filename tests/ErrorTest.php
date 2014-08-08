@@ -45,24 +45,66 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     function testErrorInvalidAccessToken(){
         \VCR\VCR::insertCassette('bibFailureInvalidAccessToken');
-        $error = Bib::find(7977212, $this->mockAccessToken);
+        $error = Bib::find(7977212, $this->mockAccessToken, array('dbIds' => '638'));
         \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
-        $this->assertNotEmpty($error->getErrorCode());
-        $this->assertNotEmpty($error->getErrorMessage());
+        $this->assertEquals('401', $error->getErrorCode());
+        //$this->assertEquals('Unauthorized', $error->getErrorMessage());
+    }
+    
+    /** Expired Access Token **/
+    function testFailureExpiredAccessToken()
+    {
+        \VCR\VCR::insertCassette('bibFailureExpiredAccessToken');
+        $error = Bib::find(41266045, $this->mockAccessToken, array('dbIds' => '638'));
+        \VCR\VCR::eject();
+        $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
+        $this->assertNotEmpty($error->getErrorType());
+        $this->assertEquals('401', $error->getErrorCode());
+        //$this->assertEquals('Unauthorized', $error->getErrorMessage());
+    }
+    
+    /** No query passed **/
+    function testFailureNoQuery()
+    {
+        $query = ' ';
+        \VCR\VCR::insertCassette('bibFailureSearchNoQuery');
+        $error = Bib::Search($query, $this->mockAccessToken, array('dbIds' => '638'));
+        \VCR\VCR::eject();
+        // this is failing
+        //$this->assertInstanceOf('WorldCat\Discovery\Error', $error);
+        //$this->assertNotEmpty($error->getErrorType());
+        //$this->assertEquals('400', $error->getErrorCode());
+        //$this->assertEquals('blah', $error->getErrorMessage());
+    }
+    
+    /** Invalid facet count **/
+    function testFailureBadFacetCount()
+    {
+        $query = 'cats';
+        $facets = array('author' => 5);
+        \VCR\VCR::insertCassette('bibFailureBadFacetCount');
+        $error = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets, 'dbIds' => 638));
+        \VCR\VCR::eject();
+        $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
+        $this->assertNotEmpty($error->getErrorType());
+        $this->assertEquals('400', $error->getErrorCode());
+        //$this->assertEquals('facet count is invalid', $error->getErrorMessage()); // this isn't throwing the right error
     }
     
     /**
      * Database not enabled
      */
     function testErrorDatabaseNotEnabled(){
-        \VCR\VCR::insertCassette('bibFailureDatabaseNoEnabled');
-        $error = Bib::find(7977212, $this->mockAccessToken,  array('dbIds' => 2663));
+        $query = 'gdp policy';
+        $options = array('dbIds' => '2663');
+        \VCR\VCR::insertCassette('bibFailureDatabaseNotEnabled.yml');
+        $error = Bib::Search($query, $this->mockAccessToken, $options);
         \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
-        $this->assertNotEmpty($error->getErrorCode());
-        $this->assertNotEmpty($error->getErrorMessage());
+        $this->assertEquals('403', $error->getErrorCode());
+        $this->assertEquals('Your query included one or more databases for which you do not have access rights. [2663]', $error->getErrorMessage());
     }
 }

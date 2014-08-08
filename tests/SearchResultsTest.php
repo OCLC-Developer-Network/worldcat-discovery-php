@@ -94,13 +94,4 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         $this->bib = Bib::search('cats', 'NotAnAccessToken');
     }
     
-    /** No query passed **/
-    function testFailureNoQuery()
-    {
-        $query = ' ';
-        \VCR\VCR::insertCassette('bibFailureSearchNoQuery');
-        $search = Bib::Search($query, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
-    }
 }

@@ -59,16 +59,4 @@ class DatabaseSearchResultsTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
     }
-
-    
-    /** No institution hasn't enabled database passed **/
-    function testFailureDatabaseNotEnabled()
-    {
-        $query = 'gdp policy';
-        $options = array('dbIds' => '2663');
-        \VCR\VCR::insertCassette('bibFailureDatabaseNotEnabled');
-        $search = Bib::Search($query, $this->mockAccessToken);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
-    }
 }

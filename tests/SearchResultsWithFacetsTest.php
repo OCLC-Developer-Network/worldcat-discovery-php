@@ -88,15 +88,4 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
             $previousCount = $facetValue->getCount();
         }
     }
-    
-    /** Invalid facet count **/
-    function testFailureBadFacetCount()
-    {
-        $query = 'cats';
-        $facets = array('author' => 5, 'inLanguage' => 5);
-        \VCR\VCR::insertCassette('bibFailureBadFacetCount');
-        $search = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets, 'dbIds' => 638));
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $search);
-    }
 }
