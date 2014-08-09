@@ -10,11 +10,11 @@
             Accept: application/rdf+xml
             Content-Length: '0'
     response:
-        status: 401
+        status: 403
         headers:
-            X-OCLC-RequestId: eb1f101b-4d0a-4046-9945-e48242b86e77
-            X-OCLC-SelfId: c9969afe-cfa2-4457-9822-b7cd1b6ff93e
+            X-OCLC-RequestId: 47e9cc3c-4159-4116-abdd-ae048f183457
+            X-OCLC-SelfId: 88a4beb0-5a8e-48a1-a6ad-b22eab8e2c9c
             Cache-Control: 'must-revalidate,no-cache,no-store'
             Content-Type: 'text/html; charset=ISO-8859-1'
-            Content-Length: '316'
-        body: "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 401 </title>\n</head>\n<body>\n<h2>HTTP ERROR: 401</h2>\n<p>Problem accessing /discovery/bib/data/41266045. Reason:\n<pre>    Expired Access Token</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n</body>\n</html>\n"
+            Content-Length: '361'
+        body: "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 403 </title>\n</head>\n<body>\n<h2>HTTP ERROR: 403</h2>\n<p>Problem accessing /discovery/bib/data/41266045. Reason:\n<pre>    AccessToken {tk_o8NbDRTz855q3fUmQGNqf7jHFTCaPtJj2g1A} has expired</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n</body>\n</html>\n"

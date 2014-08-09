@@ -37,13 +37,12 @@ class OfferTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @vcr offerSuccess
      * Find Offers by OCLC NUmber
      */
     function testFindOfferByOclcNumber(){
-        \VCR\VCR::insertCassette('offerSuccess');
         $options = array('heldBy' => 'GZM,GZN,GZO');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014
         $this->assertEquals('10', $offerSet->getItemsPerPage());
@@ -89,13 +88,12 @@ class OfferTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * @vcr offerHeldByGroupSuccess
      * Find Offers by OCLC Number heldByGroup
      */
     function testFindOfferByOclcNumberHeldByGroup(){
-        \VCR\VCR::insertCassette('offerHeldByGroupSuccess');
         $options = array('heldByGroup' => 'OHLL');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014
         $this->assertEquals('10', $offerSet->getItemsPerPage());
@@ -104,13 +102,12 @@ class OfferTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * @vcr offerHeldInCountrySuccess
      * Find Offers by OCLC Number HeldInCountry
      */
     function testFindOfferByOclcNumberHeldInCountry(){
-        \VCR\VCR::insertCassette('offerHeldInCountrySuccess');
         $options = array('heldInCountry' => 'CA');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014 
         $this->assertEquals('10', $offerSet->getItemsPerPage());
@@ -119,13 +116,12 @@ class OfferTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * @vcr offerUseFRBRGroupingSuccess
      * Find Offers by OCLC Number useFRBRGrouping
      */
     function testFindOfferByOclcNumberUseFRBRGrouping(){
-        \VCR\VCR::insertCassette('offerUseFRBRGroupingSuccess');
         $options = array('useFRBRGrouping' => 'false');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014
         $this->assertEquals('10', $offerSet->getItemsPerPage());
@@ -135,13 +131,12 @@ class OfferTest extends \PHPUnit_Framework_TestCase
 
     
     /**
+     * @vcr offerStartPageSuccess
      * Find Offers by OCLC Number itemStartPage
      */
     function testFindOfferByOclcNumberItemStartPage(){
-        \VCR\VCR::insertCassette('offerStartPageSuccess');
         $options = array('heldInCountry' => 'CA', 'startNum' => '10');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         //$this->assertEquals('10', $offerSet->getStartIndex()); //need new mock
         $this->assertEquals('10', $offerSet->getItemsPerPage());
@@ -150,13 +145,12 @@ class OfferTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * @vcr offerItemsPerPageSuccess
      * Find Offers by OCLC Number itemsPerPage
      */
     function testFindOfferByOclcNumberItemsPerPage(){
-        \VCR\VCR::insertCassette('offerItemsPerPageSuccess');
         $options = array('heldInCountry' => 'CA', 'itemsPerPage' => '2');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('0', $offerSet->getStartIndex());
         $this->assertEquals('2', $offerSet->getItemsPerPage());
@@ -165,11 +159,10 @@ class OfferTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * @vcr offerGeoCoordinatesSuccess
      * Find Offers by OCLC Number & geographic coordinates
      */
     function testFindOfferByOclcNumberGeoCoordinates(){
-        //need new mock
-        \VCR\VCR::insertCassette('offerGeoCoordinatesSuccess');
         $options = array(
             'heldBy' => 'GZM,GZN,GZO',
             'lat' => '45.032916',
@@ -178,7 +171,6 @@ class OfferTest extends \PHPUnit_Framework_TestCase
             'distance' => '60'
         );
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('0', $offerSet->getStartIndex());
         $this->assertEquals('10', $offerSet->getItemsPerPage());
@@ -207,25 +199,5 @@ class OfferTest extends \PHPUnit_Framework_TestCase
     {
         $options = array('heldBy' => 'GZM,GZN,GZO');
         $offerSet = Offer::findByOclcNumber(30780581, 'NotAnAccessToken', $options);
-    }
-
-    /** Invalid Access Token **/
-    function testFailureInvalidAccessToken()
-    {
-        \VCR\VCR::insertCassette('offerFailureInvalidAccessToken');
-        $options = array('heldBy' => 'GZM,GZN,GZO');
-        $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $offerSet);
-    }
-
-    /** Expired Access Token **/
-    function testFailureExpiredAccessToken()
-    {
-        \VCR\VCR::insertCassette('offerFailureExpiredAccessToken');
-        $options = array('heldBy' => 'GZM,GZN,GZO');
-        $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
-        $this->assertInstanceOf('\Guzzle\Http\Exception\BadResponseException', $offerSet);
     }
 }

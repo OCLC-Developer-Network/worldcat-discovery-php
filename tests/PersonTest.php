@@ -37,12 +37,10 @@ class PersonTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     *@vcr personSuccess
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('personSuccess');
         $bib = Bib::find(24503247, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
         return $bib;
     }

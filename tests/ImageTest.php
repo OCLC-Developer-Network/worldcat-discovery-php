@@ -37,12 +37,10 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * @vcr imageSuccess
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('imageSuccess');
         $bib = Bib::find(744025845, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Image', $bib);
         return $bib;
     }

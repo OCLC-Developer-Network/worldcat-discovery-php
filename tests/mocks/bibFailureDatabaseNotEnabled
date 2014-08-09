@@ -12,27 +12,9 @@
     response:
         status: 403
         headers:
-            X-OCLC-RequestId: 56ef8fa7-a003-4277-89e0-9d1bb294c234
-            X-OCLC-SelfId: 2c6fcf61-547f-44e7-8fda-3974e1e147dc
+            X-OCLC-RequestId: 48f090a5-675b-4b88-bfad-0a1acd532fc6
+            X-OCLC-SelfId: 4f44138d-7b7f-43eb-8748-8fa5baca4694
             Content-Type: 'application/rdf+xml; charset=UTF-8'
+            Content-Location: 'http://beta.worldcat.org/discovery/bib/search.rdf?q=gdp%20policy&dbIds=2663'
             Transfer-Encoding: chunked
-        body: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><error xmlns="http://worldcat.org/xmlschemas/response"><code type="http">403</code><message>User forbidden</message><detail>Your query included one or more databases for which you do not have access rights ( 2663 )</detail></error>'
--
-    request:
-        method: GET
-        url: 'https://beta.worldcat.org/discovery/bib/search?q=gdp%20policy'
-        headers:
-            Host: beta.worldcat.org
-            User-Agent: 'Guzzle/3.8.1 curl/7.21.4 PHP/5.3.28'
-            Authorization: 'Bearer tk_12345'
-            Accept: application/rdf+xml
-            Content-Length: '0'
-    response:
-        status: 401
-        headers:
-            X-OCLC-RequestId: 2105b0a2-ced6-45e4-ae4d-488dacea9c3e
-            X-OCLC-SelfId: 1f0515e8-b777-42e8-b308-40a311bb338c
-            Cache-Control: 'must-revalidate,no-cache,no-store'
-            Content-Type: 'text/html; charset=ISO-8859-1'
-            Content-Length: '309'
-        body: "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 401 </title>\n</head>\n<body>\n<h2>HTTP ERROR: 401</h2>\n<p>Problem accessing /discovery/bib/search. Reason:\n<pre>    Invalid Access Token</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n</body>\n</html>\n"
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>Your query included one or more databases for which you do not have access rights. [2663]</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">403</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?q=gdp%20policy&amp;dbIds=2663\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n</rdf:RDF>\n"

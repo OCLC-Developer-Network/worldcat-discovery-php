@@ -37,14 +37,14 @@ class DatabaseSearchResultsTest extends \PHPUnit_Framework_TestCase
                     ->will($this->returnValue('tk_12345'));
     }
     
-    /** can parse set of Bibs from a Search Result */
+    /** 
+     * @vcr bibSearchDatabaseSuccessKeyword
+     * can parse set of Bibs from a Search Result */
     
     function testSearchByKeyword(){
         $query = 'gdp policy';
         $options = array('dbIds' => '2662');
-        \VCR\VCR::insertCassette('bibSearchDatabaseSuccessKeyword');
         $search = Bib::Search($query, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());

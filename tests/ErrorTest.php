@@ -41,37 +41,36 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @vcr bibFailureInvalidAccessToken
      * Invalid Access Token
      */
     function testErrorInvalidAccessToken(){
-        \VCR\VCR::insertCassette('bibFailureInvalidAccessToken');
         $error = Bib::find(7977212, $this->mockAccessToken, array('dbIds' => '638'));
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('401', $error->getErrorCode());
         $this->assertEquals('Unauthorized', $error->getErrorMessage());
     }
     
-    /** Expired Access Token **/
+    /** 
+     * @vcr bibFailureExpiredAccessToken
+     * Expired Access Token **/
     function testFailureExpiredAccessToken()
     {
-        \VCR\VCR::insertCassette('bibFailureExpiredAccessToken');
         $error = Bib::find(41266045, $this->mockAccessToken, array('dbIds' => '638'));
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('401', $error->getErrorCode());
         $this->assertEquals('Unauthorized', $error->getErrorMessage());
     }
     
-    /** No query passed **/
+    /** 
+     * @vcr bibFailureSearchNoQuery
+     * No query passed **/
     function testFailureNoQuery()
     {
         $query = ' ';
-        \VCR\VCR::insertCassette('bibFailureSearchNoQuery');
         $error = Bib::Search($query, $this->mockAccessToken, array('dbIds' => '638'));
-        \VCR\VCR::eject();
         // this is failing
         //$this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         //$this->assertNotEmpty($error->getErrorType());
@@ -79,14 +78,14 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         //$this->assertEquals('blah', $error->getErrorMessage());
     }
     
-    /** Invalid facet count **/
+    /** 
+     * @vcr bibFailureBadFacetCount
+     * Invalid facet count **/
     function testFailureBadFacetCount()
     {
         $query = 'cats';
         $facets = array('author' => 5);
-        \VCR\VCR::insertCassette('bibFailureBadFacetCount');
         $error = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets, 'dbIds' => 638));
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('400', $error->getErrorCode());
@@ -94,14 +93,13 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * @vcr bibFailureDatabaseNotEnabled
      * Database not enabled
      */
     function testErrorDatabaseNotEnabled(){
         $query = 'gdp policy';
         $options = array('dbIds' => '2663');
-        \VCR\VCR::insertCassette('bibFailureDatabaseNotEnabled.yml');
         $error = Bib::Search($query, $this->mockAccessToken, $options);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('403', $error->getErrorCode());

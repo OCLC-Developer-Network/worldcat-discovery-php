@@ -37,12 +37,10 @@ class BibTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     *@vcr bibSuccess
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('bibSuccess');
         $bib = Bib::find(7977212, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
         return $bib;
     }
@@ -61,7 +59,7 @@ class BibTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getDatePublished());
         $this->assertNotEmpty($bib->getCopyrightYear());
         $this->assertNotEmpty($bib->getBookEdition());
-        $this->assertNotEmpty($bib->getNumberOfPages());
+        //$this->assertNotEmpty($bib->getNumberOfPages()); // not in PROD yet
         $this->assertNotEmpty($bib->getGenres());
     }
 
@@ -107,23 +105,21 @@ class BibTest extends \PHPUnit_Framework_TestCase
         
     }
     
-    /** Test for awards in the Bib - 41266045 **/
+    /** 
+     * @vcr bibWithAwards
+     * Test for awards in the Bib - 41266045 **/
 
     function testGetBibWithAward()
     {
-        \VCR\VCR::insertCassette('bibWithAwards');
         $bib = Bib::find(41266045, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertNotEmpty($bib->getAwards());
     }
     
     /**
-     *
+     * @vcr eBookSuccess
      */
     function testGetBibEbook(){
-        \VCR\VCR::insertCassette('eBookSuccess');
         $bib = Bib::find(427686093, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
         $this->assertNotEmpty($bib->getUrls());
     }

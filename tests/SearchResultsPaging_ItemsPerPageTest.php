@@ -37,14 +37,14 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
                     ->will($this->returnValue('tk_12345'));
     }
     
-    /** can parse set of Bibs from a Search Result where the start index is not 0*/
+    /** 
+     * @vcr bibSearchStartNumber10
+     * can parse set of Bibs from a Search Result where the start index is not 0*/
     
     function testSearchStartIndex10(){
         $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchStartNumber10');
         $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10, 
         'dbIds' => 638));
-        \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('10', $search->getStartIndex());
@@ -60,14 +60,14 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
         }
     }
     
-    /** can parse set of Bibs from a Search Result where itemsPerPage is 5*/
+    /** 
+     * @vcr bibSearchItemsPerPage
+     * can parse set of Bibs from a Search Result where itemsPerPage is 5*/
     
     function testSearchItemsPerPage5(){
         $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchItemsPerPage');
         $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5, 
         'dbIds' => 638));
-        \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());

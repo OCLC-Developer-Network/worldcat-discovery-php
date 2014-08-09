@@ -37,23 +37,19 @@ class MusicAlbumTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * @vcr cdSuccess
      */
     function testGetBibCD(){
-        \VCR\VCR::insertCassette('cdSuccess');
         $bib = Bib::find(38027615, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
         $this->assertNotEmpty($bib->getFormat());
     }
 
     /**
-     *
+     * @vcr lpSuccess
      */
     function testGetBibLP(){
-        \VCR\VCR::insertCassette('lpSuccess');
         $bib = Bib::find(5791214, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
         $this->assertNotEmpty($bib->getFormat());
     }

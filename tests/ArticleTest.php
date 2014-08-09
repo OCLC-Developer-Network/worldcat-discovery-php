@@ -37,12 +37,10 @@ class ArticleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * @vcr articleSuccess
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('ArticleSuccess');
         $bib = Bib::find(5131938809, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Article', $bib);
         return $bib;
     }

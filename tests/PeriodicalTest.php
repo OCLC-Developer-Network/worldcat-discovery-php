@@ -37,12 +37,10 @@ class PeriodicalTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     *@vcr periodicalSuccess
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('PeriodicalSuccess');
         $bib = Bib::find(2243594, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Periodical', $bib);
         return $bib;
     }
