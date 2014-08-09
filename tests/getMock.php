@@ -21,7 +21,7 @@ if (isset($argv[2])){
     $cassettePath = 'mocks';
 }
 \VCR\VCR::configure()->setCassettePath($cassettePath);
-\VCR\VCR::insertCassette('accessToken');
+\VCR\VCR::insertCassette('accessToken'); 
 
 $mockFolder = __DIR__ . "/mocks/";
 
@@ -34,6 +34,7 @@ $mockBuilder = Yaml::parse(__DIR__ . '/mockBuilder.yml');
         $mockFolder .= $argv[2] . '/';
         $environment = $argv[2];
         AccessToken::$authorizationServer = $config[$environment]['authorizationServiceUrl'];
+        WSKey::$testServer = TRUE;
         Bib::$serviceUrl = $config[$environment]['discoveryUrl'];
         Bib::$testServer = TRUE;
         Database::$serviceUrl = $config[$environment]['discoveryUrl'];
@@ -166,6 +167,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'authority'){
    foreach ($mockBuilder['authority']['authoritySuccess'] as $mock => $mockValue) {
         printf("Mock created for '%s'.\n", $mock);
         $authority = Authority::findAuthority($mockValue);
+        echo get_class($authority);
     }
     \VCR\VCR::eject();
     
