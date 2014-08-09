@@ -1,3 +1,6 @@
 /.project
 /vendor
 /composer.lock
+/.buildpath
+/devTestConfig.xml
+/qaTestConfig.xml
