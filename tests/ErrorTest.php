@@ -50,7 +50,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('401', $error->getErrorCode());
-        //$this->assertEquals('Unauthorized', $error->getErrorMessage());
+        $this->assertEquals('Unauthorized', $error->getErrorMessage());
     }
     
     /** Expired Access Token **/
@@ -62,7 +62,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('401', $error->getErrorCode());
-        //$this->assertEquals('Unauthorized', $error->getErrorMessage());
+        $this->assertEquals('Unauthorized', $error->getErrorMessage());
     }
     
     /** No query passed **/
