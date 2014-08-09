@@ -42,7 +42,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
      */
     function testSearchByOCLCNumber(){
         $query = 'no:7977212';
-        $search = Bib::Search($query, $this->mockAccessToken, array('dbIds' => 638));
+        $search = Bib::Search($query, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
@@ -58,7 +58,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     
     function testSearchByKeyword(){
         $query = 'cats';
-        $search = Bib::Search($query, $this->mockAccessToken, array('dbIds' => 638));
+        $search = Bib::Search($query, $this->mockAccessToken);
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());

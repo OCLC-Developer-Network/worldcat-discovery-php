@@ -230,6 +230,10 @@ private static function buildParameters($query, $options = null)
             }
         }
         
+        if (empty($parameters['dbIds'])){
+            $parameters['dbIds'] = 638;
+        }
+        
         $queryString =  http_build_query($parameters) . $facetFieldsString . $facetQueriesString;     
         
         return $queryString;         

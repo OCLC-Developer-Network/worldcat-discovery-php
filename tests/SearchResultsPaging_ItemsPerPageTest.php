@@ -43,8 +43,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     function testSearchStartIndex10(){
         $query = 'cats';
-        $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10, 
-        'dbIds' => 638));
+        $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10));
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('10', $search->getStartIndex());
@@ -66,8 +65,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     function testSearchItemsPerPage5(){
         $query = 'cats';
-        $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5, 
-        'dbIds' => 638));
+        $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5));
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
