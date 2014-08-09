@@ -21,18 +21,8 @@ use WorldCat\Discovery\GeographicAuthority;
 
 class AuthorityTest extends \PHPUnit_Framework_TestCase
 {
-
-    static function setUpBeforeClass()
-    {
-        \VCR\VCR::insertCassette('authoritySuccess');
-    }
-    
-    static function tearDownAfterClass()
-    {
-        \VCR\VCR::eject();
-    }
     /**
-     *
+     *@vcr authoritySuccess
      */
     function testGetAuthority(){
         $url = 'http://id.loc.gov/authorities/subjects/sh2008124372';
