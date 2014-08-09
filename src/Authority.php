@@ -46,8 +46,7 @@ class Authority extends EasyRdf_Resource
             EasyRdf_TypeMapper::set('madsrdf:Geographic', 'WorldCat\Discovery\AuthorityGeographic');
             EasyRdf_TypeMapper::set('madsrdf:Authority', 'WorldCat\Discovery\Authority');
             $authorityGraph = new EasyRdf_Graph();
-            $authorityGraph->parse($response->getBody('true'));
-            print_r($authorityGraph->types());
+            $authorityGraph->parse($response->getBody('true')); 
             $authority = $authorityGraph->resource($url);
             return $authority;
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
