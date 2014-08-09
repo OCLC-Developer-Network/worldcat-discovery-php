@@ -25,7 +25,7 @@ use \EasyRdf_TypeMapper;
 /**
 * A class that represents a MADS Authority
 * 
-* Used for compound authorities like http://id.loc.gov/authorities/subjects/sh2008124372.rdf
+* Used for compound authorities like http://id.loc.gov/authorities/subjects/sh2008124372
 *
 */
 class Authority extends EasyRdf_Resource
@@ -47,6 +47,7 @@ class Authority extends EasyRdf_Resource
             EasyRdf_TypeMapper::set('madsrdf:Authority', 'WorldCat\Discovery\Authority');
             $authorityGraph = new EasyRdf_Graph();
             $authorityGraph->parse($response->getBody('true'));
+            print_r($authorityGraph->types());
             $authority = $authorityGraph->resource($url);
             return $authority;
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
