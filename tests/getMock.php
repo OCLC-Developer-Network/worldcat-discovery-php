@@ -70,6 +70,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'bibFind'){
             }
             $bib = Bib::find($mockValues['oclcNumber'], $accessToken);
             \VCR\VCR::eject();
+            file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
     }
 }
 
@@ -100,6 +101,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'bibSearch'){
         
         $bib = Bib::search($mockValues['query'], $retrievedToken, $options);
         \VCR\VCR::eject();
+        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
     }
 }
 
@@ -114,6 +116,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'database'){
         printf("Mock created for '%s'.\n", $mock);
         $database = Database::find($mockValues['id'], $retrievedToken);
         \VCR\VCR::eject();
+        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
     }
     
     //database list mock
@@ -127,6 +130,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'database'){
     \VCR\VCR::insertCassette($mockBuilder['databaseSearch']);
     $database = Database::getList($retrievedToken);
     \VCR\VCR::eject();
+    file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
 }
 
 if ($argv[1] == 'all'  || $argv[1] == 'offers'){
@@ -153,17 +157,10 @@ if ($argv[1] == 'all'  || $argv[1] == 'offers'){
         
         $bib = Offer::findByOclcNumber($mockValues['id'], $accessToken, $options);
         \VCR\VCR::eject();
+        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
     }
 }
 
 // delete the accessToken file
-unlink($mockFolder . 'accessToken');
-
-// loop through the files in the mocks directory and update the Authorization header if necessary
-foreach(glob($mockFolder ."*") as $file) {
-    $mockFile = Yaml::parse($file);
-    if ($mockFile[0]['request']['headers']['Authorization'] != 'Bearer tk_12345'){
-        file_put_contents($file, str_replace($mockFile[0]['request']['headers']['Authorization'], "Bearer tk_12345", file_get_contents($file)));
-    }
-} 
+unlink($mockFolder . 'accessToken'); 
 ?>
