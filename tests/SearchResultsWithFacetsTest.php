@@ -37,14 +37,14 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
                     ->will($this->returnValue('tk_12345'));
     }
     
-    /** can parse set of Bibs from a Search Result with Facets*/
+    /**
+     * @vcr bibSearchFacets
+     * can parse set of Bibs from a Search Result with Facets*/
     
     function testSearchFacets(){
         $query = 'cats';
         $facets = array('author' => 10, 'inLanguage' => 10);
-        \VCR\VCR::insertCassette('bibSearchFacets');
         $search = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets, 'dbIds' => 638));
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());

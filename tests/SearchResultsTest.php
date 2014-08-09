@@ -38,13 +38,11 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * 
+     * @vcr bibSearchByOclcNumber
      */
     function testSearchByOCLCNumber(){
         $query = 'no:7977212';
-        \VCR\VCR::insertCassette('bibSearchByOclcNumber');
         $search = Bib::Search($query, $this->mockAccessToken, array('dbIds' => 638));
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
@@ -54,13 +52,13 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         }
     }
     
-    /** can parse set of Bibs from a Search Result */
+    /** 
+     * @vcr bibSearchSuccessKeyword
+     * can parse set of Bibs from a Search Result */
     
     function testSearchByKeyword(){
         $query = 'cats';
-        \VCR\VCR::insertCassette('bibSearchSuccessKeyword');
         $search = Bib::Search($query, $this->mockAccessToken, array('dbIds' => 638));
-        \VCR\VCR::eject();
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());

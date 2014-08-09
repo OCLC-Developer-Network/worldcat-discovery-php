@@ -37,12 +37,10 @@ class ThesisTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * @vcr thesisSuccess
      */
     function testGetBib(){
-        \VCR\VCR::insertCassette('thesisSuccess');
         $bib = Bib::find(56394544, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
         return $bib;
     }

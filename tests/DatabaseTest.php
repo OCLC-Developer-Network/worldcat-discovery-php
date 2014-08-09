@@ -40,12 +40,11 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @vcr databaseSuccess
      * Get a single database resource
      */
     function testGetDatabase(){
-        \VCR\VCR::insertCassette('databaseSuccess');
         $database = Database::find(638, $this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertInstanceOf('WorldCat\Discovery\Database', $database);
         $this->assertNotEmpty($database->getId());
         $this->assertNotEmpty($database->getName());
@@ -53,12 +52,11 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * @vcr databaseListSuccess
      * List database resources
      */
     function testlistDatabases(){
-        \VCR\VCR::insertCassette('databaseListSuccess');
         $databaseList = Database::getList($this->mockAccessToken);
-        \VCR\VCR::eject();
         $this->assertNotEmpty($databaseList);
         foreach ($databaseList as $database){
             $this->assertInstanceOf('WorldCat\Discovery\Database', $database);

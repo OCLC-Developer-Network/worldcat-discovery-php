@@ -36,6 +36,6 @@ if (isset($environment)){
     $cassettePath = 'tests/mocks';
 }
 
-\VCR\VCR::turnOn();
 \VCR\VCR::configure()->setCassettePath($cassettePath);
+\VCR\VCR::configure()->enableRequestMatchers(array('method', 'url', 'host'));
 ?>
