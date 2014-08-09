@@ -172,6 +172,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'authority'){
     foreach ($mockBuilder['authority']['authoritySuccess'] as $mock => $mockValue) {
         printf("Mock created for '%s'.\n", $mock);
         $authority = Authority::findAuthority($mockValue);
+        file_put_contents($mockFolder . 'authoritySuccess', str_replace($mockValue, rtrim($mockValue, '.rdf'), file_get_contents($mockFolder . 'authoritySuccess')));
     }
     \VCR\VCR::eject();
 
