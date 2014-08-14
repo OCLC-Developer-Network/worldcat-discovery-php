@@ -44,10 +44,15 @@ class OfferTest extends \PHPUnit_Framework_TestCase
         $options = array('heldBy' => 'GZM,GZN,GZO');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
-        //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014
+        $this->assertEquals('0', $offerSet->getStartIndex());
         $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
-        //$this->assertEquals('2', count($offerSet->getOffers())); // need new mock
+        $this->assertEquals('2', count($offerSet->getOffers())); // need new mock
+        $this->assertNotEmpty($offerSet->getCreativeWorks());
+        
+        foreach ($offerSet->getCreativeWorks() as $creativeWork){
+            $this->assertInstanceOf('WorldCat\Discovery\Book', $creativeWork);
+        }
         
         $offers = $offerSet->getOffers();
         return $offers;
@@ -95,7 +100,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
         $options = array('heldByGroup' => 'OHLL');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
-        //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014
+        $this->assertEquals('0', $offerSet->getStartIndex());
         $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
         $this->assertEquals('10', count($offerSet->getOffers()));
@@ -109,7 +114,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
         $options = array('heldInCountry' => 'CA');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
-        //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014 
+        $this->assertEquals('0', $offerSet->getStartIndex()); 
         $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
         $this->assertEquals('10', count($offerSet->getOffers()));
@@ -123,7 +128,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
         $options = array('useFRBRGrouping' => 'false');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
-        //$this->assertEquals('0', $offerSet->getStartIndex()); // broken as of 6/30/2014
+        $this->assertEquals('0', $offerSet->getStartIndex());
         $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
         $this->assertEquals('10', count($offerSet->getOffers()));
@@ -138,7 +143,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
         $options = array('heldInCountry' => 'CA', 'startNum' => '10');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
-        //$this->assertEquals('10', $offerSet->getStartIndex()); //need new mock
+        $this->assertEquals('10', $offerSet->getStartIndex());
         $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
         $this->assertEquals('10', count($offerSet->getOffers()));

@@ -33,5 +33,14 @@ class OfferSet extends SearchResults
         }
         ksort($sortedOffers);
         return $sortedOffers;
-    } 
+    }
+
+    function getCreativeWorks(){
+        $bibs = $this->graph->allOfType('http://www.w3.org/2006/gen/ont#InformationResource');
+        $creativeWorks = array();
+        foreach ($bibs as $bib){
+            $creativeWorks[] = $bib->getResource('schema:about');
+        }
+        return $creativeWorks;
+    }
 }
