@@ -42,7 +42,7 @@ class Offer extends EasyRdf_Resource
      * - startNum integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
      * - lat, lon, unit, distance
-     * @return WorldCat\Discovery\Bib or \Guzzle\Http\Exception\BadResponseException
+     * @return WorldCat\Discovery\OfferSet or WorldCat\Discovery\Error
      */
     
     public static function findByOclcNumber($id, $accessToken, $options = null)
@@ -76,7 +76,7 @@ class Offer extends EasyRdf_Resource
             $results = $graph->allOfType('discovery:SearchResults');
             return $results[0];
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            return $error;
+            return Error::parseError($error);
         }
     }
     

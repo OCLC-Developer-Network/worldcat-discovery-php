@@ -105,4 +105,17 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('403', $error->getErrorCode());
         $this->assertEquals('Your query included one or more databases for which you do not have access rights. [2663]', $error->getErrorMessage());
     }
+    
+    /**
+     * @vcr offerFailureExpiredAccessToken
+     * Offer Expired Access Token
+     */
+    function testOfferFailureExpiredAccessToken(){
+        $options = array('heldBy' => 'GZM,GZN,GZO');
+        $error = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
+        $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
+        $this->assertNotEmpty($error->getErrorType());
+        $this->assertEquals('403', $error->getErrorCode());
+        $this->assertEquals('Unauthorized', $error->getErrorMessage());
+    }
 }
