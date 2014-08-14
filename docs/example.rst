@@ -24,8 +24,9 @@ This example reads a single bibliographic record from the WorldCat Discovery usi
    
    $bib = Bib::Find(7977212, $accessToken);
    
-   if (is_a($bib, '\Guzzle\Http\Exception\BadResponseException')) {
-   		print_r($bib);
+   if (is_a($bib, 'WorldCat\Discovery\Error')) {
+        echo $bib->getErrorCode();
+        echo $bib->getErrorMessage();
    } else {
    		echo $bib->getName();
    		print_r($bib->getID());

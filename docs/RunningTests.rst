@@ -8,5 +8,4 @@ Unit Tests
    They can be run from the command line.
 
 .. code:: bash
-   $ cd tests
-   $ ../vendor/bin/phpunit --suite unitTests
+   $ vendor/bin/phpunit
