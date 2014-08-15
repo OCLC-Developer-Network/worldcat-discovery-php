@@ -58,6 +58,21 @@ class CreativeWork extends EasyRdf_Resource
     
     /**
      *
+     * @return array of WorldCat\Discovery\Person and/or WorldCat\Discovery\Organization objects
+     */
+    function getAuthors(){
+        $authors = array();
+        if ($this->getResource('schema:author')){
+            $authors[] = $this->getResource('schema:author');
+        }
+        if ($this->getResource('schema:creator')){
+            $authors[] = $this->getResource('schema:creator');
+        }
+        return $authors;
+    }
+    
+    /**
+     * Backwards compatible function that gets the primary author
      * @return WorldCat\Discovery\Person or WorldCat\Discovery\Organization
      */
     function getAuthor(){
@@ -67,6 +82,16 @@ class CreativeWork extends EasyRdf_Resource
         }
         return $author;
     }
+    
+    /**
+     * 
+     * @return WorldCat\Discovery\Person or WorldCat\Discovery\Organization
+     */
+    function getCreator(){
+        $creator = $this->getResource('schema:creator');
+
+        return $creator;
+    }    
     
     /**
      *

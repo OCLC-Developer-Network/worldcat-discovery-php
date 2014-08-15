@@ -29,6 +29,7 @@ class Offer extends EasyRdf_Resource
 {
     public static $serviceUrl = 'https://beta.worldcat.org/discovery';
     public static $testServer = FALSE;
+    public static $userAgent = 'WorldCat Discovery API PHP Client';
     
     /**
      * @param $id string
@@ -59,7 +60,8 @@ class Offer extends EasyRdf_Resource
         $guzzleOptions = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $accessToken->getValue(),
-                'Accept' => 'application/rdf+xml'
+                'Accept' => 'application/rdf+xml',
+                'User-Agent' => static::$userAgent
             )
         );
         

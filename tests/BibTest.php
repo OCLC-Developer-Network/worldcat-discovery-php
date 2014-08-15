@@ -73,6 +73,18 @@ class BibTest extends \PHPUnit_Framework_TestCase
             $this->isInstanceOf('WorldCat\Discovery\Organization')
         ));
 
+        foreach ($bib->getAuthors() as $author){
+            $this->assertThat($author, $this->logicalOr(
+                $this->isInstanceOf('WorldCat\Discovery\Person'),
+                $this->isInstanceOf('WorldCat\Discovery\Organization')
+            ));
+        }
+        
+        $this->assertThat($bib->getCreator(), $this->logicalOr(
+            $this->isInstanceOf('WorldCat\Discovery\Person'),
+            $this->isInstanceOf('WorldCat\Discovery\Organization')
+        ));
+        
         foreach ($bib->getContributors() as $contributor){
             $this->assertThat($contributor, $this->logicalOr(
                 $this->isInstanceOf('WorldCat\Discovery\Person'),
