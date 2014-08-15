@@ -48,7 +48,7 @@ class Offer extends EasyRdf_Resource
     public static function findByOclcNumber($id, $accessToken, $options = null)
     {
         
-        if (!is_int($id)){
+        if (!is_numeric($id)){
             Throw new \BadMethodCallException('You must pass a valid ID');
         } elseif (!is_a($accessToken, '\OCLC\Auth\AccessToken')) {
             Throw new \BadMethodCallException('You must pass a valid OCLC/Auth/AccessToken object');
