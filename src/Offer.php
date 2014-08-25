@@ -35,8 +35,8 @@ class Offer extends EasyRdf_Resource
      * @param $id string
      * @param $accessToken OCLC/Auth/AccessToken
      * @param $options array All the optional parameters are valid
-     * - heldBy comma seperated list which is a limiter to restrict search results to items held by a given institution(s)
-     * - notHeldBy comma seperated list which is imiter to restrict search results to items that are not held by a given institution(s).
+     * - heldBy array which is a limiter to restrict search results to items held by a given institution(s)
+     * - notHeldBy array which is imiter to restrict search results to items that are not held by a given institution(s).
      * - heldByGroup
      * - heldInCountry
      * - useFRBRGrouping

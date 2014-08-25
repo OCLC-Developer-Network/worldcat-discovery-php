@@ -105,8 +105,8 @@ class Bib extends EasyRdf_Resource
      * @param $query string
      * @param $accessToken OCLC/Auth/AccessToken
      * @param $options array All the optional parameters are valid
-     * - heldBy comma seperated list which is a limiter to restrict search results to items held by a given institution(s)
-     * - notHeldBy comma seperated list which is imiter to restrict search results to items that are not held by a given institution(s).
+     * - heldBy array which is a limiter to restrict search results to items held by a given institution(s)
+     * - notHeldBy array which is limiter to restrict search results to items that are not held by a given institution(s).
      * - heldByGroup
      * - heldInCountry
      * - inLanguage
@@ -171,7 +171,6 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
         EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
         EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
-        EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
         
         EasyRdf_TypeMapper::set('schema:Article', 'WorldCat\Discovery\Article');
@@ -205,26 +204,6 @@ class Bib extends EasyRdf_Resource
 private static function buildParameters($query, $options = null)
     {
         $parameters = array('q' => $query);
-        
-        $facetFieldsString = '';
-        if (isset($options['facetFields'])){
-        
-            foreach ($options['facetFields'] as $facetName => $numberOfFacets){
-                $facetFieldsString .= '&facetFields=' . $facetName . ':' . $numberOfFacets;
-            }
-        
-        }
-        unset($options['facetFields']);
-        
-        $facetQueriesString = '';
-        if (isset($options['facetQueries'])){
-        
-            foreach ($options['facetQueries'] as $facetName => $numberOfFacets){
-                $facetQueriesString .= '&facetQueries=' . $facetName . ':' . $numberOfFacets;
-            }
-        
-        }
-        unset($options['facetQueries']);
 
         if (!empty($options)){
             foreach ($options as $option => $optionValue){
@@ -236,7 +215,7 @@ private static function buildParameters($query, $options = null)
             $parameters['dbIds'] = 638;
         }
         
-        $queryString =  http_build_query($parameters) . $facetFieldsString . $facetQueriesString;     
+        $queryString =  http_build_query($parameters);     
         
         return $queryString;         
     }
