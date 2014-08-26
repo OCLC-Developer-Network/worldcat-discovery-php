@@ -15,10 +15,6 @@
 
 namespace WorldCat\Discovery;
 
-use \EasyRdf_Resource;
-use \EasyRdf_Format;
-use \EasyRdf_Graph;
-
 /**
 * A class that represents a MADS Topical Authority
 * http://id.loc.gov/authorities/subjects/sh85149296
