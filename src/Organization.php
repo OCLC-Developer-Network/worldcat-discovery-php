@@ -15,36 +15,32 @@
 
 namespace WorldCat\Discovery;
 
-use \EasyRdf_Resource;
-use \EasyRdf_Format;
-use \EasyRdf_Graph;
-
 /**
  * A class that represents a Place in Schema.org
  *
  */
 class Organization extends Thing
 {
-    function __construct($uri, $graph = null){
-        parent::__construct($uri, $graph);
-        if (strpos($this->getURI(), 'viaf')){
-            // build a new graph from VIAF
-            $formats = EasyRdf_Format::getNames();
-            foreach ($formats as $format){
-                if ($format != 'rdfxml'){
-                    EasyRdf_Format::unregister($format);
-                }
-            }
-            $viafGraph = new EasyRdf_Graph();
-            $viafGraph->load($this->getURI(), 'rdfxml');
-            $viafResource = $viafGraph->resource($this->getUri());
+    public static $viafServiceUrl = 'http://viaf.org/viaf';
     
-            // loop through and add VIAF properties to this resource
-            foreach ($viafResource->properties() as $property){
-                foreach ($viafResource->all($property) as $value){
-                    $this->add($property, $value);
-                }
-            }
+    function getSameAsProperties(){
+        return $this->all('owl:sameAs');
+    }
+    
+    function getSeeAlsoProperties(){
+        return $this->all('rdfs:seeAlso');
+    }
+    
+    public function getCreativeWorks(){
+        if (strpos($this->getURI(), 'viaf')){
+            $graph = static::findByURI($this->getURI(), true);
+            $creativeWorks = $graph->allOfType('schema:CreativeWork');
+            return $creativeWorks;
         }
+    }
+    
+    public static function findByVIAFID($id){
+        $uri = static::$viafServiceUrl . '/' . $id;
+        return static::findByURI($uri);
     }
 }
