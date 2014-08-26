@@ -33,9 +33,10 @@
         <file>tests/DatabaseConfigTest.php</file>
     </testsuite>
     <testsuite name="Entities">
-    <file>tests/PersonTest.php</file>
-    <file>tests/OrganizationTest.php</file>
-    <file>tests/AuthorityTest.php</file>
+        <file>tests/PersonTest.php</file>
+        <file>tests/OrganizationTest.php</file>
+        <file>tests/PlaceTest.php</file>
+        <file>tests/AuthorityTest.php</file>
     </testsuite>
   </testsuites>
     <listeners>
