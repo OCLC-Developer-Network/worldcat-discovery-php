@@ -16,12 +16,15 @@
 error_reporting(E_ALL | E_STRICT);
 require __DIR__ . '/../vendor/autoload.php';
 
-global $environment, $authorizationServer, $serviceURL;
+global $environment, $authorizationServer, $serviceURL, $viafServiceURL;
 
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 use WorldCat\Discovery\Database;
 use WorldCat\Discovery\Offer;
+use WorldCat\Discovery\Person;
+use WorldCat\Discovery\Organization;
+use WorldCat\Discovery\Place;
 
 if (isset($environment)){
     AccessToken::$authorizationServer = $authorizationServer;
@@ -31,6 +34,9 @@ if (isset($environment)){
     Database::$testServer = TRUE;
     Offer::$serviceUrl = $serviceURL;
     Offer::$testServer = TRUE;
+    Person::$viafServiceUrl = $viafServiceURL;
+    Organization::$viafServiceUrl = $viafServiceURL;
+    Place::$viafServiceUrl = $viafServiceURL;
     $cassettePath = 'tests/mocks/' . $environment;
 } else {
     $cassettePath = 'tests/mocks';
