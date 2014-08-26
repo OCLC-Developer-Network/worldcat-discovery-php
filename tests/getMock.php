@@ -1,4 +1,29 @@
 <?php
+// Copyright 2014 OCLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+/**
+ * 
+ * @author librarywebchic
+ *
+ * This takes two parameters. 
+ * The first is the mocks to generate. The valid values are: all, bibFind, bibSearch, database, offers, viaf, authority
+ * The second is what environment to generates mocks from
+ * 
+ * Example usage
+ * php getMock.php all
+ */
 namespace WorldCat\Discovery;
 
 use Guzzle\Http\StaticClient;
@@ -7,6 +32,9 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 use WorldCat\Discovery\Offer;
+use WorldCat\Discovery\Person;
+use WorldCat\Discovery\Organization;
+use WorldCat\Discovery\Place;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -41,6 +69,9 @@ $mockBuilder = Yaml::parse(__DIR__ . '/mockBuilder.yml');
         Database::$testServer = TRUE;
         Offer::$serviceUrl = $config[$environment]['discoveryUrl'];
         Offer::$testServer = TRUE;
+        Person::$viafServiceUrl = $config[$environment]['viafUrl'];
+        Organization::$viafServiceUrl = $config[$environment]['viafUrl'];
+        Place::$viafServiceUrl = $config[$environment]['viafUrl'];
     } else {
         $environment = 'prod';
     }
@@ -161,7 +192,28 @@ if ($argv[1] == 'all'  || $argv[1] == 'offers'){
     }
 }
 
-if ($argv[1] == 'all'  || $argv[1] == 'authority'){
+if ($argv[1] == 'all'  || $argv[1] == 'viaf'){
+    foreach ($mockBuilder['viaf'] as $mock => $mockValues) {
+        // delete files
+        if (file_exists($mockFolder . $mock)){
+            unlink($mockFolder . $mock);
+        }
+        \VCR\VCR::insertCassette($mock);
+        printf("Mock created for '%s'.\n", $mock);
+        
+        $response = Thing::findByURI($mockValues[$environment]);
+         
+        \VCR\VCR::eject();
+        file_put_contents($mockFolder . $mock, str_replace('/rdf.xml', '', file_get_contents($mockFolder . $mock)));
+        if ($environment != 'prod'){
+            file_put_contents($mockFolder . $mock, str_replace('http://viaf.org', 'http://test.viaf.org', file_get_contents($mockFolder . $mock)));
+        }
+        file_put_contents($mockFolder . $mock, str_replace('rdap02pxdu.dev.oclc.org:8080', 'test.viaf.org', file_get_contents($mockFolder . $mock)));
+
+    }
+}
+    
+if ($argv[1] == 'all'  || $argv[1] == 'authority'){    
     //authority mocks
     $mock = 'authoritySuccess';
     // delete files
@@ -169,9 +221,9 @@ if ($argv[1] == 'all'  || $argv[1] == 'authority'){
         unlink($mockFolder . $mock);
     }
     \VCR\VCR::insertCassette($mock);
-    foreach ($mockBuilder['authority']['authoritySuccess'] as $mock => $mockValue) {
+    foreach ($mockBuilder['authority'] as $mock => $mockValue) {
         printf("Mock created for '%s'.\n", $mock);
-        $authority = Authority::findAuthority($mockValue);
+        $authority = Authority::findByURI($mockValue);
         file_put_contents($mockFolder . 'authoritySuccess', str_replace($mockValue, rtrim($mockValue, '.rdf'), file_get_contents($mockFolder . 'authoritySuccess')));
     }
     \VCR\VCR::eject();
