@@ -15,14 +15,32 @@
 
 namespace WorldCat\Discovery;
 
-use \EasyRdf_Resource;
-use \EasyRdf_Format;
-
 /**
  * A class that represents a Place in Schema.org
  *
  */
 class Place extends Intangible
 {
-
+    public static $viafServiceUrl = 'http://viaf.org/viaf';
+    
+    function getSameAsProperties(){
+        return $this->all('owl:sameAs');
+    }
+    
+    function getSeeAlsoProperties(){
+        return $this->all('rdfs:seeAlso');
+    }
+    
+    public function getCreativeWorks(){
+        if (strpos($this->getURI(), 'viaf')){
+            $graph = static::findByURI($this->getURI(), true);
+            $creativeWorks = $graph->allOfType('schema:CreativeWork');
+            return $creativeWorks;
+        }
+    }
+    
+    public static function findByVIAFID($id){
+        $uri = static::$viafServiceUrl . '/' . $id;
+        return static::findByURI($uri);
+    }
 }
