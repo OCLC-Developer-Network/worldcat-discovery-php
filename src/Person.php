@@ -15,16 +15,14 @@
 
 namespace WorldCat\Discovery;
 
-use \EasyRdf_Resource;
-use \EasyRdf_Format;
-use \EasyRdf_Graph;
-
 /**
  * A class that represents a Person in Schema.org
  *
  */
 class Person extends Thing
-{       
+{   
+    public static $viafServiceUrl = 'http://viaf.org/viaf';
+    
     function getGivenName(){
         return $this->getLiteral('schema:givenName');
     }
@@ -60,41 +58,37 @@ class Person extends Thing
         return $this->all('owl:sameAs');
     }
     
+    function getSeeAlsoProperties(){
+        return $this->all('rdfs:seeAlso');
+    }
+    
     function getDbpediaUri(){
         if (strpos($this->getURI(), 'viaf')){
-            self::loadVIAF();
-        }
-        $sameAsProperties = self::getSameAsProperties();
-        $dbpediaPerson = array_filter($sameAsProperties, function($sameAs)
-        {
-            return(strpos($sameAs->getURI(), 'dbpedia'));
-        }); 
-        $dbpediaPerson = array_shift($dbpediaPerson);
-        if (isset($dbpediaPerson)){
-            return $dbpediaPerson->getURI();
+            $viafResource = static::findByURI($this->getURI());
+        
+            $sameAsProperties = $viafResource->getSameAsProperties();
+            $dbpediaPerson = array_filter($sameAsProperties, function($sameAs)
+            {
+                return(strpos($sameAs->getURI(), 'dbpedia'));
+            }); 
+            $dbpediaPerson = array_shift($dbpediaPerson);
+            if (isset($dbpediaPerson)){
+                return $dbpediaPerson->getURI();
+            }
         }
     }
     
-    private function loadVIAF() {
-        if (!in_array('http://rdvocab.info/uri/schema/FRBRentitiesRDA/Person', $this->types())){
-            // build a new graph from VIAF
-            $formats = EasyRdf_Format::getNames();
-            foreach ($formats as $format){
-                if ($format != 'rdfxml'){
-                    EasyRdf_Format::unregister($format);
-                }
-            }
-            $viafGraph = new EasyRdf_Graph();
-            $viafGraph->load($this->getURI(), 'rdfxml');
-            $viafResource = $viafGraph->resource($this->getUri());
-            
-            // loop through and add VIAF properties to this resource
-            foreach ($viafResource->properties() as $property){
-                foreach ($viafResource->all($property) as $value){
-                    $this->add($property, $value);
-                }
-            }
+    public function getCreativeWorks(){
+        if (strpos($this->getURI(), 'viaf')){
+            $graph = static::getByURI($this->getURI(), true);
+            $creativeWorks = $graph->allOfType('schema:CreativeWork');
+            return $creativeWorks;
         }
+    }
+    
+    public static function findByVIAFID($id){
+        $uri = static::$viafServiceUrl . '/' . $id;
+        return static::findByURI($uri);
     }
     
 }

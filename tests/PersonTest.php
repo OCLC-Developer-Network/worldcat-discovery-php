@@ -67,5 +67,13 @@ class PersonTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getAuthor()->getDbpediaUri());
     }
     
+    /**
+     *@vcr personVIAFSuccess
+     */
+    function testGetPerson(){
+        $person = Person::findByVIAFID('105372100');
+        $this->assertInstanceOf('WorldCat\Discovery\Person', $person);
+    }
+    
     
 }
