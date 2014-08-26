@@ -171,6 +171,8 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
         EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
         EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
+        EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
+        
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
         
         EasyRdf_TypeMapper::set('schema:Article', 'WorldCat\Discovery\Article');
@@ -183,14 +185,19 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
         EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');
         EasyRdf_TypeMapper::set('schema:Intangible', 'WorldCat\Discovery\Intangible');
-        EasyRdf_TypeMapper::set('schema:Organization', 'WorldCat\Discovery\Organization');
-        EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
-        EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
+        
         EasyRdf_TypeMapper::set('schema:ProductModel', 'WorldCat\Discovery\ProductModel');
         EasyRdf_TypeMapper::set('schema:PublicationVolume', 'WorldCat\Discovery\PublicationVolume');
         EasyRdf_TypeMapper::set('schema:PublicationIssue', 'WorldCat\Discovery\PublicationIssue');
-        
         EasyRdf_TypeMapper::set('foaf:Agent', 'WorldCat\Discovery\Organization');
+        
+        EasyRdf_TypeMapper::set('schema:Organization', 'WorldCat\Discovery\Organization');
+        EasyRdf_TypeMapper::set('foaf:Organization', 'WorldCat\Discovery\Organization'); // will be deprecated
+        EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
+        EasyRdf_TypeMapper::set('foaf:Person', 'WorldCat\Discovery\Person'); // will be deprecated
+        EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
+        EasyRdf_TypeMapper::set('http://dbpedia.org/ontology/Place', 'WorldCat\Discovery\Place'); // will be deprecated
+        
         EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\BibSearchResults');
         EasyRdf_TypeMapper::set('discovery:FacetItem', 'WorldCat\Discovery\Facet');
         EasyRdf_TypeMapper::set('discovery:FacetItemValue', 'WorldCat\Discovery\FacetValue');
