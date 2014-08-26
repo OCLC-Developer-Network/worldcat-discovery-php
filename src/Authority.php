@@ -15,12 +15,7 @@
 
 namespace WorldCat\Discovery;
 
-use Guzzle\Http\StaticClient;
-use \EasyRdf_Graph;
-use \EasyRdf_Resource;
 use \EasyRdf_Format;
-use \EasyRdf_Namespace;
-use \EasyRdf_TypeMapper;
 
 /**
 * A class that represents a MADS Authority
@@ -28,32 +23,8 @@ use \EasyRdf_TypeMapper;
 * Used for compound authorities like http://id.loc.gov/authorities/subjects/sh2008124372
 *
 */
-class Authority extends EasyRdf_Resource
-{
-    public static function findAuthority($url){
-        if (!class_exists('Guzzle')) {
-            \Guzzle\Http\StaticClient::mount();
-        }
-        $guzzleOptions = array(
-            'headers' => array(
-                'Accept' => 'application/rdf+xml'
-            )
-        );
-        try {
-            $response = \Guzzle::get($url, $guzzleOptions);
-            EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
-            EasyRdf_TypeMapper::set('madsrdf:Topic', 'WorldCat\Discovery\AuthorityTopical');
-            EasyRdf_TypeMapper::set('madsrdf:Geographic', 'WorldCat\Discovery\AuthorityGeographic');
-            EasyRdf_TypeMapper::set('madsrdf:Authority', 'WorldCat\Discovery\Authority');
-            $authorityGraph = new EasyRdf_Graph();
-            $authorityGraph->parse($response->getBody('true')); 
-            $authority = $authorityGraph->resource($url);
-            return $authority;
-        } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            return $error;
-        }
-    }
-    
+class Authority extends Thing
+{    
     public function load($format = null)
     {
         $formats = EasyRdf_Format::getNames();
