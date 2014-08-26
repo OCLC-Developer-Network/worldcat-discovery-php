@@ -16,7 +16,6 @@
       <file>tests/MusicAlbumTest.php</file>
       <file>tests/PeriodicalTest.php</file>
       <file>tests/ThesisTest.php</file>
-      <file>tests/BibConfigTest.php</file>
     </testsuite>
     <testsuite name="BibSearch">
       <file>tests/SearchResultsPaging_ItemsPerPageTest.php</file>
@@ -26,17 +25,23 @@
     </testsuite>
     <testsuite name="Offers">
       <file>tests/OfferTest.php</file>
-      <file>tests/OfferConfigTest.php</file>
     </testsuite>
     <testsuite name="Database">
         <file>tests/DatabaseTest.php</file>
-        <file>tests/DatabaseConfigTest.php</file>
     </testsuite>
     <testsuite name="Entities">
         <file>tests/PersonTest.php</file>
         <file>tests/OrganizationTest.php</file>
         <file>tests/PlaceTest.php</file>
         <file>tests/AuthorityTest.php</file>
+    </testsuite>
+    <testsuite name="Errors">
+        <file>tests/ErrorTest.php</file>
+    </testsuite>
+    <testsuite name="Config">
+        <file>tests/BibConfigTest.php</file>
+        <file>tests/OfferConfigTest.php</file>
+        <file>tests/DatabaseConfigTest.php</file>
     </testsuite>
   </testsuites>
     <listeners>
