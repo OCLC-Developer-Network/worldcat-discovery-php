@@ -41,7 +41,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      * Find Offers by OCLC NUmber
      */
     function testFindOfferByOclcNumber(){
-        $options = array('heldBy' => 'GZM,GZN,GZO');
+        $options = array('heldBy' => array('GZM', 'GZN', 'GZO'));
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('0', $offerSet->getStartIndex());
@@ -169,7 +169,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      */
     function testFindOfferByOclcNumberGeoCoordinates(){
         $options = array(
-            'heldBy' => 'GZM,GZN,GZO',
+            'heldBy' => array('GZM','GZN','GZO'),
             'lat' => '45.032916',
             'lon' => '-84.668979',
             'unit' => 'M',
