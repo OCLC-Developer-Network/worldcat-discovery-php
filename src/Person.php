@@ -36,9 +36,9 @@ class Person extends Thing
             return $this->getLiteral('schema:birthDate');
         } else {
             if (strpos($this->getURI(), 'viaf')){
-                self::loadVIAF();
+                $viaf = static::findByURI($this->getUri());
             }
-            return $this->getLiteral('rdaGr2:dateOfBirth');
+            return $viaf->getLiteral('rdaGr2:schema:birthDate');
         }
     }
     
@@ -48,9 +48,9 @@ class Person extends Thing
             return $this->getLiteral('schema:deathDate');
         } else {
             if (strpos($this->getURI(), 'viaf')){
-                self::loadVIAF();
+                $viaf = static::findByURI($this->getUri());
             }
-            return $this->getLiteral('rdaGr2:dateOfDeath');
+            return $viaf->getLiteral('schema:deathDate');
         }
     }
     
