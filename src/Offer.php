@@ -69,7 +69,7 @@ class Offer extends EasyRdf_Resource
             $guzzleOptions['verify'] = false;
         }
         
-        $bibURI = Bib::$serviceUrl . '/offer/oclc/' . $id . '?' . http_build_query($options);
+        $bibURI = Bib::$serviceUrl . '/offer/oclc/' . $id . '?' . static::buildParameters($options);
         
         try {
             $response = \Guzzle::get($bibURI, $guzzleOptions);
@@ -131,6 +131,7 @@ class Offer extends EasyRdf_Resource
         EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
         EasyRdf_Namespace::set('response', 'http://worldcat.org/xmlschemas/response/');
         EasyRdf_Namespace::set('library', 'http://purl.org/library/');
+        EasyRdf_Namespace::set('wcir', 'http://purl.org/oclc/ontology/wcir/');
         EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
         EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
@@ -138,8 +139,13 @@ class Offer extends EasyRdf_Resource
         EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
         EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
         
-        EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
+        EasyRdf_TypeMapper::set('schema:Offer', 'WorldCat\Discovery\Offer');
+        EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\OfferSet');
+        EasyRdf_TypeMapper::set('schema:SomeProducts', 'WorldCat\Discovery\SomeProducts');
+        EasyRdf_TypeMapper::set('dcterms:Collection', 'WorldCat\Discovery\Collection');
+        EasyRdf_TypeMapper::set('schema:Library', 'WorldCat\Discovery\Library');
         
+        EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
         EasyRdf_TypeMapper::set('schema:Article', 'WorldCat\Discovery\Article');
         EasyRdf_TypeMapper::set('http://www.productontology.org/id/Image', 'WorldCat\Discovery\Image');
         EasyRdf_TypeMapper::set('schema:MusicAlbum', 'WorldCat\Discovery\MusicAlbum');
@@ -163,14 +169,33 @@ class Offer extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
         EasyRdf_TypeMapper::set('http://dbpedia.org/ontology/Place', 'WorldCat\Discovery\Place'); // will be deprecated
         
-        EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\BibSearchResults');
-        EasyRdf_TypeMapper::set('discovery:FacetItem', 'WorldCat\Discovery\Facet');
-        EasyRdf_TypeMapper::set('discovery:FacetItemValue', 'WorldCat\Discovery\FacetValue');
         EasyRdf_TypeMapper::set('response:ClientRequestError', 'WorldCat\Discovery\Error');
         
         if (!class_exists('Guzzle')) {
             \Guzzle\Http\StaticClient::mount();
         }
+    }
+    
+    private static function buildParameters($options = null)
+    {
+        $parameters = array();
+    
+        if (!empty($options)){
+            $repeatingQueryParms = '';
+            foreach ($options as $option => $optionValue){
+                if (!is_array($optionValue)){
+                    $parameters[$option] = $optionValue;
+                } else {
+                    foreach ($optionValue as $value){
+                        $repeatingQueryParms .= '&' . $option . '=' . $value;
+                    }
+                }
+            }
+        }
+    
+        $queryString =  http_build_query($parameters) . $repeatingQueryParms;
+    
+        return $queryString;
     }
     
 }

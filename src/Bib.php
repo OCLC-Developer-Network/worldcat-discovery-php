@@ -118,7 +118,7 @@ class Bib extends EasyRdf_Resource
      * - itemSubType
      * - peerReview
      * - useFRBRGrouping
-     * - facetFields an array of facets to be returned.
+     * - facetFields an array of facets to be returned. Takes the form of facetName:numberOfItems
      * - startNum integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
      * - dbIds comma seperated list of integers representing the database to search
@@ -208,13 +208,20 @@ class Bib extends EasyRdf_Resource
         }
     }
     
-private static function buildParameters($query, $options = null)
-    {
+    private static function buildParameters($query, $options = null)
+        {
         $parameters = array('q' => $query);
 
+        $repeatingQueryParms = '';
         if (!empty($options)){
             foreach ($options as $option => $optionValue){
-                $parameters[$option] = $optionValue;
+                if (!is_array($optionValue)){
+                    $parameters[$option] = $optionValue;
+                } else {
+                    foreach ($optionValue as $value){
+                        $repeatingQueryParms .= '&' . $option . '=' . $value;
+                    }
+                }
             }
         }
         
@@ -222,7 +229,7 @@ private static function buildParameters($query, $options = null)
             $parameters['dbIds'] = 638;
         }
         
-        $queryString =  http_build_query($parameters);     
+        $queryString =  http_build_query($parameters) . $repeatingQueryParms;
         
         return $queryString;         
     }
