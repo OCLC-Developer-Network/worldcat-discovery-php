@@ -27,6 +27,14 @@ use \EasyRdf_TypeMapper;
  */
 class Thing extends EasyRdf_Resource
 {
+    /**
+     * Get ID
+     * @return string
+     */
+    function getId()
+    {
+        return $this->getUri();
+    }
     
     /**
      * Get Name
