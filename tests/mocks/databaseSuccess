@@ -5,17 +5,17 @@
         url: 'https://beta.worldcat.org/discovery/database/data/638'
         headers:
             Host: beta.worldcat.org
-            User-Agent: 'Guzzle/3.8.1 curl/7.21.4 PHP/5.3.28'
+            User-Agent: 'Guzzle/3.8.1 curl/7.21.4 PHP/5.3.28, WorldCat Discovery API PHP Client'
             Authorization: 'Bearer tk_12345'
             Accept: application/rdf+xml
             Content-Length: '0'
     response:
         status: 200
         headers:
-            X-OCLC-RequestId: 17947aeb-b264-43d7-ab67-5663e1362461
-            X-OCLC-SelfId: b99130d4-14e6-4453-b9f2-1fdf998ada51
+            X-OCLC-RequestId: 682e8ef5-52ac-4930-a2b5-20e07fa9c54d
+            X-OCLC-SelfId: 0080ef0e-7f1c-445e-8953-c598e8908957
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Content-Location: 'http://beta.worldcat.org/discovery/database/data/638.rdf'
             Vary: 'Accept-Encoding, User-Agent'
             Transfer-Encoding: chunked
-        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:j.0=\"http://purl.org/dc/dcmitype/\"\n    xmlns:j.1=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.2=\"http://schema.org/\" > \n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/database/data/638\">\n    <j.1:openAccess>yes</j.1:openAccess>\n    <j.1:dbId rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">638</j.1:dbId>\n    <j.2:name>WorldCat.org</j.2:name>\n    <j.2:description>OCLC catalog of books, articles, and other materials in libraries worldwide</j.2:description>\n    <rdf:type rdf:resource=\"http://purl.org/dc/dcmitype/Dataset\"/>\n  </rdf:Description>\n</rdf:RDF>\n"
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:j.0=\"http://purl.org/dc/dcmitype/\"\n    xmlns:j.1=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.2=\"http://schema.org/\" > \n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/database/data/638\">\n    <j.1:configuredForAccess>true</j.1:configuredForAccess>\n    <j.1:dbId rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">638</j.1:dbId>\n    <rdf:type rdf:resource=\"http://purl.org/dc/dcmitype/Dataset\"/>\n    <j.2:description>OCLC catalog of books, articles, and other materials in libraries worldwide</j.2:description>\n    <j.2:name>WorldCat.org</j.2:name>\n    <j.1:openAccess>yes</j.1:openAccess>\n  </rdf:Description>\n</rdf:RDF>\n"

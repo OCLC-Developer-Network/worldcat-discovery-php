@@ -12,9 +12,9 @@
     response:
         status: 403
         headers:
-            X-OCLC-RequestId: 48f090a5-675b-4b88-bfad-0a1acd532fc6
-            X-OCLC-SelfId: 4f44138d-7b7f-43eb-8748-8fa5baca4694
+            X-OCLC-RequestId: faecf8a4-0f34-4145-ac30-b1eb7ea55e6e
+            X-OCLC-SelfId: 1b0611cb-9eae-4769-9f4f-c656bff9bf95
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Content-Location: 'http://beta.worldcat.org/discovery/bib/search.rdf?q=gdp%20policy&dbIds=2663'
             Transfer-Encoding: chunked
-        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>Your query included one or more databases for which you do not have access rights. [2663]</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">403</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?q=gdp%20policy&amp;dbIds=2663\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n</rdf:RDF>\n"
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?q=gdp%20policy&amp;dbIds=2663\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>Your query included one or more databases for which you do not have access rights. [2663]</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">403</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n</rdf:RDF>\n"

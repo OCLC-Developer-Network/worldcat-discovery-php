@@ -5,15 +5,15 @@
         url: 'https://beta.worldcat.org/discovery/bib/data/41266045'
         headers:
             Host: beta.worldcat.org
-            User-Agent: 'Guzzle/3.8.1 curl/7.21.4 PHP/5.3.28'
+            User-Agent: 'Guzzle/3.8.1 curl/7.21.4 PHP/5.3.28, WorldCat Discovery API PHP Client'
             Authorization: 'Bearer tk_12345'
             Accept: application/rdf+xml
             Content-Length: '0'
     response:
         status: 403
         headers:
-            X-OCLC-RequestId: 47e9cc3c-4159-4116-abdd-ae048f183457
-            X-OCLC-SelfId: 88a4beb0-5a8e-48a1-a6ad-b22eab8e2c9c
+            X-OCLC-RequestId: 3de09f55-a78e-4617-b3e8-0992c2323c3a
+            X-OCLC-SelfId: 5f63eb06-2e01-4db6-95f6-fa315ba6c64b
             Cache-Control: 'must-revalidate,no-cache,no-store'
             Content-Type: 'text/html; charset=ISO-8859-1'
             Content-Length: '361'

@@ -12,9 +12,9 @@
     response:
         status: 400
         headers:
-            X-OCLC-RequestId: 466a9a42-630e-4d77-a07c-24ef0c04c03a
-            X-OCLC-SelfId: 50a6d53c-665e-4754-8190-843da79902b2
+            X-OCLC-RequestId: 1afd4f91-9e44-455a-9748-77edbea000be
+            X-OCLC-SelfId: 5fe4b830-9051-400c-b9e3-9c4134de89a8
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Content-Location: 'http://beta.worldcat.org/discovery/bib/search.rdf?q=%20&dbIds=638'
             Transfer-Encoding: chunked
-        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>Invalid or missing parameter on request</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">400</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?q=%20&amp;dbIds=638\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n</rdf:RDF>\n"
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>Invalid q parameter.  Please provide a value for the q parameter which is at least 3 characters in length.</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">400</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/search?q=%20&amp;dbIds=638\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n</rdf:RDF>\n"
