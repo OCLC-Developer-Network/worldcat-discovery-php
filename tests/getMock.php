@@ -15,11 +15,11 @@
 
 /**
  * 
- * @author librarywebchic
+ * @author Karen Coombs
  *
  * This takes two parameters. 
- * The first is the mocks to generate. The valid values are: all, bibFind, bibSearch, database, offers, viaf, authority
- * The second is what environment to generates mocks from
+ * The first parameter is required and represents what the mocks to generate. The valid values are: all, bibFind, bibSearch, database, offers, viaf, authority
+ * The second parameter is optional and represents what environment to generates mocks from
  * 
  * Example usage
  * php getMock.php all
@@ -118,8 +118,8 @@ if ($argv[1] == 'all'  || $argv[1] == 'bibSearch'){
         if (isset($mockValues['facetFields'])){
             $options['facetFields'] = $mockValues['facetFields'];
         }
-        if (isset($mockValues['startNum'])) {
-            $options['startNum'] = $mockValues['startNum'];
+        if (isset($mockValues['startIndex'])) {
+            $options['startIndex'] = $mockValues['startIndex'];
         }
         
         if (isset($mockValues['itemsPerPage'])) {
@@ -221,7 +221,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'authority'){
         unlink($mockFolder . $mock);
     }
     \VCR\VCR::insertCassette($mock);
-    foreach ($mockBuilder['authority'] as $mock => $mockValue) {
+    foreach ($mockBuilder['authority']['authoritySuccess'] as $mock => $mockValue) {
         printf("Mock created for '%s'.\n", $mock);
         $authority = Authority::findByURI($mockValue);
         file_put_contents($mockFolder . 'authoritySuccess', str_replace($mockValue, rtrim($mockValue, '.rdf'), file_get_contents($mockFolder . 'authoritySuccess')));
