@@ -36,16 +36,16 @@ bibSearch:
     bibSearchFacets:
         query: cats
         facetFields:
-            author: 10
-            inLanguage: 10
+            - creator:10
+            - inLanguage:10
         dbIds: 638
     bibSearchItemsPerPage:
         query: cats
-        itemsPerPage: 5
+        itemsPerPage: 10
         dbIds: 638
     bibSearchStartNumber10:
         query: cats
-        startNum: 10
+        startIndex: 10
         dbIds: 638
     bibSearchSuccessKeyword:
         query: cats
@@ -88,12 +88,12 @@ offers:
         id: 30780581
         options:
             heldInCountry: CA
-            startNum: 10
+            startIndex: 10
     offerItemsPerPageSuccess:
         id: 30780581
         options:
             heldInCountry: CA
-            itemsPerPage: 2
+            itemsPerPage: 10
     offerGeoCoordinatesSuccess:
         id: 30780581
         options:
