@@ -43,7 +43,7 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
     
     function testSearchFacets(){
         $query = 'cats';
-        $facets = array('author:10', 'inLanguage:10');
+        $facets = array('creator:10', 'inLanguage:10');
         $search = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets));
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
@@ -70,7 +70,7 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
         foreach ($facetList as $facet){
             $this->assertInstanceOf('WorldCat\Discovery\Facet', $facet); 
             $this->assertNotEmpty($facet->getFacetIndex());
-            $this->assertNotEmpty($facet->getFacetValues());
+            $this->assertNotEmpty($facet->getFacetItems());
         }
         return current($facetList);
     }
@@ -80,12 +80,13 @@ class SearchResultsWithFacetsTest extends \PHPUnit_Framework_TestCase
      * @depends testFacetList
      */
     function testFacetValue($facet){
-        $previousCount = current($facet->getFacetValues())->getCount();
-        foreach ($facet->getFacetValues() as $facetValue){
-            $this->assertNotEmpty($facetValue->getName());
-            $this->assertNotEmpty($facetValue->getCount());
-            $this->assertGreaterThanOrEqual($facetValue->getCount(), $previousCount);
-            $previousCount = $facetValue->getCount();
+        $previousCount = current($facet->getFacetItems())->getCount();
+        foreach ($facet->getFacetItems() as $facetItem){
+            $this->assertInstanceOf('WorldCat\Discovery\FacetItem', $facetItem);
+            $this->assertNotEmpty($facetItem->getName());
+            $this->assertNotEmpty($facetItem->getCount());
+            $this->assertGreaterThanOrEqual($facetItem->getCount(), $previousCount);
+            $previousCount = $facetItem->getCount();
         }
     }
 }

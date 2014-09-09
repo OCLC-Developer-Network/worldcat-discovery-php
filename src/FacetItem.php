@@ -19,10 +19,10 @@ use \EasyRdf_Resource;
 use \EasyRdf_Format;
 
 /**
- * A class that represents a Facet Value in WorldCat
+ * A class that represents a Facet Item in WorldCat
  *
  */
-class FacetValue extends EasyRdf_Resource
+class FacetItem extends EasyRdf_Resource
 {
     /**
      * Get name of facet value

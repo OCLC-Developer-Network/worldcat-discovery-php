@@ -38,13 +38,13 @@ class Facet extends EasyRdf_Resource
      *
      * @return array
      */
-    function getFacetValues(){
-        $facetValueList = $this->allResources('discovery:facetValue');
-        $sortedFacetValueList  = array();
-        foreach ($facetValueList as $facetValue){
-            $sortedFacetValueList[$facetValue->getCount()->getValue()] = $facetValue;
+    function getFacetItems(){
+        $facetItemList = $this->allResources('discovery:facetValue');
+        $sortedFacetItemList  = array();
+        foreach ($facetItemList as $facetItem){
+            $sortedFacetItemList[$facetItem->getCount()->getValue()] = $facetItem;
         }
-        krsort($sortedFacetValueList);
-        return $sortedFacetValueList;
+        krsort($sortedFacetItemList);
+        return $sortedFacetItemList;
     }
 }
