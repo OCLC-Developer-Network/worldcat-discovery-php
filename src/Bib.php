@@ -118,6 +118,7 @@ class Bib extends EasyRdf_Resource
      * - itemSubType
      * - peerReview
      * - useFRBRGrouping
+     * - facetQueries an array of facets data to refine query to
      * - facetFields an array of facets to be returned. Takes the form of facetName:numberOfItems
      * - startIndex integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10

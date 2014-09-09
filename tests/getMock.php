@@ -118,6 +118,11 @@ if ($argv[1] == 'all'  || $argv[1] == 'bibSearch'){
         if (isset($mockValues['facetFields'])){
             $options['facetFields'] = $mockValues['facetFields'];
         }
+        
+        if (isset($mockValues['facetQueries'])){
+            $options['facetQueries'] = $mockValues['facetQueries'];
+        }
+        
         if (isset($mockValues['startIndex'])) {
             $options['startIndex'] = $mockValues['startIndex'];
         }
@@ -132,7 +137,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'bibSearch'){
         
         $bib = Bib::search($mockValues['query'], $retrievedToken, $options);
         \VCR\VCR::eject();
-        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
+        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $retrievedToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
     }
 }
 
@@ -147,7 +152,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'database'){
         printf("Mock created for '%s'.\n", $mock);
         $database = Database::find($mockValues['id'], $retrievedToken);
         \VCR\VCR::eject();
-        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
+        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $retrievedToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
     }
     
     //database list mock
@@ -161,7 +166,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'database'){
     \VCR\VCR::insertCassette($mockBuilder['databaseSearch']);
     $database = Database::getList($retrievedToken);
     \VCR\VCR::eject();
-    file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
+    file_put_contents($mockFolder . $mock, str_replace("Bearer " . $retrievedToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
 }
 
 if ($argv[1] == 'all'  || $argv[1] == 'offers'){
@@ -188,7 +193,7 @@ if ($argv[1] == 'all'  || $argv[1] == 'offers'){
         
         $bib = Offer::findByOclcNumber($mockValues['id'], $accessToken, $options);
         \VCR\VCR::eject();
-        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $accessToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
+        file_put_contents($mockFolder . $mock, str_replace("Bearer " . $retrievedToken->getValue(), "Bearer tk_12345", file_get_contents($mockFolder . $mock)));
     }
 }
 

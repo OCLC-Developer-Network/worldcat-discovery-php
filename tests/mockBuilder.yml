@@ -39,6 +39,11 @@ bibSearch:
             - creator:10
             - inLanguage:10
         dbIds: 638
+    bibSearchFacetQueries:
+        query: cats
+        facetQueries:
+            - creator:potter, beatrix
+            - inLanguage:eng
     bibSearchItemsPerPage:
         query: cats
         itemsPerPage: 10
