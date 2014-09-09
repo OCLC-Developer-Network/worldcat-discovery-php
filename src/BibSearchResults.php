@@ -46,7 +46,7 @@ class BibSearchResults extends SearchResults
      * @return array
      */
      function getFacets(){
-         $facetList = $this->graph->allOfType('discovery:FacetItem');
+         $facetList = $this->graph->allOfType('discovery:Facet');
          return $facetList;
      } 
 }
