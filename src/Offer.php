@@ -40,7 +40,7 @@ class Offer extends EasyRdf_Resource
      * - heldByGroup
      * - heldInCountry
      * - useFRBRGrouping
-     * - startNum integer offset from the beginning of the search result set. defaults to 0
+     * - startIndex integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
      * - lat, lon, unit, distance
      * @return WorldCat\Discovery\OfferSet or WorldCat\Discovery\Error

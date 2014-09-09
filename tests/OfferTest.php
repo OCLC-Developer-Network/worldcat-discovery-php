@@ -140,7 +140,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      * Find Offers by OCLC Number itemStartPage
      */
     function testFindOfferByOclcNumberItemStartPage(){
-        $options = array('heldInCountry' => 'CA', 'startNum' => '10');
+        $options = array('heldInCountry' => 'CA', 'startIndex' => '10');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('10', $offerSet->getStartIndex());
@@ -154,13 +154,13 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      * Find Offers by OCLC Number itemsPerPage
      */
     function testFindOfferByOclcNumberItemsPerPage(){
-        $options = array('heldInCountry' => 'CA', 'itemsPerPage' => '2');
+        $options = array('heldInCountry' => 'CA', 'itemsPerPage' => '10');
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('0', $offerSet->getStartIndex());
-        $this->assertEquals('2', $offerSet->getItemsPerPage());
+        $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
-        $this->assertEquals('2', count($offerSet->getOffers()));
+        $this->assertEquals('10', count($offerSet->getOffers()));
     }
     
     /**
