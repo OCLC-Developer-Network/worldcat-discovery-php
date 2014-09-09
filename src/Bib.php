@@ -119,7 +119,7 @@ class Bib extends EasyRdf_Resource
      * - peerReview
      * - useFRBRGrouping
      * - facetFields an array of facets to be returned. Takes the form of facetName:numberOfItems
-     * - startNum integer offset from the beginning of the search result set. defaults to 0
+     * - startIndex integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
      * - dbIds comma seperated list of integers representing the database to search
      * @return WorldCat\Discovery\SearchResults or \Guzzle\Http\Exception\BadResponseException
@@ -199,8 +199,8 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('http://dbpedia.org/ontology/Place', 'WorldCat\Discovery\Place'); // will be deprecated
         
         EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\BibSearchResults');
-        EasyRdf_TypeMapper::set('discovery:FacetItem', 'WorldCat\Discovery\Facet');
-        EasyRdf_TypeMapper::set('discovery:FacetItemValue', 'WorldCat\Discovery\FacetValue');
+        EasyRdf_TypeMapper::set('discovery:Facet', 'WorldCat\Discovery\Facet');
+        EasyRdf_TypeMapper::set('discovery:FacetItem', 'WorldCat\Discovery\FacetItem');
         EasyRdf_TypeMapper::set('response:ClientRequestError', 'WorldCat\Discovery\Error');
         
         if (!class_exists('Guzzle')) {

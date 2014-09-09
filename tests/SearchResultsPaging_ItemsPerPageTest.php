@@ -43,7 +43,7 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     function testSearchStartIndex10(){
         $query = 'cats';
-        $search = Bib::Search($query, $this->mockAccessToken, array('startNum' => 10));
+        $search = Bib::Search($query, $this->mockAccessToken, array('startIndex' => 10));
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('10', $search->getStartIndex());
@@ -61,17 +61,17 @@ class SearchResultsPaging_ItemsPerPageTest extends \PHPUnit_Framework_TestCase
     
     /** 
      * @vcr bibSearchItemsPerPage
-     * can parse set of Bibs from a Search Result where itemsPerPage is 5*/
+     * can parse set of Bibs from a Search Result where itemsPerPage is 10*/
     
     function testSearchItemsPerPage5(){
         $query = 'cats';
-        $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 5));
+        $search = Bib::Search($query, $this->mockAccessToken, array('itemsPerPage' => 10));
         
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
-        $this->assertEquals('5', $search->getItemsPerPage());
+        $this->assertEquals('10', $search->getItemsPerPage());
         $this->assertInternalType('integer', $search->getTotalResults());
-        $this->assertEquals('5', count($search->getSearchResults()));
+        $this->assertEquals('10', count($search->getSearchResults()));
         $results = $search->getSearchResults();
         $i = $search->getStartIndex();
         foreach ($search->getSearchResults() as $searchResult){
