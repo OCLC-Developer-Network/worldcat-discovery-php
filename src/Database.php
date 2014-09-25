@@ -33,6 +33,9 @@ class Database extends EasyRdf_Resource
     
     private $database;
     
+    /**
+     * Get the ID in the form of a URI
+     */
     function getId()
     {
         return $this->getUri();
@@ -50,7 +53,7 @@ class Database extends EasyRdf_Resource
     }
     
     /**
-     * Get Open Access
+     * Get Open Access property value
      *
      * @return EasyRDF_Literal
      */
@@ -60,10 +63,19 @@ class Database extends EasyRdf_Resource
         return $openAccess;
     }
     
+    /**
+     * Find and retrieve a WorldCat Discovery Database by ID
+     * @param integer $id
+     * @param $accessToken OCLC/Auth/AccessToken
+     * @param array $options
+     * @throws \BadMethodCallException
+     * @return WorldCat\Discovery\Database or \Guzzle\Http\Exception\BadResponseException
+     */
+    
     public static function find($id, $accessToken, $options = null)
     {
         
-        if (!is_int($id)){
+        if (!is_numeric($id)){
             Throw new \BadMethodCallException('You must pass a valid ID');
         } elseif (!is_a($accessToken, '\OCLC\Auth\AccessToken')) {
             Throw new \BadMethodCallException('You must pass a valid OCLC/Auth/AccessToken object');
@@ -97,6 +109,13 @@ class Database extends EasyRdf_Resource
         }
     }
     
+    /**
+     * 
+     * @param $accessToken OCLC/Auth/AccessToken
+     * @throws \BadMethodCallException
+     * @return array of WorldCat\Discovery\Database objects or \Guzzle\Http\Exception\BadResponseException
+     */
+    
     public static function getList($accessToken)
     {
         if (!is_a($accessToken, '\OCLC\Auth\AccessToken')) {
@@ -128,6 +147,10 @@ class Database extends EasyRdf_Resource
             return Error::parseError($error);
         }
     }
+    
+    /**
+     * Perform the appropriate namespace setting and type mapping in EasyRdf before parsing the graph
+     */
     
     private static function requestSetup()
     {   
