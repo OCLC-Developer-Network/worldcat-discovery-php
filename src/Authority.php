@@ -24,7 +24,11 @@ use \EasyRdf_Format;
 *
 */
 class Authority extends Thing
-{    
+{   
+    /**
+     * Load the Authority from the URI
+     * @param string $format
+     */ 
     public function load($format = null)
     {
         $formats = EasyRdf_Format::getNames();
@@ -36,6 +40,11 @@ class Authority extends Thing
         parent::load($format = null);
     }
     
+    /**
+     * Get the Label 
+     * @param string $lang the language you want the label in
+     * return string
+     */
     function label($lang = null) {
         if (parent::label($lang)){
             return parent::label($lang);
@@ -44,24 +53,42 @@ class Authority extends Thing
         }
     }
     
+    /**
+     * Get the Component List 
+     * @return EasyRDF_Resource 
+     */
     function getComponentList()
     {
         return $this->getResource('madsrdf:componentList');
     }
     
+    /**
+     * Get the Topics
+     * 
+     * @return array of WorldCat\Discovery\TopicalAuthority
+     */
     function getTopics()
     {
         $topics = $this->graph->allOfType('madsrdf:Topic');
         return $topics;
     }
     
+    /**
+     * Get the Geographic Authorities
+     *
+     * @return array of WorldCat\Discovery\GeographicAuthority
+     */
     function getGeographics()
     {
         $geographics = $this->graph->allOfType('madsrdf:Geographic');
         return $geographics;
     }
     
-        
+    /**
+     * Get the Genre Authorities
+     *
+     * @return array of WorldCat\Discovery\Authority
+     */
     function getGenres()
     {
         $genres = $this->graph->allOfType('madsrdf:GenreForm');

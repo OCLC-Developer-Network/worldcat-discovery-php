@@ -23,14 +23,26 @@ class Person extends Thing
 {   
     public static $viafServiceUrl = 'http://viaf.org/viaf';
     
+    /**
+     * Get the Given Name
+     * @return string
+     */
     function getGivenName(){
         return $this->getLiteral('schema:givenName');
     }
     
+    /**
+     * Get the Family Name
+     * @return string
+     */
     function getFamilyName(){
         return $this->getLiteral('schema:familyName');
     }
     
+    /**
+     * Get the BirthDate
+     * @return string
+     */
     function getBirthDate(){
         if ($this->getLiteral('schema:birthDate')){
             return $this->getLiteral('schema:birthDate');
@@ -42,6 +54,10 @@ class Person extends Thing
         }
     }
     
+    /**
+     * Get the DeathDate
+     * @string
+     */
     function getDeathDate(){
         
         if ($this->getLiteral('schema:deathDate')){
@@ -54,14 +70,26 @@ class Person extends Thing
         }
     }
     
+    /**
+     * Get the Same As properties
+     * @return array of EasyRDF_Resource
+     */
     function getSameAsProperties(){
         return $this->all('owl:sameAs');
     }
     
+    /**
+     * Get the See Also properties
+     * @return array of EasyRDF_Resource
+     */
     function getSeeAlsoProperties(){
         return $this->all('rdfs:seeAlso');
     }
     
+    /**
+     * Get the Dbpedia URI properties
+     * @return EasyRDF_Resource
+     */
     function getDbpediaUri(){
         if (strpos($this->getURI(), 'viaf')){
             $viafResource = static::findByURI($this->getURI());
@@ -78,6 +106,10 @@ class Person extends Thing
         }
     }
     
+    /**
+     * Get the Creative Works
+     * @return array of EasyRDF_Resource
+     */
     public function getCreativeWorks(){
         if (strpos($this->getURI(), 'viaf')){
             $graph = static::getByURI($this->getURI(), true);
@@ -86,6 +118,12 @@ class Person extends Thing
         }
     }
     
+    /**
+     * Retrieve a person by its VIAF ID
+     *
+     * @param string $id
+     * @return WorldCat\Discovery\Person
+     */
     public static function findByVIAFID($id){
         $uri = static::$viafServiceUrl . '/' . $id;
         return static::findByURI($uri);

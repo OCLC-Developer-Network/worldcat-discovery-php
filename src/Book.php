@@ -28,6 +28,7 @@ use \EasyRdf_TypeMapper;
 class Book extends CreativeWork
 {
     /**
+     * Get the Copyright Year
      * @return EasyRDF_Literal
      */
     function getCopyrightYear()
@@ -37,6 +38,7 @@ class Book extends CreativeWork
     }
     
     /**
+     * Get the Book edition
      * @return EasyRDF_Literal
      */
     function getBookEdition(){
@@ -45,6 +47,7 @@ class Book extends CreativeWork
     }
     
     /**
+     * Get the number of pages
      * @return EasyRDF_Literal
      */
     function getNumberOfPages(){
@@ -53,6 +56,7 @@ class Book extends CreativeWork
     }
     
     /**
+     * Get the Book format
      * @return EasyRDF_Literal
      */
     function getBookFormat(){
@@ -61,6 +65,7 @@ class Book extends CreativeWork
     }
     
     /**
+     * Get an array of the Manifestations
      * @return array
      */
     function getManifestations(){
@@ -68,6 +73,7 @@ class Book extends CreativeWork
     }
     
     /**
+     * Get an array of reviews
      * @return array
      */
     function getReviews(){
@@ -76,6 +82,7 @@ class Book extends CreativeWork
     }
     
     /**
+     * Get an array of Awards
      * return array
      */
     function getAwards()

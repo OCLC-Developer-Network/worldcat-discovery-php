@@ -22,7 +22,7 @@ use \EasyRdf_Namespace;
 use \EasyRdf_TypeMapper;
 
 /**
- * A class that represents an Intangible in Schema.org
+ * A class that represents a Thing in Schema.org
  *
  */
 class Thing extends EasyRdf_Resource
@@ -46,6 +46,14 @@ class Thing extends EasyRdf_Resource
         $name = $this->get('schema:name');
         return $name;
     }
+    
+    /**
+     * Get a graph for a Thing by the URI
+     * 
+     * @param string $uri
+     * @param string $returnGraph
+     * @return \EasyRdf_Graph | WorldCat\Discovery\Error
+     */
     
     public static function findByURI($uri, $returnGraph = false) {
         EasyRdf_Namespace::set('schema', 'http://schema.org/');

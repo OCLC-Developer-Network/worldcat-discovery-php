@@ -19,7 +19,8 @@ use \EasyRdf_Resource;
 use \EasyRdf_Format;
 
 /**
- * A class that represents a Bibliographic Resource in WorldCat
+ * A class that represents a set of search results in WorldCat
+ * Parent class for BibSearchResults and OfferSet
  *
  */
 class SearchResults extends EasyRdf_Resource
@@ -56,40 +57,4 @@ class SearchResults extends EasyRdf_Resource
         $totalResults = $this->get('discovery:totalResults');
         return $totalResults->getValue();
     }
-    
-    /**
-     * Get an array of search results (EasyRDF_Resource objects)
-     * 
-     * @return array
-     */
-    function getSearchResults(){
-        $searchResults = $this->graph->allOfType('http://www.w3.org/2006/gen/ont#InformationResource');
-        $sortedSearchResults = array();
-        foreach ($searchResults as $result){
-            $sortedSearchResults[(int)$result->getCreativeWork()->getDisplayPosition()] = $result->getCreativeWork();
-        }
-        ksort($sortedSearchResults);
-        return $sortedSearchResults;
-    }
-    
-    function getOffers(){
-        
-        $offers = $this->graph->allOfType('schema:Offer');
-        $sortedOffers = array();
-        foreach ($offers as $offer){
-            $sortedOffers[(int)$offer->getDisplayPosition()] = $offer;
-        }
-        ksort($sortedOffers);
-        return $sortedOffers;
-    }
-    
-    /**
-     * Get an array of Facets (WorldCat/Discovery/Facet)
-     * 
-     * @return array
-     */
-     function getFacets(){
-         $facetList = $this->graph->allOfType('discovery:FacetItem');
-         return $facetList;
-     } 
 }

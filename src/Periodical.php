@@ -38,6 +38,10 @@ class Periodical extends CreativeWork
         return $isLike;
     }
     
+    /**
+     * Get the ISSN
+     * @return EasyRD_Literal
+     */
     function getIssn()
     {
         $issn = $this->getResource('umbel:isLike')->get('library:issn');

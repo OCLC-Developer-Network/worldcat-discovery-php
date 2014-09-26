@@ -28,6 +28,7 @@ use \EasyRdf_TypeMapper;
 class MusicAlbum extends CreativeWork
 {   
     /**
+     * Get the specific format of the MusicAlbum
      * @return string
      */
     function getFormat(){

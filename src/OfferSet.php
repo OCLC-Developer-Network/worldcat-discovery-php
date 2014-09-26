@@ -23,7 +23,12 @@ use \EasyRdf_Format;
  *
  */
 class OfferSet extends SearchResults
-{     
+{   
+    /**
+     * Get an array of Offers
+     * 
+     * @return array WorldCat\Discovery\Offer
+     */  
     function getOffers(){
         
         $offers = $this->graph->allOfType('schema:Offer');
@@ -35,6 +40,11 @@ class OfferSet extends SearchResults
         return $sortedOffers;
     }
 
+    /**
+     * Get an array of the Creative Works
+     * 
+     * @return array
+     */
     function getCreativeWorks(){
         $bibs = $this->graph->allOfType('http://www.w3.org/2006/gen/ont#InformationResource');
         $creativeWorks = array();

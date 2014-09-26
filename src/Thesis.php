@@ -22,7 +22,7 @@ use \EasyRdf_Namespace;
 use \EasyRdf_TypeMapper;
 
 /**
- * A class that represents an Article in WorldCat
+ * A class that represents a Thesis in WorldCat
  *
  */
 class Thesis extends Book

@@ -23,14 +23,26 @@ class Place extends Intangible
 {
     public static $viafServiceUrl = 'http://viaf.org/viaf';
     
+    /**
+     * Get the Same As Properties
+     * @return array EasyRDF_Resource
+     */
     function getSameAsProperties(){
         return $this->all('owl:sameAs');
     }
     
+    /**
+     * Get the See Also Properties
+     * @return array EasyRDF_Resource
+     */
     function getSeeAlsoProperties(){
         return $this->all('rdfs:seeAlso');
     }
     
+    /**
+     * Get the Creative Works
+     * @return array of EasyRDF_Resource
+     */
     public function getCreativeWorks(){
         if (strpos($this->getURI(), 'viaf')){
             $graph = static::findByURI($this->getURI(), true);
@@ -39,6 +51,12 @@ class Place extends Intangible
         }
     }
     
+    /**
+     * Retrieve a Place by its VIAF ID
+     *
+     * @param string $id
+     * @return WorldCat\Discovery\Place
+     */
     public static function findByVIAFID($id){
         $uri = static::$viafServiceUrl . '/' . $id;
         return static::findByURI($uri);

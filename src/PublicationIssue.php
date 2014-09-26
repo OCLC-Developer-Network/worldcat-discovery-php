@@ -28,7 +28,8 @@ use \EasyRdf_TypeMapper;
 class PublicationIssue extends EasyRdf_Resource
 {
     /**
-     *
+     * Get the Volume
+     * 
      * @return EasyRDF_Resource
      */
     function getVolume()
@@ -38,6 +39,7 @@ class PublicationIssue extends EasyRdf_Resource
     }
     
     /**
+     * Get the Issue Number
      * @return EasyRDF_Literal
      */
     function getIssueNumber()
@@ -47,6 +49,7 @@ class PublicationIssue extends EasyRdf_Resource
     }
     
     /**
+     * Get the Date Published
      * @return EasyRDF_Literal
      */
     function getDatePublished()

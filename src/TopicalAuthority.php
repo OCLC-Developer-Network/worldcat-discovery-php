@@ -20,42 +20,61 @@ namespace WorldCat\Discovery;
 * http://id.loc.gov/authorities/subjects/sh85149296
 *
 */
-class AuthorityTopical extends Authority
+class TopicalAuthority extends Authority
 {
-    
+    /**
+     * Get Broader Authorities
+     * 
+     * @return array of WorldCat\Discovery\TopicalAuthority
+     */
     function getBroaderAuthorities()
     {
-        $broaderAuthorities = $this->get('madsrdf:hasBroaderAuthority');
+        $broaderAuthorities = $this->all('madsrdf:hasBroaderAuthority');
         if (empty($broaderAuthorities)){
             $this->load();
-            $broaderAuthorities = $this->get('madsrdf:hasBroaderAuthority');
+            $broaderAuthorities = $this->all('madsrdf:hasBroaderAuthority');
         }
         return $broaderAuthorities;
     }
     
+    /**
+     * Get Narrower Authorities
+     *
+     * @return array of WorldCat\Discovery\TopicalAuthority
+     */
     function getNarrowerAuthorities()
     {
-        $narrowerAuthorities = $this->get('madsrdf:hasNarrowerAuthority');
+        $narrowerAuthorities = $this->all('madsrdf:hasNarrowerAuthority');
         if (empty($narrowerAuthorities)){
             $this->load();
-            $narrowerAuthorities = $this->get('madsrdf:hasNarrowerAuthority');
+            $narrowerAuthorities = $this->all('madsrdf:hasNarrowerAuthority');
         }
         return $narrowerAuthorities;
     }
     
+    /**
+     * Get Reciprocal Authorities
+     *
+     * @return array of WorldCat\Discovery\TopicalAuthority
+     */
     function getReciprocalAuthorities()
     {
-        $reciprocalAuthorities = $this->get('madsrdf:hasReciprocalAuthority');
+        $reciprocalAuthorities = $this->all('madsrdf:hasReciprocalAuthority');
         if (empty($reciprocalAuthorities)){
             $this->load();
-            $reciprocalAuthorities = $this->get('madsrdf:hasReciprocalAuthority');
+            $reciprocalAuthorities = $this->all('madsrdf:hasReciprocalAuthority');
         }
         return $reciprocalAuthorities;
     }
     
+    /**
+     * Get Close External Authorities
+     *
+     * @return array of WorldCat\Discovery\TopicalAuthority
+     */
     function getCloseExternalAuthorities()
     {
-        $closeExternalAuthorities = $this->get('madsrdf:hasCloseExternalAuthority');
+        $closeExternalAuthorities = $this->all('madsrdf:hasCloseExternalAuthority');
         if (empty($closeExternalAuthorities)){
             $this->load();
             $closeExternalAuthorities = $this->get('madsrdf:hasCloseExternalAuthority');

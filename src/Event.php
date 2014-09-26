@@ -19,7 +19,7 @@ use \EasyRdf_Resource;
 use \EasyRdf_Format;
 
 /**
- * A class that represents a Place in Schema.org
+ * A class that represents an Event in Schema.org
  *
  */
 class Event extends Intangible

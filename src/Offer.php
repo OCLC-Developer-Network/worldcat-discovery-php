@@ -37,12 +37,17 @@ class Offer extends EasyRdf_Resource
      * @param $options array All the optional parameters are valid
      * - heldBy array which is a limiter to restrict search results to items held by a given institution(s)
      * - notHeldBy array which is imiter to restrict search results to items that are not held by a given institution(s).
-     * - heldByGroup
-     * - heldInCountry
-     * - useFRBRGrouping
+     * - heldByGroup array which is a limiter to restrict search results to items held by a given group(s)
+     * - heldInCountry string which is a limiter to restrict search results to items held by institutions within a specific ISO country code
+     * - useFRBRGrouping boolean whether or not the reponse returns the representative record for the FRBR group.
      * - startIndex integer offset from the beginning of the search result set. defaults to 0
      * - itemsPerPage integer representing the number of items to return in the result set. defaults to 10
-     * - lat, lon, unit, distance
+     * 
+     * Limit to items heldby items within a defined radius. These four options MUST be used together
+     * - lat
+     * - lon
+     * - distance
+     * - unit
      * @return WorldCat\Discovery\OfferSet or WorldCat\Discovery\Error
      */
     
@@ -82,18 +87,28 @@ class Offer extends EasyRdf_Resource
         }
     }
     
+    /**
+     * Get ID
+     *
+     * @return string
+     */
     function getId()
     {
         return $this->getUri();
     }
     
+    /**
+     * Get Display Position
+     *
+     * @return string
+     */
     function getDisplayPosition()
     {
         return $this->get('gr:displayPosition')->getValue();
     }
     
     /**
-     *
+     * Get the Item Offered
      * @return WorldCat\Discovery\SomeProducts
      */
     public function getItemOffered()
@@ -124,6 +139,10 @@ class Offer extends EasyRdf_Resource
         $seller = $this->get('schema:seller');
         return $seller;
     }
+    
+    /**
+     * Perform the appropriate namespace setting and type mapping in EasyRdf before parsing the graph
+     */
     
     private static function requestSetup()
     {
@@ -176,6 +195,12 @@ class Offer extends EasyRdf_Resource
         }
     }
     
+    /**
+     * Build the query string for the request
+     *
+     * @param array $options
+     * @return string
+     */
     private static function buildParameters($options = null)
     {
         $parameters = array();

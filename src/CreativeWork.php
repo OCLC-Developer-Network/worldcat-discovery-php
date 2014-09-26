@@ -27,15 +27,26 @@ use \EasyRdf_TypeMapper;
  */
 class CreativeWork extends EasyRdf_Resource
 {
+    /**
+     * Get ID
+     *
+     * @return string
+     */
     function getId()
     {
         return $this->getUri();
     }
     
+    /**
+     * Get Display Position
+     *
+     * @return string
+     */
     function getDisplayPosition()
     {
         return $this->get('gr:displayPosition')->getValue();
     }
+    
     /**
      * Get Name
      *
@@ -105,7 +116,7 @@ class CreativeWork extends EasyRdf_Resource
     
     /**
      *
-     * @return array
+     * @return array of EasyRDF_Literals
      */
     function getDescriptions()
     {
@@ -141,7 +152,7 @@ class CreativeWork extends EasyRdf_Resource
     }
     
     /**
-     * @return array
+     * @return array EasyRDF_Literal
      */
     function getGenres(){
         $genres = $this->all('schema:genre');
@@ -163,7 +174,7 @@ class CreativeWork extends EasyRdf_Resource
     }
     
     /**
-     * @return array
+     * @return array EasyRDF_Resources
      */
     function getAbout() {
         $about = $this->allResources('schema:about');

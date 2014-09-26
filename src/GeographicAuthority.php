@@ -20,15 +20,18 @@ namespace WorldCat\Discovery;
 * 
 * http://id.loc.gov/authorities/names/n82068148.rdf
 */
-class AuthorityGeographic extends Authority
+class GeographicAuthority extends Authority
 {
-    
+    /**
+     * Get the Variants
+     * @return array
+     */
     function getVariants()
     {
-        $variants = $this->get('madsrdf:hasVariant');
+        $variants = $this->all('madsrdf:hasVariant');
         if (empty($variants)){
             $this->load();
-            $variants = $this->get('madsrdf:hasVariant');
+            $variants = $this->all('madsrdf:hasVariant');
         }
         return $variants;
     }

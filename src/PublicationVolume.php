@@ -28,7 +28,7 @@ use \EasyRdf_TypeMapper;
 class PublicationVolume extends EasyRdf_Resource
 {
     /**
-     *
+     * Get the Periodical the Volume is part of 
      * @return EasyRDF_Resource
      */
     function getPeriodical()
@@ -38,6 +38,7 @@ class PublicationVolume extends EasyRdf_Resource
     }
     
     /**
+     * Get the Volume Number
      * @return EasyRDF_Literal
      */
     function getVolumeNumber()

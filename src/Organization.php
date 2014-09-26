@@ -23,14 +23,26 @@ class Organization extends Thing
 {
     public static $viafServiceUrl = 'http://viaf.org/viaf';
     
+    /**
+     * Get the Same As properties
+     * @return array
+     */
     function getSameAsProperties(){
         return $this->all('owl:sameAs');
     }
     
+    /**
+     * Get the See Also properties
+     * @return array
+     */
     function getSeeAlsoProperties(){
         return $this->all('rdfs:seeAlso');
     }
     
+    /**
+     * Get the Creative Works
+     * @return array
+     */
     public function getCreativeWorks(){
         if (strpos($this->getURI(), 'viaf')){
             $graph = static::findByURI($this->getURI(), true);
@@ -39,6 +51,12 @@ class Organization extends Thing
         }
     }
     
+    /**
+     * Retrieve an organization by its VIAF ID
+     * 
+     * @param string $id
+     * @return WorldCat\Discovery\Organization
+     */
     public static function findByVIAFID($id){
         $uri = static::$viafServiceUrl . '/' . $id;
         return static::findByURI($uri);

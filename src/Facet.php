@@ -28,7 +28,6 @@ class Facet extends EasyRdf_Resource
     * Get facetIndex
     * return string
     */
-
     function getFacetIndex(){
         return $this->get('discovery:facetIndex');
     }

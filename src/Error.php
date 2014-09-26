@@ -60,6 +60,12 @@ class Error extends EasyRdf_Resource
         return $errorMessage->getValue();
     }
     
+    /**
+     * Parse the response body for the error information
+     * 
+     * @param string $error
+     * @return WorldCat\Discovery\Error
+     */
     static function parseError($error){
         EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
         EasyRdf_Namespace::set('response', 'http://worldcat.org/xmlschemas/response/');
