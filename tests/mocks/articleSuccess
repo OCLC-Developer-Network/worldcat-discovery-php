@@ -12,8 +12,9 @@
     response:
         status: 200
         headers:
-            X-OCLC-RequestId: 30bbb66f-1237-4760-8e6d-54a463920330
-            X-OCLC-SelfId: 1b943dac-5269-4524-870f-7084a2df5fd7
+            Date: 'Tue, 04 Nov 2014 21:22:49 GMT'
+            X-OCLC-RequestId: ffe37d2f-5596-4d29-9972-a300f15cf399
+            X-OCLC-SelfId: 98fe93eb-b222-4ea7-98f1-a9efdd2ecbc0
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Content-Location: 'http://beta.worldcat.org/discovery/bib/data/5131938809.rdf'
             Vary: 'Accept-Encoding, User-Agent'

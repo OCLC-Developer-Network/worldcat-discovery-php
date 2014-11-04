@@ -48,7 +48,8 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('WorldCat\Discovery\Database', $database);
         $this->assertNotEmpty($database->getId());
         $this->assertNotEmpty($database->getName());
-        $this->assertNotEmpty($database->getOpenAccess());
+        $this->assertNotEmpty($database->getRequiresAuthentication());
+        $this->assertNotEmpty($database->getDescription());
     }
     
     /**

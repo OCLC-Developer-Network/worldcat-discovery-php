@@ -53,15 +53,27 @@ class Database extends EasyRdf_Resource
     }
     
     /**
-     * Get Open Access property value
+     * Get Requires Authentication property value
      *
      * @return EasyRDF_Literal
      */
-    function getOpenAccess()
+    function getRequiresAuthentication()
     {
-        $openAccess = $this->get('discovery:openAccess');
-        return $openAccess;
+        $requiresAuthentication = $this->get('discovery:requiresAuthentication');
+        return $requiresAuthentication;
     }
+    
+    /**
+     * Get Description
+     * 
+     * @return EasyRDF_Literal
+     */
+    function getDescription()
+    {
+        $description = $this->get('schema:description');
+        return $description;
+    }
+    
     
     /**
      * Find and retrieve a WorldCat Discovery Database by ID

@@ -197,4 +197,35 @@ class CreativeWork extends EasyRdf_Resource
         return $urls;
     }
     
+    /**
+     * return EasyRDF_Resource
+     */
+    function getDataSet()
+    {
+        if ($this->getResource('wdrs:describedby')){
+            $dataset = $this->getResource('wdrs:describedby')->get('void:inDataset');
+        }else {
+            $schemaUrls = $this->allResources('schema:url');
+            $describedBy = array_filter($schemaUrls, function($schemaUrl)
+            {
+                return(strpos($schemaUrl->getURI(), 'worldcat.org/title'));
+            });
+            $describedBy = array_shift($describedBy);
+            $dataset = $describedBy->get('void:inDataset');
+        }
+        
+        return $dataset;
+    }
+    
+    /**
+     * @return EasyRDF_Literal
+     */
+    function getAudience()
+    {
+        if ($this->get('schema:audience')){
+            $audience = $this->get('schema:audience')->get('schema:audienceType');
+            return $audience;
+        } 
+    }
+    
 }

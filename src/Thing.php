@@ -68,8 +68,8 @@ class Thing extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
         EasyRdf_TypeMapper::set('http://dbpedia.org/ontology/Place', 'WorldCat\Discovery\Place'); // will be deprecated
         EasyRdf_TypeMapper::set('schema:CreativeWork', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('madsrdf:Topic', 'WorldCat\Discovery\AuthorityTopical');
-        EasyRdf_TypeMapper::set('madsrdf:Geographic', 'WorldCat\Discovery\AuthorityGeographic');
+        EasyRdf_TypeMapper::set('madsrdf:Topic', 'WorldCat\Discovery\TopicalAuthority');
+        EasyRdf_TypeMapper::set('madsrdf:Geographic', 'WorldCat\Discovery\GeographicAuthority');
         EasyRdf_TypeMapper::set('madsrdf:Authority', 'WorldCat\Discovery\Authority');
     
         $guzzleOptions = array(

@@ -12,10 +12,11 @@
     response:
         status: 200
         headers:
-            X-OCLC-RequestId: 682e8ef5-52ac-4930-a2b5-20e07fa9c54d
-            X-OCLC-SelfId: 0080ef0e-7f1c-445e-8953-c598e8908957
+            Date: 'Tue, 04 Nov 2014 21:23:00 GMT'
+            X-OCLC-RequestId: 80ef1d89-6484-4abf-8bc1-5c8c3580a977
+            X-OCLC-SelfId: e65b5278-495c-49df-ba30-b107f6bb2d6d
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Content-Location: 'http://beta.worldcat.org/discovery/database/data/638.rdf'
             Vary: 'Accept-Encoding, User-Agent'
             Transfer-Encoding: chunked
-        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:j.0=\"http://purl.org/dc/dcmitype/\"\n    xmlns:j.1=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.2=\"http://schema.org/\" > \n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/database/data/638\">\n    <j.1:configuredForAccess>true</j.1:configuredForAccess>\n    <j.1:dbId rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">638</j.1:dbId>\n    <rdf:type rdf:resource=\"http://purl.org/dc/dcmitype/Dataset\"/>\n    <j.2:description>OCLC catalog of books, articles, and other materials in libraries worldwide</j.2:description>\n    <j.2:name>WorldCat.org</j.2:name>\n    <j.1:openAccess>yes</j.1:openAccess>\n  </rdf:Description>\n</rdf:RDF>\n"
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:j.0=\"http://purl.org/dc/dcmitype/\"\n    xmlns:j.1=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.2=\"http://schema.org/\" > \n  <rdf:Description rdf:about=\"https://beta.worldcat.org/discovery/database/data/638/database/data/638\">\n    <j.1:configuredForAccess>true</j.1:configuredForAccess>\n    <j.1:dbId rdf:datatype=\"http://www.w3.org/2001/XMLSchema#integer\">638</j.1:dbId>\n    <rdf:type rdf:resource=\"http://purl.org/dc/dcmitype/Dataset\"/>\n    <j.2:description>OCLC catalog of books, articles, and other materials in libraries worldwide</j.2:description>\n    <j.2:name>WorldCat.org</j.2:name>\n    <j.1:requiresAuthentication>false</j.1:requiresAuthentication>\n  </rdf:Description>\n</rdf:RDF>\n"

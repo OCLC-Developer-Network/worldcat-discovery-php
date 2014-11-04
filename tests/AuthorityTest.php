@@ -53,7 +53,7 @@ class AuthorityTest extends \PHPUnit_Framework_TestCase
     function testTopicAuthority($authority)
     {
         foreach ($authority->getTopics() as $topic){
-            $this->assertInstanceOf('WorldCat\Discovery\AuthorityTopical', $topic);
+            $this->assertInstanceOf('WorldCat\Discovery\TopicalAuthority', $topic);
             $this->assertNotEmpty($topic->label());
             $this->assertNotEmpty($topic->getBroaderAuthorities());
             $this->assertNotEmpty($topic->getNarrowerAuthorities());
@@ -70,7 +70,7 @@ class AuthorityTest extends \PHPUnit_Framework_TestCase
     {
         foreach ($authority->getGeographics() as $geographic){
             $this->assertNotEmpty($geographic->label());
-            $this->assertInstanceOf('WorldCat\Discovery\AuthorityGeographic', $geographic);
+            $this->assertInstanceOf('WorldCat\Discovery\GeographicAuthority', $geographic);
             $this->assertNotEmpty($geographic->getVariants());
         }
     }

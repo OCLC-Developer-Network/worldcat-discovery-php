@@ -59,8 +59,9 @@ class BibTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getDatePublished());
         $this->assertNotEmpty($bib->getCopyrightYear());
         $this->assertNotEmpty($bib->getBookEdition());
-        //$this->assertNotEmpty($bib->getNumberOfPages()); // not in PROD yet
         $this->assertNotEmpty($bib->getGenres());
+        //$this->assertNotEmpty($bib->getAudience()); not in this record
+        
     }
 
     /**
@@ -115,6 +116,26 @@ class BibTest extends \PHPUnit_Framework_TestCase
             $this->assertInstanceOf('WorldCat\Discovery\Review', $review);
         }
         
+        $this->assertInstanceOf('EasyRdf_Resource', $bib->getDataSet());
+        
+    }
+    
+    /**
+     *@vcr personSuccess
+     */
+    function testGetBibWithPages(){
+        $bib = Bib::find(24503247, $this->mockAccessToken);
+        $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
+        return $bib;
+    }
+    
+    /**
+     * can parse Single Bibs Resources
+     * @depends testGetBibWithPages
+     */
+    function testNumberOfPages($bib)
+    {
+        $this->assertNotEmpty($bib->getNumberOfPages());
     }
     
     /** 

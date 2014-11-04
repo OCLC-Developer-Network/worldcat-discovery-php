@@ -26,9 +26,9 @@ class ProductModel extends EasyRdf_Resource
 {
     
     /**
-     * Get ISBN
+     * Get ISBNs
      *
-     * @return string
+     * @return EasyRDF_Literal
      */
     function getISBN()
     {
@@ -36,8 +36,18 @@ class ProductModel extends EasyRdf_Resource
     }
     
     /**
+     * Get ISBNs
+     *
+     * @return array
+     */
+    function getISBNs()
+    {
+        return $this->all('schema:isbn');
+    }
+    
+    /**
      * Get Book Format
-     * @return string
+     * @return EasyRDF_Literal
      */
     function getBookFormat(){
         return $this->get('schema:bookFormat');
@@ -45,6 +55,7 @@ class ProductModel extends EasyRdf_Resource
     
     /**
      * Get Description
+     * @return EasyRDF_Literal
      */
     
     function getDescription(){

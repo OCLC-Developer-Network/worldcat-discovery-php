@@ -35,40 +35,11 @@ class Intangible extends Thing
             $name = $this->getUri();
         } elseif ($this->get('schema:name')){
             $name = $this->get('schema:name');
+        } elseif ($this->get('dcterms:identifier')) {
+            $name = $this->get('dcterms:identifier');
         } else {
-            $this->load();
-            $name = $this->get('schema:name');
+            $name = null;
         }
         return $name;
-    }
-    
-    /**
-     * Get SameAs
-     *
-     * @return EasyRdf_Resource
-     */
-    
-    function getSameAs($loadResource = FALSE){
-        if (strpos($this->getResource('schema:sameAs'), 'id.loc.gov')  && $loadResource){
-            EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
-            $this->getResource('schema:sameAs')->load();
-        }
-        $sameAs = $this->getResource('schema:sameAs');
-        return $sameAs;
-    }
-    
-    /**
-     * Get See Also
-     *
-     * @return EasyRdf_Resource
-     */
-    
-    function getSeeAlso($loadResource = FALSE){
-        if (strpos($this->getResource('rdfs:seeAlso'), 'id.loc.gov') && $loadResource){
-            EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
-            $this->getResource('rdfs:seeAlso')->load();
-        }
-        $seeAlso = $this->getResource('rdfs:seeAlso');
-        return $seeAlso;
     }
 }

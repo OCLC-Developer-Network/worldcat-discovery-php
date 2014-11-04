@@ -75,7 +75,11 @@ class Person extends Thing
      * @return array of EasyRDF_Resource
      */
     function getSameAsProperties(){
-        return $this->all('owl:sameAs');
+        if ($this->all('owl:sameAs')){
+            return $this->all('owl:sameAs');
+        } else {
+            return $this->all('schema:sameAs');
+        }
     }
     
     /**

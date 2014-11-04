@@ -150,18 +150,24 @@ class Offer extends EasyRdf_Resource
         EasyRdf_Namespace::set('discovery', 'http://worldcat.org/vocab/discovery/');
         EasyRdf_Namespace::set('response', 'http://worldcat.org/xmlschemas/response/');
         EasyRdf_Namespace::set('library', 'http://purl.org/library/');
-        EasyRdf_Namespace::set('wcir', 'http://purl.org/oclc/ontology/wcir/');
+        EasyRdf_Namespace::set('bgn', 'http://bibliograph.net/');
         EasyRdf_Namespace::set('gr', 'http://purl.org/goodrelations/v1#');
         EasyRdf_Namespace::set('owl', 'http://www.w3.org/2002/07/owl#');
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
         EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
         EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
+        EasyRdf_Namespace::set('wdrs', 'http://www.w3.org/2007/05/powder-s#');
+        EasyRdf_Namespace::set('void', 'http://rdfs.org/ns/void#');
+        if (!EasyRdf_Namespace::prefixOfUri('http://purl.org/dc/terms/')){
+            EasyRdf_Namespace::set('dc', 'http://purl.org/dc/terms/');
+        }
         EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
+        EasyRdf_Namespace::set('wcir', 'http://purl.org/oclc/ontology/wcir/');
         
         EasyRdf_TypeMapper::set('schema:Offer', 'WorldCat\Discovery\Offer');
         EasyRdf_TypeMapper::set('discovery:SearchResults', 'WorldCat\Discovery\OfferSet');
         EasyRdf_TypeMapper::set('schema:SomeProducts', 'WorldCat\Discovery\SomeProducts');
-        EasyRdf_TypeMapper::set('dcterms:Collection', 'WorldCat\Discovery\Collection');
+        EasyRdf_TypeMapper::set('dc:Collection', 'WorldCat\Discovery\Collection');
         EasyRdf_TypeMapper::set('schema:Library', 'WorldCat\Discovery\Library');
         
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
@@ -193,6 +199,8 @@ class Offer extends EasyRdf_Resource
         if (!class_exists('Guzzle')) {
             \Guzzle\Http\StaticClient::mount();
         }
+        
+        print_r(EasyRdf_Namespace::namespaces());
     }
     
     /**

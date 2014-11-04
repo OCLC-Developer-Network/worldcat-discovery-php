@@ -10,11 +10,12 @@
             Accept: application/rdf+xml
             Content-Length: '0'
     response:
-        status: 403
+        status: 401
         headers:
-            X-OCLC-RequestId: 3de09f55-a78e-4617-b3e8-0992c2323c3a
-            X-OCLC-SelfId: 5f63eb06-2e01-4db6-95f6-fa315ba6c64b
-            Cache-Control: 'must-revalidate,no-cache,no-store'
-            Content-Type: 'text/html; charset=ISO-8859-1'
-            Content-Length: '361'
-        body: "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 403 </title>\n</head>\n<body>\n<h2>HTTP ERROR: 403</h2>\n<p>Problem accessing /discovery/bib/data/41266045. Reason:\n<pre>    AccessToken {tk_o8NbDRTz855q3fUmQGNqf7jHFTCaPtJj2g1A} has expired</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n</body>\n</html>\n"
+            Date: 'Tue, 04 Nov 2014 21:22:49 GMT'
+            X-OCLC-RequestId: a0038ab2-1d00-4f4b-9c8e-de8f38605343
+            X-OCLC-SelfId: c087ab5e-3c4e-4cb2-9024-7237d92920aa
+            Content-Type: 'application/rdf+xml; charset=UTF-8'
+            Content-Location: 'http://beta.worldcat.org/discovery/bib/data/41266045.rdf'
+            Transfer-Encoding: chunked
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>The given access token is not authorized to view this resource.  Please check your Authorization header and try again.</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">401</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/data/41266045\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n</rdf:RDF>\n"

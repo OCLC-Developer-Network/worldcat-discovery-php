@@ -12,8 +12,9 @@
     response:
         status: 403
         headers:
-            X-OCLC-RequestId: faecf8a4-0f34-4145-ac30-b1eb7ea55e6e
-            X-OCLC-SelfId: 1b0611cb-9eae-4769-9f4f-c656bff9bf95
+            Date: 'Tue, 04 Nov 2014 21:23:00 GMT'
+            X-OCLC-RequestId: 887666b0-2b62-4eda-ad59-3c46467f1cfc
+            X-OCLC-SelfId: 4c23fe55-cf63-4b51-8a81-51c70802b144
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Content-Location: 'http://beta.worldcat.org/discovery/bib/search.rdf?q=gdp%20policy&dbIds=2663'
             Transfer-Encoding: chunked

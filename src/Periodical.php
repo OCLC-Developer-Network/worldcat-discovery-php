@@ -44,7 +44,7 @@ class Periodical extends CreativeWork
      */
     function getIssn()
     {
-        $issn = $this->getResource('umbel:isLike')->get('library:issn');
+        $issn = $this->get('schema:issn');
         return $issn;
     }
 }

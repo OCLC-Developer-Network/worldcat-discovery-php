@@ -49,7 +49,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('401', $error->getErrorCode());
-        $this->assertEquals('Unauthorized', $error->getErrorMessage());
+        $this->assertEquals('The given access token is not authorized to view this resource.  Please check your Authorization header and try again.', $error->getErrorMessage());
     }
     
     /** 
@@ -60,8 +60,8 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $error = Bib::find(41266045, $this->mockAccessToken, array('dbIds' => '638'));
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
-        //$this->assertEquals('401', $error->getErrorCode());
-        //$this->assertEquals('Unauthorized', $error->getErrorMessage());
+        $this->assertEquals('401', $error->getErrorCode());
+        $this->assertEquals('The given access token is not authorized to view this resource.  Please check your Authorization header and try again.', $error->getErrorMessage());
     }
     
     /** 

@@ -12,8 +12,9 @@
     response:
         status: 400
         headers:
-            X-OCLC-RequestId: 1afd4f91-9e44-455a-9748-77edbea000be
-            X-OCLC-SelfId: 5fe4b830-9051-400c-b9e3-9c4134de89a8
+            Date: 'Tue, 04 Nov 2014 21:23:00 GMT'
+            X-OCLC-RequestId: 0f4b79e8-3ec9-402c-8593-2b1bbb0c8a40
+            X-OCLC-SelfId: e838816d-ea63-4c92-a129-1d5fe162e57c
             Content-Type: 'application/rdf+xml; charset=UTF-8'
             Content-Location: 'http://beta.worldcat.org/discovery/bib/search.rdf?q=%20&dbIds=638'
             Transfer-Encoding: chunked

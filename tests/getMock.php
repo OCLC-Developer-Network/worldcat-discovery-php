@@ -19,7 +19,7 @@
  *
  * This takes two parameters. 
  * The first parameter is required and represents what the mocks to generate. The valid values are: all, bibFind, bibSearch, database, offers, viaf, authority
- * The second parameter is optional and represents what environment to generates mocks from
+ * The second parameter is optional and represents what environment to generates mocks from the default is from the production environment
  * 
  * Example usage
  * php getMock.php all

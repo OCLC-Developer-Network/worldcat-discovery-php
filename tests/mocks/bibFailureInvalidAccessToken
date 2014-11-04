@@ -12,12 +12,13 @@
     response:
         status: 401
         headers:
-            X-OCLC-RequestId: 2ac5a924-a9e4-461e-ae8b-7a7b7b3cfad5
-            X-OCLC-SelfId: 9d1402e5-78eb-4f93-884d-ed59361f2e2a
-            Cache-Control: 'must-revalidate,no-cache,no-store'
-            Content-Type: 'text/html; charset=ISO-8859-1'
-            Content-Length: '329'
-        body: "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 401 </title>\n</head>\n<body>\n<h2>HTTP ERROR: 401</h2>\n<p>Problem accessing /discovery/bib/data/41266045. Reason:\n<pre>    AccessToken {tk_09876} is invalid</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n</body>\n</html>\n"
+            Date: 'Tue, 04 Nov 2014 21:22:48 GMT'
+            X-OCLC-RequestId: dc33fc57-f557-4c9e-bb8c-c0d13343e018
+            X-OCLC-SelfId: 19ce3d79-b5f2-49c4-9a19-aa738a280516
+            Content-Type: 'application/rdf+xml; charset=UTF-8'
+            Content-Location: 'http://beta.worldcat.org/discovery/bib/data/41266045.rdf'
+            Transfer-Encoding: chunked
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>The given access token is not authorized to view this resource.  Please check your Authorization header and try again.</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">401</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/data/41266045\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n</rdf:RDF>\n"
 -
     request:
         method: GET
@@ -31,9 +32,10 @@
     response:
         status: 401
         headers:
-            X-OCLC-RequestId: 0cb85374-539a-4fd1-b2a5-66ab6901b8e6
-            X-OCLC-SelfId: 0ef3745a-4c58-454b-94a2-48e2a0a8b015
-            Cache-Control: 'must-revalidate,no-cache,no-store'
-            Content-Type: 'text/html; charset=ISO-8859-1'
-            Content-Length: '328'
-        body: "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 401 </title>\n</head>\n<body>\n<h2>HTTP ERROR: 401</h2>\n<p>Problem accessing /discovery/bib/data/7977212. Reason:\n<pre>    AccessToken {tk_12345} is invalid</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n</body>\n</html>\n"
+            Date: 'Tue, 04 Nov 2014 21:35:41 GMT'
+            X-OCLC-RequestId: b0b9067b-549a-4ba9-81ae-09f96045ab47
+            X-OCLC-SelfId: 3c73bd95-ed65-47b6-bc95-012a898af164
+            Content-Type: 'application/rdf+xml; charset=UTF-8'
+            Content-Location: 'http://beta.worldcat.org/discovery/bib/data/7977212.rdf'
+            Transfer-Encoding: chunked
+        body: "<rdf:RDF\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:discovery=\"http://worldcat.org/vocab/discovery/\"\n    xmlns:j.0=\"http://worldcat.org/xmlschemas/response/\" > \n  <rdf:Description rdf:nodeID=\"A0\">\n    <rdf:type rdf:resource=\"http://worldcat.org/xmlschemas/response/ClientRequestError\"/>\n    <discovery:errorMessage>The given access token is not authorized to view this resource.  Please check your Authorization header and try again.</discovery:errorMessage>\n    <discovery:errorCode rdf:datatype=\"http://www.w3.org/2001/XMLSchema#positiveInteger\">401</discovery:errorCode>\n    <discovery:errorType>http</discovery:errorType>\n  </rdf:Description>\n  <rdf:Description rdf:about=\"http://beta.worldcat.org/discovery/bib/data/7977212\">\n    <j.0:returnsError rdf:nodeID=\"A0\"/>\n  </rdf:Description>\n</rdf:RDF>\n"
