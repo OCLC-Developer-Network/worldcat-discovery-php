@@ -32,7 +32,7 @@ bibFind:
     bibWithAudience:
         oclcNumber: 15317067
     bibOnlyContributors:
-        oclcNumber: 70889984
+        oclcNumber: 70879984
 bibSearch:
     bibSearchByOclcNumber:
         query: no:7977212

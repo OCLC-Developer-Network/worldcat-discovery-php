@@ -186,7 +186,7 @@ class BibTest extends \PHPUnit_Framework_TestCase
      * @vcr bibOnlyContributors
      */
     function testGetAuthorOnlyContributors(){
-        $bib = Bib::find(70889984, $this->mockAccessToken);
+        $bib = Bib::find(70879984, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
         $this->assertEmpty($bib->getAuthor());
         $this->assertEmpty($bib->getAuthors());
