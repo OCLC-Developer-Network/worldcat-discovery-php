@@ -35,10 +35,11 @@ This example reads a single bibliographic record from the WorldCat Discovery usi
    	echo $bib->type();
    	print_r($bib->getAuthor());
    	echo $bib->getAuthor->getName();
-   	$contributors = array_map($bib->getContributors(), function($contributor){return $contributor->getName();});
+   	$contributors = array_map($bib->getContributors(), 
+   		function($contributor){return $contributor->getName();}
+   		);
    	print_r($contributors);
    }
-   
    
 
 Example: Search for Bibliographic Resources in WorldCat
@@ -66,7 +67,8 @@ This example searches bibliographic records and returns results from the WorldCa
         echo $results->getErrorMessage();
    } else {
    	foreach ($results->getSearchResults() as $bib){
-   		echo $bib->getName()->getValue() . ($bib->getDatePublished() ?  ' ' . $bib->getDatePublished()->getValue()  : '');
+   		echo $bib->getName()->getValue();
+   		echo ($bib->getDatePublished() ?  ' ' . $bib->getDatePublished()->getValue()  : '');
    	}
    }
    
@@ -89,12 +91,18 @@ This example searches bibliographic records and returns results and related face
    $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
    
    $options = array(
-   	'facetFields' => array('about:10', 'creator:10', 'datePublished:10', 'genre:10', 'itemType:10', 'inLanguage:10')
+   	'facetFields' => array(
+   		'about:10', 
+   		'creator:10',
+   		'datePublished:10',
+   		'genre:10',
+   		'itemType:10',
+   		'inLanguage:10')
    	);
    $query = 'cats';
    $results = Bib::Search($query, $accessToken, $options);
    if (is_a($bib, 'WorldCat\Discovery\Error')) {
-   		echo $results->getErrorCode();
+   	echo $results->getErrorCode();
         echo $results->getErrorMessage();
    } else {
    	$facets = $results->getFacets();
@@ -128,7 +136,7 @@ This example searches for Offers related to a particular Bib and return the basi
    $options = array('heldBy' => array('OCPBS', 'OCWMS');
    $response = Offer::findByOclcNumber(7977212, $accessToken);
    if (is_a($response, 'WorldCat\Discovery\Error')) {
-   		echo $response->getErrorCode();
+   	echo $response->getErrorCode();
         echo $response->getErrorMessage();
    } else {
    	$offers = $response->getOffers();
@@ -165,7 +173,7 @@ This example reads a single bibliographic record from the WorldCat Discovery usi
    
    $response = Database::find(638, $accessToken);
    if (is_a($response, 'WorldCat\Discovery\Error')) {
-   		echo $response->getErrorCode();
+   	echo $response->getErrorCode();
         echo $response->getErrorMessage();
    } else {
    	echo $response->getId();
@@ -194,7 +202,7 @@ This example lists databases related to a specific institution from the WorldCat
    
    $databases = Database::getList($accessToken);
    if (is_a($databases, 'WorldCat\Discovery\Error')) {
-   		echo $databases->getErrorCode();
+   	echo $databases->getErrorCode();
         echo $databases->getErrorMessage();
    } else {
    		
