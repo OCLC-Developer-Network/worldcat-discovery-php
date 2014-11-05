@@ -199,8 +199,6 @@ class Offer extends EasyRdf_Resource
         if (!class_exists('Guzzle')) {
             \Guzzle\Http\StaticClient::mount();
         }
-        
-        print_r(EasyRdf_Namespace::namespaces());
     }
     
     /**
