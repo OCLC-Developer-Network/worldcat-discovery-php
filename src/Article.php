@@ -27,15 +27,6 @@ use \EasyRdf_TypeMapper;
  */
 class Article extends CreativeWork
 {
-    /**
-     *
-     * @return EasyRDF_Resource
-     */
-    function getIsPartOf()
-    {
-        $isPartOf = $this->getResource('schema:isPartOf');
-        return $isPartOf;
-    }
     
     /**
      * @return EasyRDF_Literal

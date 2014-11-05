@@ -228,4 +228,22 @@ class CreativeWork extends EasyRdf_Resource
         } 
     }
     
+    /**
+     * @return EasyRDF_Literal
+     */
+    function getContentRating()
+    {
+        return $this->get('schema:contentRating');
+    }
+    
+    /**
+     *
+     * @return EasyRDF_Resource
+     */
+    function getIsPartOf()
+    {
+        $isPartOf = $this->getResource('schema:isPartOf');
+        return $isPartOf;
+    }
+    
 }
