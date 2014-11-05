@@ -65,9 +65,9 @@ This example searches bibliographic records and returns results from the WorldCa
    		echo $results->getErrorCode();
         echo $results->getErrorMessage();
    } else {
-   		$searchResults = array_map($results->getSearchResults(), function($bib){return $bib->getName()->getValue() . ($bib->getDatePublished() ?  ' ' . $bib->getDatePublished()->getValue()  : '');});
-   		print_r($searchResults);
-
+   		foreach ($results->getSearchResults() as $bib){
+   			echo $bib->getName()->getValue() . ($bib->getDatePublished() ?  ' ' . $bib->getDatePublished()->getValue()  : '');
+   		}
    }
    
 Example: Search for Bibliographic Resources in WorldCat and Returning Facets
@@ -146,6 +146,7 @@ This example searches for Offers related to a particular Bib and return the basi
 Example: Find a Database in WorldCat
 ============================================================================
 This example reads a single bibliographic record from the WorldCat Discovery using the WSKey class to obtain an Access Token and the Database Class to request the database   
+
 .. code:: php
 
    require_once('vendor/autoload.php');
@@ -174,6 +175,7 @@ This example reads a single bibliographic record from the WorldCat Discovery usi
 Example: List Databases related to a specific institution
 ============================================================================
 This example lists databases related to a specific institution from the WorldCat Discovery using the WSKey class to obtain an Access Token and the Database Class to request the database   
+
 .. code:: php
 
    require_once('vendor/autoload.php');
