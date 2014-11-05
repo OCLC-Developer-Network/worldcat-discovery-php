@@ -60,8 +60,6 @@ class BibTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getCopyrightYear());
         $this->assertNotEmpty($bib->getBookEdition());
         $this->assertNotEmpty($bib->getGenres());
-        //$this->assertNotEmpty($bib->getAudience()); not in this record
-        
     }
 
     /**
@@ -121,21 +119,21 @@ class BibTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     *@vcr personSuccess
+     * @vcr bibWithAudience
      */
-    function testGetBibWithPages(){
-        $bib = Bib::find(24503247, $this->mockAccessToken);
-        $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
-        return $bib;
+    function testGetBibWithAudience(){
+        //$bib = Bib::find(15317067, $this->mockAccessToken);
+        //$this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
+        //return $bib;
     }
     
     /**
-     * can parse Single Bibs Resources
-     * @depends testGetBibWithPages
+     * can parse a bib resource with an audience
+     * @depends testGetBibWithAudience
      */
-    function testNumberOfPages($bib)
+    function testGetAudience($bib)
     {
-        $this->assertNotEmpty($bib->getNumberOfPages());
+        //$this->assertNotEmpty($bib->getAudience());
     }
     
     /** 
@@ -146,6 +144,32 @@ class BibTest extends \PHPUnit_Framework_TestCase
     {
         $bib = Bib::find(41266045, $this->mockAccessToken);
         $this->assertNotEmpty($bib->getAwards());
+        return $bib;
+    }
+    
+    /**
+     * @depends testGetBibWithAward
+     */
+    function testGetContentRating($bib){
+        $this->assertNotEmpty($bib->getContentRating());
+    }
+    
+    /**
+     * can parse bib resource with pages
+     * @depends testGetBibWithAward
+     */
+    function testGetNumberOfPages($bib)
+    {
+        $this->assertNotEmpty($bib->getNumberOfPages());
+    }
+    
+    /**
+     * can parse bib resource with isPartOf
+     * @depends testGetBibWithAward
+     */
+    function testGetIsPartOf($bib)
+    {
+        $this->assertNotEmpty($bib->getIsPartOf());
     }
     
     /**
