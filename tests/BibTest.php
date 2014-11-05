@@ -178,7 +178,19 @@ class BibTest extends \PHPUnit_Framework_TestCase
     function testGetBibEbook(){
         $bib = Bib::find(427686093, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
-        $this->assertNotEmpty($bib->getUrls());
+        $this->assertEquals($bib->getBookFormat()->getURI(), 'http://schema.org/EBook');
+        // should this have a test for getUrls??
+    }
+    
+    /**
+     * @vcr bibOnlyContributors
+     */
+    function testGetAuthorOnlyContributors(){
+        $bib = Bib::find(70889984, $this->mockAccessToken);
+        $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
+        $this->assertEmpty($bib->getAuthor());
+        $this->assertEmpty($bib->getAuthors());
+        $this->assertNotEmpty($bib->getContributors());
     }
     
     /**

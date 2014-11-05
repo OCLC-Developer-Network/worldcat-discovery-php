@@ -57,7 +57,7 @@ class Book extends CreativeWork
     
     /**
      * Get the Book format
-     * @return EasyRDF_Literal
+     * @return EasyRDF_Resource
      */
     function getBookFormat(){
         $bookFormat = $this->get('schema:bookFormat');
