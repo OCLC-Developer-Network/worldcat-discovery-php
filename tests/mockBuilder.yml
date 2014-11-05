@@ -29,6 +29,8 @@ bibFind:
         oclcNumber: 56400296
     placeSuccess: 
         oclcNumber: 1942036
+    bibWithAudience:
+        oclcNumber: 15317067
 bibSearch:
     bibSearchByOclcNumber:
         query: no:7977212
