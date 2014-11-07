@@ -177,6 +177,7 @@ class Offer extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:Periodical', 'WorldCat\Discovery\Periodical');
         EasyRdf_TypeMapper::set('productontology:Thesis', 'WorldCat\Discovery\Thesis');
         EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
+        EasyRdf_TypeMapper::set('schema:Series', 'WorldCat\Discovery\Series');
         
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
         EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');

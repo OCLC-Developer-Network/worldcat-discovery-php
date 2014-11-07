@@ -44,8 +44,9 @@ class SeriesTest extends \PHPUnit_Framework_TestCase
     {
         $bib = Bib::find(41266045, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
-        $this->assertNotEmpty($bib->getIsPartOf());
+        $this->assertInstanceOf('WorldCat\Discovery\Series', $bib->getIsPartOf());
         $series = $bib->getIsPartOf();
+        return $series;
     }
     
     /**
