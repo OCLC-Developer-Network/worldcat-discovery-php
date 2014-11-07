@@ -43,8 +43,9 @@ class SearchResultsWithFacetQueriesTest extends \PHPUnit_Framework_TestCase
     
     function testSearchFacets(){
         $query = 'cats';
-        $facetQueries = array('creator:10', 'inLanguage:10');
-        $search = Bib::Search($query, $this->mockAccessToken, array('facetQueries' => $facets));
+        $facets = array('creator:10', 'inLanguage:10');
+        $facetQueries = array('creator:potter, beatrix', 'inLanguage:eng');
+        $search = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets, 'facetQueries' => $facetQueries));
         $this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
         $this->assertEquals('0', $search->getStartIndex());
         $this->assertEquals('10', $search->getItemsPerPage());
