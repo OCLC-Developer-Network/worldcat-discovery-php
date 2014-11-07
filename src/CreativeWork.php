@@ -246,4 +246,24 @@ class CreativeWork extends EasyRdf_Resource
         return $isPartOf;
     }
     
+    /**
+     * Get an array of reviews
+     * @return array
+     */
+    function getReviews(){
+        $reviews = $this->all('schema:review');
+        return $reviews;
+    }
+    
+
+    /**
+     * Get an array of Awards
+     * return array
+     */
+    function getAwards()
+    {
+        $awards =  $this->all('schema:awards');
+        return $awards;
+    }
+    
 }

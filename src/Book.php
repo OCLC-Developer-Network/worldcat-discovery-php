@@ -71,23 +71,4 @@ class Book extends CreativeWork
     function getManifestations(){
         return $this->allResources('schema:workExample');
     }
-    
-    /**
-     * Get an array of reviews
-     * @return array
-     */
-    function getReviews(){
-        $reviews = $this->all('schema:review');
-        return $reviews;
-    }
-    
-    /**
-     * Get an array of Awards
-     * return array
-     */
-    function getAwards()
-    {
-        $awards =  $this->all('schema:awards');
-        return $awards;
-    }
 }
