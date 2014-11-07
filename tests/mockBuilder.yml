@@ -109,6 +109,13 @@ offers:
                 - GZM
                 - GZN
                 - GZO
+    offerCreativeWorkSuccess:
+        id: 62262823
+        options:
+            heldBy: 
+                - GZM
+                - GZN
+                - GZO
     offerHeldByGroupSuccess:
         id: 30780581
         options:

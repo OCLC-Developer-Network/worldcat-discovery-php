@@ -47,7 +47,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('0', $offerSet->getStartIndex());
         $this->assertEquals('10', $offerSet->getItemsPerPage());
         $this->assertInternalType('integer', $offerSet->getTotalResults());
-        $this->assertEquals('2', count($offerSet->getOffers())); // need new mock
+        $this->assertEquals('2', count($offerSet->getOffers()));
         $this->assertNotEmpty($offerSet->getCreativeWorks());
         
         foreach ($offerSet->getCreativeWorks() as $creativeWork){
@@ -90,6 +90,21 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      */
     function testParseLibrary($library){
         $this->assertNotEmpty($library->getName());
+    }
+    
+    /**
+     * @vcr offerCreativeWorkSuccess
+     * Find Offers by OCLC NUmber
+     */
+    function testFindOfferByOclcNumberCreativeWork(){
+        $options = array('heldBy' => array('GZM', 'GZN', 'GZO'));
+        $offerSet = Offer::findByOclcNumber(62262823, $this->mockAccessToken, $options);
+        $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
+        $this->assertNotEmpty($offerSet->getCreativeWorks());
+    
+        foreach ($offerSet->getCreativeWorks() as $work){
+            $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $work);
+        }
     }
     
     /**
