@@ -57,7 +57,6 @@ class CreativeWorkTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getDescriptions());
         $this->assertNotEmpty($bib->getLanguage());
         $this->assertNotEmpty($bib->getDatePublished());
-        $this->assertNotEmpty($bib->getCopyrightYear());
         $this->assertNotEmpty($bib->getGenres());
     }
 
@@ -66,22 +65,6 @@ class CreativeWorkTest extends \PHPUnit_Framework_TestCase
      * @depends testGetBibNotTypeMapped
      */
     function testParseResources($bib){
-        $this->assertThat($bib->getAuthor(), $this->logicalOr(
-            $this->isInstanceOf('WorldCat\Discovery\Person'),
-            $this->isInstanceOf('WorldCat\Discovery\Organization')
-        ));
-
-        foreach ($bib->getAuthors() as $author){
-            $this->assertThat($author, $this->logicalOr(
-                $this->isInstanceOf('WorldCat\Discovery\Person'),
-                $this->isInstanceOf('WorldCat\Discovery\Organization')
-            ));
-        }
-        
-        $this->assertThat($bib->getCreator(), $this->logicalOr(
-            $this->isInstanceOf('WorldCat\Discovery\Person'),
-            $this->isInstanceOf('WorldCat\Discovery\Organization')
-        ));
         
         foreach ($bib->getContributors() as $contributor){
             $this->assertThat($contributor, $this->logicalOr(
@@ -95,7 +78,11 @@ class CreativeWorkTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('EasyRdf_Resource', $bib->getWork());
 
         foreach ($bib->getAbout() as $about){
-            $this->assertInstanceOf('WorldCat\Discovery\Intangible', $about);
+            $this->assertThat($about, $this->logicalOr(
+                $this->isInstanceOf('WorldCat\Discovery\Person'),
+                $this->isInstanceOf('WorldCat\Discovery\Organization'),
+                $this->isInstanceOf('WorldCat\Discovery\Intangible')
+            ));
         }
 
         foreach ($bib->getPlacesOfPublication() as $place){
