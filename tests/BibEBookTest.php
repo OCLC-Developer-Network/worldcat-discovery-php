@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class BibTest extends \PHPUnit_Framework_TestCase
+class BibEbookTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -35,31 +35,14 @@ class BibTest extends \PHPUnit_Framework_TestCase
                     ->method('getValue')
                     ->will($this->returnValue('tk_12345'));
     }
-
+        
     /**
-     *@vcr bibSuccess
+     * @vcr eBookSuccess
      */
-    function testGetBib(){
-        $bib = Bib::find(7977212, $this->mockAccessToken);
+    function testGetBibEbook(){
+        $bib = Bib::find(427686093, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
-        return $bib;
-    }
-    
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid ID
-     */
-    function testIDNotInteger()
-    {
-        $bib = Bib::find('string', $this->mockAccessToken);
-    }
-    
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid OCLC/Auth/AccessToken object
-     */
-    function testAccessTokenNotAccessTokenObject()
-    {
-        $bib = Bib::find(1, 'NotAnAccessToken');
+        $this->assertEquals($bib->getBookFormat()->getURI(), 'http://schema.org/EBook');
+        // should this have a test for getUrls??
     }
 }
