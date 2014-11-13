@@ -114,7 +114,9 @@ class BookTest extends \PHPUnit_Framework_TestCase
             $this->assertInstanceOf('WorldCat\Discovery\Review', $review);
         }
         
-        $this->assertInstanceOf('EasyRdf_Resource', $bib->getDataSet());
+        foreach ($bib->getDataSets() as $dataset){
+            $this->assertInstanceOf('EasyRdf_Resource', $dataset);
+        }
         
     }
     
@@ -170,5 +172,19 @@ class BookTest extends \PHPUnit_Framework_TestCase
     function testGetIsPartOf($bib)
     {
         $this->assertNotEmpty($bib->getIsPartOf());
+    }
+    
+    /**
+     *@vcr bibEditor
+     */
+    function testGetBibEditor(){
+        $bib = Bib::find(1004282, $this->mockAccessToken);
+        $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
+        foreach ($bib->getEditors() as $editor){
+            $this->assertThat($editor, $this->logicalOr(
+                $this->isInstanceOf('WorldCat\Discovery\Person'),
+                $this->isInstanceOf('WorldCat\Discovery\Organization')
+            ));
+        }
     }
 }

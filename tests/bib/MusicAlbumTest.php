@@ -43,6 +43,7 @@ class MusicAlbumTest extends \PHPUnit_Framework_TestCase
         $bib = Bib::find(38027615, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
         $this->assertNotEmpty($bib->getFormat());
+        $this->assertNotEmpty($bib->getParts());
     }
 
     /**
@@ -52,6 +53,28 @@ class MusicAlbumTest extends \PHPUnit_Framework_TestCase
         $bib = Bib::find(5791214, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
         $this->assertNotEmpty($bib->getFormat());
+    }
+    
+    /**
+     * @vcr bibArtist
+     */
+    function testGetBibArtist(){
+        $bib = Bib::find(226390945, $this->mockAccessToken);
+        $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
+        foreach ($bib->getArtists() as $artist){
+            $this->assertInstanceOf('WorldCat\Discovery\Person', $artist);
+        }
+    }
+    
+    /**
+     * @vcr bibPerformer
+     */
+    function testGetBibPerformer(){
+        $bib = Bib::find(100000138, $this->mockAccessToken);
+        $this->assertInstanceOf('WorldCat\Discovery\MusicAlbum', $bib);
+        foreach ($bib->getPerformers() as $performer){
+            $this->assertInstanceOf('WorldCat\Discovery\Person', $performer);
+        }
     }
 }
 

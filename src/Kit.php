@@ -25,35 +25,8 @@ use \EasyRdf_TypeMapper;
  * A class that represents a Book in WorldCat
  *
  */
-class Book extends CreativeWork
+class Kit extends CreativeWork
 {
-    /**
-     * Get the Copyright Year
-     * @return EasyRDF_Literal
-     */
-    function getCopyrightYear()
-    {
-        $copyrightYear = $this->get('schema:copyrightYear');
-        return $copyrightYear;
-    }
-    
-    /**
-     * Get the Book edition
-     * @return EasyRDF_Literal
-     */
-    function getBookEdition(){
-        $bookEdition = $this->get('schema:bookEdition');
-        return $bookEdition;
-    }
-    
-    /**
-     * Get the Book format
-     * @return EasyRDF_Resource
-     */
-    function getBookFormat(){
-        $bookFormat = $this->get('schema:bookFormat');
-        return $bookFormat;
-    }
     
     /**
      * Get an array of the Manifestations
@@ -61,13 +34,5 @@ class Book extends CreativeWork
      */
     function getManifestations(){
         return $this->allResources('schema:workExample');
-    }
-    
-    /**
-     * Get an array of the Editors
-     */
-    function getEditors()
-    {
-        return $this->allResources('schema:editor');
     }
 }

@@ -156,6 +156,7 @@ class Offer extends EasyRdf_Resource
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
         EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
         EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
+        EasyRdf_Namespace::set('mo', 'http://purl.org/ontology/mo/');
         EasyRdf_Namespace::set('wdrs', 'http://www.w3.org/2007/05/powder-s#');
         EasyRdf_Namespace::set('void', 'http://rdfs.org/ns/void#');
         if (!EasyRdf_Namespace::prefixOfUri('http://purl.org/dc/terms/')){
@@ -176,6 +177,8 @@ class Offer extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:MusicAlbum', 'WorldCat\Discovery\MusicAlbum');
         EasyRdf_TypeMapper::set('schema:Periodical', 'WorldCat\Discovery\Periodical');
         EasyRdf_TypeMapper::set('productontology:Thesis', 'WorldCat\Discovery\Thesis');
+        EasyRdf_TypeMapper::set('library:Kit', 'WorldCat\Discovery\Kit');
+        EasyRdf_TypeMapper::set('schema:Movie', 'WorldCat\Discovery\Movie');
         EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
         EasyRdf_TypeMapper::set('schema:Series', 'WorldCat\Discovery\Series');
         

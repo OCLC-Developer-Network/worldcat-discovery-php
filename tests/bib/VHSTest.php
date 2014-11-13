@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class CreativeWorkTest extends \PHPUnit_Framework_TestCase
+class VHSTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -37,39 +37,38 @@ class CreativeWorkTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *@vcr bibNotTypeMapped
+     *@vcr bibVideo
      */
-    function testGetBibNotTypeMapped(){
-        $bib = Bib::find(62262823, $this->mockAccessToken);
+    function testGetBib(){
+        $bib = Bib::find(52156134, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
         return $bib;
     }
 
     /**
      * can parse Single Bibs Literal values
-     * @depends testGetBibNotTypeMapped
+     * @depends testGetBib
      */
     function testParseLiterals($bib)
     {
         $this->assertNotEmpty($bib->getId());
         $this->assertNotEmpty($bib->getName());
         $this->assertNotEmpty($bib->getOCLCNumber());
-        $this->assertNotEmpty($bib->getDescriptions());
         $this->assertNotEmpty($bib->getLanguage());
         $this->assertNotEmpty($bib->getDatePublished());
-        $this->assertNotEmpty($bib->getGenres());
     }
 
     /**
      * can parse Single Bibs Resources
-     * @depends testGetBibNotTypeMapped
+     * @depends testGetBib
      */
     function testParseResources($bib){
         
         foreach ($bib->getContributors() as $contributor){
             $this->assertThat($contributor, $this->logicalOr(
                 $this->isInstanceOf('WorldCat\Discovery\Person'),
-                $this->isInstanceOf('WorldCat\Discovery\Organization')
+                $this->isInstanceOf('WorldCat\Discovery\Organization'),
+                $this->isInstanceOf('WorldCat\Discovery\Event')
             ));
         }
         
@@ -92,23 +91,19 @@ class CreativeWorkTest extends \PHPUnit_Framework_TestCase
             ));
         }
         
-        foreach ($bib->getReviews() as $review){
-            $this->assertInstanceOf('WorldCat\Discovery\Review', $review);
+        foreach ($bib->getDataSets() as $dataset){
+            $this->assertInstanceOf('EasyRdf_Resource', $dataset);
         }
-        
-        $this->assertInstanceOf('EasyRdf_Resource', $bib->getDataSet());
         
     }
     
     /**
-     * @vcr bibOnlyContributors
+     * can parse types within resource
+     * @depends testGetBib
      */
-    function testGetAuthorOnlyContributors(){
-        $bib = Bib::find(70879984, $this->mockAccessToken);
-        $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
-        $this->assertEmpty($bib->getAuthor());
-        $this->assertEmpty($bib->getAuthors());
-        $this->assertNotEmpty($bib->getContributors());
+    function testParseTypes($bib)
+    {
+        $this->assertContains('schema:Movie', $bib->types());
+        $this->assertContains('productontology:VHS', $bib->types());
     }
-    
 }

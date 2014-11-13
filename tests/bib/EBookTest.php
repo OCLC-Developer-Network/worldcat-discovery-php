@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class BibEbookTest extends \PHPUnit_Framework_TestCase
+class EBookTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -44,5 +44,9 @@ class BibEbookTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
         $this->assertEquals($bib->getBookFormat()->getURI(), 'http://schema.org/EBook');
         // should this have a test for getUrls??
+        
+        foreach ($bib->getDataSets() as $dataset){
+            $this->assertInstanceOf('EasyRdf_Resource', $dataset);
+        }
     }
 }

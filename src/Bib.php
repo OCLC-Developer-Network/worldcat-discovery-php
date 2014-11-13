@@ -49,23 +49,7 @@ class Bib extends EasyRdf_Resource
      */
     public function getCreativeWork()
     {
-        if (!$this->creativeWork->type()){
-            $this->graph->addType($this->creativeWork->getUri(), 'schema:CreativeWork');
-        }
-        
-        if (get_class($this->creativeWork) == 'EasyRdf_Resource'){
-            if ($this->creativeWork->type()){
-                $type = $this->creativeWork->type();
-            } else {
-                $type = 'schema:CreativeWork';
-            }
-            EasyRdf_TypeMapper::set($type, 'WorldCat\Discovery\CreativeWork');
-            $creativeWorkGraph = new EasyRdf_Graph();
-            $creativeWorkGraph->parse($this->graph->serialise('rdfxml'));
-            return $creativeWorkGraph->resource($this->creativeWork->getUri());
-        } else {
-            return $this->creativeWork;
-        }
+        return $this->creativeWork;
     }
     
     
@@ -196,6 +180,7 @@ class Bib extends EasyRdf_Resource
         EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
         EasyRdf_Namespace::set('umbel', 'http://umbel.org/umbel#');
         EasyRdf_Namespace::set('productontology', 'http://www.productontology.org/id/');
+        EasyRdf_Namespace::set('mo', 'http://purl.org/ontology/mo/');
         EasyRdf_Namespace::set('wdrs', 'http://www.w3.org/2007/05/powder-s#');
         EasyRdf_Namespace::set('void', 'http://rdfs.org/ns/void#');
         if (!EasyRdf_Namespace::prefixOfUri('http://purl.org/dc/terms/')){
@@ -210,8 +195,14 @@ class Bib extends EasyRdf_Resource
         EasyRdf_TypeMapper::set('schema:MusicAlbum', 'WorldCat\Discovery\MusicAlbum');
         EasyRdf_TypeMapper::set('schema:Periodical', 'WorldCat\Discovery\Periodical');
         EasyRdf_TypeMapper::set('productontology:Thesis', 'WorldCat\Discovery\Thesis');
+        EasyRdf_TypeMapper::set('library:Kit', 'WorldCat\Discovery\Kit');
+        EasyRdf_TypeMapper::set('schema:Movie', 'WorldCat\Discovery\Movie');
         EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
         EasyRdf_TypeMapper::set('schema:Series', 'WorldCat\Discovery\Series');
+        EasyRdf_TypeMapper::set('bgn:ComputerFile', 'WorldCat\Discovery\CreativeWork');
+        EasyRdf_TypeMapper::set('schema:Map', 'WorldCat\Discovery\CreativeWork');
+        EasyRdf_TypeMapper::set('bgn:Newspaper', 'WorldCat\Discovery\CreativeWork');
+        EasyRdf_TypeMapper::set('schema:CreativeWork', 'WorldCat\Discovery\CreativeWork');
         
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
         EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');

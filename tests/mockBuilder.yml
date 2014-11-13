@@ -61,6 +61,14 @@ bibFind:
         oclcNumber: 701329553
     bibDVD:
         oclcNumber: 62774704
+    bibIllustrator:
+        oclcNumber: 8594968
+    bibEditor:
+        oclcNumber: 1004282
+    bibArtist:
+        oclcNumber: 226390945
+    bibPerformer:
+        oclcNumber: 100000138    
 bibSearch:
     bibSearchByOclcNumber:
         query: no:7977212

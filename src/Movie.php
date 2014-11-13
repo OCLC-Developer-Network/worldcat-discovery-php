@@ -22,49 +22,44 @@ use \EasyRdf_Namespace;
 use \EasyRdf_TypeMapper;
 
 /**
- * A class that represents an Article in WorldCat
+ * A class that represents a Book in WorldCat
  *
  */
-class MusicAlbum extends CreativeWork
-{   
+class Movie extends CreativeWork
+{
+    
     /**
-     * Get the specific format of the MusicAlbum
-     * @return string
+     * Get an array of the Actors
+     * @return array
      */
-    function getFormat(){
-        $format = array_filter($this->types(), function($type)
-        {
-            if (strpos($type, 'productontology:') !== false) {
-                $present = true;
-            } else {
-                $present = false;
-            }
-            return($present);
-        });
-        return $format;
+    function getActors(){
+        return $this->allResources('schema:actor');
     }
     
     /**
-     * Get the parts of the MusicAlbum
-     * @return array
+     * Get the director
+     * @return EasyRDF_Resource
      */
-    function getParts(){
-        return $this->allResources('dcterms:hasPart');
+    function getDirector()
+    {
+        return $this->getResource('schema:director');
     }
     
     /**
-     * Get the artists of the MusicAlbum
+     * Get an array of Producers
      * @return array
      */
-    function getArtists(){
-        return $this->allResources('schema:artist');
+    function getProducers()
+    {
+        return $this->allResources('schema:producer');
     }
     
     /**
-     * Get the performers of the MusicAlbum
+     * Get musicBy
      * @return array
      */
-    function getPerformers(){
-        return $this->allResources('schema:performer');
+    function getMusicBy()
+    {
+        return $this->allResources('schema:musicBy');
     }
 }
