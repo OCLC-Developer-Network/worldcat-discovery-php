@@ -19,8 +19,13 @@ use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
+use Guzzle\Log\Zf2LogAdapter;
+use Guzzle\Plugin\Log\LogPlugin;
+use Guzzle\Log\MessageFormatter;
+use Zend\Log\Writer\Mock;
+use Zend\Log\Logger;
 
-class BibTest extends \PHPUnit_Framework_TestCase
+class BibLogTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
@@ -39,45 +44,29 @@ class BibTest extends \PHPUnit_Framework_TestCase
     /**
      *@vcr bibSuccess
      */
-    function testGetBib(){
-        $bib = Bib::find(7977212, $this->mockAccessToken);
-        $this->assertInstanceOf('WorldCat\Discovery\Book', $bib);
-        return $bib;
+    function testLoggerSuccess(){
+        $logMock = new Mock();
+        $logger = new Logger();
+        $logger->addWriter($logMock);
+        $adapter = new Zf2LogAdapter($logger);
+        $logPlugin = new LogPlugin($adapter, MessageFormatter::DEBUG_FORMAT);
+        $options = array(
+            'logger' => $logPlugin
+        );
+        $bib = Bib::find(7977212, $this->mockAccessToken, $options);
+        $this->assertNotEmpty($logMock);
+        
     }
     
     /**
      * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid ID
+     * @expectedExceptionMessage The logger must be a valid Guzzle\Plugin\Log\LogPlugin object
      */
-    function testIDNotInteger()
+    function testLoggerNotValid()
     {
-        $bib = Bib::find('string', $this->mockAccessToken);
-    }
-    
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage You must pass a valid OCLC/Auth/AccessToken object
-     */
-    function testAccessTokenNotAccessTokenObject()
-    {
-        $bib = Bib::find(1, 'NotAnAccessToken');
-    }
-    
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage Options must be a valid array
-     */
-    function testOptionsNotAnArray()
-    {
-        $bib = Bib::find(1, $this->mockAccessToken, 'lala');
-    }
-    
-    /**
-     * @expectedException BadMethodCallException
-     * @expectedExceptionMessage Options must be a valid array
-     */
-    function testOptionsEmptyArray()
-    {
-        $bib = Bib::find(1, $this->mockAccessToken, array());
+        $options = array(
+            'logger' => 'lala'
+        );
+        $bib = Bib::find('string', $this->mockAccessToken, $options);
     }
 }
