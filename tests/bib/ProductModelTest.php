@@ -20,7 +20,7 @@ use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
 
-class ProductModel extends \PHPUnit_Framework_TestCase
+class ProductModelTest extends \PHPUnit_Framework_TestCase
 {
 
     function setUp()
