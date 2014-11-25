@@ -58,7 +58,7 @@ class SearchResultsSortByYearTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
         $results = $search->getSearchResults();
-        $this->assertEquals('5692503192', $results[0]->getOclcNumber());
+        $this->assertEquals('5692503192', $results[1]->getOclcNumber());
     }
     
 }

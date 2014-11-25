@@ -12,9 +12,9 @@
     response:
         status: 500
         headers:
-            Date: 'Tue, 25 Nov 2014 19:35:46 GMT'
-            X-OCLC-RequestId: ab4e576f-61cc-4160-8c91-060cda3f89ad
-            X-OCLC-SelfId: 60227319-93d3-4121-8521-a7a0ab605304
+            Date: 'Tue, 25 Nov 2014 20:54:52 GMT'
+            X-OCLC-RequestId: 9c0ab3de-3c67-4068-9685-8a2e833cfc86
+            X-OCLC-SelfId: 713e6672-063e-43a8-9e20-a1dbd78b7c66
             Content-Location: 'http://beta.worldcat.org/discovery/bib/search.rdf?q=cats&dbIds=638&sortBy=creator'
             Cache-Control: 'must-revalidate,no-cache,no-store'
             Content-Type: 'text/html; charset=ISO-8859-1'

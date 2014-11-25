@@ -58,6 +58,6 @@ class SearchResultsSortByCreatorTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($i, $searchResult->getDisplayPosition());
         }
         $results = $search->getSearchResults();
-        $this->assertEquals('210105081', $results[0]->getOclcNumber());
+        $this->assertEquals('210105081', $results[1]->getOclcNumber());
     }    
 }
