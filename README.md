@@ -67,7 +67,7 @@ Basic Example Reading a Bibliographic Record looks like this
    $secret = 'api-key-secret';
    $options = array('services' => array('WorldCatDiscoveryAPI', 'refresh_token'));
    $wskey = new WSKey($key, $secret, $options);
-   $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
+   $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807');
    
    $bib = Bib::Find(7977212, $accessToken);
    
@@ -77,8 +77,8 @@ Basic Example Reading a Bibliographic Record looks like this
    } else {
    		echo $bib->getName();
    		print_r($bib->getID());
-   		echo $bib->getID()
-   		print_r($bib->type();
+   		echo $bib->getID();
+   		print_r($bib->type());
    		echo $bib->type();
    		print_r($bib->getAuthor());
    		echo $bib->getAuthor->getName();
