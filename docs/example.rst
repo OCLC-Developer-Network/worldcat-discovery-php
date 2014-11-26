@@ -139,7 +139,7 @@ This example searches for Offers related to a particular Bib and return the basi
       echo $response->getErrorMessage();
    } else {
       $offers = $response->getOffers();
-      $creativeWork = $response->getCreativeWork();
+      $creativeWork = $response->getCreativeWorks();
       $creativeWork = $creativeWork[0];
       echo $creativeWork->getName();
       echo $creativeWork->getID();
