@@ -94,10 +94,13 @@ trait Helpers {
         EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
         EasyRdf_TypeMapper::set('schema:Series', 'WorldCat\Discovery\Series');
         
+        EasyRdf_TypeMapper::set('productontology:Computer_file', 'WorldCat\Discovery\CreativeWork');
         EasyRdf_TypeMapper::set('bgn:ComputerFile', 'WorldCat\Discovery\CreativeWork');
         EasyRdf_TypeMapper::set('schema:Map', 'WorldCat\Discovery\CreativeWork');
         EasyRdf_TypeMapper::set('bgn:Newspaper', 'WorldCat\Discovery\CreativeWork');
         EasyRdf_TypeMapper::set('bgn:MusicScore', 'WorldCat\Discovery\CreativeWork');
+        EasyRdf_TypeMapper::set('schema:WebSite', 'WorldCat\Discovery\CreativeWork');
+        EasyRdf_TypeMapper::set('schema:MediaObject', 'WorldCat\Discovery\CreativeWork');
         EasyRdf_TypeMapper::set('schema:CreativeWork', 'WorldCat\Discovery\CreativeWork');
     
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
