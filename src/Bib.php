@@ -56,12 +56,17 @@ class Bib extends EasyRdf_Resource
 		
 		if (get_class($this->creativeWork) == 'EasyRdf_Resource'){
 			foreach ($this->creativeWork->types() as $type){
-				if (!EasyRdf_TypeMapper::get($type)){
+				if (isset($type) && !EasyRdf_TypeMapper::get($type)){
 					EasyRdf_TypeMapper::set($type, 'WorldCat\Discovery\CreativeWork');
 				}
 			}
 			$creativeWorkGraph = new EasyRdf_Graph();
-			$creativeWorkGraph->parse($this->graph->serialise('ntriples'));
+			$creativeWorkGraph->parse($this->graph->serialise('turtle'));
+			foreach ($this->creativeWork->types() as $type){
+			    if (isset($type) && !EasyRdf_TypeMapper::get($type)){
+			        EasyRdf_TypeMapper::delete($type);
+			    }
+			}
 			return $creativeWorkGraph->resource($this->creativeWork->getUri()); 
 		} else {
 			return $this->creativeWork;

@@ -81,6 +81,7 @@ trait Helpers {
         EasyRdf_Namespace::set('rdaGr2', 'http://rdvocab.info/ElementsGr2/');
         EasyRdf_Namespace::set('madsrdf', 'http://www.loc.gov/mads/rdf/v1#');
     
+        EasyRdf_TypeMapper::delete('schema:MediaObject'); // I do not know why I need this.
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
     
         EasyRdf_TypeMapper::set('schema:Article', 'WorldCat\Discovery\Article');
@@ -93,15 +94,6 @@ trait Helpers {
         EasyRdf_TypeMapper::set('schema:Movie', 'WorldCat\Discovery\Movie');
         EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
         EasyRdf_TypeMapper::set('schema:Series', 'WorldCat\Discovery\Series');
-        
-        EasyRdf_TypeMapper::set('productontology:Computer_file', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('bgn:ComputerFile', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('schema:Map', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('bgn:Newspaper', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('bgn:MusicScore', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('schema:WebSite', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('schema:MediaObject', 'WorldCat\Discovery\CreativeWork');
-        EasyRdf_TypeMapper::set('schema:CreativeWork', 'WorldCat\Discovery\CreativeWork');
     
         EasyRdf_TypeMapper::set('schema:Country', 'WorldCat\Discovery\Country');
         EasyRdf_TypeMapper::set('schema:Event', 'WorldCat\Discovery\Event');

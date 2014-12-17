@@ -76,7 +76,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     
     /**
      * @vcr bibSearchMultiField
-     * can parse set of Bibs from a Search Result */
+     * can parse set of Bibs from a Search Result
     
     function testSearchByMultipleFields(){
     	$query = 'name:hunger+games+AND+creator:collins';
@@ -95,6 +95,7 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     		$this->assertEquals($i, $searchResult->getDisplayPosition());
     	}
     }
+     */
     
     /**
      * @vcr bibSearchTypeMapIssue
