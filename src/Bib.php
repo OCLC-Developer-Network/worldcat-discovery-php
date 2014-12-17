@@ -17,7 +17,6 @@ namespace WorldCat\Discovery;
 
 use \EasyRdf_Graph;
 use \EasyRdf_Resource;
-use \EasyRdf_Format;
 use \EasyRdf_TypeMapper;
 
 /**
@@ -31,7 +30,8 @@ class Bib extends EasyRdf_Resource
     public static $serviceUrl = 'https://beta.worldcat.org/discovery';
     public static $testServer = FALSE;
     public static $userAgent = 'WorldCat Discovery API PHP Client';
-    private $bib; 
+    private $bib;
+    protected $creativeWork;
    
     /**
      * Construct the Bib object and set the creativeWork property
@@ -54,22 +54,14 @@ class Bib extends EasyRdf_Resource
 			$this->graph->addType($this->creativeWork->getUri(), 'schema:CreativeWork');
 		}
 		
-		if (get_class($this->creativeWork) == 'EasyRdf_Resource'){
-			foreach ($this->creativeWork->types() as $type){
-				if (isset($type) && !EasyRdf_TypeMapper::get($type)){
-					EasyRdf_TypeMapper::set($type, 'WorldCat\Discovery\CreativeWork');
-				}
-			}
-			$creativeWorkGraph = new EasyRdf_Graph();
-			$creativeWorkGraph->parse($this->graph->serialise('turtle'));
-			foreach ($this->creativeWork->types() as $type){
-			    if (isset($type) && !EasyRdf_TypeMapper::get($type)){
-			        EasyRdf_TypeMapper::delete($type);
-			    }
-			}
-			return $creativeWorkGraph->resource($this->creativeWork->getUri()); 
+		$additionalTypes = static::getAdditionalTypesToMap($this->graph);
+		if (empty($additionalTypes)){
+		    return $this->creativeWork;
 		} else {
-			return $this->creativeWork;
+		    static::mapTypes($additionalTypes);
+		    $creativeWork = static::reloadGraph($this->graph)->resource($this->creativeWork->getUri());
+		    static::deleteTypeMapping($additionalTypes);
+		    return $creativeWork;
 		}
     }
     
