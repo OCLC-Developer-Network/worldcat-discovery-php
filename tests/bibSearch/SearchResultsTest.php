@@ -74,28 +74,6 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
         }
     }
     
-    /**
-     * @vcr bibSearchMultiField
-     * can parse set of Bibs from a Search Result
-     */    
-    function testSearchByMultipleFields(){
-    	$query = 'name:hunger+games+AND+creator:collins';
-    	$search = Bib::Search($query, $this->mockAccessToken);
-    
-    	$this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
-    	$this->assertEquals('0', $search->getStartIndex());
-    	$this->assertEquals('10', $search->getItemsPerPage());
-    	$this->assertInternalType('integer', $search->getTotalResults());
-    	$this->assertEquals('10', count($search->getSearchResults()));
-    	$results = $search->getSearchResults();
-    	$i = $search->getStartIndex();
-    	foreach ($search->getSearchResults() as $searchResult){
-    		$this->assertFalse(get_class($searchResult) == 'EasyRdf_Resource');
-    		$i++;
-    		$this->assertEquals($i, $searchResult->getDisplayPosition());
-    	}
-    }
-    
     
     /**
      * @vcr bibSearchTypeMapIssue
