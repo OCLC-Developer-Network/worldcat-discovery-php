@@ -67,9 +67,9 @@ class Thing extends EasyRdf_Resource
     	
     	static::requestSetup();
     	
-    	if (strpos($uri, 'viaf')){
+        if (empty($options['accept']) && strpos($uri, 'viaf')){
     		$options['accept'] = 'application/rdf+xml';
-    	} else {
+    	} elseif (empty($options['accept'])) {
     		$options['accept'] = null;
     	}
     	if (isset($options['logger'])){
@@ -90,7 +90,11 @@ class Thing extends EasyRdf_Resource
                 return $resource;
             }
         } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            return Error::parseError($error);
+            if ($error->getResponse()->getHeader('Content-Type') !== 'text/html'){
+                return Error::parseError($error);
+            } else{
+                return $error;
+            }
         }
         
         

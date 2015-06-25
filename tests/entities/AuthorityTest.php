@@ -26,7 +26,10 @@ class AuthorityTest extends \PHPUnit_Framework_TestCase
      */
     function testGetAuthority(){
         $url = 'http://id.loc.gov/authorities/subjects/sh2008124372';
-        $authority = Authority::findByURI($url);
+        $options = [
+            'Accept' => 'text/turtle'
+        ];
+        $authority = Authority::findByURI($url, $options);
         $this->assertInstanceOf('WorldCat\Discovery\Authority', $authority);
         return $authority;
     }
