@@ -81,6 +81,10 @@ class Thing extends EasyRdf_Resource
         
         try {
             $response = \Guzzle::get($uri, $guzzleOptions);
+            
+            if ($response->getStatusCode() == '303'){
+                $response = \Guzzle::get($response->getHeader('Location'), $guzzleOptions);
+            }
             $graph = new EasyRdf_Graph();
             $graph->parse($response->getBody(true));
             if (isset($options['returnGraph'])){
