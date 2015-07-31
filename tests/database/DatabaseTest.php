@@ -50,6 +50,7 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($database->getName());
         $this->assertNotEmpty($database->getRequiresAuthentication());
         $this->assertNotEmpty($database->getDescription());
+        $this->assertNotEmpty($database->getConfiguredForAccess());
     }
     
     /**

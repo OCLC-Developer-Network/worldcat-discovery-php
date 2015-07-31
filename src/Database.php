@@ -53,7 +53,18 @@ class Database extends EasyRdf_Resource
         $name = $this->get('schema:name');
         return $name;
     }
-    
+
+    /**
+     * Get Configured For Access property value
+     *
+     * @return EasyRDF_Literal
+     */
+    function getConfiguredForAccess()
+    {
+        $configuredForAccess = $this->get('discovery:configuredForAccess');
+        return $configuredForAccess;
+    }
+
     /**
      * Get Requires Authentication property value
      *
