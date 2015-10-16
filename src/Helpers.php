@@ -86,13 +86,13 @@ trait Helpers {
         EasyRdf_TypeMapper::set('http://www.w3.org/2006/gen/ont#InformationResource', 'WorldCat\Discovery\Bib');
     
         EasyRdf_TypeMapper::set('schema:Article', 'WorldCat\Discovery\Article');
-        EasyRdf_TypeMapper::set('bgn:Image', 'WorldCat\Discovery\Image');
+        EasyRdf_TypeMapper::set('schema:Movie', 'WorldCat\Discovery\Movie');
         EasyRdf_TypeMapper::set('schema:MusicAlbum', 'WorldCat\Discovery\MusicAlbum');
         EasyRdf_TypeMapper::set('schema:Periodical', 'WorldCat\Discovery\Periodical');
+        EasyRdf_TypeMapper::set('bgn:Image', 'WorldCat\Discovery\Image');
         EasyRdf_TypeMapper::set('productontology:Thesis', 'WorldCat\Discovery\Thesis');
         EasyRdf_TypeMapper::set('library:Kit', 'WorldCat\Discovery\Kit');
         EasyRdf_TypeMapper::set('bgn:Kit', 'WorldCat\Discovery\Kit');
-        EasyRdf_TypeMapper::set('schema:Movie', 'WorldCat\Discovery\Movie');
         EasyRdf_TypeMapper::set('schema:Book', 'WorldCat\Discovery\Book');
         EasyRdf_TypeMapper::set('bgn:PublicationSeries', 'WorldCat\Discovery\Series');
     
@@ -111,7 +111,7 @@ trait Helpers {
         EasyRdf_TypeMapper::set('schema:Person', 'WorldCat\Discovery\Person');
         EasyRdf_TypeMapper::set('foaf:Person', 'WorldCat\Discovery\Person'); // will be deprecated
         EasyRdf_TypeMapper::set('schema:Place', 'WorldCat\Discovery\Place');
-        EasyRdf_TypeMapper::set('http://dbpedia.org/ontology/Place', 'WorldCat\Discovery\Place'); // will be deprecated
+        EasyRdf_TypeMapper::set('http://dbpedia.org/ontology/Place', 'WorldCat\Discovery\Place'); // will be deprecated 
         
         EasyRdf_TypeMapper::set('madsrdf:Topic', 'WorldCat\Discovery\TopicalAuthority');
         EasyRdf_TypeMapper::set('madsrdf:Geographic', 'WorldCat\Discovery\GeographicAuthority');
@@ -247,6 +247,7 @@ trait Helpers {
                 EasyRdf_TypeMapper::delete($type);
             }
         }
+        EasyRdf_TypeMapper::delete('schema:CreativeWork');
     }
     
     /**

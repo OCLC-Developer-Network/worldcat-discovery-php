@@ -26,7 +26,8 @@ use \EasyRdf_TypeMapper;
  *
  */
 class CreativeWork extends EasyRdf_Resource
-{
+{	
+	use Helpers;
     /**
      * Get ID
      *
@@ -284,7 +285,12 @@ class CreativeWork extends EasyRdf_Resource
      * @return array
      */
     function getReviews(){
-        $reviews = $this->all('schema:review');
+        $reviews = $this->all('schema:reviews');
+        if ($reviews){
+        	EasyRdf_TypeMapper::set('schema:Review', 'WorldCat\Discovery\Review');
+        	$reviews = static::reloadGraph($this->graph)->resource($this->getUri())->all('schema:reviews');
+        	EasyRdf_TypeMapper::delete('schema:Review');
+        }
         return $reviews;
     }
     

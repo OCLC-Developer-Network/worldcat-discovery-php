@@ -41,7 +41,7 @@ class DVDTest extends \PHPUnit_Framework_TestCase
      */
     function testGetBib(){
         $bib = Bib::find(62774704, $this->mockAccessToken);
-        $this->assertInstanceOf('WorldCat\Discovery\CreativeWork', $bib);
+        $this->assertInstanceOf('WorldCat\Discovery\Movie', $bib);
         return $bib;
     }
 
