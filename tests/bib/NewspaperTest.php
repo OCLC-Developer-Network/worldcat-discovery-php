@@ -88,7 +88,7 @@ class NewspaperTest extends \PHPUnit_Framework_TestCase
                 $this->isInstanceOf('WorldCat\Discovery\Organization')
             ));
         }
-       print_r($bib->getPublisher()->types()); 
+
         //$this->assertInstanceOf('WorldCat\Discovery\Organization', $bib->getPublisher());
 
         $this->assertInstanceOf('EasyRdf_Resource', $bib->getWork());

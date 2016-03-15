@@ -57,6 +57,7 @@ class DVDTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($bib->getDescriptions());
         $this->assertNotEmpty($bib->getLanguage());
         $this->assertNotEmpty($bib->getGenres());
+        $this->assertNotEmpty($bib->getFormat());
     }
 
     /**

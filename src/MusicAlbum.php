@@ -41,7 +41,7 @@ class MusicAlbum extends CreativeWork
             }
             return($present);
         });
-        return $format;
+        return array_pop($format);
     }
     
     /**

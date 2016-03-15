@@ -50,7 +50,6 @@ trait Helpers {
     		unset($options['logger']);
             $requestOptions = array();
             foreach ($options as $optionName => $option) {
-            	echo $optionName . ' - '. gettype($option);
                 if (in_array($optionName, array_keys($validRequestOptions))){
                 	if (gettype($option) == $validRequestOptions[$optionName]){
                     	$requestOptions[$optionName] = $option;

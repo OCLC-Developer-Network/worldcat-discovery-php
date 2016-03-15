@@ -71,4 +71,21 @@ class Movie extends CreativeWork
     {
         return $this->allResources('schema:productionCompany');
     }
+    
+    /**
+     * Get the specific format of the Movie
+     * @return string
+     */
+    function getFormat(){
+    	$format = array_filter($this->types(), function($type)
+    	{
+    		if (strpos($type, 'bgn:') !== false) {
+    			$present = true;
+    		} else {
+    			$present = false;
+    		}
+    		return($present);
+    	});
+    	return array_pop($format);
+    }
 }
