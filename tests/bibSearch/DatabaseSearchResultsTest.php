@@ -43,7 +43,7 @@ class DatabaseSearchResultsTest extends \PHPUnit_Framework_TestCase
     
     function testSearchByKeyword(){
         $query = 'gdp policy';
-        $options = array('dbIds' => '2662');
+        $options = array('dbIds' => array(2662));
         $search = Bib::Search($query, $this->mockAccessToken, $options);
         
         $this->assertInstanceOf('WorldCat\Discovery\SearchResults', $search);

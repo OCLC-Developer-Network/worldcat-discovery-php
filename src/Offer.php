@@ -54,7 +54,18 @@ class Offer extends EasyRdf_Resource
     
     public static function findByOclcNumber($id, $accessToken, $options = null)
     {
-        $validRequestOptions = array('heldBy', 'heldByGroup', 'heldInCountry', 'useFRBRGrouping', 'startIndex', 'itemsPerPage', 'lat', 'lon', 'distance', 'unit');
+        $validRequestOptions = array(
+        		'heldBy' => 'array',
+        		'heldByGroup' => 'array',
+        		'heldInCountry' => 'array',
+        		'useFRBRGrouping' => 'string',
+        		'startIndex' => 'integer',
+        		'itemsPerPage' => 'integer',
+        		'lat' => 'string',
+        		'lon' => 'string',
+        		'distance' => 'string',
+        		'unit' => 'string'
+        );
         if (isset($options)){
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];

@@ -96,6 +96,36 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     		$this->assertEquals($i, $searchResult->getDisplayPosition());
     	}
     }
+    
+    /**
+     * @vcr bibSearchSeralizationIssues
+     * can parse set of Bibs from a Search Result */
+    
+    function testSearchSerilizationIssues(){
+    	$query = 'honda accord 6 speed';
+    	$options = array(
+    			'facetFields' => array(
+    					'creator:10',
+    					'datePublished:10',
+    					'genre:10',
+    					'itemType:10',
+    					'inLanguage:10')
+    	);
+    	$search = Bib::Search($query, $this->mockAccessToken, $options);
+    
+    	$this->assertInstanceOf('WorldCat\Discovery\BibSearchResults', $search);
+    	$this->assertEquals('0', $search->getStartIndex());
+    	$this->assertEquals('10', $search->getItemsPerPage());
+    	$this->assertInternalType('integer', $search->getTotalResults());
+    	$this->assertEquals('10', count($search->getSearchResults()));
+    	$results = $search->getSearchResults();
+    	$i = $search->getStartIndex();
+    	foreach ($search->getSearchResults() as $searchResult){
+    		$this->assertFalse(get_class($searchResult) == 'EasyRdf_Resource');
+    		$i++;
+    		$this->assertEquals($i, $searchResult->getDisplayPosition());
+    	}
+    }    
 
     /**
      * @expectedException BadMethodCallException
@@ -114,5 +144,29 @@ class SearchResultsTest extends \PHPUnit_Framework_TestCase
     {
         $this->bib = Bib::search('cats', 'NotAnAccessToken');
     }
+    
+    /**
+     * @expectedException BadMethodCallException
+     * @expectedExceptionMessage itemType must be a string
+     */
+    function testBibBadItemType()
+    {
+    	$searchOptions = array(
+    		'itemType' => array('la', 'la')	
+    	);
+    	$this->bib = Bib::search('cats', $this->mockAccessToken, $searchOptions);
+    }
+    
+    /**
+     * @expectedException BadMethodCallException
+     * @expectedExceptionMessage junk is not a valid request parameter
+     */
+    function testBibBadSearchOption()
+    {
+    	$searchOptions = array(
+    			'junk' => array('la', 'la')
+    	);
+    	$this->bib = Bib::search('cats', $this->mockAccessToken, $searchOptions);
+    }    
     
 }

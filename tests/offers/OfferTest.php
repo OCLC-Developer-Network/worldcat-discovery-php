@@ -112,7 +112,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      * Find Offers by OCLC Number heldByGroup
      */
     function testFindOfferByOclcNumberHeldByGroup(){
-        $options = array('heldByGroup' => 'OHLL');
+        $options = array('heldByGroup' => array('OHLL'));
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('0', $offerSet->getStartIndex());
@@ -126,7 +126,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      * Find Offers by OCLC Number HeldInCountry
      */
     function testFindOfferByOclcNumberHeldInCountry(){
-        $options = array('heldInCountry' => 'CA');
+        $options = array('heldInCountry' => array('CA'));
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('0', $offerSet->getStartIndex()); 
@@ -155,7 +155,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      * Find Offers by OCLC Number itemStartPage
      */
     function testFindOfferByOclcNumberItemStartPage(){
-        $options = array('heldInCountry' => 'CA', 'startIndex' => '10');
+        $options = array('heldInCountry' => array('CA'), 'startIndex' => 10);
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('10', $offerSet->getStartIndex());
@@ -169,7 +169,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      * Find Offers by OCLC Number itemsPerPage
      */
     function testFindOfferByOclcNumberItemsPerPage(){
-        $options = array('heldInCountry' => 'CA', 'itemsPerPage' => '10');
+        $options = array('heldInCountry' => array('CA'), 'itemsPerPage' => 10);
         $offerSet = Offer::findByOclcNumber(30780581, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\OfferSet', $offerSet);
         $this->assertEquals('0', $offerSet->getStartIndex());
@@ -207,7 +207,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      */
     function testIDNotInteger()
     {
-        $options = array('heldBy' => 'GZM,GZN,GZO');
+        $options = array('heldBy' => array('GZM,GZN,GZO'));
         $offerSet = Offer::findByOclcNumber('string', 'NotAnAccessToken', $options);
     }
 
@@ -217,7 +217,7 @@ class OfferTest extends \PHPUnit_Framework_TestCase
      */
     function testAccessTokenNotAccessTokenObject()
     {
-        $options = array('heldBy' => 'GZM,GZN,GZO');
+        $options = array('heldBy' => array('GZM,GZN,GZO'));
         $offerSet = Offer::findByOclcNumber(30780581, 'NotAnAccessToken', $options);
     }
 }

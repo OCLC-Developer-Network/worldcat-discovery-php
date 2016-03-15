@@ -45,7 +45,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      * Invalid Access Token
      */
     function testErrorInvalidAccessToken(){
-        $error = Bib::find(7977212, $this->mockAccessToken, array('dbIds' => '638'));
+        $error = Bib::find(41266045, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('401', $error->getErrorCode());
@@ -57,7 +57,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      * Expired Access Token **/
     function testFailureExpiredAccessToken()
     {
-        $error = Bib::find(41266045, $this->mockAccessToken, array('dbIds' => '638'));
+        $error = Bib::find(41266045, $this->mockAccessToken);
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('401', $error->getErrorCode());
@@ -70,7 +70,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     function testFailureNoQuery()
     {
         $query = ' ';
-        $error = Bib::Search($query, $this->mockAccessToken, array('dbIds' => '638'));
+        $error = Bib::Search($query, $this->mockAccessToken, array('dbIds' => array(638)));
         // this is failing
         //$this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         //$this->assertNotEmpty($error->getErrorType());
@@ -85,7 +85,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     {
         $query = 'cats';
         $facets = array('author' => 5);
-        $error = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets, 'dbIds' => 638));
+        $error = Bib::Search($query, $this->mockAccessToken, array('facetFields' => $facets, 'dbIds' => array(638)));
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());
         $this->assertEquals('400', $error->getErrorCode());
@@ -98,7 +98,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     function testErrorDatabaseNotEnabled(){
         $query = 'gdp policy';
-        $options = array('dbIds' => '2663');
+        $options = array('dbIds' => array(2663));
         $error = Bib::Search($query, $this->mockAccessToken, $options);
         $this->assertInstanceOf('WorldCat\Discovery\Error', $error);
         $this->assertNotEmpty($error->getErrorType());

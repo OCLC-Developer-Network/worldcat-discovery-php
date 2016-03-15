@@ -76,7 +76,9 @@ class Bib extends EasyRdf_Resource
      */
     public static function find($id, $accessToken, $options = null)
     {
-        $validRequestOptions = array('useFRBRGrouping');
+        $validRequestOptions = array(
+        	'useFRBRGrouping' => 'string'
+        );
         if (isset($options)){
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
@@ -103,7 +105,6 @@ class Bib extends EasyRdf_Resource
         if (!empty($requestOptions)){
             $bibURI .= '?' . static::buildParameters(null, $requestOptions);
         }
-        
         try {
             $response = \Guzzle::get($bibURI, $guzzleOptions);
             $graph = new EasyRdf_Graph();
@@ -149,7 +150,31 @@ class Bib extends EasyRdf_Resource
     
     public static function search($query, $accessToken, $options = null)
     {
-        $validRequestOptions = array('dbIds', 'sortBy', 'heldBy', 'notHeldBy', 'heldByGroup', 'heldInCountry', 'inLanguage', 'materialType', 'datePublished', 'inCatalogLanguage', 'catalogSource', 'itemType', 'itemSubType', 'peerReview', 'useFRBRGrouping', 'facetQueries', 'facetFields', 'startIndex', 'itemsPerPage', 'lat', 'lon', 'distance', 'unit');
+        $validRequestOptions = array(
+				'dbIds' => 'array', 
+        		'sortBy' => 'string',
+        		'heldBy' => 'array',
+        		'notHeldBy' => 'array',
+        		'heldByGroup' => 'array',
+        		'heldInCountry' => 'array',
+        		'inLanguage' => 'string',
+        		'materialType' => 'string',
+        		'datePublished' => 'string',
+        		'inCatalogLanguage' => 'string',
+        		'catalogSource' => 'string',
+        		'itemType' => 'string',
+        		'itemSubType' => 'string',
+        		'peerReview' => 'string',
+        		'useFRBRGrouping' => 'string',
+        		'facetQueries' => 'array',
+        		'facetFields' => 'array',
+        		'startIndex' => 'integer',
+        		'itemsPerPage' => 'integer',
+        		'lat' => 'string',
+        		'lon' => 'string',
+        		'distance' => 'string',
+        		'unit' => 'string'
+        );
         if (isset($options)){
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];

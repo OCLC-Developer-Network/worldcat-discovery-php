@@ -47,11 +47,20 @@ trait Helpers {
     }
     
     protected static function getRequestOptions($options, $validRequestOptions){
+    		unset($options['logger']);
             $requestOptions = array();
             foreach ($options as $optionName => $option) {
-                if (in_array($optionName, $validRequestOptions)){
-                    $requestOptions[$optionName] = $option;
+            	echo $optionName . ' - '. gettype($option);
+                if (in_array($optionName, array_keys($validRequestOptions))){
+                	if (gettype($option) == $validRequestOptions[$optionName]){
+                    	$requestOptions[$optionName] = $option;
+                	} else {
+                		Throw new \BadMethodCallException($optionName . ' must be a ' . $validRequestOptions[$optionName]);
+                	}
+                } else {
+                	Throw new \BadMethodCallException($optionName . ' is not a valid request parameter');
                 }
+                
             }
             return $requestOptions;
     }
@@ -258,7 +267,7 @@ trait Helpers {
     protected static function reloadGraph($graph)
     {
         $newGraph = new EasyRdf_Graph();
-        $newGraph->parse($graph->serialise('turtle'));
+        $newGraph->parse($graph->serialise('ntriples'));
         
         return $newGraph;
     }
