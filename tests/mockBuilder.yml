@@ -81,6 +81,15 @@ bibSearch:
     bibSearchTypeMapIssue:
         query: world aids day
         dbIds: 638
+    bibSearchSeralizationIssues:
+        query: "honda accord 6 speed"
+        facetFields:
+            - creator:10
+            - datePublished:10
+            - genre:10
+            - itemType:10
+            - inLanguage:10                        
+        dbIds: 638        
     bibSearchFacets:
         query: cats
         facetFields:
