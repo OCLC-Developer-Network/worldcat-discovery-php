@@ -20,7 +20,7 @@
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : "~3",
-		"php-vcr/php-vcr" : "dev-master",
+		"php-vcr/php-vcr" : ">=1.2.8",
 		"php-vcr/phpunit-testlistener-vcr" : "*",
 		"monolog/monolog" : "*",
 		"phpdocumentor/phpdocumentor" : "2.*"
