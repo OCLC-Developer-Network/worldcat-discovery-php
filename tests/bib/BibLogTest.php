@@ -15,13 +15,10 @@
 
 namespace WorldCat\Discovery;
 
-use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Bib;
-use Guzzle\Log\PsrLogAdapter;
-use Guzzle\Plugin\Log\LogPlugin;
-use Guzzle\Log\MessageFormatter;
+
 use Monolog\Logger;
 use Monolog\Handler\TestHandler;
 
@@ -35,10 +32,13 @@ class BibLogTest extends \PHPUnit_Framework_TestCase
             'contextInstitutionId' => 128807,
             'scope' => array('WorldCatDiscoveryAPI')
         );
-        $this->mockAccessToken = $this->getMock('OCLC\Auth\AccessToken', array('getValue'), array('client_credentials', $options));
+        $this->mockAccessToken = $this->getMockBuilder(AccessToken::class)
+        ->setConstructorArgs(array('client_credentials', $options))
+        ->getMock();
+        
         $this->mockAccessToken->expects($this->any())
-                    ->method('getValue')
-                    ->will($this->returnValue('tk_12345'));
+        ->method('getValue')
+        ->will($this->returnValue('tk_12345'));
     }
 
     /**
@@ -48,10 +48,8 @@ class BibLogTest extends \PHPUnit_Framework_TestCase
         $logger = new Logger('testLogger');
         $handler = new TestHandler;
         $logger->pushHandler($handler);
-        $logAdapter = new PsrLogAdapter($logger);
-        $logPlugin = new LogPlugin($logAdapter, "{host} {method} {resource} {req_header_Authorization} \n {code} {reason} {res_header_X-OCLC-RequestId} {res_header_X-OCLC-SelfId}");
         $options = array(
-            'logger' => $logPlugin
+            'logger' => $logger
         );
         $bib = Bib::find(7977212, $this->mockAccessToken, $options);
         
@@ -62,7 +60,7 @@ class BibLogTest extends \PHPUnit_Framework_TestCase
     
     /**
      * @expectedException BadMethodCallException
-     * @expectedExceptionMessage The logger must be a valid Guzzle\Plugin\Log\LogPlugin object
+     * @expectedExceptionMessage The logger must be an object that uses a valid Psr\Log\LoggerInterface interface
      */
     function testLoggerNotValid()
     {

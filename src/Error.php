@@ -72,7 +72,7 @@ class Error extends EasyRdf_Resource
         
         $graph = new EasyRdf_Graph();
         try {
-            $graph->parse($error->getResponse()->getBody(true));
+            $graph->parse($error->getResponse()->getBody());
             $errors = $graph->allOfType('response:ClientRequestError');
             return $errors[0];
         } catch (\EasyRdf_Exception $e) {

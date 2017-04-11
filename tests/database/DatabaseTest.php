@@ -15,7 +15,6 @@
 
 namespace WorldCat\Discovery;
 
-use Guzzle\Http\StaticClient;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
 use WorldCat\Discovery\Database;
@@ -33,10 +32,13 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
             'contextInstitutionId' => 128807,
             'scope' => array('WorldCatDiscoveryAPI')
         );
-        $this->mockAccessToken = $this->getMock('OCLC\Auth\AccessToken', array('getValue'), array('client_credentials', $options));
+        $this->mockAccessToken = $this->getMockBuilder(AccessToken::class)
+        ->setConstructorArgs(array('client_credentials', $options))
+        ->getMock();
+        
         $this->mockAccessToken->expects($this->any())
-                    ->method('getValue')
-                    ->will($this->returnValue('tk_12345'));    
+        ->method('getValue')
+        ->will($this->returnValue('tk_12345'));
     }
 
     /**

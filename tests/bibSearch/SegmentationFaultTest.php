@@ -15,7 +15,6 @@
 
 namespace WorldCat\Discovery;
 
-use Guzzle\Http\StaticClient;
 use Symfony\Component\Yaml\Yaml;
 use OCLC\Auth\WSKey;
 use OCLC\Auth\AccessToken;
@@ -23,6 +22,7 @@ use OCLC\User;
 use WorldCat\Discovery\Bib;
 use EasyRdf_Namespace;
 use EasyRdf_Graph;
+use GuzzleHttp\Client;
 
 class SegmentationFaultTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,13 +34,13 @@ class SegmentationFaultTest extends \PHPUnit_Framework_TestCase
             'contextInstitutionId' => 128807,
             'scope' => array('WorldCatDiscoveryAPI')
         );
-        $this->mockAccessToken = $this->getMock('OCLC\Auth\AccessToken', array('getValue'), array('client_credentials', $options));
+        $this->mockAccessToken = $this->getMockBuilder(AccessToken::class)
+        ->setConstructorArgs(array('client_credentials', $options))
+        ->getMock();
+        
         $this->mockAccessToken->expects($this->any())
-                    ->method('getValue')
-                    ->will($this->returnValue('tk_12345'));
-        if (!class_exists('Guzzle')) {
-            \Guzzle\Http\StaticClient::mount();
-        }
+        ->method('getValue')
+        ->will($this->returnValue('tk_12345'));
     }
     
     /**
@@ -57,8 +57,9 @@ class SegmentationFaultTest extends \PHPUnit_Framework_TestCase
             )
         );
     
+        $client = new Client($guzzleOptions);
         $bibSearchURI = 'https://beta.worldcat.org/discovery/bib/search?q=name:hunger+games+AND+creator:collins&dbIds=638';
-        $searchResponse = \Guzzle::get($bibSearchURI, $guzzleOptions);
+        $searchResponse = $client->get($bibSearchURI);
     }
     
     /**
@@ -75,11 +76,12 @@ class SegmentationFaultTest extends \PHPUnit_Framework_TestCase
                 'Authorization' => 'Bearer ' . $this->mockAccessToken->getValue()
             )
         );
+        $client = new Client($guzzleOptions);
         
         $bibSearchURI = 'https://beta.worldcat.org/discovery/bib/search?q=name:hunger+games+AND+creator:collins&dbIds=638';
-        $searchResponse = \Guzzle::get($bibSearchURI, $guzzleOptions);
+        $searchResponse = $client->get($bibSearchURI);
         $graph = new EasyRdf_Graph();
-        $graph->parse($searchResponse->getBody(true));
+        $graph->parse($searchResponse->getBody());
         $search = $graph->allOfType('discovery:SearchResults');
         $search = $search[0];
     }
