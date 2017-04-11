@@ -20,6 +20,13 @@ use \EasyRdf_Resource;
 use \EasyRdf_Format;
 use \EasyRdf_Namespace;
 use \EasyRdf_TypeMapper;
+use GuzzleHttp\HandlerStack,
+GuzzleHttp\Middleware,
+GuzzleHttp\MessageFormatter,
+GuzzleHttp\Client,
+GuzzleHttp\Exception\RequestException,
+GuzzleHttp\Psr7\Response,
+GuzzleHttp\Psr7;
 
 /**
  * A class that represents a Bibliographic Resource in WorldCat
@@ -70,9 +77,11 @@ class Offer extends EasyRdf_Resource
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
             $logger = $parsedOptions['logger'];
+            $log_format = $parsedOptions['log_format'];
         } else {
             $requestOptions = array();
             $logger = null;
+            $log_format = null;
         }
         
         if (!is_numeric($id)){
@@ -85,17 +94,17 @@ class Offer extends EasyRdf_Resource
         
         static::requestSetup();
         
-        $guzzleOptions = static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger));
+        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger, 'log_format' => $log_format)));
         
         $bibURI = Bib::$serviceUrl . '/offer/oclc/' . $id . '?' . static::buildParameters(null, $requestOptions);
         
         try {
-            $response = \Guzzle::get($bibURI, $guzzleOptions);
+            $response = $client->get($bibURI);
             $graph = new EasyRdf_Graph();
-            $graph->parse($response->getBody(true));
+            $graph->parse($response->getBody());
             $results = $graph->allOfType('discovery:SearchResults');
             return $results[0];
-        } catch (\Guzzle\Http\Exception\BadResponseException $error) {
+        } catch (RequestException $error) {
             return Error::parseError($error);
         }
     }

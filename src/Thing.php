@@ -20,6 +20,13 @@ use \EasyRdf_Resource;
 use \EasyRdf_Format;
 use \EasyRdf_Namespace;
 use \EasyRdf_TypeMapper;
+use GuzzleHttp\HandlerStack,
+GuzzleHttp\Middleware,
+GuzzleHttp\MessageFormatter,
+GuzzleHttp\Client,
+GuzzleHttp\Exception\RequestException,
+GuzzleHttp\Psr7\Response,
+GuzzleHttp\Psr7;
 
 /**
  * A class that represents a Thing in Schema.org
@@ -72,29 +79,24 @@ class Thing extends EasyRdf_Resource
     	} elseif (empty($options['accept'])) {
     		$options['accept'] = null;
     	}
-    	if (isset($options['logger'])){
-    		$logger = $options['logger'];
-    	} else {
-    		$logger = null;
-    	}
-    	$guzzleOptions = static::getGuzzleOptions($options);
         
+    	$client = new Client(static::getGuzzleOptions($options));
         try {
-            $response = \Guzzle::get($uri, $guzzleOptions);
+        	$response = $client->get($uri);
             
             if ($response->getStatusCode() == '303'){
-                $response = \Guzzle::get($response->getHeader('Location'), $guzzleOptions);
+            	$response = $client->get(implode($response->getHeader('Location')));
             }
             $graph = new EasyRdf_Graph();
-            $graph->parse($response->getBody(true));
+            $graph->parse($response->getBody());
             if (isset($options['returnGraph'])){
                 return $graph;
             } else {
                 $resource = $graph->resource($uri);
                 return $resource;
             }
-        } catch (\Guzzle\Http\Exception\BadResponseException $error) {
-            if ($error->getResponse()->getHeader('Content-Type') !== 'text/html'){
+        } catch (RequestException $error) {
+        	if (implode($error->getResponse()->getHeader('Content-Type')) !== 'text/html'){
                 return Error::parseError($error);
             } else{
                 return $error;

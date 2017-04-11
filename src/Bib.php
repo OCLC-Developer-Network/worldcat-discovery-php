@@ -18,6 +18,13 @@ namespace WorldCat\Discovery;
 use \EasyRdf_Graph;
 use \EasyRdf_Resource;
 use \EasyRdf_TypeMapper;
+use GuzzleHttp\HandlerStack,
+GuzzleHttp\Middleware,
+GuzzleHttp\MessageFormatter,
+GuzzleHttp\Client,
+GuzzleHttp\Exception\RequestException,
+GuzzleHttp\Psr7\Response,
+GuzzleHttp\Psr7;
 
 /**
  * A class that represents a Bibliographic Resource in WorldCat
@@ -83,9 +90,11 @@ class Bib extends EasyRdf_Resource
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
             $logger = $parsedOptions['logger'];
+            $log_format = $parsedOptions['log_format'];
         } else {
             $requestOptions = array();
             $logger = null;
+            $log_format = null;
         }
         
         if (!is_numeric($id)){
@@ -96,9 +105,7 @@ class Bib extends EasyRdf_Resource
         
         static::requestSetup();
         
-        
-        
-        $guzzleOptions = static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger));
+        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger, 'log_format' => $log_format)));
         
         $bibURI = Bib::$serviceUrl . '/bib/data/' . $id;
         
@@ -106,12 +113,12 @@ class Bib extends EasyRdf_Resource
             $bibURI .= '?' . static::buildParameters(null, $requestOptions);
         }
         try {
-            $response = \Guzzle::get($bibURI, $guzzleOptions);
+            $response = $client->get($bibURI);
             $graph = new EasyRdf_Graph();
-            $graph->parse($response->getBody(true));
+            $graph->parse($response->getBody());
             $bib = $graph->resource('http://www.worldcat.org/title/-/oclc/' . $id);
             return $bib->getCreativeWork();
-        } catch (\Guzzle\Http\Exception\BadResponseException $error) {
+        } catch (RequestException $error) {
             return Error::parseError($error);
         }
     }
@@ -179,9 +186,11 @@ class Bib extends EasyRdf_Resource
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
             $logger = $parsedOptions['logger'];
+            $log_format = $parsedOptions['log_format'];
         } else {
             $requestOptions = array();
             $logger = null;
+            $log_format = null;
         }
         
         if (!is_string($query)){
@@ -194,7 +203,7 @@ class Bib extends EasyRdf_Resource
         
         static::requestSetup();
                 
-        $guzzleOptions = static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger));
+        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger, 'log_format' => $log_format)));
         
         if (empty($requestOptions['dbIds'])){
             $requestOptions['dbIds'] = 638;
@@ -203,13 +212,13 @@ class Bib extends EasyRdf_Resource
         $bibSearchURI = Bib::$serviceUrl . '/bib/search?' . static::buildParameters($query, $requestOptions);
         
         try {
-            $searchResponse = \Guzzle::get($bibSearchURI, $guzzleOptions);
+            $searchResponse = $client->get($bibSearchURI);
             $graph = new EasyRdf_Graph();
-            $graph->parse($searchResponse->getBody(true));
+            $graph->parse($searchResponse->getBody());
             $search = $graph->allOfType('discovery:SearchResults');
             $search = $search[0];
             return $search;
-        } catch (\Guzzle\Http\Exception\BadResponseException $error) {
+        } catch (RequestException $error) {
             return Error::parseError($error);
         }
     }

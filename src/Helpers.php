@@ -19,6 +19,13 @@ use \EasyRdf_Graph;
 use \EasyRdf_Namespace;
 use \EasyRdf_TypeMapper;
 use \EasyRdf_Format;
+use GuzzleHttp\HandlerStack,
+GuzzleHttp\Middleware,
+GuzzleHttp\MessageFormatter,
+GuzzleHttp\Client,
+GuzzleHttp\Exception\RequestException,
+GuzzleHttp\Psr7\Response,
+GuzzleHttp\Psr7;
 
 trait Helpers {
 
@@ -29,25 +36,33 @@ trait Helpers {
     {
         if (empty($options) || !is_array($options)){
             Throw new \BadMethodCallException('Options must be a valid array');
-        } elseif (isset($options['logger']) && !is_a($options['logger'], 'Guzzle\Plugin\Log\LogPlugin')){
-            Throw new \BadMethodCallException('The logger must be a valid Guzzle\Plugin\Log\LogPlugin object');
+        } elseif (isset($options['logger']) && !is_a($options['logger'], 'Psr\Log\LoggerInterface')){
+            Throw new \BadMethodCallException('The logger must be an object that uses a valid Psr\Log\LoggerInterface interface');
         }
         
         if (isset($options['logger'])){
             $logger = $options['logger'];
+            if(isset($options['log_format'])){
+            	$logFormat = $options['log_format'];
+            } else {
+            	$logFormat = null;
+            }
         } else {
             $logger = null;
+            $logFormat = null;
         }
         
         $optionParts = array(
             'requestOptions' => static::getRequestOptions($options, $validRequestOptions),
-            'logger' => $logger
+            'logger' => $logger,
+        	'log_format' => $logFormat
         );
         return $optionParts;
     }
     
     protected static function getRequestOptions($options, $validRequestOptions){
     		unset($options['logger']);
+    		unset($options['log_format']);
             $requestOptions = array();
             foreach ($options as $optionName => $option) {
                 if (in_array($optionName, array_keys($validRequestOptions))){
@@ -140,10 +155,6 @@ trait Helpers {
         }
                 
         EasyRdf_TypeMapper::set('response:ClientRequestError', 'WorldCat\Discovery\Error');
-    
-        if (!class_exists('Guzzle')) {
-            \Guzzle\Http\StaticClient::mount();
-        }
     }
     
     /**
@@ -155,23 +166,43 @@ trait Helpers {
     	} else{
     		$accept = 'text/plain';
     	}
-        $guzzleOptions = array(
-            'headers' => array(
-                'Accept' => $accept,
-                'User-Agent' => static::$userAgent
-            )
+    	
+        $headers = array(
+        		'Accept' => $accept,
+        		'User-Agent' => static::$userAgent
         );
         
         if (isset($options['accessToken'])){
-        	$guzzleOptions['headers']['Authorization'] = 'Bearer ' . $options['accessToken']->getValue();
+        	$headers['Authorization'] = 'Bearer ' . $options['accessToken']->getValue();
         }
-    
+        
+        $guzzleOptions = array(
+        		'headers' => $headers,
+        		'allow_redirects' => array(
+        				'strict' => true
+        		),
+        		'timeout' => 60
+        );
+        
         if (static::$testServer){
-            $guzzleOptions['verify'] = false;
+        	$guzzleOptions['verify'] = false;
         }
-    
+        
         if (isset($options['logger'])){
-            $guzzleOptions['plugins'] = array($options['logger']);
+        	$logger = $options['logger'];
+        	if (isset($options['log_format'])){
+        		$logFormat = $options['log_format'];
+        	} else {
+        		$logFormat = '{request} - {response}';
+        	}
+        	$stack = HandlerStack::create();
+        	$stack->push(
+        			Middleware::log(
+        					$logger,
+        					new MessageFormatter($logFormat)
+        					)
+        			);
+        	$guzzleOptions['handler'] = $stack;
         }
         return $guzzleOptions;
     }

@@ -16,6 +16,13 @@
 namespace WorldCat\Discovery;
 
 use \EasyRdf_Format;
+use GuzzleHttp\HandlerStack,
+GuzzleHttp\Middleware,
+GuzzleHttp\MessageFormatter,
+GuzzleHttp\Client,
+GuzzleHttp\Exception\RequestException,
+GuzzleHttp\Psr7\Response,
+GuzzleHttp\Psr7;
 
 /**
 * A class that represents a MADS Authority
@@ -31,8 +38,8 @@ class Authority extends Thing
 	 */
 	public function load($format = null)
 	{
-		$guzzleOptions = static::getGuzzleOptions(array('accept' => 'application/rdf+xml'));
-		$responseBody = \Guzzle::get($this->getURI(), $guzzleOptions)->getBody(true);
+		$client = new Client(static::getGuzzleOptions(array('accept' => 'application/rdf+xml')));
+		$responseBody = $client->get($this->getURI())->getBody();
 		$this->graph->parse($responseBody);
 	}
 	
