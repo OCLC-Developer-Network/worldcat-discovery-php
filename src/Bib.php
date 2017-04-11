@@ -90,9 +90,11 @@ class Bib extends EasyRdf_Resource
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
             $logger = $parsedOptions['logger'];
+            $log_format = $parsedOptions['log_format'];
         } else {
             $requestOptions = array();
             $logger = null;
+            $log_format = null;
         }
         
         if (!is_numeric($id)){
@@ -103,7 +105,7 @@ class Bib extends EasyRdf_Resource
         
         static::requestSetup();
         
-        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger)));
+        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger, 'log_format' => $log_format)));
         
         $bibURI = Bib::$serviceUrl . '/bib/data/' . $id;
         
@@ -184,9 +186,11 @@ class Bib extends EasyRdf_Resource
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
             $logger = $parsedOptions['logger'];
+            $log_format = $parsedOptions['log_format'];
         } else {
             $requestOptions = array();
             $logger = null;
+            $log_format = null;
         }
         
         if (!is_string($query)){
@@ -199,7 +203,7 @@ class Bib extends EasyRdf_Resource
         
         static::requestSetup();
                 
-        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger)));
+        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger, 'log_format' => $log_format)));
         
         if (empty($requestOptions['dbIds'])){
             $requestOptions['dbIds'] = 638;

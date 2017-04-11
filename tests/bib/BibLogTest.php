@@ -59,6 +59,24 @@ class BibLogTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     *@vcr bibSuccess
+     */
+    function testLoggerSuccessSpecificFormat(){
+    	$logger = new Logger('testLogger');
+    	$handler = new TestHandler;
+    	$logger->pushHandler($handler);
+    	$options = array(
+    			'logger' => $logger,
+    			'log_format' => 'Request - {method} - {uri} - {code}'
+    	);
+    	$bib = Bib::find(7977212, $this->mockAccessToken, $options);
+    	
+    	$records = $handler->getRecords();
+    	$this->assertContains('Request - GET - https://beta.worldcat.org/discovery/bib/data/7977212 - 200', $records[0]['message']);
+    	
+    }
+    
+    /**
      * @expectedException BadMethodCallException
      * @expectedExceptionMessage The logger must be an object that uses a valid Psr\Log\LoggerInterface interface
      */

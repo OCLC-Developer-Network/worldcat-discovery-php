@@ -79,11 +79,6 @@ class Thing extends EasyRdf_Resource
     	} elseif (empty($options['accept'])) {
     		$options['accept'] = null;
     	}
-    	if (isset($options['logger'])){
-    		$logger = $options['logger'];
-    	} else {
-    		$logger = null;
-    	}
         
     	$client = new Client(static::getGuzzleOptions($options));
         try {

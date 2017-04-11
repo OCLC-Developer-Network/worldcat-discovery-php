@@ -42,19 +42,27 @@ trait Helpers {
         
         if (isset($options['logger'])){
             $logger = $options['logger'];
+            if(isset($options['log_format'])){
+            	$logFormat = $options['log_format'];
+            } else {
+            	$logFormat = null;
+            }
         } else {
             $logger = null;
+            $logFormat = null;
         }
         
         $optionParts = array(
             'requestOptions' => static::getRequestOptions($options, $validRequestOptions),
-            'logger' => $logger
+            'logger' => $logger,
+        	'log_format' => $logFormat
         );
         return $optionParts;
     }
     
     protected static function getRequestOptions($options, $validRequestOptions){
     		unset($options['logger']);
+    		unset($options['log_format']);
             $requestOptions = array();
             foreach ($options as $optionName => $option) {
                 if (in_array($optionName, array_keys($validRequestOptions))){

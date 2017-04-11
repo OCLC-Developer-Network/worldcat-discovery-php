@@ -111,9 +111,11 @@ class Database extends EasyRdf_Resource
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
             $logger = $parsedOptions['logger'];
+            $log_format = $parsedOptions['log_format'];
         } else {
             $requestOptions = array();
             $logger = null;
+            $log_format = null;
         }
         
         if (!is_numeric($id)){
@@ -124,7 +126,7 @@ class Database extends EasyRdf_Resource
         
         static::requestSetup();
         
-        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger)));
+        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger, 'log_format' => $log_format)));
         
         $databaseURI = static::$serviceUrl . '/database/data/' . $id;
         
@@ -155,9 +157,11 @@ class Database extends EasyRdf_Resource
             $parsedOptions = static::parseOptions($options, $validRequestOptions);
             $requestOptions = $parsedOptions['requestOptions'];
             $logger = $parsedOptions['logger'];
+            $log_format = $parsedOptions['log_format'];
         } else {
             $requestOptions = array();
             $logger = null;
+            $log_format = null;
         }
         
         if (!is_a($accessToken, '\OCLC\Auth\AccessToken')) {
@@ -166,7 +170,7 @@ class Database extends EasyRdf_Resource
         
         static::requestSetup();
                 
-        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger)));
+        $client = new Client(static::getGuzzleOptions(array('accessToken' => $accessToken, 'logger' => $logger, 'log_format' => $log_format)));
         
         $databaseListURI = static::$serviceUrl . '/database/list';
         
