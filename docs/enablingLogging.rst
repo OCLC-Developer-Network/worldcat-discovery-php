@@ -72,4 +72,78 @@ This example adds basic logging using the Monolog Logging [https://github.com/Se
            'log_format' => Request - {host} {method} {target} {req_header_authorization} \n Response - {code} {phrase} {res_header_x-OCLC-RequestId} {res_header_x-OCLC-SelfId} {error}'
    );
 
-   $bib = Bib::find(7977212, $accessToken, $options);      
+   $bib = Bib::find(7977212, $accessToken, $options);   
+
+Example: 
+==================================================
+
+This example adds basic logging using Zend Framework 2 Logging [http://framework.zend.com/manual/2.3/en/modules/zend.log.overview.html] and sending output to the buffer
+
+.. code:: php
+
+    use OCLC\Auth\WSKey;
+    use OCLC\Auth\AccessToken;
+    use WorldCat\Discovery\Bib;
+    use Zend\Log\Logger;
+    use Zend\Log\PsrLoggerAdapter;
+    use Zend\Log\Writer\Stream;
+    
+    $key = 'api-key';
+    $secret = 'api-key-secret';
+    $options = array('services' => array('WorldCatDiscoveryAPI', 'refresh_token'));
+    $wskey = new WSKey($key, $secret, $options);
+    $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
+    
+    $logMock = new Mock();
+    $logger = new Logger();
+    $logger->addWriter($logMock);
+    
+    $writer = new Stream('php://output');
+    $logger = new Logger();
+    $logger->addWriter($writer);
+    
+    $psrLogger = new PsrLoggerAdapter($logger); 
+
+    $options = array(
+            'logger' => $psrLogger,
+            'log_format' => Request - {host} {method} {target} {req_header_authorization} \n Response - {code} {phrase} {res_header_x-OCLC-RequestId} {res_header_x-OCLC-SelfId} {error}'
+    );
+    
+    $bib = Bib::find(7977212, $accessToken, $options); 
+
+Example: 
+==================================================
+
+This example adds basic logging using Zend Framework 2 Logging [http://framework.zend.com/manual/2.3/en/modules/zend.log.overview.html] and sending output to the filesystem
+
+.. code:: php
+
+    use OCLC\Auth\WSKey;
+    use OCLC\Auth\AccessToken;
+    use WorldCat\Discovery\Bib;
+    use Zend\Log\Logger;
+    use Zend\Log\PsrLoggerAdapter;
+    use Zend\Log\Writer\Stream;
+    
+    $key = 'api-key';
+    $secret = 'api-key-secret';
+    $options = array('services' => array('WorldCatDiscoveryAPI', 'refresh_token'));
+    $wskey = new WSKey($key, $secret, $options);
+    $accessToken = $wskey->getAccessTokenWithClientCredentials('128807', '128807'));
+    
+    $logMock = new Mock();
+    $logger = new Logger();
+    $logger->addWriter($logMock);
+    
+    $writer = new Stream(__DIR__.'/my_app.log');
+    $logger = new Logger();
+    $logger->addWriter($writer);
+    
+    $psrLogger = new PsrLoggerAdapter($logger); 
+
+    $options = array(
+            'logger' => $psrLogger,
+            'log_format' => Request - {host} {method} {target} {req_header_authorization} \n Response - {code} {phrase} {res_header_x-OCLC-RequestId} {res_header_x-OCLC-SelfId} {error}'
+    );
+    
+    $bib = Bib::find(7977212, $accessToken, $options);              
