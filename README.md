@@ -1,6 +1,6 @@
 # Worldcat Discovery PHP Library
 
-A PHP library for WorldCat Discovery API. 
+> **WARNING**: This library is not longer maintained. However, the code remains public as an example of how to use the API.
 
 ## Installation
 
