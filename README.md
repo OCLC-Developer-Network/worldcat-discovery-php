@@ -1,6 +1,6 @@
 # Worldcat Discovery PHP Library
 
-> **WARNING**: This library is not longer maintained. However, the code remains public as an example of how to use the API.
+> **WARNING**: This library is no longer maintained. However, the code remains public as an example of how to use the API.
 
 ## Installation
 
